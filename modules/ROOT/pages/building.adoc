@@ -244,21 +244,21 @@ craft --fetch owncloud-client
 ....
 
 You can find the git checkout in `C:\CraftRoot\downloads\git\owncloud\owncloud-client`.
-There you can use the usual git commands to switch branches and remotes, e.g., to build the `2.6` stable branch you can use craft with --set version parameter:
+There you can use the usual git commands to switch branches and remotes, e.g., to build the `{latest-version}` stable branch you can use craft with --set version parameter:
 
-[source,powershell]
-....
-git checkout 2.6
-craft --set version=2.6 owncloud-client
-....
+[source,powershell,subs="attributes+"]
+----
+git checkout {latest-version}
+craft --set version={latest-version} owncloud-client
+----
 
 Afterwards you can build the client like this:
 
 [source,powershell]
-....
+----
 craft --configure --make --install
 craft owncloud-client
-....
+----
 
 ==== Run the Client
 
@@ -267,20 +267,21 @@ This is so KDE Craft knows which files belong to which package.
 In order to run the client, you first need to merge the image directory to the regular KDE Craft root (`C:\CraftRoot`).
 Afterwards, you can run `owncloud.exe` from your shell.
 
-```
+[source,powershell]
+----
 craft --qmerge owncloud-client
 owncloud.exe
-```
+----
 
 ==== Package the Client (Unsupported)
 
 Although this is not officially supported, it is, generally, possible to build an installer with:
 
 [source,powershell]
-....
+----
 craft nsis
 craft --package owncloud-client
-....
+----
 
 Now you should have a file called: `owncloud-client-master-$\{COMMIT_HASH\}-windows-$\{COMPILER\}.exe` in `C:\CraftRoot\tmp`.
 
@@ -290,7 +291,6 @@ This is not supported, optimised, nor regularly tested!
 Fully supported Windows installers are currently only provided by xref:compiling-via-ownbrander[ownBrander].
 ====
 
-[[generic-build-instructions]]
 == Generic Build Instructions
 
 To build the most up-to-date version of the client:
@@ -298,42 +298,59 @@ To build the most up-to-date version of the client:
 . Clone the latest versions of the client from http://git-scm.com[Git] as follows:
 +
 [source,console]
-....
+----
 git clone git://github.com/owncloud/client.git
 cd client
 # master this default, but you can also check out a tag like v2.5.4
 git checkout master
 git submodule init
 git submodule update
-....
+----
 
 [start=2]
 . Create the build directory:
 +
 [source,console]
-....
+----
 mkdir client-build
 cd client-build
-....
+----
 
 [start=3]
 . Configure the client build:
 +
 [source,console]
-....
+----
 cmake -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.4 -DCMAKE_INSTALL_PREFIX=/Users/path/to/client/../install/ ..
-....
+----
 +
-For Linux builds (using QT5 libraries via build-dep) a typical setting is `-DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.4/`. However, the version number may vary. 
-For Linux builds using system dependencies `-DCMAKE_PREFIX_PATH` is not needed.
-You must use absolute paths for the `include` and `library` directories.
+For Linux builds (using QT5 libraries via build-dep) a typical setting is 
++
+[source,console]
+----
+-DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.4/
+----
++
+However, the version number may vary. For Linux builds using system dependencies `-DCMAKE_PREFIX_PATH` is not needed. You must use absolute paths for the `include` and `library` directories.
 +
 On Mac OS X, you need to specify `-DCMAKE_INSTALL_PREFIX=target`, where `target` is a private location, i.e. in parallel to your build dir by specifying `../install`.
 +
-qtkeychain must be compiled with the same prefix e.g., `-DCMAKE_INSTALL_PREFIX=/Users/path/to/client/../install/`.
+qtkeychain must be compiled with the same prefix e.g., 
++
+[source,console]
+----
+-DCMAKE_INSTALL_PREFIX=/Users/path/to/client/../install/
+----
 
 [start=4]
-. Call `make`. The ownCloud binary will appear in the `bin` directory.
+. Call
++
+[source,console]
+----
+make
+----
++
+The ownCloud binary will appear in the `bin` directory.
 
 [start=5]
 . (Optional) Call `make install` to install the client to the `/usr/local/bin` directory (or as per CMAKE_INSTALL_PREFIX). +
@@ -348,15 +365,14 @@ The following are known CMake parameters:
 * `CMAKE_PREFIX_PATH=/path/to/Qt5.12.4/5.12.4/yourarch/lib/cmake/`: Builds using that Qt version.
 * `CMAKE_INSTALL_PREFIX=path`: Set an install prefix. This is mandatory on Mac OS.
 +
-. (Optional) Run a client that was installed in a custom CMAKE_INSTALL_PREFIX may not pick up the correct libraries automatically. You can use LD_LIBRARY_PATH to help finding the libraries like this:
+. *Optional:* Run a client that was installed in a custom CMAKE_INSTALL_PREFIX may not pick up the correct libraries automatically. You can use LD_LIBRARY_PATH to help finding the libraries like this:
 +
 [source,console]
-....
+----
 LD_LIBRARY_PATH=/opt/ownCloud/qt-5.12.4/lib/x86_64-linux-gnu/:/Users/path/to/client/../install/lib/x86_64-linux-gnu/ /Users/path/to/client/../install/bin/owncloud
-....
+----
 
-[[compiling-via-ownbrander]]
 == Compiling via ownBrander
 
 If you don’t want to go through the trouble of doing all the compile work manually, you can use
-https://doc.owncloud.org/branded_clients/[ownBrander] to create installer images for all platforms.
+https://doc.owncloud.com/branded_clients/[ownBrander] to create installer images for all platforms.
