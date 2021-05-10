@@ -1,13 +1,26 @@
-# Building the Docs
+# Client - Desktop Documentation
 
-The desktop client documentation is not built directly; instead, it is built together with the [core documentation](https://github.com/owncloud/docs/). However, if you would like to build a local copy of the desktop client documentation, to preview changes that you are making, you can use the following command within the `docs/` directory:
+## Building the Docs
 
+The desktop client documentation is not built independently. Instead, it is built together with the [core documentation](https://github.com/owncloud/docs/). However, you can build a local copy of the desktop client documentation to preview changes you are making.
+
+## Prepare Your Environment
+
+To prepare your local environment, clone this repository and run
 ```
 yarn install
-yarn antora
 ```
+to setup all necessary dependencies.
 
-**Note** these commands require NodeJS and Yarn to be installed. To learn more about how to install them, please refer to [that documentation in the docs repository](https://github.com/owncloud/docs/blob/master/docs/getting-started.md).
+**Note**, these commands require NodeJS and Yarn to be installed. To learn more about how to install them, refer to the [documentation in the docs repository](https://github.com/owncloud/docs/blob/master/docs/getting-started.md).
+
+## Building the Client Documentation
+
+Run the following command to build the client documentation
+
+```
+yarn antora-local
+```
 
 ## Previewing the Generated Docs
 
