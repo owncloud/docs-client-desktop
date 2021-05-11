@@ -7,13 +7,10 @@ Available for Windows, Mac OS X, and various Linux distributions, the ownCloud D
 
 Your files are always automatically synchronized between your ownCloud server and local PC.
 
-Because of various technical issues, desktop sync clients older than.
-2.2.1 will not allowed to connect and sync with the ownCloud 8.1+
-server.
-It is highly recommended to keep your client updated.
+Because of various technical issues, desktop sync clients older than. 2.2.1 will not allowed to connect and sync with the ownCloud 8.1+ server. It is highly recommended to keep your client updated.
 
 == Improvements and New Features
 
 The release of the ownCloud desktop sync client has many new features and improvements.
 
-NOTE: See the https://owncloud.org/changelog/desktop/[complete changelog].
+NOTE: See the https://owncloud.com/changelog/desktop/[complete changelog].
