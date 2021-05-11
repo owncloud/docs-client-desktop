@@ -1,4 +1,5 @@
 = Environment Variables
+:toc: right
 
 == Introduction
 
@@ -6,9 +7,7 @@ The behavior of the client can also be controlled using environment variables.
 
 NOTE: The value of the environment variables override the values in the configuration file.
 
-NOTE: Most environment variables only exist for debugging or testing. They are not officially
-supported and may change from version to version. If you end up relying on a setting only available
-through an environment variable, please create a bug report.
+NOTE: Most environment variables only exist for debugging or testing. They are not officially supported and may change from version to version. If you end up relying on a setting only available through an environment variable, please create a bug report.
 
 == Available Environment Variables
 
@@ -142,7 +141,6 @@ Set to -1 to never require full local discovery.
 | `OWNCLOUD_UPLOAD_CONFLICT_FILES`
 | unset
 | Set to "1" to enable uploading conflict files to the server.
-
 
 | `QT_LOGGING_RULES`
 | unset
