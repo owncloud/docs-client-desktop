@@ -4,14 +4,11 @@
 
 == Introduction
 
-The ownCloud Client uses a configuration file. It has several sections for particular settings.
-You will find more sections in the configuration file than described here. Do not change any of
-those settings except support advises you to do so. 
+The ownCloud Client uses a configuration file. It has several sections for particular settings. You will find more sections in the configuration file than described here. Do not change any of those settings except support advises you to do so. 
 
 == Location of the Configuration File
  
-The location of the configuration file depends on the operating system used.
-You can locate this configuration file as follows:
+The location of the configuration file depends on the operating system used. You can locate this configuration file as follows:
 
 [cols="25%,75%",options="header"]
 |===
@@ -26,8 +23,7 @@ You can locate this configuration file as follows:
 |`$HOME/Library/Preferences/ownCloud/owncloud.cfg`
 |===
 
-The configuration file contains settings using the {ini-file-format-url}[Microsoft Windows .ini file format].
-You can overwrite changes using the ownCloud configuration dialog.
+The configuration file contains settings using the {ini-file-format-url}[Microsoft Windows .ini file format]. You can overwrite changes using the ownCloud configuration dialog.
 
 WARNING: Use caution when making changes to the ownCloud Client configuration file. Incorrect settings can produce unintended results.
 
