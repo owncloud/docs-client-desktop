@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 
-# Use and adopt this script only if there is only one manual
-# The manual build is based on a book template found in books. It is mandatory to be present
-# This script creates pdf versions of the manual
-# If no manual is in the parameter list, the default manual is built to pdf
-# If called from the command line, the script user the term "master" as reference
-# If called from drone, the script uses additional variables (like a branch name)
-# The script uses another script to provide the attribute list of the yaml file dynamically
+# THIS FILE IS NOT READY TO USE AND MUST BE PREPARED FIRST
 
 set -e
 set -u
@@ -23,17 +17,20 @@ MANUAL_NAME=
 RELEASE_DATE=$(date +'%B %d, %Y')
 STYLE="owncloud"
 STYLES_DIRECTORY="resources/themes"
+LANGUAGE=
 BOOK_TEMPLATE_NAME="ownCloud_Desktop_Client_Manual"
 BUILD_BASE_DIR="build/desktop"
 SPEAKING_NAME="Desktop Client"
-AVAILABLE_MODULE="ROOT"
-
-ERR_UNSUPPORTED_MANUAL=21
-ERR_UNSUPPORTED_ACTION=22
 
 DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 # define path and file of .yml to parse
 YMLFILE="$DIR/../site.yml"
+
+ERR_UNSUPPORTED_LANGUAGE=20
+ERR_UNSUPPORTED_MANUAL=21
+ERR_UNSUPPORTED_ACTION=22
+ERR_LINTER_NOT_AVAILABLE=23
+ERR_NO_LANGUAGE_SPECIFIED=24
 
 # yamlparse.sh is a script to get a list of key/value pairs from site.yml which
 # will then be used as additional dynamically created argument set for asciidoctor-pdf.
@@ -51,15 +48,7 @@ fi
 
 function usage()
 {
-    echo
-    echo "Usage: ./bin/makepdf [-c] [-d] [-h] [-m] [-n <${AVAILABLE_MODULE}>]"
-    echo
-    echo "-h ... help"
-    echo "-c ... clean the build/ directory (contains the pdf)"
-    echo "-d ... debug mode, print out with what it would work, only with -m"
-    echo "-m ... build all modules"
-    echo "-n ... build module <name>, only with -m"
-    echo
+    echo "Usage: bin/makepdf [-c] [-d] [-h] [-m] [-n <ROOT>] [-l <go|xml|json|php|kotlin|yaml>]"
 }
 
 function clean_build_dir()
@@ -67,6 +56,83 @@ function clean_build_dir()
     echo "Cleaning build directory..."
     rm -rvf "build/"
     echo "...build directory cleaned."
+}
+
+function validate_code_files()
+{
+    case $LANGUAGE in
+        go)
+            if command -v golint &>/dev/null; then
+                echo "Validating go source files" && \
+                find ./modules/ROOT/examples -type f -name "*.go" \
+                    -exec sh -c 'echo Linting {} && golint {} && echo' \;
+            else
+                echo "Golint is not available."
+                echo "Exiting."
+                exit $ERR_LINTER_NOT_AVAILABLE
+            fi
+            ;;
+
+        json)
+            if command -v jsonlint &>/dev/null; then
+                find ./modules/ROOT/examples -type f -name "*.json" \
+                    -exec sh -c 'echo Linting {} && jsonlint -qp {} && echo' \;
+            else
+                echo "jsonlint is not available."
+                echo "Exiting."
+                exit $ERR_LINTER_NOT_AVAILABLE
+            fi
+            ;;
+
+        kotlin)
+            if command -v ktlint &>/dev/null; then
+                ktlint --reporter=plain "./modules/ROOT/**/*.kt" || true;
+            else
+                echo "ktlint is not available."
+                echo "Exiting."
+                exit $ERR_LINTER_NOT_AVAILABLE
+            fi
+            ;;
+
+        php)
+            if command -v php &>/dev/null; then
+                find ./modules/ROOT/examples -type f -name "*.php" \
+                    ! -path "**/vendor/*" \
+                    -exec php -l {} \;
+            else
+                echo "Golint is not available."
+                echo "Exiting."
+                exit $ERR_LINTER_NOT_AVAILABLE
+            fi
+            ;;
+
+        xml)
+            if command -v xmllint &>/dev/null; then
+                find ./modules/ROOT/examples -type f -name "*.xml" \
+                    -exec xmllint --noout {} \;
+            else
+                echo "xmllint is not available."
+                echo "Exiting."
+                exit $ERR_LINTER_NOT_AVAILABLE
+            fi
+            ;;
+
+        yaml)
+            if command -v yamllint &>/dev/null; then
+                find ./modules/ROOT/examples -type f -name "*.yml" \
+                    -exec sh -c 'echo Linting {} && yamllint -f parsable {} && echo' \;
+            else
+                echo "yamllint is not available."
+                echo "Exiting."
+                exit $ERR_LINTER_NOT_AVAILABLE
+            fi
+            ;;
+
+        *)
+            echo "That language is not, currently, supported" 
+            exit $ERR_UNSUPPORTED_LANGUAGE
+            ;;
+    esac
 }
 
 function convert_antora_nav_to_asciidoc_list()
@@ -88,9 +154,9 @@ function validate_manual()
 {
     local manual="$1"
 
-    if [[ "$manual" != "${AVAILABLE_MODULE}" ]]; then
+    if [[ "$manual" != "ROOT" ]]; then
         echo "[${manual}] is not a valid manual." 
-        echo "Available manual is ${AVAILABLE_MODULE}."
+        echo "Available manuals is ROOT."
         return $ERR_UNSUPPORTED_MANUAL
     fi
 
@@ -153,17 +219,37 @@ function build_pdf_manual()
 #   cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file")
 #   exit
 
-    createpdf="asciidoctor-pdf $param - < <(cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file"))"
-#    createpdf="asciidoctor-pdf $param - < <(cat $book_file)"
+createpdf="asciidoctor-pdf $param - < <(cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file"))"
+#   createpdf="asciidoctor-pdf $param - < <(cat $book_file)"
 
-	eval $createpdf
+eval $createpdf
 
+: '
+# The following lines are the original call with all arguments but not containing the
+# dynamically created argument list from ../site.yml
+# Kept for reviewing purposes
+
+    asciidoctor-pdf -d book \
+        -a pdf-stylesdir="${STYLES_DIRECTORY}/" \
+        -a pdf-fontsdir="${FONTS_DIRECTORY}" \
+        -a pdf-style="${STYLE}" \
+        -a format="pdf" \
+        -a experimental="" \
+        -a examplesdir="$(pwd)/modules/${manual}_manual/examples/" \
+        -a imagesdir="$(pwd)/modules/${manual}_manual/assets/images/" \
+        -a partialsdir="$(pwd)/modules/${manual}_manual/pages/_partials/" \
+        -a revnumber="${revision}" \
+        -a revdate="${release_date}" \
+        --base-dir "$(pwd)" \
+        --out-file "$(pwd)/build/server/${revision}/${manual}_manual/ownCloud_"${manual_infix}"_Manual.pdf" \
+        - < <(cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file"))
+'
 }
 
 function build_manuals()
 {
     if [[ -z "${MANUAL_NAME}" ]]; then
-        build_pdf_manual "${AVAILABLE_MODULE}" "$RELEASE_DATE" "$VERSION"
+        build_pdf_manual "ROOT" "$RELEASE_DATE" "$VERSION"
     else
         validate_manual "$MANUAL_NAME" 
         build_pdf_manual "$MANUAL_NAME" "$RELEASE_DATE" "$VERSION"
@@ -181,6 +267,10 @@ do
             ;;
         m )
             ACTION="BUILD_MANUALS"
+            ;;
+        l )
+            ACTION="VALIDATE"
+            LANGUAGE="${OPTARG}"
             ;;
         c )
             ACTION="CLEAN"
@@ -202,6 +292,15 @@ case "$ACTION" in
         ;;
     CLEAN)
         clean_build_dir
+        ;;
+    VALIDATE)
+        if [[ -z $LANGUAGE ]]; then 
+            echo "No language was specified to be validated."
+            echo "Use the -l option to specify one."
+            echo "exiting."
+            exit $ERR_NO_LANGUAGE_SPECIFIED
+        fi
+        validate_code_files 
         ;;
     HELP | *)
         usage
