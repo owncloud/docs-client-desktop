@@ -48,7 +48,7 @@ msiexec /passive /i ownCloud-x.y.z.msi REMOVE=DesktopShortcut.
 
 See the following table for a list of available features:
 
-[width="100%",cols="21%,19%,32%,28%",options="header",]
+[width="100%",cols="26%,15%,27%,33%",options="header",]
 |=======================================================================
 | Feature 
 | Enabled by default 
@@ -56,7 +56,8 @@ See the following table for a list of available features:
 | Property to disable.
 
 | Client 
-| Yes, required 
+| Yes, +
+required 
 | The actual client 
 |
 

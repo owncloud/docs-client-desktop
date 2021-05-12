@@ -1,4 +1,4 @@
-= Appendix A: Building the Client
+= Appendix Building the Client
 :kde-craft-url: https://community.kde.org/Craft
 :kde-craft-build-from-source-url: https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Windows
 :install-powershell-url: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6
@@ -22,7 +22,11 @@ These instructions are updated to work with the latest version of the ownCloud C
 
 == Getting the Source Code
 
-The xref:generic-build-instructions[generic build instructions] pull the latest code directly from GitHub, and work on xref:linux[Linux], xref:macos[Mac OS X], and xref:windows-development-build-mingw[Windows].
+The
+xref:generic-build-instructions[generic build instructions]
+pull the latest code directly from GitHub, and work on
+xref:linux[Linux], xref:macos[Mac OS X], and 
+xref:windows-development-build-with-kde-craft[Windows].
 
 == Linux
 
