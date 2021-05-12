@@ -1,0 +1,210 @@
+#!/usr/bin/env bash
+
+# Use and adopt this script only if there is only one manual
+# The manual build is based on a book template found in books. It is mandatory to be present
+# This script creates pdf versions of the manual
+# If no manual is in the parameter list, the default manual is built to pdf
+# If called from the command line, the script user the term "master" as reference
+# If called from drone, the script uses additional variables (like a branch name)
+# The script uses another script to provide the attribute list of the yaml file dynamically
+
+set -e
+set -u
+set -o noclobber
+set -o errexit
+set -o pipefail
+set -o nounset
+IFS=$'\n\t'
+
+ACTION=
+DRY_RUN=false
+FONTS_DIRECTORY="fonts"
+MANUAL_NAME=
+RELEASE_DATE=$(date +'%B %d, %Y')
+STYLE="owncloud"
+STYLES_DIRECTORY="resources/themes"
+BOOK_TEMPLATE_NAME="ownCloud_Desktop_Client_Manual"
+BUILD_BASE_DIR="build/desktop"
+SPEAKING_NAME="Desktop Client"
+AVAILABLE_MODULE="ROOT"
+
+ERR_UNSUPPORTED_MANUAL=21
+ERR_UNSUPPORTED_ACTION=22
+
+DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+# define path and file of .yml to parse
+YMLFILE="$DIR/../site.yml"
+
+# yamlparse.sh is a script to get a list of key/value pairs from site.yml which
+# will then be used as additional dynamically created argument set for asciidoctor-pdf.
+# Else the attributes used can´t be resolved and are printed like {key}
+
+source $DIR/yamlparse.sh
+
+if [[ -z "${VERSION:-}" ]]; then
+    if [[ -n "${DRONE_TAG:-}" ]]; then
+        VERSION=${DRONE_TAG/v//}
+    else
+        [[ -n "${DRONE_BRANCH:-}" ]] && VERSION=${DRONE_BRANCH/v//} || VERSION=master
+    fi
+fi
+
+function usage()
+{
+    echo
+    echo "Usage: ./bin/makepdf [-c] [-d] [-h] [-m] [-n <${AVAILABLE_MODULE}>]"
+    echo
+    echo "-h ... help"
+    echo "-c ... clean the build/ directory (contains the pdf)"
+    echo "-d ... debug mode, print out with what it would work, only with -m"
+    echo "-m ... build all modules"
+    echo "-n ... build module <name>, only with -m"
+    echo
+}
+
+function clean_build_dir()
+{
+    echo "Cleaning build directory..."
+    rm -rvf "build/"
+    echo "...build directory cleaned."
+}
+
+function convert_antora_nav_to_asciidoc_list()
+{
+    local filename="$1"
+
+    while read line; do
+        if [[ ${line} =~ \]$ ]]; then
+			# on single manual repos, the level offset is corrected with 1 (NF-1)
+            level_offset=$(echo "$line" | awk -F"*" '{print NF-1}')
+            revised_line=$(echo "$line" | sed 's/xref:/include::{module_base_path}/' | sed 's/\[.*\]//g' | sed -r 's/^\*{1,} //')
+            echo "${revised_line}[leveloffset=+${level_offset}]"
+            echo
+        fi
+    done < "${filename}"
+}
+
+function validate_manual()
+{
+    local manual="$1"
+
+    if [[ "$manual" != "${AVAILABLE_MODULE}" ]]; then
+        echo "[${manual}] is not a valid manual." 
+        echo "Available manual is ${AVAILABLE_MODULE}."
+        return $ERR_UNSUPPORTED_MANUAL
+    fi
+
+    return 0
+}
+
+function build_pdf_manual()
+{
+    local manual="$1"
+    local release_date="$2"
+    local revision="$3"
+    local build_directory="$(pwd)/${BUILD_BASE_DIR}/${revision}/"
+    local manual_infix="$(tr '[:lower:]' '[:upper:]' <<< ${manual:0:1})${manual:1}"
+    local book_file="books/${BOOK_TEMPLATE_NAME}.adoc" 
+    local nav_file="modules/${manual}/nav.adoc"
+
+    # Get the dynamic list of attributes from site.yml
+    # The output after sed is a string like -a key=value -a key=value ...
+    # For testing, also use the yamltest.sh script
+    local attributes=("$(parse_yaml $YMLFILE | grep asciidoc_attributes | sed 's/asciidoc_attributes_/-a /g' | sed 's/\")/\"/' | sed 's/=(/=/' | sed "s/\"'/\'/" | sed "s/'\"/\'/")")
+
+    if [[ "$DRY_RUN" == true ]]; then
+        echo "Manual Generation - **DRY RUN**"
+        echo 
+        echo "${SPEAKING_NAME} manual would be created with the following content:"
+        echo
+        cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file")
+        return 0
+    fi
+
+    echo "Generating version '${revision}' of the ${SPEAKING_NAME} manual, dated: ${release_date}"
+    mkdir -p "$build_directory"
+
+    # https://docs.asciidoctor.org/asciidoctor.js/latest/cli/options/
+
+    # Create argument list, necessary as we have dynamic attributes coming from another file
+    # The param string needs to be proper constructed, pls be careful, see comment below
+    param=''
+    param+='-d book '
+    param+='-a pdf-stylesdir='${STYLES_DIRECTORY}/' '
+    param+='-a pdf-fontsdir='${FONTS_DIRECTORY}' '
+    param+='-a pdf-style='${STYLE}' '
+    param+='-a format="pdf" '
+#    param+='-a experimental="" ' #   experimental already set in site.yml
+    param+='-a examplesdir='$(pwd)/modules/${manual}/examples/' '
+    param+='-a imagesdir='$(pwd)/modules/${manual}/assets/images/' '
+    param+='-a partialsdir=''"'$(pwd)/modules/${manual}/pages/_partials/'" '
+    param+='-a revnumber='${revision}' '
+    param+='-a revdate="'${release_date}'" '
+    param+="$attributes"' '
+    param+='--base-dir '$(pwd)' '
+    param+='--out-file '$(pwd)/${BUILD_BASE_DIR}/${revision}/${BOOK_TEMPLATE_NAME}.pdf' '
+#    param+='--trace '
+#    param+='--verbose '
+
+# please uncomment in case you want/need debugging
+#   echo "Parameterlist, useful for debugging"
+#   echo $param
+#   echo
+#   cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file")
+#   exit
+
+    createpdf="asciidoctor-pdf $param - < <(cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file"))"
+#    createpdf="asciidoctor-pdf $param - < <(cat $book_file)"
+
+	eval $createpdf
+
+}
+
+function build_manuals()
+{
+    if [[ -z "${MANUAL_NAME}" ]]; then
+        build_pdf_manual "${AVAILABLE_MODULE}" "$RELEASE_DATE" "$VERSION"
+    else
+        validate_manual "$MANUAL_NAME" 
+        build_pdf_manual "$MANUAL_NAME" "$RELEASE_DATE" "$VERSION"
+    fi
+}
+
+while getopts ":hcdmn:l:" o
+do
+    case ${o} in
+        d )
+            DRY_RUN=true
+            ;;
+        n )
+            MANUAL_NAME=$OPTARG
+            ;;
+        m )
+            ACTION="BUILD_MANUALS"
+            ;;
+        c )
+            ACTION="CLEAN"
+            ;;
+        : )
+            echo "Invalid option: $OPTARG requires an argument" 1>&2
+            exit 1
+            ;;
+        h|* )
+            ACTION="HELP"
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+case "$ACTION" in 
+    BUILD_MANUALS)
+        build_manuals
+        ;;
+    CLEAN)
+        clean_build_dir
+        ;;
+    HELP | *)
+        usage
+        exit $ERR_UNSUPPORTED_ACTION
+        ;;
+esac
