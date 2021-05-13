@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Use and adopt this script only if there is only one manual
-# The manual build is based on a book template found in books. It is mandatory to be present
+# Use and adopt this script only if there are multiple manuals
+# Each manual build is based on a book template found in the mandatory directory books.
 # This script creates pdf versions of the manual
 # If no manual is in the parameter list, the default manual is built to pdf
-# If called from the command line, the script user the term "master" as reference
+# If called from the command line, the script user the term "master" (or "main") as branch reference
 # If called from drone, the script uses additional variables (like a branch name)
 # The script uses another script to provide the attribute list of the yaml file dynamically
 
@@ -17,6 +17,8 @@ set -o nounset
 IFS=$'\n\t'
 
 ACTION=
+VERSION=
+DEFAULT_VERSION="master"
 DRY_RUN=false
 FONTS_DIRECTORY="fonts"
 MANUAL_NAME=
@@ -26,7 +28,7 @@ STYLES_DIRECTORY="resources/themes"
 BOOK_TEMPLATE_NAME="ownCloud_Desktop_Client_Manual"
 BUILD_BASE_DIR="build/desktop"
 SPEAKING_NAME="Desktop Client"
-AVAILABLE_MODULE="ROOT"
+AVAILABLE_MANUAL="ROOT"
 
 ERR_UNSUPPORTED_MANUAL=21
 ERR_UNSUPPORTED_ACTION=22
@@ -45,20 +47,20 @@ if [[ -z "${VERSION:-}" ]]; then
     if [[ -n "${DRONE_TAG:-}" ]]; then
         VERSION=${DRONE_TAG/v//}
     else
-        [[ -n "${DRONE_BRANCH:-}" ]] && VERSION=${DRONE_BRANCH/v//} || VERSION=master
+        [[ -n "${DRONE_BRANCH:-}" ]] && VERSION=${DRONE_BRANCH/v//} || VERSION=${DEFAULT_VERSION}
     fi
 fi
 
 function usage()
 {
     echo
-    echo "Usage: ./bin/makepdf [-c] [-d] [-h] [-m] [-n <${AVAILABLE_MODULE}>]"
+    echo "Usage: ./bin/makepdf [-c] [-d] [-h] [-m] [-n <${AVAILABLE_MANUAL}>]"
     echo
     echo "-h ... help"
     echo "-c ... clean the build/ directory (contains the pdf)"
-    echo "-d ... debug mode, print out with what it would work, only with -m"
-    echo "-m ... build all modules"
-    echo "-n ... build module <name>, only with -m"
+    echo "-d ... Debug mode, prints the book to be converted. Only in combination with -m and/or -n"
+    echo "-m ... Build all available manuals"
+    echo "-n ... Build manual <name>. Only in combination with -m"
     echo
 }
 
@@ -88,9 +90,9 @@ function validate_manual()
 {
     local manual="$1"
 
-    if [[ "$manual" != "${AVAILABLE_MODULE}" ]]; then
+    if [[ "$manual" != "${AVAILABLE_MANUAL}" ]]; then
         echo "[${manual}] is not a valid manual." 
-        echo "Available manual is ${AVAILABLE_MODULE}."
+        echo "Available manual is ${AVAILABLE_MANUAL}."
         return $ERR_UNSUPPORTED_MANUAL
     fi
 
@@ -110,6 +112,8 @@ function build_pdf_manual()
     # Get the dynamic list of attributes from site.yml
     # The output after sed is a string like -a key=value -a key=value ...
     # For testing, also use the yamltest.sh script
+    # You can do the same for extension like kroki if needed (currently not implemented)
+    # Be aware, that the tabs.js extension MUST not be used in case (html only)
     local attributes=("$(parse_yaml $YMLFILE | grep asciidoc_attributes | sed 's/asciidoc_attributes_/-a /g' | sed 's/\")/\"/' | sed 's/=(/=/' | sed "s/\"'/\'/" | sed "s/'\"/\'/")")
 
     if [[ "$DRY_RUN" == true ]]; then
@@ -127,7 +131,8 @@ function build_pdf_manual()
     # https://docs.asciidoctor.org/asciidoctor.js/latest/cli/options/
 
     # Create argument list, necessary as we have dynamic attributes coming from another file
-    # The param string needs to be proper constructed, pls be careful, see comment below
+    # The param string needs to be properly constructed, please be careful, see comment below.
+
     param=''
     param+='-d book '
     param+='-a pdf-stylesdir='${STYLES_DIRECTORY}/' '
@@ -147,14 +152,14 @@ function build_pdf_manual()
 #    param+='--verbose '
 
 # please uncomment in case you want/need debugging
-#   echo "Parameterlist, useful for debugging"
-#   echo $param
-#   echo
-#   cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file")
-#   exit
+#    echo "Parameterlist, useful for debugging"
+#    echo $param
+#    echo
+#    cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file")
+#    exit
 
     createpdf="asciidoctor-pdf $param - < <(cat $book_file <(convert_antora_nav_to_asciidoc_list "$nav_file"))"
-#    createpdf="asciidoctor-pdf $param - < <(cat $book_file)"
+#   createpdf="asciidoctor-pdf $param - < <(cat $book_file)"
 
 	eval $createpdf
 
@@ -162,8 +167,10 @@ function build_pdf_manual()
 
 function build_manuals()
 {
+    # if no specific manual is named, then build the default
     if [[ -z "${MANUAL_NAME}" ]]; then
-        build_pdf_manual "${AVAILABLE_MODULE}" "$RELEASE_DATE" "$VERSION"
+        build_pdf_manual "${AVAILABLE_MANUAL}" "$RELEASE_DATE" "$VERSION"
+    # build the given manual
     else
         validate_manual "$MANUAL_NAME" 
         build_pdf_manual "$MANUAL_NAME" "$RELEASE_DATE" "$VERSION"
