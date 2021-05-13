@@ -177,7 +177,7 @@ function build_manuals()
     fi
 }
 
-while getopts ":hcdmn:l:" o
+while getopts ":hcdmn:" o
 do
     case ${o} in
         d )
