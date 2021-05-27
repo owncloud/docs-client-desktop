@@ -8,7 +8,7 @@
 AVAILABLE_MANUAL=( ROOT )
 
 echo
-echo "Checking for orphaned EXAMPLE files in manual: ${AVAILABLE_MANUAL}"
+echo "Checking for orphaned IMAGE files in manual: ${AVAILABLE_MANUAL}"
 echo "Please run this scrip from your docs root"
 echo
 
