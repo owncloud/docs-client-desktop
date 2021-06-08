@@ -199,6 +199,9 @@ def trigger(ctx, latest_version, deployment_branch, base_branch):
                 },
             },
         ],
+        "depends_on": [
+            "documentation",
+        ],
         "trigger": {
             "ref": [
                 "refs/heads/%s" % deployment_branch,
