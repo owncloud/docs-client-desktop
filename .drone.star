@@ -126,8 +126,8 @@ def build(ctx, latest_version, deployment_branch, base_branch):
                 "settings": {
                     "bucket": "uploads",
                     "endpoint": "https://doc.owncloud.com",
-                    "access_key": from_secret("aws_access_key_id"),
-                    "secret_key": from_secret("aws_secret_access_key"),
+                    "access_key": from_secret("docs_s3_access_key"),
+                    "secret_key": from_secret("docs_s3_secret_key"),
                     "path_style": "true",
                     "source": "build/",
                     "target": "/deploy",
@@ -148,7 +148,7 @@ def build(ctx, latest_version, deployment_branch, base_branch):
                 "pull": "if-not-exists",
                 "image": "plugins/slack",
                 "settings": {
-                    "webhook": from_secret("slack_webhook"),
+                    "webhook": from_secret("slack_webhook_private"),
                     "channel": "documentation",
                 },
                 "when": {
