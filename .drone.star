@@ -4,7 +4,8 @@ def main(ctx):
     # Version shown as latest in generated documentations
     # It's fine that this is out of date in version branches, usually just needs
     # adjustment in master/deployment_branch when a new version is added to site.yml
-    latest_version = "2.7"
+    latest_version = "2.8"
+    default_branch = "master"
 
     # Current version branch (used to determine when changes are supposed to be pushed)
     # pushes to base_branch will trigger a build in deployment_branch but pushing
@@ -13,12 +14,50 @@ def main(ctx):
 
     # Version branches never deploy themselves, but instead trigger a deployment in deployment_branch
     # This must not be changed in version branches
-    deployment_branch = "master"
+    deployment_branch = default_branch
 
     return [
+        checkStarlark(),
         build(ctx, latest_version, deployment_branch, base_branch),
         trigger(ctx, latest_version, deployment_branch, base_branch),
     ]
+
+def checkStarlark():
+    return {
+        "kind": "pipeline",
+        "type": "docker",
+        "name": "check-starlark",
+        "steps": [
+            {
+                "name": "format-check-starlark",
+                "image": "owncloudci/bazel-buildifier",
+                "pull": "always",
+                "commands": [
+                    "buildifier --mode=check .drone.star",
+                ],
+            },
+            {
+                "name": "show-diff",
+                "image": "owncloudci/bazel-buildifier",
+                "pull": "always",
+                "commands": [
+                    "buildifier --mode=fix .drone.star",
+                    "git diff",
+                ],
+                "when": {
+                    "status": [
+                        "failure",
+                    ],
+                },
+            },
+        ],
+        "depends_on": [],
+        "trigger": {
+            "ref": [
+                "refs/pull/**",
+            ],
+        },
+    }
 
 def build(ctx, latest_version, deployment_branch, base_branch):
     return {
@@ -54,7 +93,7 @@ def build(ctx, latest_version, deployment_branch, base_branch):
                 "pull": "always",
                 "image": "owncloudci/nodejs:14",
                 "commands": [
-                    "yarn validate",
+                    "yarn validate --fetch",
                 ],
             },
             {
@@ -62,7 +101,7 @@ def build(ctx, latest_version, deployment_branch, base_branch):
                 "pull": "always",
                 "image": "owncloudci/nodejs:14",
                 "commands": [
-                    "yarn antora",
+                    "yarn antora --fetch --attribute format=html",
                 ],
             },
             {
@@ -161,6 +200,9 @@ def build(ctx, latest_version, deployment_branch, base_branch):
                     ],
                 },
             },
+        ],
+        "depends_on": [
+            "check-starlark",
         ],
         "trigger": {
             "ref": [
