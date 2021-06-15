@@ -8,7 +8,7 @@ Whenever a Pull Request of this repo gets merged, it automaticaly triggers a ful
 
 ## General Notes
 
-To make life easier, most of the content written in [docs](https://github.com/owncloud/docs#readme) applies also here. For ease of reading, the most important steps are documented here too. For more information see the link provided. Only a view topics of this repo are unique like the branching.
+To make life easier, most of the content written in [docs](https://github.com/owncloud/docs#readme) applies also here. For ease of reading, the most important steps are documented here too. For more information see the link provided. Only few topics of this repo are unique like the branching.
 
 ## Prepare Your Environment
 
