@@ -4,11 +4,11 @@ The desktop client documentation is not built directly; instead, it is built tog
 
 The Desktop Client documentation is not built independently. Instead, it is built together with the [server documentation](https://github.com/owncloud/docs/). However, you can build a local copy of the desktop client documentation to preview changes you are making.
 
-Whenever a Pull Request of this repo gets merged, it automaticaly triggers a full docs build.
+Whenever a Pull Request of this repo gets merged, it automatically triggers a full docs build.
 
 ## General Notes
 
-To make life easier, most of the content written in [docs](https://github.com/owncloud/docs#readme) applies also here. For ease of reading, the most important steps are documented here too. For more information see the link provided. Only few topics of this repo are unique like the branching.
+To make life easier, most of the content written in [docs](https://github.com/owncloud/docs#readme) applies also here. For ease of reading, the most important steps are documented here too. For more information see the link provided. Only a few topics of this repo are unique like the branching.
 
 ## Prepare Your Environment
 
@@ -49,4 +49,4 @@ Please refer to the [Branching Workflow for the Desktop Client](https://github.c
 
 ## Create a New Version Branch for the Desktop Client
 
-Please refer to [Create a New Version Branch for the Desktop Client](https://github.com/owncloud/docs-client-desktop/blob/master/docs/new-version-branch.md) or more information.
+Please refer to [Create a New Version Branch for the Desktop Client](https://github.com/owncloud/docs-client-desktop/blob/master/docs/new-version-branch.md) for more information.
