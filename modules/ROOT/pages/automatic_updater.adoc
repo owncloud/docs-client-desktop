@@ -1,4 +1,4 @@
-= Automatic Updating the Desktop Client
+= Automatic Updating of the Desktop Client
 :toc: right
 
 == Introduction
