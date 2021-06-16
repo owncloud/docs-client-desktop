@@ -1,11 +1,9 @@
-= The Automatic Updater
+= Automatic Updating the Desktop Client
 :toc: right
 
 == Introduction
 
-The Automatic Updater ensures that you always have the latest features and bug fixes for your ownCloud synchronization client. The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
-
-NOTE: Because of various technical issues, desktop sync clients older than 1.7 will not be allowed to connect and sync with the ownCloud 8.1+ server. It is highly recommended to keep your client updated.
+The Automatic Updater ensures that you always have the latest features and bug fixes for your ownCloud Desktop synchronization client. The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
 
 == Basic Workflow
 
