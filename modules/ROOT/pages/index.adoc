@@ -1,5 +1,7 @@
 = Introduction
 
+:page-aliases: glossary.adoc
+
 Available for Windows, Mac OS X, and various Linux distributions, the ownCloud Desktop Sync client enables you to:
 
 * Specify one or more directories on your computer that you want to synchronize to the ownCloud server.
@@ -7,10 +9,8 @@ Available for Windows, Mac OS X, and various Linux distributions, the ownCloud D
 
 Your files are always automatically synchronized between your ownCloud server and local PC.
 
-Because of various technical issues, desktop sync clients older than. 2.2.1 will not allowed to connect and sync with the ownCloud 8.1+ server. It is highly recommended to keep your client updated.
+Desktop Sync clients older than. 2.2.1 are not allowed to connect and sync with ownCloud 8.1+ server. It is highly recommended to keep your server and client updated.
 
 == Improvements and New Features
 
-The release of the ownCloud desktop sync client has many new features and improvements.
-
-NOTE: See the https://owncloud.com/changelog/desktop/[complete changelog].
+Each release of the ownCloud Desktop Sync client has new features and improvements, for details see the https://owncloud.com/changelog/desktop/[complete changelog].
