@@ -1,0 +1,85 @@
+= Running gui tests
+:toc: right
+
+== Introduction
+.This section explains how to run gui tests locally in your system. Before we can actually run the test we will need to setup the following first
+* xref:Build-desktop-client[Desktop client]
+* xref:Setting-up-Squish[Squish]
+
+== Build desktop client
+To be able to run tests we need to  from latest master for which you can follow this section link:https://doc.owncloud.org/desktop/building.html[build the ownCloud Client]
+
+
+== Setting up Squish
+.After setting up the ownCloud Client we will need setup and configure squish. There are two ways to setup squish which are as follow:
+* xref:setup-using-executable-file[Setup using an executable file]
+* xref:setup-using-docker[Setup using docker]
+
+== Setup using an executable file
+To setup squish using and follow the following steps.
+
+. download latest squish from https://www.froglogic.com/squish/download/[froglogic].
+. Once you have downloaded the file, you will get a file like `squish-6.6.2-qt512x-linux64.run` depending upon the version and system you're using.
+Make the downloaded file executable.
++
+[source,console]
+----
+chmod +x ./squish-6.6.2-qt512x-linux64.run
+----
+. Next, run the executable file.
++
+[source,console]
+----
+./squish-6.6.2-qt512x-linux64.run
+----
+. Now, you will be asked for a license key. When asked enter ``owncloud-internal-squish-license`` or you can get a https://www.froglogic.com/squish/free-trial/[free trial license]
+. After you have entered the license key squish will be opened.
+
+=== Configure Squish
+After setting up squish we still need to configure it. For that follow these steps:
+
+. Close squish (if opened)
+. https://kb.froglogic.com/squish/howto/using-external-python-interpreter-squish-6-6/PythonChanger.py[Download] ``PythonChanger.py`` script and save it in your squish installation folder.
+. Now, run the downloaded script.
++
+[source,console]
+----
+python3 PythonChanger.py --force
+----
+
+=== Prepare Tests
+Just few more steps before running test.
+
+. Clone https://github.com/owncloud/client/ [Client from GitHub]
+. Copy ``test/gui/config.sample.ini`` to ``test/suite_oc-desktop/config.ini``
+. Edit ``test/gui/config.ini`` and set ``BACKEND_HOST=`` to the URL of your owncloud server e.g. ``BACKEND_HOST=http://localhost/owncloud-core``
+. Now, start squish
+. Open the existing test-suite via: File->Open Test Suite-><test/gui>
+. Go to Edit->Server Settings->Manage AUTs->Mapped AUTs
+. Click ``Add`` and select the compiled binary, eg: ``client/client-build/bin/owncloud``
+. Close any running owncloud client, by clicking "Quit ownCloud" in the settings page
+. Run the AUT(Application under Test) to check if everything works properly via Run->Lauch AUT (the owncloud client settings window should appear)
+
+=== Run tests
+* Before running tests you need to make sure that you have disabled ``oauth2`` and ``openidconnect`` in the owncloud server.
+* Once you have done that start the https://github.com/owncloud/owncloud-test-middleware [owncloud-test-middleware]
+* Click the play-button for a test-case or scenario. https://bdd.tips/#chapter=9[See.]
+
+== Setup using docker
+You can also use https://hub.docker.com/r/owncloudci/squish[squish docker image] to run tests. Just follow the following steps:
+
+
+. Pull docker image
++
+[source,console]
+----
+docker pull owncloudci/squish
+----
+.
+
+== Create new steps
+* The language used for the tests is basically the same as in other repos. Also, https://doc.owncloud.com/server/developer_manual/testing/acceptance-tests.html#how-to-write-acceptance-tests[see]
+* Steps that have to go through the test-middleware are named the same way they are named in the https://github.com/owncloud/owncloud-test-middleware/tree/main/src/stepDefinitions[middleware] but have additionally `on the server` either at the end or in the middle of the sentence.
+
+== Identify object
+For object mapping and identification https://www.froglogic.com/squish/features/object-map-object-identification-tools/[see]
