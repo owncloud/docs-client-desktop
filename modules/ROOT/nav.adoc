@@ -15,3 +15,4 @@
 ** xref:appendices/building.adoc[Building the Client]
 ** xref:appendices/architecture.adoc[History and Architecture]
 ** xref:appendices/troubleshooting.adoc[Troubleshooting]
+** xref:appendices/guitest.adoc[Run GUI tests]
