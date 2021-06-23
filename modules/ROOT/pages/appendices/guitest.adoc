@@ -20,7 +20,7 @@ This document explains how to run GUI tests for the Desktop Client locally in yo
 
 Before we can actually run the test, we will need to make a Desktop Client build and install and configure Squish first.
 
-NOTE: Before running tests, you need to make sure that you have disabled `oauth2` and `openidconnect` in owncloud server.
+NOTE: Before running tests, you need to make sure that you have disabled `oauth2` and `openidconnect` in ownCloud Server.
 
 === Building the Desktop Client
 
@@ -28,7 +28,7 @@ To be able to run tests, you need to xref:appendices/building.adoc[build the Des
 
 === Install Squish
 
-After building the ownCloud Client, install and configure squish. There are two ways to install squish:
+After building the ownCloud Client, install and configure squish. There are two ways to install Squish:
 
 * xref:installing-squish-using-an-executable-file[Installing Squish Using an Executable File]
 * xref:installing-squish-using-docker[Installing Squish Using Docker]
@@ -56,9 +56,9 @@ sudo ./squish-6.6.2-qt512x-linux64.run
 
 ==== Installing Squish Using Docker
 
-You can also use the {squish-docker-image-url}[squish docker image] to run tests. Just proceed with following steps:
+You can also use the {squish-docker-image-url}[Squish docker image] to run tests. Proceed with the following steps:
 
-Pull the docker image with following command:
+Pull the docker image with the following command:
 
 [source,console]
 ----
@@ -80,19 +80,19 @@ sudo python3 PythonChanger.py --force
 
 == Prepare Tests
 
-Some necessary steps before running test.
+Some necessary steps before running tests:
 
 . Clone the {client-repo-url}[Desktop Client] from GitHub
 . Copy `test/gui/config.sample.ini` to `test/suite_oc-desktop/config.ini`
-. Edit `test/gui/config.ini` and set `BACKEND_HOST=` to the URL of your owncloud server e.g. `BACKEND_HOST=http://localhost/owncloud-core`
+. Edit `test/gui/config.ini` and set `BACKEND_HOST=` to the URL of your ownCloud server, e.g. `BACKEND_HOST=http://localhost/owncloud-core`
 . Start Squish
 . Open the existing test-suite via: menu:File[Open Test Suite > test/gui]
 . Go to menu:Edit[Server Settings > Manage AUTs > Mapped AUTs]
-. Click btn:[Add] and select the compiled binary, eg: `client/client-build/bin/owncloud`
-. Close any running Desktop Client, by clicking btn:[Quit ownCloud] in the settings page
+. Click btn:[Add] and select the compiled binary, e.g.: `client/client-build/bin/owncloud`
+. Close any running Desktop Clients by clicking btn:[Quit ownCloud] in the settings page
 . Run the AUT (Application under Test) to check if everything works properly via menu:Run[Lauch AUT] (the Desktop Client settings window should appear)
 
-== Run Rests
+== Run Tests
 
 * Start the {owncloud-test-middleware-url}[owncloud-test-middleware]
 * Click the play-button for a {test-case-scenario-url}[test-case or scenario].
