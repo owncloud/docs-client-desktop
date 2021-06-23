@@ -39,7 +39,7 @@ To install Squish, follow these steps:
 
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
 . Depending upon the version and system you are using, you will get a file like `squish-6.6.2-qt512x-linux64.run`.
-. Make the downloaded file executable by runninng following example command:
+. Make the downloaded file executable by running the following example command:
 +
 [source,console]
 ----
