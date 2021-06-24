@@ -28,10 +28,7 @@ To be able to run tests, you need to xref:appendices/building.adoc[build the Des
 
 === Install Squish
 
-After building the ownCloud Client, install and configure squish. There are two ways to install Squish:
-
-* xref:installing-squish-using-an-executable-file[Installing Squish Using an Executable File]
-* xref:installing-squish-using-docker[Installing Squish Using Docker]
+After building the ownCloud Client, install and configure squish.
 
 ==== Installing Squish Using an Executable File
 
@@ -54,17 +51,6 @@ sudo ./squish-6.6.2-qt512x-linux64.run
 . You will be asked for a license key. When asked, enter your existing license or get a {free-trial-url}[free trial license]
 . After you have entered the license key, Squish opens.
 
-==== Installing Squish Using Docker
-
-You can also use the {squish-docker-image-url}[Squish docker image] to run tests. Proceed with the following steps:
-
-Pull the docker image with the following command:
-
-[source,console]
-----
-sudo docker pull owncloudci/squish
-----
-
 === Configure Squish
 
 After installing Squish, follow these steps to configure it:
@@ -80,6 +66,13 @@ sudo python3 PythonChanger.py --force
 
 == Prepare Tests
 
+There are two ways to run tests:
+
+* xref:using-squish[Using Squish]
+* xref:using-docker[Using Docker]
+
+=== Using Squish
+
 Some necessary steps before running tests:
 
 . Clone the {client-repo-url}[Desktop Client] from GitHub
@@ -92,10 +85,37 @@ Some necessary steps before running tests:
 . Close any running Desktop Clients by clicking btn:[Quit ownCloud] in the settings page
 . Run the AUT (Application under Test) to check if everything works properly via menu:Run[Lauch AUT] (the Desktop Client settings window should appear)
 
+=== Using Docker
+
+You can also use the {squish-docker-image-url}[Squish docker image] to run tests. Proceed with the following steps:
+
+. Copy `server.ini.` file from `test/gui/drone` to a new folder called `local`
+. Change `AUT/owncloud` value to `"/app/client-build/bin"`
+. Pull the docker image with the following command:
++
+[source,console]
+----
+sudo docker pull owncloudci/squish
+----
+
 == Run Tests
+
+* xref:run-tests-using-squish[Run Tests Using Squish]
+* xref:run-tests-using-docker[Run Tests Using Docker]
+
+=== Run Tests Using Squish
 
 * Start the {owncloud-test-middleware-url}[owncloud-test-middleware]
 * Click the play-button for a {test-case-scenario-url}[test-case or scenario].
+
+=== Run Tests Using Docker
+
+* Run squish docker image using the following command:
++
+[source,console]
+----
+docker run --rm --network=host -e LICENSEKEY='YOUR_SQUISH_LICENSE' -e MIDDLEWARE_URL='http://localhost:3000/' -e BACKEND_HOST='http://localhost/owncloud-server/' -e SERVER_INI='/app/test/gui/local/server.ini' -e CLIENT_REPO='/app/' -e SQUISH_PARAMETERS='--retry 1' -v ${PWD}:/app owncloudci/squish:latest
+----
 
 == Create New Steps
 
