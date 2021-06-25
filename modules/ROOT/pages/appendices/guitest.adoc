@@ -1,5 +1,6 @@
 = GUI Testing the Desktop Client
 :toc: right
+:toclevels: 3
 
 :squish-url: https://www.froglogic.com/squish/download/
 :free-trial-url: https://www.froglogic.com/squish/free-trial/
@@ -26,13 +27,22 @@ NOTE: Before running tests, you need to make sure that you have disabled `oauth2
 
 To be able to run tests, you need to xref:appendices/building.adoc[build the Desktop Client] from latest master.
 
-=== Install Squish
+== Prepare Tests
 
-After building the ownCloud Client, install and configure Squish.
+There are two ways to run tests:
 
-==== Installing Squish Using an Executable File
+* xref:using-squish-ide[Using Squish IDE]
+* xref:using-docker[Using Docker]
 
-To install Squish, follow these steps:
+NOTE: You can use docker or Squish IDE to run the tests but if you want to add new test steps use Squish IDE or any other IDE.
+
+=== Using Squish IDE
+* xref:install-squish-ide[Install Squish IDE]
+* xref:configure-squish[Configure Squish]
+
+==== Install Squish IDE
+
+After building the ownCloud Client, install and configure Squish. To install Squish, follow these steps:
 
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
 . Depending upon the version and system you are using, you will get a file like `squish-6.6.2-qt512x-linux64.run`.
@@ -48,30 +58,21 @@ sudo chmod +x ./squish-6.6.2-qt512x-linux64.run
 ----
 sudo ./squish-6.6.2-qt512x-linux64.run
 ----
-. You will be asked for a license key. When asked, enter your existing license or get a {free-trial-url}[free trial license]
+. You will be asked for a license key. When asked, enter your existing license/url of the license server or get a {free-trial-url}[free trial license]
 . After you have entered the license key, Squish opens.
 
-=== Configure Squish
+==== Configure Squish
 
 After installing Squish, follow these steps to configure it:
 
 . Close Squish if opened.
-. pythonchanger-url[Download] the `PythonChanger.py` script and save it in your squish installation folder.
+. {pythonchanger-url}[Download] the `PythonChanger.py` script and save it in your squish installation folder.
 . Run the downloaded script.
 +
 [source,console]
 ----
 sudo python3 PythonChanger.py --force
 ----
-
-== Prepare Tests
-
-There are two ways to run tests:
-
-* xref:using-squish[Using Squish]
-* xref:using-docker[Using Docker]
-
-=== Using Squish
 
 Some necessary steps before running tests:
 
@@ -89,7 +90,7 @@ Some necessary steps before running tests:
 
 You can also use the {squish-docker-image-url}[Squish docker image] to run tests. Proceed with the following steps:
 
-. Copy `server.ini.` file from `test/gui/drone` to a new folder called `local`
+. Copy `server.ini` file from `test/gui/drone` to a new folder called `local`
 . Change `AUT/owncloud` value to `"/app/client-build/bin"`
 . Pull the docker image with the following command:
 +
@@ -110,6 +111,7 @@ sudo docker pull owncloudci/squish
 
 === Run Tests Using Docker
 
+* Start the {owncloud-test-middleware-url}[owncloud-test-middleware]
 * Run the Squish docker image using the following command:
 +
 [source,console]
