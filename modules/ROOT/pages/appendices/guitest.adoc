@@ -110,7 +110,7 @@ sudo docker pull owncloudci/squish
 
 === Run Tests Using Docker
 
-* Run squish docker image using the following command:
+* Run the Squish docker image using the following command:
 +
 [source,console]
 ----
