@@ -28,7 +28,7 @@ To be able to run tests, you need to xref:appendices/building.adoc[build the Des
 
 === Install Squish
 
-After building the ownCloud Client, install and configure squish.
+After building the ownCloud Client, install and configure Squish.
 
 ==== Installing Squish Using an Executable File
 
