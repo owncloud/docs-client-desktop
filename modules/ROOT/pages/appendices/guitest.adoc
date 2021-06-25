@@ -106,7 +106,7 @@ sudo docker pull owncloudci/squish
 === Run Tests Using Squish
 
 * Start the {owncloud-test-middleware-url}[owncloud-test-middleware]
-* Click the play-button for a {test-case-scenario-url}[test-case or scenario].
+* Click the play button for a {test-case-scenario-url}[test-case or scenario].
 
 === Run Tests Using Docker
 
