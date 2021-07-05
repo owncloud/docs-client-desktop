@@ -23,10 +23,6 @@ asciidoc:
     idprefix: ''
     idseparator: '-'
     experimental: ''
-    # delete block
-    latest-version: 2.8
-    previous-version: 2.7
-    # delete block
     latest-desktop-version: 2.8
     previous-desktop-version: 2.7
   extensions:
