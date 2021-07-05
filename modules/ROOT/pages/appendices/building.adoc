@@ -186,13 +186,13 @@ craft --install-deps owncloud-client
 craft --fetch owncloud-client
 ----
 
-You can find the git checkout in `C:\CraftRoot\downloads\git\owncloud\owncloud-client`. There you can use the usual git commands to switch branches and remotes, e.g., to build the `{latest-version}` stable branch you can use craft with --set version parameter:
+You can find the git checkout in `C:\CraftRoot\downloads\git\owncloud\owncloud-client`. There you can use the usual git commands to switch branches and remotes, e.g., to build the `{latest-desktop-version}` stable branch you can use craft with --set version parameter:
 
-[source,powershell]
-....
-git checkout 2.6
-craft --set version=2.6 owncloud-client
-....
+[source,powershell,subs="attributes+"]
+----
+git checkout {latest-desktop-version}
+craft --set version={latest-desktop-version} owncloud-client
+----
 
 Afterwards you can build the client like this:
 
