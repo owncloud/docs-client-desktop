@@ -12,6 +12,7 @@
 :stepdefinitions-url: https://github.com/owncloud/owncloud-test-middleware/tree/main/src/stepDefinitions
 :object-map-object-url: https://www.froglogic.com/squish/features/object-map-object-identification-tools/
 :client-repo-url: https://github.com/owncloud/client/
+:yarn-install-url: https://classic.yarnpkg.com/en/docs/install/#debian-stable
 
 == Introduction
 
@@ -74,6 +75,8 @@ After installing Squish, follow these steps to configure it:
 sudo python3 PythonChanger.py --force
 ----
 
+NOTE: Change the ownership of `paths.ini` to make it readable for the user.
+
 Some necessary steps before running tests:
 
 . Clone the {client-repo-url}[Desktop Client] from GitHub
@@ -104,9 +107,12 @@ sudo docker pull owncloudci/squish
 * xref:run-tests-using-squish[Run Tests Using Squish]
 * xref:run-tests-using-docker[Run Tests Using Docker]
 
+NOTE: Before running middleware, install yarn following the instructions from {yarn-install-url}[here].
+
 === Run Tests Using Squish
 
 * Start the {owncloud-test-middleware-url}[owncloud-test-middleware]
+* Quit the desktop client if you have opened it earlier and make sure that desktop-client is not running in the background.
 * Click the play button for a {test-case-scenario-url}[test-case or scenario].
 
 === Run Tests Using Docker
