@@ -75,8 +75,6 @@ After installing Squish, follow these steps to configure it:
 sudo python3 PythonChanger.py --force
 ----
 
-NOTE: Change the ownership of `paths.ini` to make it readable for the user.
-
 Some necessary steps before running tests:
 
 . Clone the {client-repo-url}[Desktop Client] from GitHub
@@ -88,6 +86,8 @@ Some necessary steps before running tests:
 . Click btn:[Add] and select the compiled binary, e.g.: `client/client-build/bin/owncloud`
 . Close any running Desktop Clients by clicking btn:[Quit ownCloud] in the settings page
 . Run the AUT (Application under Test) to check if everything works properly via menu:Run[Lauch AUT] (the Desktop Client settings window should appear)
+
+NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `~/squish-for-qt-6.x.x/etc/paths.ini` is user-readable.
 
 === Using Docker
 
@@ -107,7 +107,7 @@ sudo docker pull owncloudci/squish
 * xref:run-tests-using-squish[Run Tests Using Squish]
 * xref:run-tests-using-docker[Run Tests Using Docker]
 
-NOTE: Before running middleware, install yarn following the instructions from {yarn-install-url}[here].
+NOTE: Before running middleware, install yarn following the instructions from {yarn-install-url}[here] and clone middleware from {owncloud-test-middleware-url}[here].
 
 === Run Tests Using Squish
 
