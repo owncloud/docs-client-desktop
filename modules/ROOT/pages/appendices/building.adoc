@@ -74,7 +74,7 @@ To get the source dependencies on Debian and Ubuntu, run the following command:
 [source,console]
 ----
 sudo apt install qtdeclarative5-dev libinotifytools-dev \
-  qt5keychain-dev python-sphinx \
+  qt5keychain-dev python3-sphinx \
   libsqlite3-dev
 ----
 ====
