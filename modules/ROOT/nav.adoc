@@ -1,6 +1,7 @@
 * xref:index.adoc[Introduction]
 * xref:installing.adoc[Installing the Desktop Synchronization Client]
 * xref:navigating.adoc[Using the Synchronization Client]
+* xref:vfs.adoc[Using the Virtual Filesystem]
 * xref:conflicts.adoc[Manage Synchronisation Conflicts]
 * xref:automatic_updater.adoc[Automatic Updating the Client]
 * xref:removing.adoc[Removing the Client]

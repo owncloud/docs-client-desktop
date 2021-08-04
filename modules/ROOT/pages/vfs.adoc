@@ -1,0 +1,164 @@
+= Using the Virtual Filesystem
+:toc: right
+:wikipedia-url: https://en.wikipedia.org/wiki/Virtual_file_system
+:placeholder-files-url: https://docs.microsoft.com/en-us/windows/win32/cfapi/build-a-cloud-file-sync-engine
+:onedrive-restrictions-url: https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa?ui=en-US&rs=en-US&ad=US#filenamepathlengths
+
+== Introduction
+
+ownCloud offers the possibility for users to enable a virtual file system (VFS) when synchronizing data. This has the big advantage that all files and folders are visible to the client, but the files are not downloaded until the user requests to do so. Here are some of the key benefits:
+
+* Full access to files and folders without having to download them all first
+* Selectively sync folders and files based on user requirements
+* Optimize space usage on the client
+
+The quote below gives you a brief overview of what a virtual file system is about.
+
+[quote, {wikipedia-url}]
+____
+A virtual file system (VFS) or virtual filesystem switch is an abstract layer on top of a more concrete file system. The purpose of a VFS is to allow client applications to access different types of concrete file systems in a uniform way. A VFS can, for example, be used to access local and network storage devices transparently without the client application noticing the difference. It can be used to bridge the differences in Windows, classic Mac OS/macOS and Unix filesystems, so that applications can access files on local file systems of those types without having to know what type of file system they are accessing.
+____
+
+== Microsoft VFS Implementation
+
+=== Background
+
+[quote, {placeholder-files-url}]
+____
+A sync engine is a service that syncs files, typically between a remote host and a local client. Sync engines on Windows often present those files to the user through the Windows file system and File Explorer.
+____
+
+.Files can exist in three states:
+
+Full pinned file::
+The file has been _hydrated_ explicitly by the user through File Explorer and is guaranteed to be available offline.
+Full file::
+The file has been _hydrated_ implicitly and could be _dehydrated_ by the system if space is needed.
+Placeholder file::
+An empty representation of the file and only available if the sync service is available.
+
+The following image demonstrates how the _full pinned_, _full_ and _placeholder_ file states are shown in File Explorer.
+
+image:vfs/vfs-ms-cloud-file-states-file-explorer.png[File States, width=50%]
+
+=== Limitations and Restrictions
+
+==== Limitations
+
+A virtual file system needs a root folder all synchronization items will be stored in. The following locations are *not* allowed as synchronization root:
+
+* The root of a disk like `D:\`
+* A non-NTFS Filesystem
+* Mounted network shares
+* Symbolic links or junction points
+* Assigned drives
+
+==== Restrictions
+
+Similar to OneDrive as it also uses Microsoft's virtual file system, there are some additional restrictions which should be considered like the _maximum file size_, _invalid file or folder names_, etc. See the {onedrive-restrictions-url}[Restrictions and limitations in OneDrive and SharePoint] for more information.
+
+== ownCloud VFS Implementation
+
+=== New Sync with VFS enabled
+
+To set up a new synchronization with virtual file system enabled, perform the following steps: 
+
+. Add a new synchronization by clicking the btn:[+ Add account] button.
++
+image:vfs/vfs-add account.png[Add Account, width=50%]
+
+. Enter the server address and your credentials in the following dialogs.
+
+. Select the radio button btn:[Use virtual files] and set the local folder where your synchronization data will reside.
++
+image:vfs/vfs-sync-type.png[Set the Sync Type, width=80%]
+
+. When everything is done, you should see a similar screen as below, showing that the setup completed successfully.
++
+image:vfs/vfs-setup-successful.png[Setup Successful, width=80%]
+
+. After the first sync, your synchronization folder will show your items with the _Placeholder_ icon.
++
+image:vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=80%]
+
+. When opening a file, the file gets downloaded and its synchronization icon changes to _Full_.
+
+=== Convert Full Sync to VFS
+
+If you have full synchronization enabled, you can change to a virtual file system at any time.
+
+. Open your existing synchronization, click the btn:[...] button and menu:Enable virtual file support[].
++
+image:vfs/vfs-convert-to-vfs.png[Convert Full to VFS, width=80%]
+
+. Your local files will get replaced by _placeholders_, thus freeing up the space previously occupied.
+
+=== Convert VFS to Full Sync
+
+You can also change the synchronization setting from virtual file system to full sync.
+
+. Open your existing synchronization, click the btn:[...] button and menu:Disable virtual file support[].
++
+image:vfs/vfs-disable-virtual-file-support-1.png[Disable VFS 1, width=80%]
+
+. A notification window will ask you to confirm before completing the conversion.
++
+image:vfs/vfs-disable-virtual-file-support-2.png[Disable VFS 2, width=80%]
+
+. When done, your files will be fully downloaded, which you can tell by the sync icons. Depending on the quantity and size of the files, this may take a while.
+
+=== Manage VFS from ownCloud
+
+You can manage the synchronization for all files and folders via ownCloud. This can be beneficial if you e.g. want all files to be downloaded (pinned) without you having to open every single one, or if you want to free up all space at once.
+
+==== Make All Files _Full Pinned_
+
+. Open your existing synchronization, click the btn:[...] button and menu:Availability[Make always available locally].
++
+image:vfs/vfs-make-always-availabe.png[Make Iteams always Available, width=80%]
+
+. When opening the Explorer, you will see that all files get the sync icon image:vfs/vfs-free-up-local-space-icon.png[Free Up Space Icon].
++
+image:vfs/vfs-free-up-local-space-done.png[Free Up Space Done, width=80%]
+. The icon will change to _Full Pinned_ when downloaded.
+image:vfs/vfs-make-always-availabe-start-sync.png[Make Iteams always Available Start Sync, width=80%]
+
+==== Make All Files _Placeholders_
+
+You can free up space by unpinning all files at once and making them placeholders with only a view clicks.
+
+. Open your existing synchronization, click the btn:[...] button and menu:Availability[Free up local space].
++
+image:vfs/vfs-free-up-local-space.png[Free Up Space, width=80%]
+
+. When done, Explorer will show the files in _Placeholder_ state.
++
+image:vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=80%]
+
+=== Manage VFS from Windows Explorer
+
+You can manage individual files in the Explorer window by menu:right-clicking[] on them. This opens a drop-down menu of actions that can be performed on a specific file.
+
+==== Create a Local Copy of a File
+ 
+. To create a Full Pinned file (have a local copy of it), use the action btn:[Always keep on this device].
++
+image:vfs/vfs-always-keep-on-this-device.png[Always keep on this Device, width=80%]
++
+The state of the file will change to synchronizing.
++
+image:vfs/vfs-always-keep-on-this-device-syncing.png[Always keep on this Device Syncing, width=50%]
++
+When the local copy has been created, the state (icon) changes to _Full Pinned_.
++
+image:vfs/vfs-always-keep-on-this-device-synced.png[Always keep on this Device Syned, width=50%]
+
+==== Free up Space of a File
+
+. To free up the space the file occupied, use the action btn:[Free up space].
++
+image:vfs/vfs-free-up-space.png[Free Up Space, width=50%]
+
+. When done, Explorer will show the file in _Placeholder_ state.
++
+image:vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=80%]
