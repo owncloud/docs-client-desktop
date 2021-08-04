@@ -105,7 +105,9 @@ image:vfs/vfs-disable-virtual-file-support-1.png[Disable VFS 1, width=80%]
 +
 image:vfs/vfs-disable-virtual-file-support-2.png[Disable VFS 2, width=80%]
 
-. When done, your files will be fully downloaded, which you can tell by the sync icons. Depending on the quantity and size of the files, this may take a while.
+. When done, your files will be fully downloaded, which you can tell by the sync icons, see the example image below. Depending on the quantity and size of the files, this may take a while.
++
+image:vfs/vfs-full-sync-no-vfs.png[Full Snyc No VFS, width=80%]
 
 === Manage VFS from ownCloud
 
