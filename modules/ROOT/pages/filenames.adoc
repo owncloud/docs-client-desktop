@@ -1,0 +1,66 @@
+= Filename Considerations
+:toc: right
+:control_code_chart-url: https://en.wikipedia.org/wiki/ASCII#Control_code_chart
+
+== Introduction
+
+When using the client, depending the operating system (OS) you are using, file and folder names can have different restrictions. Creating files and folders with allowed names on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
+
+NOTE: This is not an ownCloud rule but an OS dependency
+
+[TIP]
+.Here are some rules of thumb
+====
+. Do not use any of the mentioned characters or words in any OS when using the Desktop Sync Client.
+. When the sync client is on Linux/Unix and the target mount to sync on is on SMB, file and folder names on Linux/Unix must comply with the Windows rules for successful syncing.
+. When the sync client is on Linux/Unix and the target mount to sync on is on SMB and you want to just rename the file with different casings, rename the file to a total different name, let it sync and then rename it again to the name that you want.
+====
+
+== Forbidden Printable ASCII Characters
+
+Linux/Unix::
+`/` (forward slash)
+
+Windows::
+`<` (less than) +
+`>` (greater than) +
+`:` (colon - sometimes works, but is actually NTFS Alternate Data Streams) +
+`"` (double quote) +
+`/` (forward slash) +
+`\` (backslash) +
+`|` (vertical bar or pipe) +
+`?` (question mark) +
+`*` (asterisk)
+
+== Non-Printable Characters
+
+If your files are created via a program, do not use non-printable characters. See the {control_code_chart-url}[Wikipedia "Control code chart" section] for more information on ASCII control characters.
+
+Linux/Unix::
+`0` (NULL byte)
++
+NOTE: While it is legal under Linux/Unix file systems to create files with control characters in the filename, they might be inaccessible and/or unsyncable.
+
+Windows::
+0-31 (ASCII control characters)
+
+== Reserved File Names
+
+The following file names are reserved:
+
+Windows::
+`CON, PRN, AUX, NUL COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9`
+
+== Other Rules
+
+Linux/Unix::
+When the sync client is on Linux/Unix and the target mount to sync on is on SMB, you cannot have the same file or folder name but with different casings. A cross icon will be shown that indicates that the file can't be synced. Files on Linux/Unix must comply with the Windows rules for successful syncing.
+
+Windows::
+Filenames cannot end in a space or dot
+
+== Examples and Pitfalls
+
+. When creating a file in Linux/Unix like `my-filename.` (see the dot at the end) or `my-filename.LPT1` (see the reserved name LPT1), you can sync the file to your ownCloud if the mount target is Linux/Unix. When a Windows user tries to sync these files, Windows rejects the file. Comparing the file list in both environments shows that one side has more files than the other. There will be *no notification* as this is an OS dependency. 
+
+. When renaming an existing file in Linux/Unix by just changing the casing like `owncloud` -> `ownCloud`, you might get issues on the windows sync side as for Windows the file looks the same.
