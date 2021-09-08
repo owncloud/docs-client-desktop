@@ -228,7 +228,7 @@ def trigger(ctx, environment, latest_version, deployment_branch, base_branch, pd
         },
         "steps": [
             {
-                "name": "trigger-%s" % deployment_branch,
+                "name": "trigger-docs",
                 "pull": "always",
                 "image": "plugins/downstream",
                 "settings": {
@@ -236,7 +236,7 @@ def trigger(ctx, environment, latest_version, deployment_branch, base_branch, pd
                     "token": from_secret("drone_token"),
                     "fork": "true",
                     "repositories": [
-                        "owncloud/docs@%s" % deployment_branch,
+                        "owncloud/docs@master",
                     ],
                 },
             },
