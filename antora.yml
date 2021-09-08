@@ -1,6 +1,9 @@
 name: desktop
 title: Desktop Client
-version: 2.7
+version: 'next'
 start_page: ROOT:index.adoc
 nav:
 - modules/ROOT/nav.adoc
+
+asciidoc:
+  attributes:
