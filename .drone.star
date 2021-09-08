@@ -181,31 +181,6 @@ def build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_
                 },
             },
             {
-                "name": "upload-html",
-                "pull": "always",
-                "image": "plugins/s3-sync",
-                "settings": {
-                    "bucket": "uploads",
-                    "endpoint": "https://doc.owncloud.com",
-                    "access_key": from_secret("docs_s3_access_key"),
-                    "secret_key": from_secret("docs_s3_secret_key"),
-                    "path_style": "true",
-                    "source": "public/",
-                    "target": "/deploy",
-                    "delete": "true",
-                },
-                "when": {
-                    "event": [
-                        "push",
-                        "cron",
-                    ],
-                    "branch": [
-                        deployment_branch,
-                        base_branch,
-                    ],
-                },
-            },
-            {
                 "name": "notify",
                 "pull": "if-not-exists",
                 "image": "plugins/slack",
