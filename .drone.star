@@ -1,6 +1,8 @@
 def main(ctx):
     # Config
 
+    environment = "desktop"
+
     # Version shown as latest in generated documentations
     # It's fine that this is out of date in version branches, usually just needs
     # adjustment in master/deployment_branch when a new version is added to site.yml
@@ -15,11 +17,12 @@ def main(ctx):
     # Version branches never deploy themselves, but instead trigger a deployment in deployment_branch
     # This must not be changed in version branches
     deployment_branch = default_branch
+    pdf_branch = default_branch
 
     return [
         checkStarlark(),
-        build(ctx, latest_version, deployment_branch, base_branch),
-        trigger(ctx, latest_version, deployment_branch, base_branch),
+        build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_branch),
+        trigger(ctx, environment, latest_version, deployment_branch, base_branch, pdf_branch),
     ]
 
 def checkStarlark():
@@ -59,7 +62,7 @@ def checkStarlark():
         },
     }
 
-def build(ctx, latest_version, deployment_branch, base_branch):
+def build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_branch):
     return {
         "kind": "pipeline",
         "type": "docker",
@@ -152,24 +155,44 @@ def build(ctx, latest_version, deployment_branch, base_branch):
                         "push",
                         "cron",
                     ],
-                    "branch": [
-                        deployment_branch,
-                        base_branch,
-                    ],
                 },
             },
             {
                 "name": "upload-pdf",
                 "pull": "always",
-                "image": "plugins/s3-sync:1",
+                "image": "plugins/s3-sync",
                 "settings": {
                     "bucket": "uploads",
                     "endpoint": "https://doc.owncloud.com",
                     "access_key": from_secret("docs_s3_access_key"),
                     "secret_key": from_secret("docs_s3_secret_key"),
                     "path_style": "true",
-                    "source": "build/",
+                    "source": "pdf_web/",
+                    "target": "/pdf/%s" % environment,
+                },
+                "when": {
+                    "event": [
+                        "push",
+                        "cron",
+                    ],
+                    "branch": [
+                        pdf_branch,
+                    ],
+                },
+            },
+            {
+                "name": "upload-html",
+                "pull": "always",
+                "image": "plugins/s3-sync",
+                "settings": {
+                    "bucket": "uploads",
+                    "endpoint": "https://doc.owncloud.com",
+                    "access_key": from_secret("docs_s3_access_key"),
+                    "secret_key": from_secret("docs_s3_secret_key"),
+                    "path_style": "true",
+                    "source": "public/",
                     "target": "/deploy",
+                    "delete": "true",
                 },
                 "when": {
                     "event": [
@@ -205,16 +228,18 @@ def build(ctx, latest_version, deployment_branch, base_branch):
             "check-starlark",
         ],
         "trigger": {
-            "ref": [
-                "refs/heads/%s" % deployment_branch,
-                "refs/heads/%s" % base_branch,
-                "refs/tags/**",
-                "refs/pull/**",
-            ],
+            "ref": {
+                "include": [
+                    "refs/heads/%s" % deployment_branch,
+                    "refs/heads/%s" % pdf_branch,
+                    "refs/tags/**",
+                    "refs/pull/**",
+                ],
+            },
         },
     }
 
-def trigger(ctx, latest_version, deployment_branch, base_branch):
+def trigger(ctx, environment, latest_version, deployment_branch, base_branch, pdf_branch):
     return {
         "kind": "pipeline",
         "type": "docker",
@@ -228,7 +253,7 @@ def trigger(ctx, latest_version, deployment_branch, base_branch):
         },
         "steps": [
             {
-                "name": "trigger-docs",
+                "name": "trigger-%s" % deployment_branch,
                 "pull": "always",
                 "image": "plugins/downstream",
                 "settings": {
@@ -236,7 +261,7 @@ def trigger(ctx, latest_version, deployment_branch, base_branch):
                     "token": from_secret("drone_token"),
                     "fork": "true",
                     "repositories": [
-                        "owncloud/docs@master",
+                        "owncloud/docs@%s" % deployment_branch,
                     ],
                 },
             },
