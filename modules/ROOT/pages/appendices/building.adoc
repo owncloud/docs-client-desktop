@@ -11,6 +11,7 @@
 :qt-download-url: http://www.qt.io/download
 :openssl-windows-build-url: http://slproweb.com/products/Win32OpenSSL.html
 :qtkeychain-url: https://github.com/frankosterfeld/qtkeychain
+:page-aliases: building.adoc
 
 This section explains how to build link:https://owncloud.org/download/#owncloud-desktop-client[the ownCloud Client] from source for all major platforms.
 You should read this section if you want to develop for the desktop client.
