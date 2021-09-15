@@ -2,6 +2,7 @@
 :toc: right
 :toclevels: 1
 :files-antivirus-app-url: https://github.com/owncloud/files_antivirus
+:page-aliases: troubleshooting.adoc
 
 == Introduction
 
