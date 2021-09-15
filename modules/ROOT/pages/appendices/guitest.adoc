@@ -80,7 +80,7 @@ Some necessary steps before running tests:
 . Clone the {client-repo-url}[Desktop Client] from GitHub
 . Copy `test/gui/config.sample.ini` to `test/suite_oc-desktop/config.ini`
 . Edit `test/gui/config.ini` and set `BACKEND_HOST=` to the URL of your ownCloud server, e.g. `BACKEND_HOST=http://localhost/owncloud-core`
-
++
 NOTE: BACKEND_HOST can be any server, but it is required that the password for the user `admin` is set to `admin`.
 
 . Start Squish
