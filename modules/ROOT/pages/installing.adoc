@@ -187,15 +187,15 @@ msiexec /i ownCloud-x.y.z.msi DO_NOT_SCHEDULE_REBOOT="1"
 
 The installation wizard takes you step-by-step through configuration options and account setup. First you need to enter the URL of your ownCloud server.
 
-image:client-1.png[form for entering ownCloud server URL,width=60%]
+image:client-1.png[form for entering ownCloud server URL,width=60%,pdfwidth=60%]
 
 Enter your ownCloud login on the next screen.
 
-image:client-2.png[form for entering your ownCloud login,width=60%]
+image:client-2.png[form for entering your ownCloud login,width=60%,pdfwidth=60%]
 
 On the _"Local Folder Option"_ screen you may sync all of your files on the ownCloud server, or select individual folders. The default local sync folder is `ownCloud`, in your home directory. You may change this as well.
 
-image:client-3.png[Select which remote folders to sync, and which local folder to store them in,width=60%]
+image:client-3.png[Select which remote folders to sync, and which local folder to store them in,width=60%,pdfwidth=60%]
 
 When you have completed selecting your sync folders, click the _"Connect"_ button at the bottom right. The client will attempt to connect to your ownCloud server, and when it is successful you'll see two buttons:
 
