@@ -71,7 +71,7 @@ Client log files contain file and folder names, metadata, server URLs and other 
 +
 The Log Output window opens.
 +
-image:log_output_window.png[image,width=60%]
+image:log_output_window.png[image,width=60%,pdfwidth=60%]
 +
 .  Enable the btn:[Enable logging to temporary folder] checkbox.
 .  Later, to find the log files, click the btn:[Open folder] button.
