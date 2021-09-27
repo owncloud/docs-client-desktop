@@ -20,7 +20,7 @@ Keeping software up to date is crucial for file integrity and security – if so
 
 The ownCloud Desktop Client talks to a server, e.g. the ownCloud server, so you don’t only have to upgrade your client when there is a new version for it, also the server has to be kept up-to-date by your sysadmin. Starting with version 2.5.0, the client will show a warning message if you connect to an outdated or unsupported server:
 
-image:oc-unsupported-version-warning-message.png[image,width=60%,pdfwidth=60%]
+image:faq/oc-unsupported-version-warning-message.png[image, width=60%,pdfwidth=60%]
 
 === Because Earlier Versions Are Not Maintained Anymore, Only ownCloud 10.0.0 or Higher Is Supported 
 
@@ -65,11 +65,11 @@ according your needs.
 +
 To do so, in the client UI, which you can see below, click the drop down menu menu:Account[Remove].
 +
-image:setup/ownCloud-remove_existing_connection.png[image,width=60%,pdfwidth=60%]
+image:faq/ownCloud-remove_existing_connection.png[image, width=60%,pdfwidth=60%]
 +
 This will display a "*Confirm Account Removal*" dialog window. If you're sure, click btn:[Remove connection].
 +
-image:setup/ownCloud-remove_existing_connection_confirmation_dialog.png[image,width=60%,pdfwidth=60%]
+image:faq/ownCloud-remove_existing_connection_confirmation_dialog.png[image, width=60%,pdfwidth=60%]
 
 ..  Add a new connection which syncs to the desired directory.
 +
@@ -84,7 +84,7 @@ Be careful before choosing the "Start a clean sync" option. The old sync folder 
 Instead, first move or copy the old local sync folder, containing a copy of the existing files, to the new location. Then, when creating the new connection choose "_keep existing data_" instead. The ownCloud client will check the files in the newly-added sync folder and find that they match what is on the server and not need to download anything.
 ====
 +
-image:setup/ownCloud-replacement_connection_wizard.png[image,width=60%,pdfwidth=60%]
+image:faq/ownCloud-replacement_connection_wizard.png[image, width=60%,pdfwidth=60%]
 +
 Make your choice and click btn:[Connect...] This will then lead you through the Connection Wizard, just like when you set up the previous sync connection, but giving you the opportunity to choose a new sync directory.
 
