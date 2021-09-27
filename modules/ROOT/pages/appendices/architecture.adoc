@@ -1,8 +1,7 @@
 = Appendix History and Architecture
 :toc: right
-:toclevels: 1
-:theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01
 :page-aliases: architecture.adoc
+:theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01
 
 == Introduction
 
@@ -93,13 +92,13 @@ include::{examplesdir}architecture/cloud-capabilities-json-response.json[]
 
 A checksum is calculated with the previously negotiated algorithm by the client and sent along with the file in an HTTP Header: `OC-Checksum: [algorithm]:[checksum]`.
 
-image:checksums/client-activity.png[image]
+image:appendices/architecture/client-activity.png[image]
 
 During file upload, the server computes SHA1, MD5, and Adler-32 checksums and compares one of them to the checksum supplied by the client.
 
 On mismatch, the server returns HTTP Status code 400 (Bad Request) thus signaling the client that the upload failed. The server then discards the upload, and the client blacklists the file:
 
-image:checksums/testing-checksums.png[image]
+image:appendices/architecture/testing-checksums.png[image]
 
 [source,xml]
 ----
