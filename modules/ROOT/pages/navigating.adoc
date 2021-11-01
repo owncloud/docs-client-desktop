@@ -124,9 +124,24 @@ Use *Share with ownCloud* to see who you have shared with, and to modify their p
 
 == Activity Window
 
-The Activity window contains the log of your recent activities, organized over three tabs: *Server Activities*, which includes new shares and files downloaded and deleted, *Sync Protocol*, which displays local activities such as which local folders your files went into, and. *Not Synced* shows errors such as files not synced. Double clicking an entry pointing to an existing file in *Server Activities* or *Sync Protocol* will open the folder containing the file and highlight it.
+The Activity window contains the log of your recent activities, organized over three tabs:
+
+Server Activities::
+Includes new shares and files downloaded and deleted.
+
+Sync Protocol::
+Displays local activities such as which local folders your files went into.
+
+Not Synced::
+Shows errors such as files not synced because of being excluded or any other failing status.
 
 image:navigating/client-8.png[image, width=60%,pdfwidth=60%]
+
+In Windows, double clicking an activity entry pointing to an existing file in tabs *Server Activities* or *Sync Protocol*, will open the folder containing the file and highlight it.
+
+On Linux, you can do the same with menu:mouse[right-click > Show file in browser]
+
+In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL+a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
 
 == Server Notifications
 
