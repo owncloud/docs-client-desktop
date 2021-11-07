@@ -85,7 +85,7 @@ You may configure multiple ownCloud accounts in your desktop sync client. Simply
 
 [NOTE]
 ====
-To use *Two-Factor Authentication* (2FA), ownCloud server must have {oauth2-app-url}[the OAuth2 app] installed, configured, and enabled. Please contact your ownCloud administrator for more details.
+To use *Two-Factor Authentication* (2FA), ownCloud server must have the {oauth2-app-url}[OAuth2 app] installed, configured, and enabled. Please contact your ownCloud administrator for more details.
 ====
 
 == File Manager Overlay Icons
@@ -145,7 +145,7 @@ The General window has configuration options such as "_Launch on System Startup_
 
 image:navigating/client-9.png[image, width=60%,pdfwidth=60%]
 
-TIP: While you can elect whether to show or hide the crash reporter, from the General window, you can also configure whether to show or hide it from xref:advanced_usage/configuration_file.adoc#general-section[the general section of the configuration file] as well. Doing so can help with debugging on-startup-crashes.
+TIP: While you can elect whether to show or hide the crash reporter, from the General window, you can also configure whether to show or hide it from the xref:advanced_usage/configuration_file.adoc#section-general[general section of the configuration file] as well. Doing so can help with debugging on-startup-crashes.
 
 == Using the Network Window
 
