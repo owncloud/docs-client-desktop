@@ -136,7 +136,7 @@ By default, the ownCloud Client ignores the following files:
 * Windows only: Files with a trailing space or dot.
 * Windows only: Filenames that are reserved on Windows.
 
-If a pattern selected using a checkbox in the xref:visualtour.adoc#the-ignored-files-editor[Ignored Files Editor], or if a line in the exclude file starts with the character `]` directly followed by the file pattern, files matching the pattern are considered.
+If a pattern selected using a checkbox in the xref:navigating.adoc#Using-the-ignored-files-editor[Ignored Files Editor], or if a line in the exclude file starts with the character `]` directly followed by the file pattern, files matching the pattern are considered.
 
 *fleeting meta data*.
 
