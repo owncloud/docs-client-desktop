@@ -1,5 +1,7 @@
 = Installing the Desktop Synchronization Client
 :toc: right
+:ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
+:ms-adddefault-url: https://docs.microsoft.com/en-us/windows/win32/msi/adddefault
 
 == Introduction
 
@@ -129,9 +131,7 @@ msiexec /passive /i ownCloud-x.y.z.msi REMOVE="DesktopShortcut"
 
 Windows keeps track of the installed features and using `REMOVE` or `ADDDEFAULT` will only affect the mentioned features.
 
-Compare https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx[REMOVE] and 
-https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx[ADDDEFAULT]
-on the Windows Installer Guide.
+Compare {ms-remove-url}[REMOVE] and {ms-adddefault-url}[ADDDEFAULT] on the Windows Installer Guide.
 
 NOTE: You cannot specify REMOVE on initial installation as it will disable all features.
 
