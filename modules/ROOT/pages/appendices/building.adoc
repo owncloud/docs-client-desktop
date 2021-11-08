@@ -5,17 +5,22 @@
 :python-2_7-url: https://www.python.org/download/releases/2.7/
 :python-3_6-url: https://www.python.org/downloads/release/python-360/
 :ms-visual-studio-2019-url: https://visualstudio.microsoft.com/en/downloads/
-:mingw-w64-url: https://mingw-w64.org/doku.php
+:mingw-w64-url: https://www.mingw-w64.org/docs/overview/
 :cmake-url: http://www.cmake.org/download
 :git-url: http://git-scm.com
 :qt-download-url: http://www.qt.io/download
 :openssl-windows-build-url: http://slproweb.com/products/Win32OpenSSL.html
 :qtkeychain-url: https://github.com/frankosterfeld/qtkeychain
+:homebrew-url: https://docs.brew.sh
+:install-homebrew-url: https://github.com/Homebrew/install
+:macports-url: http://www.macports.org
+:owncloud-obs: http://software.opensuse.org/download/package?project=isv:ownCloud:desktop&package=owncloud-client
+:opensuse-url: http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/
 :page-aliases: building.adoc
 
 == Introduction
 
-This section explains how to build link:https://owncloud.org/download/#owncloud-desktop-client[the ownCloud Client] from source for all major platforms.
+This section explains how to build the link:https://owncloud.org/download/#owncloud-desktop-client[ownCloud Client] from source for all major platforms.
 You should read this section if you want to develop for the desktop client.
 Build instructions are subject to change as development proceeds.
 
@@ -36,8 +41,8 @@ xref:windows-development-build-with-kde-craft[Windows].
 For the published desktop clients we link against QT5 dependencies from our own repositories so that we can have the same versions on all distributions. This chapter shows you how to build the client yourself with this setup. If you want to use the QT5 dependencies from your system, see the next chapter.
 
 You may wish to use source packages for your Linux distribution, as these give you the exact sources from which the binary packages are built. These are hosted on the 
-http://software.opensuse.org/download/package?project=isv:ownCloud:desktop&package=owncloud-client[ownCloud repository from OBS].
-Go to the http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/[Index of repositories] to see all the Linux client repositories.
+{owncloud-obs}[ownCloud repository from OBS].
+Go to the {opensuse-url}[Index of repositories] to see all the Linux client repositories.
 
 [NOTE]
 ====
@@ -86,13 +91,11 @@ Follow the xref:generic-build-instructions[generic build instructions], starting
 
 == macOS
 
-In addition to needing Xcode (along with the command line tools), developing in the macOS environment requires extra dependencies. You can install these dependencies through
-http://www.macports.org[MacPorts] or http://mxcl.github.com/homebrew/[Homebrew].
+In addition to needing Xcode (along with the command line tools), developing in the macOS environment requires extra dependencies. You can install these dependencies through {macports-url}[MacPorts] or {homebrew-url}[Homebrew].
 These dependencies are required only on the build machine, because non-standard libs are deployed in the app bundle.
 
-The tested and preferred way to develop in this environment is through the use of http://mxcl.github.com/homebrew/[HomeBrew].
-The ownCloud team has its own repository containing non-standard recipes. To set up your build environment for development using
-http://mxcl.github.com/homebrew/[HomeBrew]:
+The tested and preferred way to develop in this environment is through the use of {homebrew-url}[HomeBrew].
+The ownCloud team has its own repository containing non-standard recipes. To set up your build environment for development using {homebrew-url}[HomeBrew]:
 
 . Install https://developer.apple.com/xcode[Xcode].
 . Install Xcode command line tools using
@@ -101,12 +104,11 @@ http://mxcl.github.com/homebrew/[HomeBrew]:
 ----
 xcode-select --install
 ----
-. Install Homebrew using
+. {install-homebrew-url}[Install Homebrew] using
 +
 [source,console]
 ----
-/usr/bin/ruby -e \
-    $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ----
 . Add the ownCloud repository using the command 
 +
