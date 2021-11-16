@@ -88,6 +88,10 @@ image:faq/ownCloud-replacement_connection_wizard.png[image, width=60%,pdfwidth=6
 +
 Make your choice and click btn:[Connect...] This will then lead you through the Connection Wizard, just like when you set up the previous sync connection, but giving you the opportunity to choose a new sync directory.
 
+== My Sync Folder Displays a Different Quota Than the Web Interface
+
+When other users share data with you, it's downloaded to the sync folder and counted as space used by the desktop client although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status. For more information, see the User Manual on quota: https://doc.owncloud.com/server/next/user_manual/files/webgui/quota.html
+
 == I Want to Change My Server URL
 
 Since changing server urls is a potentially dangerous operation the ownCloud desktop client does not provide a user interface for this change. Typically, server url changes should be implemented by serving a permanent redirect to the new location on the old url. The client will then permanently update the server url the next time it queries the old url.
