@@ -2,33 +2,60 @@
 :toc: right
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
 :ms-adddefault-url: https://docs.microsoft.com/en-us/windows/win32/msi/adddefault
+:desktop-clients-url: https://owncloud.com/desktop-app/
+:appimage-wikipedia-url: https://en.wikipedia.org/wiki/AppImage
+:gnome-keyring-url: https://wiki.gnome.org/Projects/GnomeKeyring/
+:kwalletmanager-url: https://utils.kde.org/projects/kwalletmanager/
+:ubuntu-lts-url: https://wiki.ubuntu.com/LTS
 
 == Introduction
 
-You can download the latest version of the ownCloud Desktop Synchronization Client from the https://owncloud.com/download/#desktop-clients[ownCloud download page]. There are clients for _Linux_, _macOS_, and _Microsoft Windows_.
+You can download the latest version of the ownCloud Desktop Synchronization Client from the {desktop-clients-url}[Desktop App Download] page. There are clients for _Linux_, _macOS_, and _Microsoft Windows_ available.
 
-Installation on Mac OS X and Windows is the same as for any software application: download the program and then double-click it to launch the installation, and then follow the installation wizard. After it is installed and configured the sync client will automatically keep itself updated; see `autoupdate` for more information.
+== System Requirements and Installation
 
+=== System Requirements
+
+Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distrubutions, see the list of supported distros below.
+
+Windows::
+* Windows 7+ +
+(x86 with 32-bit or x86-64; Native WinVFS available for Windows 10 version 1709 or later)
+
+macOS::
+* macOS 10.12+ +
+(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available)
+
+Linux::
+* CentOS 7.6+ & 8 (x86-64)
+** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
++
+[source,console]
+----
+sudo yum install epel-release
+----
+* Debian 10 & 11 (x86-64)
+* Fedora 33 & 34 & 35 (x86-64)
+* openSUSE Leap 15.2 & 15.3 (x86-64)
+* Ubuntu 20.04 & 21.04 & 21.10 (x86-64)
+
+NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
+
+=== Installation on Mac OS X and Windows
+
+Installation on Mac OS X and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured the sync client will automatically keep itself updated; see `autoupdate` for more information.
+
+=== Installation on Linux
+
+Full installation::
 Linux users must follow the instructions on the download page to add the appropriate repository for their Linux distribution, install the signing key, and then use their package managers to install the desktop sync client. Linux users will also update their sync clients via package manager, and the client will display a notification when an update is available.
-
-Linux users must also have a password manager enabled, such as
-https://wiki.gnome.org/Projects/GnomeKeyring/[GNOME Keyring] or
-https://utils.kde.org/projects/kwalletmanager/[KWallet],
-so that the sync client can login automatically.
-
++
+Linux users must also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the sync client can login automatically.
++
 You will also find links to source code archives and older versions on the download page.
 
-== System Requirements
-
-* Windows 7+ (x86 with 32-bit or x86-64; Native WinVFS available for Windows 10 version 1709 or later)
-* macOS 10.12+ (x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available)
-* CentOS 7.6+ & 8 (x86-64)
-* Debian 9.0 & 10 (x86-64)
-* Fedora 31 & 32 & 33 (x86-64)
-* Ubuntu 18.04 & 20.04 & 20.10 & 21.04 (x86-64)
-* openSUSE Leap 15.1 & 15.2 (x86-64)
-
-NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu https://wiki.ubuntu.com/LTS[LTS].
+AppImage::
+Starting with Desktop version 2.9, an {appimage-wikipedia-url}[AppImage] build of the ownCloud desktop sync client is available to support more Linux platforms. You can download the AppImage right at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
 
 == Customizing the Windows Installation
 
@@ -52,7 +79,7 @@ msiexec /passive /i ownCloud-x.y.z.msi REMOVE=DesktopShortcut.
 
 See the following table for a list of available features:
 
-[width="100%",cols="26%,15%,27%,33%",options="header",]
+[width="100%",cols="20%,20%,27%,33%",options="header",]
 |=======================================================================
 | Feature 
 | Enabled by default 
