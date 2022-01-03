@@ -65,7 +65,7 @@ To set up a new synchronization with virtual file system enabled, perform the fo
 
 . Add a new synchronization by clicking the btn:[+ Add account] button.
 +
-image:vfs/vfs-add account.png[Add Account, width=50%,pdfwidth=50%]
+image:vfs/vfs-add-account.png[Add Account, width=50%,pdfwidth=50%]
 
 . Enter the server address and your credentials in the following dialogs.
 
