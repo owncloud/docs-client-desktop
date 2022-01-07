@@ -125,7 +125,7 @@ NOTE: Before running middleware, install yarn following the instructions from {y
 +
 [source,console]
 ----
-docker run --rm --network=host -e LICENSEKEY='YOUR_SQUISH_LICENSE' -e MIDDLEWARE_URL='http://localhost:3000/' -e BACKEND_HOST='http://localhost/owncloud-server/' -e SERVER_INI='/app/test/gui/local/server.ini' -e CLIENT_REPO='/app/' -e SQUISH_PARAMETERS='--retry 1' -v ${PWD}:/app owncloudci/squish:latest
+docker run --rm --network=host -e LICENSEKEY='YOUR_SQUISH_LICENSE' -e MIDDLEWARE_URL='http://localhost:3000/' -e BACKEND_HOST='http://localhost/owncloud-server/' -e SERVER_INI='/app/test/gui/local/server.ini' -e CLIENT_REPO='/app/' -e SQUISH_PARAMETERS='--retry 1' -v ${PWD}:/app owncloudci/squish:qt512
 ----
 
 == Create New Steps
