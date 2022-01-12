@@ -16,7 +16,7 @@ To solve this issue, you can:
 
 * Remove the extension from the indexer (menu:Indexing Options[Advanced > File Types])
 * Uninstall Windows Mail, Windows Live Mail. Note that when reinstalling, the issue reappears again. See {wordpress1-url}[Windows indexer changes modification dates of .eml files] for more information.
-* Remove on your own risk the corresponding key for .eml files in the registry at
+* Remove at your own risk the corresponding key for .eml files in the registry at
 `\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers`
 
 === Syncing Stops When Attempting to Sync Deeper Than 100 Sub-Directories
@@ -72,14 +72,14 @@ Make your choice and click btn:[Connect...] This will then lead you through the 
 
 === I Want to Change My Server URL
 
-Since changing server urls is a potentially dangerous operation the ownCloud desktop client does not provide a user interface for this change. Typically, server url changes should be implemented by serving a permanent redirect to the new location on the old url. The client will then permanently update the server url the next time it queries the old url.
+Since changing server URLs is a potentially dangerous operation the ownCloud desktop client does not provide a user interface for this change. Typically, server URL changes should be implemented by serving a permanent redirect to the new location on the old URL. The client will then permanently update the server URL the next time it queries the old url.
 
 For situations where arranging for a redirect is impossible, url changes can be done by editing the config file. Before doing so make sure that the new url does indeed point to the same server, with the same users and the same data. Then go through these steps:
 
 1. Shut down the ownCloud client.
 2. Locate the xref:advanced_usage/configuration_file.adoc#location-of-the-configuration-file[configuration file]
 3. Open it with a text editor.
-4. Find your old server url and adjust it.
+4. Find your old server URL and adjust it.
 5. Save the file and start the ownCloud client again.
 
 == Error Messages
@@ -88,14 +88,14 @@ For situations where arranging for a redirect is impossible, url changes can be 
 
 Keeping software up to date is crucial for file integrity and security – if software is outdated, there can be unfixed bugs. That’s why you should always upgrade your software when there is a new version.
 
-The ownCloud Desktop Client talks to a server, e.g. the ownCloud server, so you don’t only have to upgrade your client when there is a new version for it, also the server has to be kept up-to-date by your sysadmin. Starting with version 2.5.0, the client will show a warning message if you connect to an outdated or unsupported server:
+The ownCloud desktop client talks to a server, e.g. the ownCloud server, so you do not only have to upgrade your client when there is a new version for it, also the server has to be kept up-to-date by your sysadmin. Starting with version 2.5.0, the client will show a warning message if you connect to an outdated or unsupported server:
 
 image:faq/oc-unsupported-version-warning-message.png[image, width=80%,pdfwidth=60%]
 
 Only ownCloud 10.0.0 or Higher Is Supported::
 If you encounter such a message, you should ask your administrator to upgrade ownCloud to a secure version because earlier versions are not maintained anymore. An important feature of the ownCloud Client is checksumming – each time you download or upload a file, the client and the server both check if the file was corrupted during the sync. This way you can be sure that you don’t lose any files.
 +
-There are servers out there which don’t have checksumming implemented on their side, or which are not tested by ownCloud’s QA team. They can’t ensure file integrity, they have potential security issues, and we can’t guarantee that they are compatible with the ownCloud Desktop Client.
+There are servers out there which don’t have checksumming implemented on their side, or which are not tested by ownCloud’s QA team. They can’t ensure file integrity, they have potential security issues, and we can’t guarantee that they are compatible with the ownCloud desktop client.
 
 We Care About Your Data and Want It to Be Safe::
 That’s why you see this warning message, so you can evaluate your data security. Don’t worry – you can still use the client with an unsupported server, but do so at your own risk.
@@ -104,7 +104,7 @@ That’s why you see this warning message, so you can evaluate your data securit
 
 image:faq/01_multiple-accounts-sharing-folder.png[image, width=80%,pdfwidth=60%]
 
-Desktop sync client discovered multiple sync journals (SQLite database files) in the folder. That indicates that multiple clients are using the same folder as a sync root. Under certain conditions it could also mean that the is an old `._sync_#HASH.db` or `.sync_#HASH.db` in the folder.
+Desktop sync client discovered multiple sync journals (SQLite database files) in the folder. That indicates that multiple clients are using the same folder as a sync root. Under certain conditions it could also mean that there is an old `._sync_#HASH.db` or `.sync_#HASH.db` in the folder.
 
 *Resolve:*
 
@@ -115,7 +115,7 @@ Such a file will have an old change date and usually can be removed.
 image:faq/02_folder-used-in-sync-connection1.png[image, width=80%,pdfwidth=60%]
 image:faq/03_folder-used-in-sync-connection2.png[image, width=80%,pdfwidth=60%]
 
-Similar to the above case. Desktop sync client discovered one or more `.sync_journal.db` files in the directory. That mean the folder is either already used by a different client for syncing or we again have an old SQLite database file in that folder. This can also happen if a user tries to import an old folder.
+Similar to the above case, the desktop sync client discovered one or more `.sync_journal.db` files in the directory. That means the folder is either already used by a different client for syncing or we again have an old SQLite database file in that folder. This can also happen if a user tries to import an old folder.
 
 *Resolve:*
 
@@ -125,9 +125,9 @@ Such a file will have an old change date and usually can be removed.
 
 image:faq/04_folder-used-by-different-client.png[image, width=80%,pdfwidth=60%]
 
-This error can only happen with native Windows VFS. Desktop sync client discovered that the folder is part of a sub tree that is managed by another client, for example testpilotcloud. The difference to the next error is that we can't be sure its a different client or an orphaned sync root.
+This error can only happen with native Windows VFS. Desktop sync client discovered that the folder is part of a subtree that is managed by another client, for example testpilotcloud. The difference to the next error is that we can't be sure its a different client or an orphaned sync root.
 
-Both errors are windows only, in the future we will try to prevent the situation leading to this.
+Both errors are windows only. In the future we will try to prevent the situation leading to this.
 
 *Resolve:*
 
@@ -137,7 +137,7 @@ Pick another sync folder.
 
 image:faq/05_folder-managed-by-another-sync-client.png[image, width=80%,pdfwidth=60%]
 
-This error can only happen with native Windows VFS. Desktop sync client discovered that the folder is part of a sub tree that is managed by another client, for example OneDrive.
+This error can only happen with native Windows VFS. Desktop sync client discovered that the folder is part of a subtree that is managed by another client, for example OneDrive.
 
 *Resolve:*
 
@@ -147,9 +147,9 @@ Pick another sync folder.
 
 On Linux, when the synchronized folder contains a high number of subfolders, the operating system may not allow for enough `inotify` watches to monitor the changes in all of them.
 
-In this case the client will not be able to immediately start the synchronization process when a file in one of the unmonitored folders changes. Instead, the client will show the warning and manually scan folders for changes in a regular interval (two hours by default).
+In this case the client will not be able to immediately start the synchronization process when a file in one of the unmonitored folders changes. Instead, the client will show the warning and manually scan folders for changes at a regular interval (two hours by default).
 
-This problem can be solved by setting the `fs.inotify.max_user_watches sysctl` to a higher value like `524288` and can usually be done by adjusting `/etc/sysctl.conf` or temporarily with:
+This problem can be solved by setting the `fs.inotify.max_user_watches sysctl` to a higher value like `524288` permanently in the config file `/etc/sysctl.conf` or temporarily with the following command:
 
 [source,console]
 ----
