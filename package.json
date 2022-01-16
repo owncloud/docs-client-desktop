@@ -1,17 +1,17 @@
 {
   "private": true,
-  "name": "owncloud-docs",
-  "description": "The ownCloud Core documentation",
+  "name": "owncloud-client",
+  "description": "The ownCloud Desktop documentation",
   "version": "2.0.0",
   "license": "AGPL-3.0",
   "author": "The ownCloud Team <docs@owncloud.com>",
-  "homepage": "https://github.com/owncloud/docs#readme",
+  "homepage": "https://github.com/owncloud/docs-client-desktop#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/owncloud/docs.git"
+    "url": "git+https://github.com/owncloud/docs-client-desktop.git"
   },
   "bugs": {
-    "url": "https://github.com/owncloud/docs/issues"
+    "url": "https://github.com/owncloud/docs-client-desktop/issues"
   },
   "contributors": [
     {
