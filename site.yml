@@ -2,6 +2,7 @@
 site:
   title: ownCloud Desktop Client Documentation
   url: https://doc.owncloud.com
+  start_page: desktop::index.adoc
 
 content:
   sources:
