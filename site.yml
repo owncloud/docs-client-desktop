@@ -1,3 +1,4 @@
+# note that this site.yml file is for local building and testing only
 site:
   title: ownCloud Desktop Client Documentation
   url: https://doc.owncloud.com
@@ -20,9 +21,12 @@ output:
 
 asciidoc:
   attributes:
+#   branch-specific-variables: 'see antora.yml'
+#   build relevant
     idprefix: ''
     idseparator: '-'
     experimental: ''
+#   desktop
     latest-desktop-version: '2.10'
     previous-desktop-version: '2.9'
   extensions:
