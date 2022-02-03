@@ -36,7 +36,7 @@ sudo yum install epel-release
 ----
 * Debian 10 & 11 (x86-64)
 * Fedora 34 & 35 (x86-64)
-* openSUSE Leap 15.3 (x86-64)
+* openSUSE Leap 15.2 & 15.3 (x86-64)
 * Ubuntu 20.04 & 21.04 & 21.10 (x86-64)
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
