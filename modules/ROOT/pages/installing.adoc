@@ -27,7 +27,7 @@ macOS::
 (x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available)
 
 Linux::
-* CentOS 7.6+ & 8 (x86-64)
+* CentOS 7.x with _minimum_ version x=6 (x86-64)
 ** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
 +
 [source,console]
@@ -35,7 +35,7 @@ Linux::
 sudo yum install epel-release
 ----
 * Debian 10 & 11 (x86-64)
-* Fedora 33 & 34 & 35 (x86-64)
+* Fedora 34 & 35 (x86-64)
 * openSUSE Leap 15.2 & 15.3 (x86-64)
 * Ubuntu 20.04 & 21.04 & 21.10 (x86-64)
 
