@@ -109,39 +109,11 @@ image:vfs/vfs-disable-virtual-file-support-2.png[Disable VFS 2, width=80%,pdfwid
 +
 image:vfs/vfs-full-sync-no-vfs.png[Full Snyc No VFS, width=80%,pdfwidth=80%]
 
-=== Manage VFS from ownCloud
-
-You can manage the synchronization for all files and folders via ownCloud. This can be beneficial if you e.g. want all files to be downloaded (pinned) without you having to open every single one, or if you want to free up all space at once.
-
-==== Make All Files _Full Pinned_
-
-. Open your existing synchronization, click the btn:[...] button and menu:Availability[Make always available locally].
-+
-image:vfs/vfs-make-always-availabe.png[Make Iteams always Available, width=80%,pdfwidth=80%]
-
-. When opening the Explorer, you will see that all files get the sync icon image:vfs/vfs-free-up-local-space-icon.png[Free Up Space Icon].
-+
-image:vfs/vfs-free-up-local-space-done.png[Free Up Space Done, width=80%,pdfwidth=80%]
-. The icon will change to _Full Pinned_ when downloaded.
-image:vfs/vfs-make-always-availabe-start-sync.png[Make Iteams always Available Start Sync, width=80%,pdfwidth=80%]
-
-==== Make All Files _Placeholders_
-
-You can free up space by unpinning all files at once and making them placeholders with only a view clicks.
-
-. Open your existing synchronization, click the btn:[...] button and menu:Availability[Free up local space].
-+
-image:vfs/vfs-free-up-local-space.png[Free Up Space, width=80%,pdfwidth=80%]
-
-. When done, Explorer will show the files in _Placeholder_ state.
-+
-image:vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=80%,pdfwidth=80%]
-
 === Manage VFS from Windows Explorer
 
-You can manage individual files in the Explorer window by menu:right-clicking[] on them. This opens a drop-down menu of actions that can be performed on a specific file.
+You can manage `individual` files or `complete folders` in the Explorer window by menu:right-clicking[] on them. This opens a drop-down menu of actions that can be performed on a specific file or folder. The following examples shows this on files, but it can be applied on folders too.
 
-==== Create a Local Copy of a File
+==== Create a Local Copy
  
 . To create a Full Pinned file (have a local copy of it), use the action btn:[Always keep on this device].
 +
@@ -155,7 +127,7 @@ When the local copy has been created, the state (icon) changes to _Full Pinned_.
 +
 image:vfs/vfs-always-keep-on-this-device-synced.png[Always keep on this Device Syned, width=50%,pdfwidth=50%]
 
-==== Free up Space of a File
+==== Free up Space
 
 . To free up the space the file occupied, use the action btn:[Free up space].
 +
