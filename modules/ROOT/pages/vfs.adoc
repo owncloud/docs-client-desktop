@@ -111,7 +111,7 @@ image:vfs/vfs-full-sync-no-vfs.png[Full Snyc No VFS, width=80%,pdfwidth=80%]
 
 === Manage VFS from Windows Explorer
 
-You can manage `individual` files or `complete folders` in the Explorer window by menu:right-clicking[] on them. This opens a drop-down menu of actions that can be performed on a specific file or folder. The following examples shows this on files, but it can be applied on folders too.
+You can manage `individual` files or `complete folders` in the Explorer window by menu:right-clicking[] on them. This opens a drop-down menu of actions that can be performed on a specific file or folder. The following example shows this on files, but it can be applied on folders too.
 
 ==== Create a Local Copy
  
