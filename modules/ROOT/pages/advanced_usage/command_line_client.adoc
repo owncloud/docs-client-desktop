@@ -24,7 +24,7 @@ Other command line switches supported by `owncloudcmd` include the following:
 | `--password`, `-p` `[password]`|  Use `password` as the password.
 | `-n`|  Use `netrc (5)` for login.
 | `--non-interactive`|  Do not prompt for questions.
-| `--silent`, `--s`|  Inhibits verbose log output.
+| `--silent`, `-s`|  Inhibits verbose log output.
 | `--trust`|  Trust any SSL certificate, including invalid ones.
 | `--httpproxy  http://[user@pass:]<server>:<port>`|  Uses `server` as HTTP proxy.
 | `--davpath [path]`|  Overrides the WebDAV Path with `path`
