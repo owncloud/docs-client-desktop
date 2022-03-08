@@ -46,12 +46,15 @@ Go to the {opensuse-url}[Index of repositories] to see all the Linux client repo
 
 [NOTE]
 ====
-To get the `.deb` source packages, add the source repository for your Debian or Ubuntu version, as in the following example for Debian 9:
+To get the `.deb` source packages, add the source repository for your Debian or Ubuntu version, as in the following example for Debian 9, run the examples below as root:
 
-[source,console]
+[source,bash]
 ----
-# Run as root
 echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_9.0/ /' >> /etc/apt/sources.list.d/owncloud-client.list
+----
+
+[source,bash]
+----
 echo 'deb-src http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Debian_9.0/ /' >> /etc/apt/sources.list.d/owncloud-client.list
 ----
 ====
@@ -79,7 +82,7 @@ Build sources from a GitHub checkout with dependencies provided by your Linux di
 ====
 To get the source dependencies on Debian and Ubuntu, run the following command:
 
-[source,console]
+[source,bash]
 ----
 sudo apt install qtdeclarative5-dev libinotifytools-dev \
   qt5keychain-dev python3-sphinx \
@@ -106,7 +109,7 @@ xcode-select --install
 ----
 . {install-homebrew-url}[Install Homebrew] using
 +
-[source,console]
+[source,bash]
 ----
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ----
@@ -130,7 +133,7 @@ brew install $(brew deps owncloud-client)
 ----
 . Install `qtkeychain` by running
 +
-[source,console]
+[source,bash]
 ----
 git clone https://github.com/frankosterfeld/qtkeychain.git
 ----
@@ -282,11 +285,16 @@ To build the most up-to-date version of the client:
 
 . Clone the latest versions of the client from http://git-scm.com[Git] as follows:
 +
-[source,console]
+[source,bash]
 ----
 git clone git://github.com/owncloud/client.git
 cd client
-# master this default, but you can also check out a tag like v2.5.4
+----
++
+Note master this default, but you can also check out a tag like v2.5.4
++
+[source,bash]
+----
 git checkout master
 git submodule init
 git submodule update
@@ -295,7 +303,7 @@ git submodule update
 [start=2]
 . Create the build directory:
 +
-[source,console]
+[source,bash]
 ----
 mkdir client-build
 cd client-build
@@ -330,7 +338,7 @@ qtkeychain must be compiled with the same prefix e.g.,
 [start=4]
 . Call
 +
-[source,console]
+[source,bash]
 ----
 make
 ----

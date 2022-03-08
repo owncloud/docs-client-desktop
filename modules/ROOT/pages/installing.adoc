@@ -30,7 +30,7 @@ Linux::
 * CentOS 7.6+ & 8 (x86-64)
 ** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
 +
-[source,console]
+[source,bash]
 ----
 sudo yum install epel-release
 ----

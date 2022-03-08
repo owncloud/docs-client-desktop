@@ -49,13 +49,13 @@ After building the ownCloud Client, install and configure Squish. To install Squ
 . Depending upon the version and system you are using, you will get a file like `squish-6.6.2-qt512x-linux64.run`.
 . Make the downloaded file executable by running the following example command:
 +
-[source,console]
+[source,bash]
 ----
 sudo chmod +x ./squish-6.6.2-qt512x-linux64.run
 ----
 . Execute the file:
 +
-[source,console]
+[source,bash]
 ----
 sudo ./squish-6.6.2-qt512x-linux64.run
 ----
@@ -70,7 +70,7 @@ After installing Squish, follow these steps to configure it:
 . {pythonchanger-url}[Download] the `PythonChanger.py` script and save it in your squish installation folder.
 . Run the downloaded script.
 +
-[source,console]
+[source,bash]
 ----
 sudo python3 PythonChanger.py --force
 ----
@@ -100,7 +100,7 @@ You can also use the {squish-docker-image-url}[Squish docker image] to run tests
 . Change `AUT/owncloud` value to `"/app/client-build/bin"`
 . Pull the docker image with the following command:
 +
-[source,console]
+[source,bash]
 ----
 sudo docker pull owncloudci/squish
 ----
@@ -123,7 +123,7 @@ NOTE: Before running middleware, install yarn following the instructions from {y
 * Start the {owncloud-test-middleware-url}[owncloud-test-middleware]
 * Run the Squish docker image using the following command:
 +
-[source,console]
+[source,bash]
 ----
 docker run --rm --network=host -e LICENSEKEY='YOUR_SQUISH_LICENSE' -e MIDDLEWARE_URL='http://localhost:3000/' -e BACKEND_HOST='http://localhost/owncloud-server/' -e SERVER_INI='/app/test/gui/local/server.ini' -e CLIENT_REPO='/app/' -e SQUISH_PARAMETERS='--retry 1' -v ${PWD}:/app owncloudci/squish:qt512
 ----
