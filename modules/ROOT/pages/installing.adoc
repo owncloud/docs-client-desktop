@@ -24,7 +24,7 @@ Windows::
 
 macOS::
 * macOS 10.13+ +
-(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available, M1 native support planned for Q4 2022 - no issues in regards of perforance or otherwise known at this time!)
+(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 & 10.12 available, M1 native support planned for Q4 2022 - no issues in regards of perforance or otherwise known at this time!)
 
 Linux::
 * CentOS 7.x with _minimum_ version x=6 (x86-64)
