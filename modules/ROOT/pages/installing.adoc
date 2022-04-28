@@ -19,12 +19,12 @@ You can download the latest version of the ownCloud Desktop Synchronization Clie
 Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distrubutions, see the list of supported distros below.
 
 Windows::
-* Windows 8+ +
+* Windows 7+ +
 (x86 with 32-bit or x86-64; Native WinVFS available for Windows 10 version 1709 or later)
 
 macOS::
-* macOS 10.13+ +
-(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 & 10.12 available, M1 native support planned for Q4 2022 - no issues in regards of perforance or otherwise known at this time!)
+* macOS 10.12+ +
+(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available, M1 native support planned for Q4 2022 - no issues in regards of perforance or otherwise known at this time!)
 
 Linux::
 * CentOS 7.x with _minimum_ version x=6 (x86-64)
