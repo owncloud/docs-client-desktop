@@ -27,7 +27,7 @@ macOS::
 (x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available, M1 native support planned for Q4 2022 - no issues in regards of perforance or otherwise known at this time!)
 
 Linux::
-* CentOS 7.x with _minimum_ version x=6 (x86-64)
+* CentOS 7.x with _minimum_ version x=8 (x86-64)
 ** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
 +
 [source,bash]
