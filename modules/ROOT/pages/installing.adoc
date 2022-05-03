@@ -27,7 +27,7 @@ macOS::
 (x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available, M1 native support planned for Q4 2022 - no issues in regards of perforance or otherwise known at this time!)
 
 Linux::
-* CentOS 7.x with _minimum_ version x=6 (x86-64)
+* CentOS 7.x with _minimum_ version x=8 (x86-64)
 ** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
 +
 [source,bash]
@@ -36,8 +36,8 @@ sudo yum install epel-release
 ----
 * Debian 10 & 11 (x86-64)
 * Fedora 34 & 35 (x86-64)
-* openSUSE Leap 15.2 & 15.3 (x86-64)
-* Ubuntu 20.04 & 21.04 & 21.10 (x86-64)
+* openSUSE Leap 15.3 (x86-64)
+* Ubuntu 20.04 & 21.10 & 22.04 (x86-64)
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
@@ -67,14 +67,14 @@ The MSI installer provides several features that can be installed or removed ind
 
 [source,console]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi.
+msiexec /passive /i ownCloud-x.y.z.msi
 ----
 
 The command will install the ownCloud Desktop Synchronization Client into the default location with the default features enabled. If you want to disable, e.g., desktop shortcut icons you can simply change the above command to the following:
 
 [source,console]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi REMOVE=DesktopShortcut.
+msiexec /passive /i ownCloud-x.y.z.msi REMOVE=DesktopShortcut
 ----
 
 See the following table for a list of available features:
@@ -114,7 +114,7 @@ You can also choose to only install the client itself by using the following com
 
 [source,console]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi ADDDEFAULT=Client.
+msiexec /passive /i ownCloud-x.y.z.msi ADDDEFAULT=Client
 ----
 
 If you for instance want to install everything but the `DesktopShortcut` and the `ShellExtensions` feature, you have two possibilities:
@@ -123,7 +123,7 @@ If you for instance want to install everything but the `DesktopShortcut` and the
 
 [source,console]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi ADDDEFAULT=StartMenuShortcuts.
+msiexec /passive /i ownCloud-x.y.z.msi ADDDEFAULT=StartMenuShortcuts
 ----
 
 *  You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties.
@@ -201,7 +201,7 @@ The ownCloud Client schedules a reboot after installation to make sure the Explo
 
 [source,console]
 ----
-msiexec /i ownCloud-x.y.z.msi REBOOT=ReallySuppress.
+msiexec /i ownCloud-x.y.z.msi REBOOT=ReallySuppress
 ----
 
 This will make msiexec exit with error ERROR_SUCCESS_REBOOT_REQUIRED (3010).
