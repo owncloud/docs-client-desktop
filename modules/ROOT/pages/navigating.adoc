@@ -1,11 +1,13 @@
 = Using the Synchronization Client
 :toc: right
-:toclevels: 1
+:toclevels: 2
 :oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
+
+:description: The ownCloud Desktop Client remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
 
 == Introduction
 
-The ownCloud Desktop Client remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
+{description}
 
 == Used Client Icons
 
@@ -37,7 +39,7 @@ The red circle with the white "x" indicates a configuration error, such as an in
 
 A right-click on the systray icon opens a menu for quick access to multiple operations.
 
-image:navigating/menu.png[image, width=30%,pdfwidth=30%]
+image::navigating/menu.png[image, width=60%,pdfwidth=60%]
 
 This menu provides the following options:
 
@@ -52,7 +54,7 @@ This menu provides the following options:
 
 A left-click on your systray icon opens the desktop client to the account settings window.
 
-image:navigating/client6.png[image, width=60%,pdfwidth=60%]
+image::navigating/client6.png[image, width=60%,pdfwidth=60%]
 
 === Configuring ownCloud Account Settings
 
@@ -66,16 +68,28 @@ At the top of the window are tabs for each configured sync account, and three ot
 
 The little button with three dots (the overflow menu) that sits to the right of the sync status bar offers four additional options:
 
-* Open Folder.
-* Choose What to Sync (This appears only when your file tree is collapsed, and expands the file tree)
-* Pause Sync / Resume Sync.
-* Remove folder sync connection.
+Show in Exporer::
+Opens your local ownCloud sync folder.
 
-*Open Folder* opens your local ownCloud sync folder.
+Show in web browser::
+Opens your ownCloud via the browser.
 
-*Pause Sync* pauses sync operations without making any changes to your account. It will continue to update file and folder lists, without downloading or updating files. To stop all sync activity use **Remove Folder Sync Connection**.
+Choose What to Sync::
+Select the folders and mounts in the main window to be synced. This appears only when your file tree is collapsed, and expands the file tree.
 
-image:navigating/client-7.png[image, pdfwidth=40%]
+Force sync now / Restart sync::
+Start the syncporcess immendiately - in none is running or restart a running sync process
+
+Pause Sync::
+Pauses sync operations without making any changes to your account. It will continue to update file and folder lists, without downloading or updating files.
+
+Remove Folder Sync Connection::
+Stop all sync activity
+
+Enable virtual file support::
+Enable the virtual file support for an account
+
+image::navigating/client-7.png[The Overflow Menu, width=60%,pdfwidth=60%]
 
 NOTE: ownCloud does not preserve the mtime (modification time) of directories, though it does update the mtimes on files. See https://github.com/owncloud/core/issues/7009:[Wrong folder date when syncing] for discussion of this.
 
@@ -110,15 +124,15 @@ If a directory includes ignored files that are marked with warning icons that do
 
 The ownCloud desktop sync client integrates with your file manager: Finder on Mac OS X, Explorer on Windows, and Nautilus on Linux. (Linux users must install the `owncloud-client-nautilus` plugin.) You can create share links, and share with internal ownCloud users the same way as in your ownCloud Web interface.
 
-image:navigating/mac-share.png[image, width=60%,pdfwidth=60%]
+image::navigating/mac-share.png[image, width=60%,pdfwidth=60%]
 
 Right-click your systray icon, hover over the account you want to use, and left-click  menu:Open folder["folder name"] to quickly enter your local ownCloud folder. Right-click the file or folder you want to share to expose the share dialog, and click menu:Share with ownCloud[].
 
-image:navigating/share-1.png[image, width=40%,pdfwidth=40%]
+image::navigating/share-1.png[image, width=70%,pdfwidth=70%]
 
 The share dialog has all the same options as your ownCloud Web interface.
 
-image:navigating/share-2.png[image, width=50%,pdfwidth=50%]
+image::navigating/share-2.png[image, width=60%,pdfwidth=60%]
 
 Use *Share with ownCloud* to see who you have shared with, and to modify their permissions, or to delete the share.
 
@@ -135,7 +149,7 @@ Displays local activities such as which local folders your files went into.
 Not Synced::
 Shows errors such as files not synced because of being excluded or any other failing status.
 
-image:navigating/client-8.png[image, width=60%,pdfwidth=60%]
+image::navigating/client-8.png[image, width=60%,pdfwidth=60%]
 
 In Windows, double clicking an activity entry pointing to an existing file in tabs *Server Activities* or *Sync Protocol*, will open the folder containing the file and highlight it.
 
@@ -143,42 +157,64 @@ On Linux, you can do the same with menu:mouse[right-click > Show file in browser
 
 In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL+a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
 
-== Server Notifications
+=== Server Notifications
 
-Starting with version 2.2.0, the client will display notifications from your ownCloud server that require manual interaction by you. For example, when a user on a remote ownCloud creates a new Federated share for you, you can accept it from your desktop client.
+The desktop client will display notifications from your ownCloud server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
 
-The desktop client automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab, and if you have *Show Desktop Notifications*.
-enabled (General tab) you'll also see a systray notification.
+For example, when a user on a remote ownCloud creates a new Federated share for you, you can accept it from your desktop client. This also displays notifications sent to users by the ownCloud admin via the Announcements app.
 
-image:navigating/client12.png[image, width=60%,pdfwidth=60%]
+image::navigating/client12.png[image,width=60%,pdfwidth=60%]
 
-This also displays notifications sent to users by the ownCloud admin via the Announcements app.
+== Settings Window
 
-== General Window
+The Settings Window has configuration options such as
 
-The General window has configuration options such as "_Launch on System Startup_", "_Use Monochrome Icons_", and "_Show Desktop Notifications_". This is where you will find the "_Edit Ignored Files_" button, to launch the ignored files editor, and "_Ask confirmation before downloading folders larger than [folder size]_".
+=== General Settings
 
-image:navigating/client-9.png[image, width=60%,pdfwidth=60%]
+* Launch on System Startup
+* Show Desktop Notifications
+* Use Monochrome Icons
 
-TIP: While you can elect whether to show or hide the crash reporter, from the General window, you can also configure whether to show or hide it from the xref:advanced_usage/configuration_file.adoc#section-general[general section of the configuration file] as well. Doing so can help with debugging on-startup-crashes.
+=== Advanced
 
-== Using the Network Window
+* Show sync folders in Explorer's Navigation Pane
+* Sync hidden files
+* Show crash reporter and the
+* Buttons for btn:[Edit Ignored Files] (xref:using-the-ignored-files-editor[see below]) and btn:[Log settings]
 
-proxy settings, SOCKS, bandwith, throttling, limiting.
+=== Advanced - Approval of folder sync
 
-The Network settings window enables you to define network proxy settings, and also to limit download and upload bandwidth.
+* Ask confirmation before downloading folders larger than [folder size]
+* Ask for confirmation before synchronizing external storages
 
-image:navigating/settings_network.png[image, width=60%,pdfwidth=60%]
+image::navigating/client-9.png[image, width=60%,pdfwidth=60%]
 
-Automatic Babdwith limiting: When activated, the client limits the upload- or download bandwidth to 25% of the currently available bandwidth of each operation. The available bandwidth is measured on the fly at the beginning of every operation for a short time period.
+TIP: While you can select whether to show or hide the crash reporter, from the Settings Window, you can also configure whether to show or hide it from the xref:advanced_usage/configuration_file.adoc#section-general[general section of the configuration file] as well. Doing so can help with debugging on-startup-crashes.
 
-== Using the Ignored Files Editor
+=== Using the Network Window
 
-Ignored files, exclude files, patterns.
+The Network settings window enables you to define network proxy settings and defines limits to the download and upload bandwidth.
 
-You might have some local files or directories that you do not want to backup and store on the server. To identify and exclude these files or directories, you can use the menu:General Tab[Ignored Files Editor]
+Proxy Settings::
+* No proxy
+* Use system proxy
+* Specify proxy manually as
+** HTTP(S)
+** SOCKS5
 
-image:navigating/ignored_files_editor.png[image, width=40%,pdfwidth=40%]
+Download and Upload Bandwidth::
+* No limit
+* Limit automatically +
+When activated, the client limits the upload or download bandwidth to 25% of the currently available bandwidth for each operation. The available bandwidth is measured on the fly at the beginning of every operation for a very short period of time.
+* Limit to
+
+image::navigating/settings_network.png[Network Settings,width=60%,pdfwidth=60%]
+
+=== Using the Ignored Files Editor
+
+You might have some local files or directories that you do not want to backup and store on the server. To identify and exclude these files or directories, you can use the menu:Settings[Advanced > Ignored Files Editor]
+
+image::navigating/ignored_files_editor.png[Ingnored Files Editor,width=60%,pdfwidth=60%]
 
 For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are contained in a system file. (typically `sync-exclude.lst`) located in the ownCloud Client application directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to show the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
 
