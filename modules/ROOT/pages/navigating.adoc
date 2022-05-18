@@ -170,6 +170,8 @@ The Network settings window enables you to define network proxy settings, and al
 
 image:navigating/settings_network.png[image, width=60%,pdfwidth=60%]
 
+Automatic Babdwith limiting: When activated, the client limits the upload- or download bandwidth to 25% of the currently available bandwidth of each operation. The available bandwidth is measured on the fly at the beginning of every operation for a short time period.
+
 == Using the Ignored Files Editor
 
 Ignored files, exclude files, patterns.
