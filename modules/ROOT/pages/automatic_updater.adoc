@@ -86,7 +86,7 @@ You can disable the automatic update mechanism, in the Mac OS X operating system
 
 === Preventing Automatic Updates in Linux Environments
 
-Because the Linux client does not provide automatic updating functionality, there is no need to remove the automatic-update check. However, if you want to disable it edit your desktop client configuration file, `$HOME/.config/ownCloud/owncloud.cfg`, add this line to the [General] section:
+Because the Linux client does not provide automatic updating functionality, there is no need to remove the automatic-update check. However, if you want to disable it, edit your desktop client configuration file: `$HOME/.config/ownCloud/owncloud.cfg`. Add this line to the [General] section:
 
 [source,ini]
 ----

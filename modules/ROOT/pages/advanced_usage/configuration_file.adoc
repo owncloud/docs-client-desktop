@@ -115,7 +115,7 @@ It does enable user interface options that can be used to opt in to experimental
 
 | `port` 
 | `8080` 
-| The port were the proxy is listening. 
+| The port where the proxy is listening.
 
 | `type` 
 | `2` 

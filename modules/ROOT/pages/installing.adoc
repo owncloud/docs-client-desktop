@@ -16,7 +16,7 @@ You can download the latest version of the ownCloud Desktop Synchronization Clie
 
 === System Requirements
 
-Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distrubutions, see the list of supported distros below.
+Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distributions, see the list of supported distros below.
 
 Windows::
 * Windows 7+ +
@@ -24,7 +24,7 @@ Windows::
 
 macOS::
 * macOS 10.12+ +
-(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available, M1 native support planned for Q4 2022 - no issues in regards of perforance or otherwise known at this time!)
+(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available, M1 native support planned for Q4 2022 - no issues in regard to performance or otherwise known at this time!)
 
 Linux::
 * CentOS 7.x with _minimum_ version x=6 (x86-64)
@@ -191,7 +191,7 @@ To launch the client automatically after installation, you can pass the `LAUNCH`
 msiexec /i ownCloud-x.y.z.msi LAUNCH="1"
 ----
 
-This option also removes the checkbox to let users decide if they want to launch the client for non passive/quiet mode.
+This option also removes the checkbox to let users decide if they want to launch the client for non-passive/quiet mode.
 
 NOTE: This option does not have any effect without GUI.
 
