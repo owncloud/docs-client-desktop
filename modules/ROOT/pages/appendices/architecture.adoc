@@ -7,7 +7,7 @@
 
 ownCloud provides desktop sync clients to synchronize the contents of local directories from computers, tablets, and handheld devices to the ownCloud server.
 
-Synchronization is accomplished using http://www.csync.org[csync], a bidirectional file synchronizing tool that provides both a command line client as well as a library.
+Synchronization is accomplished using http://www.csync.org[csync], a bidirectional file synchronizing tool that provides both a command line client and a library.
 A special module for csync was written to synchronize with the ownCloud built-in WebDAV server.
 
 The ownCloud Client software is written in C++ using the http://www.qt-project.org[Qt Framework]
@@ -31,7 +31,7 @@ During synchronization, the ownCloud Client checks both repositories for changes
 
 Until the release of ownCloud 4.5 and ownCloud Client 1.1, the ownCloud synchronization process employed a single file property -- the file modification time -- to decide which file was newer and needed to be synchronized to the other repository.
 
-The _modification timestamp_ is part of the files metadata. It is available on every relevant filesystem and is the typical indicator for a file change. Modification timestamps do not require special action to create, and have a general meaning. One design goal of csync is to not require a special server component. This design goal is why csync was chosen as the backend component.
+The _modification timestamp_ is part of the file's metadata. It is available on every relevant filesystem and is the typical indicator for a file change. Modification timestamps do not require special action to create, and have a general meaning. One design goal of csync is to not require a special server component. This design goal is why csync was chosen as the backend component.
 
 To compare the modification times of two files from different systems, csync must operate on the same base.
 Before ownCloud Client version. 1.1.0, csync required both device repositories to run on the exact same time. This requirement was achieved through the use of enterprise standard 
@@ -121,13 +121,13 @@ The server sends the checksum in an HTTP header with the file. (same format as a
 
 == Ignored Files
 
-The ownCloud Client supports the ability to exclude or ignore certain files from the synchronization process. Some system wide file patterns that are used to exclude or ignore files are included with the client by default and the ownCloud Client provides the ability to add custom patterns.
+The ownCloud Client supports the ability to exclude or ignore certain files from the synchronization process. Some system-wide file patterns that are used to exclude or ignore files are included with the client by default and the ownCloud Client provides the ability to add custom patterns.
 
 By default, the ownCloud Client ignores the following files:
 
 * Files matched by one of the patterns defined in the Ignored Files Editor.
 * Files starting with `._sync_*.db*`, `.sync_*.db*`,
-`.csync_journal.db*`, `.owncloudsync.log*`, as these files are reserved for journalling.
+`.csync_journal.db*`, `.owncloudsync.log*`, as these files are reserved for journaling.
 * Files with a name longer than 254 characters.
 * The file `Desktop.ini` in the root of a synced folder.
 * Files matching the pattern `_conflict-` unless conflict file uploading is enabled.
@@ -209,7 +209,7 @@ Example:
 
 == FileID
 
-The XML element `<oc:id>` represents the so called file ID. It is a non volatile string id that stays constant as long as the file exists. It is not changed if the file changes or is renamed or moved.
+The XML element `<oc:id>` represents the so-called file ID. It is a non-volatile string id that stays constant as long as the file exists. It is not changed if the file changes or is renamed or moved.
 
 Example:
 
