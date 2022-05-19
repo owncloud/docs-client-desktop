@@ -119,7 +119,7 @@ xcode-select --install
 ----
 brew tap owncloud/owncloud
 ----
-. Install a Qt5 version, ideally from from 5.10.1, using the command
+. Install a Qt5 version, ideally from 5.10.1, using the command
 +
 [source,console]
 ----
@@ -180,9 +180,9 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/KDE/craft/master/setup/install_craft.ps1'))
 ----
 
-The first command allows running scripts from remote sources. The second command starts installing KDE Craft. You are asked where you want to put the main folder, called `CraftRoot`, which will contain all source, build, and install folders. Please chose a disk with sufficient free space. 
+The first command allows running scripts from remote sources. The second command starts installing KDE Craft. You are asked where you want to put the main folder, called `CraftRoot`, which will contain all source, build, and install folders. Please choose a disk with sufficient free space.
 
-Last but not least, you need to chose the compiler you want to use. The official builds only supports {ms-visual-studio-2019-url}[Microsoft Visual Studio 2019]. However, if you're feeling adventurous, you can also try to use {mingw-w64-url}[Mingw-w64]. In contrast to Visual Studio, which you need to install in advance, KDE Craft can install `Mingw-w64` for you.
+Last but not least, you need to choose the compiler you want to use. The official builds only supports {ms-visual-studio-2019-url}[Microsoft Visual Studio 2019]. However, if you're feeling adventurous, you can also try to use {mingw-w64-url}[Mingw-w64]. In contrast to Visual Studio, which you need to install in advance, KDE Craft can install `Mingw-w64` for you.
 
 TIP: Unless you need 32bit builds, you should stick to the default of x64 builds.
 
@@ -221,7 +221,7 @@ TIP: You only need to do this once.
 
 ==== Build The Client
 
-Finally we can build the client with the following command:
+Finally, we can build the client with the following command:
 
 [source,powershell]
 ----
@@ -358,7 +358,7 @@ The following are known CMake parameters:
 * `CMAKE_PREFIX_PATH=/path/to/Qt5.12.4/5.12.4/yourarch/lib/cmake/`: Builds using that Qt version.
 * `CMAKE_INSTALL_PREFIX=path`: Set an install prefix. This is mandatory on Mac OS.
 +
-. *Optional:* Run a client that was installed in a custom CMAKE_INSTALL_PREFIX may not pick up the correct libraries automatically. You can use LD_LIBRARY_PATH to help finding the libraries like this:
+. *Optional:* Run a client that was installed in a custom CMAKE_INSTALL_PREFIX may not pick up the correct libraries automatically. You can use LD_LIBRARY_PATH to help find the libraries like this:
 +
 [source,console]
 ----
@@ -367,5 +367,5 @@ LD_LIBRARY_PATH=/opt/ownCloud/qt-5.12.4/lib/x86_64-linux-gnu/:/Users/path/to/cli
 
 == Compiling via ownBrander
 
-If you don’t want to go through the trouble of doing all the compile work manually, you can use
+If you don’t want to go through the trouble of doing all the compiling work manually, you can use
 https://doc.owncloud.com/branded_clients/[ownBrander] to create installer images for all platforms.
