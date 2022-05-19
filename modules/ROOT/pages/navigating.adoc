@@ -43,7 +43,7 @@ This menu provides the following options:
 
 * Quick access to your accounts.
 * Sync status.
-* Recent Changes, showing latest activities.
+* Recent Changes, showing the latest activities.
 * Settings.
 * Help menu.
 * Pause synchronizations.
@@ -66,16 +66,26 @@ At the top of the window are tabs for each configured sync account, and three ot
 
 The little button with three dots (the overflow menu) that sits to the right of the sync status bar offers four additional options:
 
-* Open Folder.
-* Choose What to Sync (This appears only when your file tree is collapsed, and expands the file tree)
-* Pause Sync / Resume Sync.
-* Remove folder sync connection.
+Show in Explorer::
+Opens your local ownCloud sync folder.
 
 *Open Folder* opens your local ownCloud sync folder.
 
 *Pause Sync* pauses sync operations without making any changes to your account. It will continue to update file and folder lists, without downloading or updating files. To stop all sync activity use **Remove Folder Sync Connection**.
 
-image:navigating/client-7.png[image, pdfwidth=40%]
+Force sync now / Restart sync::
+Start the sync process immediately - if none is running, or restart a running sync process
+
+Pause Sync::
+Pauses sync operations without making any changes to your account. It will continue to update file and folder lists, without downloading or updating files.
+
+Remove Folder Sync Connection::
+Stop all sync activity
+
+Enable virtual file support::
+Enable the virtual file support for an account
+
+image::navigating/client-7.png[The Overflow Menu, width=60%,pdfwidth=60%]
 
 NOTE: ownCloud does not preserve the mtime (modification time) of directories, though it does update the mtimes on files. See https://github.com/owncloud/core/issues/7009:[Wrong folder date when syncing] for discussion of this.
 
@@ -137,7 +147,7 @@ Shows errors such as files not synced because of being excluded or any other fai
 
 image:navigating/client-8.png[image, width=60%,pdfwidth=60%]
 
-In Windows, double clicking an activity entry pointing to an existing file in tabs *Server Activities* or *Sync Protocol*, will open the folder containing the file and highlight it.
+In Windows, double-clicking an activity entry pointing to an existing file in tabs *Server Activities* or *Sync Protocol*, will open the folder containing the file and highlight it.
 
 On Linux, you can do the same with menu:mouse[right-click > Show file in browser]
 
@@ -188,7 +198,7 @@ Patterns that end with a slash character (`/`) are applied to only directory com
 
 NOTE: Custom entries are currently not validated for syntactical correctness by the editor, so you will not see any warnings for bad syntax. If your synchronization does not work as you expected, check your syntax.
 
-Each pattern string in the list is preceded by a checkbox. When the check box contains a check mark, in addition to ignoring the file or directory component matched by the pattern, any matched files are also deemed "fleeting metadata" and removed by the client.
+Each pattern string in the list is preceded by a checkbox. When the checkbox contains a check mark, in addition to ignoring the file or directory component matched by the pattern, any matched files are also deemed "fleeting metadata" and removed by the client.
 
 In addition to excluding files and directories that use patterns defined in this list:
 

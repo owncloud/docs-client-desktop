@@ -26,7 +26,7 @@ NOTE: Before running tests, you need to make sure that you have disabled `oauth2
 
 === Building the Desktop Client
 
-To be able to run tests, you need to xref:appendices/building.adoc[build the Desktop Client] from latest master.
+To be able to run tests, you need to xref:appendices/building.adoc[build the Desktop Client] from the latest master.
 
 == Prepare Tests
 
