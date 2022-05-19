@@ -4,7 +4,7 @@
 
 == Introduction
 
-When using the client, depending the operating system (OS) you are using, file and folder names can have different restrictions. Creating files and folders with allowed names on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
+When using the client, depending on the operating system (OS) you are using, file and folder names can have different restrictions. Creating files and folders with allowed names on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
 
 NOTE: This is not an ownCloud rule but an OS dependency
 

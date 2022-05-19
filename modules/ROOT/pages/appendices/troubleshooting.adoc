@@ -76,7 +76,7 @@ image:appendices/troubleshooting/log_output_window.png[image,width=60%,pdfwidth=
 .  Later, to find the log files, click the btn:[Open folder] button.
 .  Select the logs for the time frame in which the issue occurred.
 
-NOTE: That the choice to enable logging will be persist across client restarts.
+NOTE: That the choice to enable logging will be persisted across client restarts.
 
 ==== Saving Files Directly
 
@@ -100,7 +100,7 @@ owncloud --logdir /tmp/owncloud_logs --logexpire 48
 
 ==== Logging in the Console
 
-If the ownCloud client isn't able to start and immediately crashes the first two options are not available. Therefore it might need to be necessary to start the ownCloud client using the command line in order to be see the error message
+If the ownCloud client isn't able to start and immediately crashes the first two options are not available. Therefore, it might be necessary to start the ownCloud client using the command line in order to see the error message
 
 On Linux and Mac simply open the terminal and run:
 
@@ -170,7 +170,7 @@ You can find more information about Apache logging at `http://httpd.apache.org/d
 
 == Core Dumps
 
-On macOS X and Linux systems, and in the unlikely event the client software crashes, the client is able to write a core dump file. Obtaining a core dump file can assist ownCloud Customer Support tremendously in the debugging process.
+On Mac OS X and Linux systems, and in the unlikely event the client software crashes, the client is able to write a core dump file. Obtaining a core dump file can assist ownCloud Customer Support tremendously in the debugging process.
 
 To enable the writing of core dump files, you must define the `OWNCLOUD_CORE_DUMP` environment variable on the system.
 

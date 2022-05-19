@@ -52,7 +52,7 @@ $ owncloudcmd --httpproxy http://192.168.178.1:8080 \
               https://server/owncloud/remote.php/webdav/Music.
 ----
 
-`owncloudcmd` will prompt for the user name and password, unless they have been specified on the command line or `-n` has been passed.
+`owncloudcmd` will prompt for the username and password, unless they have been specified on the command line or `-n` has been passed.
 
 == Exclude List
 
