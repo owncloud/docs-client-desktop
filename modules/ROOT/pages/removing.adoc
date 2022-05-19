@@ -16,7 +16,7 @@ If you have removed the Windows Synchronization Client but still have the ownClo
 2. Search (CTL+F) for the name of the client, in this case `owncloud `.
 3. Press `F3` for next search result.
 4. Look for the key `System.IsPinnedToNameSpaceTree`.
-5. Right click on the key name, change, set to `0` instead of `1`.
+5. Right-click on the key name, change, set to `0` instead of `1`.
 
 You have to do this twice. Once for the `x64` and `x32` system settings.
 

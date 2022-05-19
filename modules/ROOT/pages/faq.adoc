@@ -25,7 +25,7 @@ The sync client has been intentionally limited to sync no deeper than 100 sub-di
 
 === My Sync Folder Displays a Different Quota Than the Web Interface
 
-When other users share data with you, it's downloaded to the sync folder and counted as space used by the desktop client although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status. For more information, see the {user_manual_quota}[Storage Quotas in the User Manual]
+When other users share data with you, it's downloaded to the sync folder and counted as space used by the desktop client, although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status. For more information, see the {user_manual_quota}[Storage Quotas in the User Manual].
 
 == Major Configuration Changes
 
@@ -45,7 +45,7 @@ according your needs.
 
 ..  Remove the existing connection which syncs to the old directory.
 +
-To do so, in the client UI, which you can see below, click the drop down menu menu:Account[Remove].
+To do so, in the client UI, which you can see below, click the drop-down menu menu:Account[Remove].
 +
 image:faq/ownCloud-remove_existing_connection.png[image, width=80%,pdfwidth=60%]
 +
@@ -125,7 +125,7 @@ Such a file will have an old change date and usually can be removed.
 
 image:faq/04_folder-used-by-different-client.png[image, width=80%,pdfwidth=60%]
 
-This error can only happen with native Windows VFS. Desktop sync client discovered that the folder is part of a subtree that is managed by another client, for example testpilotcloud. The difference to the next error is that we can't be sure its a different client or an orphaned sync root.
+This error can only happen with native Windows VFS. Desktop sync client discovered that the folder is part of a subtree that is managed by another client, for example testpilotcloud. The difference to the next error is that we can't be sure it's a different client or an orphaned sync root.
 
 Both errors are windows only. In the future we will try to prevent the situation leading to this.
 

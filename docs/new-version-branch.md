@@ -32,7 +32,7 @@ When doing a new release for the Desktop Client like `2.x`, a new version branch
 
 **Step 4: Protection and Renaming**
 
-18. Go to the settings of the this repository and change the protection of the branch list (Settings > Branches) so that
+18. Go to the settings of this repository and change the protection of the branch list (Settings > Branches) so that
     the `2.x` branch gets protected and the `2.x-2` branch is no longer protected.
 19. Rename the `2.x-2` branch to `x_archived_2.x-2`
 
