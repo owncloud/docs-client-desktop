@@ -25,7 +25,7 @@ The sync client has been intentionally limited to sync no deeper than 100 sub-di
 
 === My Sync Folder Displays a Different Quota Than the Web Interface
 
-When other users share data with you, it's downloaded to the sync folder and counted as space used by the desktop client, although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status. For more information, see the {user_manual_quota}[Storage Quotas in the User Manual]
+When other users share data with you, it's downloaded to the sync folder and counted as space used by the desktop client, although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status. For more information, see the {user_manual_quota}[Storage Quotas in the User Manual].
 
 == Major Configuration Changes
 
