@@ -31,19 +31,15 @@ These instructions are updated to work with the latest version of the ownCloud D
 
 == Getting the Source Code
 
-The
-xref:generic-build-instructions[generic build instructions]
-pull the latest code directly from GitHub, and work on
-xref:linux[Linux], xref:macos[Mac OS X], and 
-xref:windows-development-build-with-kde-craft[Windows].
+The xref:generic-build-instructions[generic build instructions] pull the latest code directly from GitHub, and work on xref:linux[Linux], xref:macos[Mac OS X], and xref:windows-development-build-with-kde-craft[Windows].
 
 == Linux
 
 For the published Desktop Apps we link against QT5 dependencies from our own repositories so that we can have the same versions on all distributions. This chapter shows you how to build the Desktop App yourself with this setup. If you want to use the QT5 dependencies from your system, see the next chapter.
 
-You may wish to use source packages for your Linux distribution, as these give you the exact sources from which the binary packages are built. These are hosted on the 
-{owncloud-obs}[ownCloud repository from OBS].
-Go to the {opensuse-url}[Index of repositories] to see all the Linux client repositories.
+For the published desktop clients, we link against QT5 dependencies from our own repositories so that we can have the same versions on all distributions. This chapter shows you how to build the client yourself with this setup. If you want to use the QT5 dependencies from your system, see the next chapter.
+
+You may wish to use source packages for your Linux distribution, as these give you the exact sources from which the binary packages are built. These are hosted on the {owncloud-obs}[ownCloud repository from OBS]. Go to the {opensuse-url}[Index of repositories] to see all the Linux client repositories.
 
 [NOTE]
 ====
@@ -62,20 +58,40 @@ echo 'deb-src http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/D
 
 The above registers the source repository of the released Desktop App. There is also `.../desktop:/testing/...` and e.g. `.../desktop:/daily:/2.7/...` for beta versions or daily snapshots.
 
+for beta versions or daily snapshots.
 
 Install the dependencies using the following commands for your specific Linux distribution. Make sure the repositories for source packages are enabled. These are:
 
 [cols="30%,70%",options="header"]
 |===
-| Distribution | Installation Instructions
-| Debian/Ubuntu | `apt update; apt build-dep owncloud-client`
-| openSUSE/SLES | `zypper ref; zypper si -d owncloud-client`
-| Fedora/CentOS/RHEL | `yum install yum-utils; yum-builddep owncloud-client`
+| Distribution
+| Installation Instructions
+
+| Debian / Ubuntu
+a|
+[source,bash]
+----
+apt update && apt build-dep owncloud-client
+----
+
+| openSUSE / SLES
+a|
+[source,bash]
+----
+zypper ref && zypper si -d owncloud-client
+----
+
+| Fedora / CentOS / RHEL
+a|
+[source,bash]
+----
+yum install yum-utils && yum-builddep owncloud-client
+----
 |===
 
 Follow the xref:generic-build-instructions[generic build instructions], starting with step 2.
 
-== Linux with System Dependencies
+=== Building With System QT5 Dependencies
 
 Build sources from a GitHub checkout with dependencies provided by your Linux distribution. While this allows more freedom for development, it does not exactly represent what we ship as packages. See above for how to recreate packages from source.
 
@@ -85,9 +101,12 @@ To get the source dependencies on Debian and Ubuntu, run the following command:
 
 [source,bash]
 ----
-sudo apt install qtdeclarative5-dev libinotifytools-dev \
-  qt5keychain-dev python3-sphinx \
-  libsqlite3-dev
+sudo apt install \
+    qtdeclarative5-dev \
+    libinotifytools-dev \
+    qt5keychain-dev \
+    python3-sphinx \
+    libsqlite3-dev
 ----
 ====
 
@@ -292,7 +311,7 @@ git clone git://github.com/owncloud/client.git
 cd client
 ----
 +
-Note master this default, but you can also check out a tag like v2.5.4
+Note that the checkout defaults to master, you can also check out a tag like v2.10.1
 +
 [source,bash]
 ----
@@ -318,18 +337,20 @@ cd client-build
 cmake -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.4 -DCMAKE_INSTALL_PREFIX=/Users/path/to/client/../install/ ..
 ----
 +
-For Linux builds (using QT5 libraries via build-dep) a typical setting is 
+For Linux builds (using QT5 libraries via build-dep) a typical setting is:
 +
 [source,console]
 ----
 -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.4/
 ----
 +
-However, the version number may vary. For Linux builds using system dependencies `-DCMAKE_PREFIX_PATH` is not needed. You must use absolute paths for the `include` and `library` directories.
+However, the version number may vary.
++
+For Linux builds using system dependencies `-DCMAKE_PREFIX_PATH` is not needed. You must use absolute paths for the `include` and `library` directories.
 +
 On Mac OS X, you need to specify `-DCMAKE_INSTALL_PREFIX=target`, where `target` is a private location, i.e. in parallel to your build dir by specifying `../install`.
 +
-qtkeychain must be compiled with the same prefix e.g., 
+`qtkeychain` must be compiled with the same prefix e.g., 
 +
 [source,console]
 ----
@@ -346,6 +367,8 @@ make
 +
 The ownCloud binary will appear in the `bin` directory.
 
+*Optional Steps*
+
 [start=5]
 . (Optional) Call `make install` to install the Desktop App to the `/usr/local/bin` directory (or as per CMAKE_INSTALL_PREFIX). +
 The following are known CMake parameters:
@@ -359,7 +382,7 @@ The following are known CMake parameters:
 * `CMAKE_PREFIX_PATH=/path/to/Qt5.12.4/5.12.4/yourarch/lib/cmake/`: Builds using that Qt version.
 * `CMAKE_INSTALL_PREFIX=path`: Set an install prefix. This is mandatory on Mac OS.
 +
-. *Optional:* Run a Desktop App that was installed in a custom CMAKE_INSTALL_PREFIX may not pick up the correct libraries automatically. You can use LD_LIBRARY_PATH to help find the libraries like this:
+. Run a client that was installed in a custom `CMAKE_INSTALL_PREFIX` may not pick up the correct libraries automatically. You can use `LD_LIBRARY_PATH` to help find the libraries like this:
 +
 [source,console]
 ----
