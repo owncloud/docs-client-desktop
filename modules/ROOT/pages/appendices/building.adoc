@@ -182,7 +182,7 @@ iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.co
 
 The first command allows running scripts from remote sources. The second command starts installing KDE Craft. You are asked where you want to put the main folder, called `CraftRoot`, which will contain all source, build, and install folders. Please choose a disk with sufficient free space.
 
-Last but not least, you need to choose the compiler you want to use. The official builds only supports {ms-visual-studio-2019-url}[Microsoft Visual Studio 2019]. However, if you're feeling adventurous, you can also try to use {mingw-w64-url}[Mingw-w64]. In contrast to Visual Studio, which you need to install in advance, KDE Craft can install `Mingw-w64` for you.
+The currently supported version of Visual Studio is {ms-visual-studio-2019-url}[Microsoft Visual Studio 2019]. However, if you're feeling adventurous, you can also try to use {mingw-w64-url}[Mingw-w64]. In contrast to Visual Studio, which you need to install in advance, KDE Craft can install `Mingw-w64` for you.
 
 TIP: Unless you need 32bit builds, you should stick to the default of x64 builds.
 
