@@ -23,6 +23,9 @@
 
 == Introduction
 
+
+== Building the Descktop Client
+
 {description} Here you can finde the source of the link:https://owncloud.org/download/#owncloud-desktop-client[ownCloud Desktop App]. You should read this section if you want to develop for the Desktop App. Build instructions are subject to change as development proceeds.
 
 NOTE: Please check the version for which you want to build.
@@ -391,5 +394,5 @@ LD_LIBRARY_PATH=/opt/ownCloud/qt-5.12.4/lib/x86_64-linux-gnu/:/Users/path/to/cli
 
 == Compiling via ownBrander
 
-If you don’t want to go through the trouble of doing all the compiling work manually, you can use
-https://doc.owncloud.com/branded_clients/[ownBrander] to create installer images for all platforms.
+If you don’t want to go through the challenges of doing all the compiling work manually, you can use
+xref:{latest-branding-version}@branded_clients:ROOT:index.adoc[ownBrander] to create installer images for all platforms.

@@ -9,6 +9,11 @@ content:
   - url: .
     branches:
     - HEAD
+  # the docs-xxx are just present for the test build to satisfy used references
+  # the real build is made in the docs repo using correct values
+  - url: https://github.com/owncloud/docs-client-branding.git
+    branches:
+    - master
 
 ui:
   output_dir: assets
