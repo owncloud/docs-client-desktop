@@ -9,7 +9,7 @@
 
 {description} Usually building a client locally is helpful when contributing to the source and testing your result. Note that build instructions are subject to change as development proceeds. See the {client-source-url}[ownCloud Desktop Client] source for contributions to the client.
 
-== Building the Descktop Client
+== Building the Desktop Client
 
 ownCloud provides an own repository as starting point for building the client. All necessary details can be found there. See the {ownbuild-url}[ownbuild repository] to proceed.
 
