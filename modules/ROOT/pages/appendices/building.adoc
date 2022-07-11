@@ -24,7 +24,7 @@
 == Introduction
 
 
-== Building the Descktop Client
+== Building the Desktop Client
 
 {description} Here you can finde the source of the link:https://owncloud.org/download/#owncloud-desktop-client[ownCloud Desktop App]. You should read this section if you want to develop for the Desktop App. Build instructions are subject to change as development proceeds.
 
