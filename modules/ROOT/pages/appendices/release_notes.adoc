@@ -1,6 +1,6 @@
 = Release Notes
 :desktop-changelog-url: https://github.com/owncloud/client/blob/master/CHANGELOG.md
 
-== Changelog for the Desktop Client
+== Changelog for the Desktop App
 
-ownCloud provides a full changelog with a summary and details for each release of the Desktop Client. Click the following link to access it at {desktop-changelog-url}[GitHub].
+ownCloud provides a full changelog with a summary and details for each release of the Desktop App. Click the following link to access it at {desktop-changelog-url}[GitHub].
