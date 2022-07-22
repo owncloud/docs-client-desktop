@@ -1,9 +1,9 @@
-= Automatic Updating of the Desktop Client
+= Automatic Updating of the Desktop App
 :toc: right
 
 == Introduction
 
-The Automatic Updater ensures that you always have the latest features and bug fixes for your ownCloud Desktop synchronization client. The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
+The Automatic Updater ensures that you always have the latest features and bug fixes for your ownCloud Desktop App. The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
 
 == Basic Workflow
 
@@ -11,19 +11,19 @@ The following sections describe how to use the Automatic Updater on different op
 
 === Windows
 
-The ownCloud client checks for updates and downloads them when available. You can view the update status under menu:Settings[General > Updates] in the ownCloud client.
+The ownCloud Desktop App checks for updates and downloads them when available. You can view the update status under menu:Settings[General > Updates] in the ownCloud Desktop App.
 
-If an update is available, and has been successfully downloaded, the ownCloud client starts a silent update prior to its next launch and then restarts itself. Should the silent update fail, the client offers a manual download.
+If an update is available, and has been successfully downloaded, the ownCloud Desktop App starts a silent update prior to its next launch and then restarts itself. Should the silent update fail, the Desktop App offers a manual download.
 
 NOTE: Administrative privileges are required to perform the update.
 
 === Mac OS X
 
-If a new update is available, the ownCloud client initializes a pop-up dialog to alert you of the update and requesting that you update to the latest version. Due to their use of the Sparkle frameworks, this is the default process for Mac OS X applications.
+If a new update is available, the ownCloud Desktop App initializes a pop-up dialog to alert you of the update and requesting that you update to the latest version. Due to their use of the Sparkle frameworks, this is the default process for Mac OS X applications.
 
 === Linux
 
-Linux distributions provide their own update tools, so ownCloud clients that use the Linux operating system do not perform any updates on their own. The client will inform you (menu:Settings[General > Updates]) when an update is available.
+Linux distributions provide their own update tools. The ownCloud Desktop App use the Linux operating system do not perform any updates on their own. The client will inform you (menu:Settings[General > Updates]) when an update is available.
 
 == Preventing Automatic Updates
 
@@ -71,7 +71,7 @@ HKEY_LOCAL_MACHINE\Software\Policies\ownCloud\ownCloud
 .  Add the key `skipUpdateCheck` (of type DWORD).
 .  Specify a value of `1` to the machine.
 
-NOTE: Enterprise branded clients (https://doc.owncloud.com/branded_clients/[Building Branded ownCloud Clients]) have different key names, which are set in ownBrander using the Application Vendor and Application Name fields.
+NOTE: Enterprise branded Desktop Apps (https://doc.owncloud.com/branded_clients/[Building Branded ownCloud Clients]) have different key names, which are set in ownBrander using the Application Vendor and Application Name fields.
 
 Your key names look like this:
 
@@ -86,7 +86,7 @@ You can disable the automatic update mechanism, in the Mac OS X operating system
 
 === Preventing Automatic Updates in Linux Environments
 
-Because the Linux client does not provide automatic updating functionality, there is no need to remove the automatic-update check. However, if you want to disable it, edit your desktop client configuration file: `$HOME/.config/ownCloud/owncloud.cfg`. Add this line to the [General] section:
+Because the Linux Desktop App does not provide automatic updating functionality, there is no need to remove the automatic-update check. However, if you want to disable it, edit your Desktop App configuration file: `$HOME/.config/ownCloud/owncloud.cfg`. Add this line to the [General] section:
 
 [source,ini]
 ----

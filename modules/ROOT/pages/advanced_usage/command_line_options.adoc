@@ -3,7 +3,7 @@
 
 == Introduction
 
-Depending on your operating system, you can start the ownCloud client from the command line by typing `owncloud` or `owncloud.exe`. You may need to change to the directory of the binary first. When starting `owncloud` manually, you can add options to this command.
+Depending on your operating system and how you have installed the Desktop App, you can start the ownCloud Desktop App from the command line by typing `owncloud`, `owncloud.exe` or by the AppImage file name. You may need to change to the directory of the binary first. When starting `owncloud` manually, you can add options to this command.
 
 == List Options
 

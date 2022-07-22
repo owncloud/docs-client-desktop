@@ -3,7 +3,7 @@
 
 == Introduction
 
-When disk space is low, the ownCloud Client will be unable to synchronize all files. This section describes its behavior in a low disk space situation as well as the adjustable environment variables that influence it.
+When disk space is low, the ownCloud Desktop App will be unable to synchronize all files. This section describes its behavior in a low disk space situation as well as the adjustable environment variables that influence it.
 
 == Cases
 
