@@ -6,11 +6,11 @@
 
 == Introduction
 
-ownCloud offers the possibility for users to enable a virtual file system (VFS) when synchronizing data. This has the big advantage that all files and folders are visible to the client, but the files are not downloaded until the user requests to do so. Here are some of the key benefits:
+ownCloud offers the possibility for users to enable a virtual file system (VFS) when synchronizing data. This has the big advantage that all files and folders are visible to the Desktop App, but the files are not downloaded until the user requests to do so. Here are some of the key benefits:
 
 * Full access to files and folders without having to download them all first
 * Selectively sync folders and files based on user requirements
-* Optimize space usage on the client
+* Optimize space usage on the Desktop App
 
 The quote below gives you a brief overview of what a virtual file system is about.
 

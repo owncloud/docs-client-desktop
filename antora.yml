@@ -1,6 +1,6 @@
 name: desktop
-title: Desktop Client
-version: '2.10'
+title: Desktop App
+version: 'next'
 start_page: ROOT:index.adoc
 nav:
 - modules/ROOT/partials/nav.adoc
