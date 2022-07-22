@@ -1,13 +1,15 @@
-= Using the Synchronization Client
+= Using the Desktop App
 :toc: right
 :toclevels: 1
 :oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
+
+:description: The ownCloud Desktop App remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
 
 == Introduction
 
 The ownCloud Desktop Client remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
 
-== Used Client Icons
+== Used App Icons
 
 image:navigating/icon.png[image]
 
@@ -23,7 +25,7 @@ The yellow icon with the parallel lines tells you your synchronization has been 
 
 image:navigating/icon-offline.png[image]
 
-The gray icon with three white dots means your sync client has lost its connection with your ownCloud server.
+The gray icon with three white dots means your Desktop App has lost its connection with your ownCloud server.
 
 image:navigating/icon-information.png[image]
 
@@ -48,9 +50,9 @@ This menu provides the following options:
 * Help menu.
 * Pause synchronizations.
 * An option to log in or log out of all of your accounts at once.
-* Quit ownCloud, logging out and closing the client.
+* Quit ownCloud, logging out and closing the Desktop App.
 
-A left-click on your systray icon opens the desktop client to the account settings window.
+A left-click on your systray icon opens the Desktop App to the account settings window.
 
 image:navigating/client6.png[image, width=60%,pdfwidth=60%]
 
@@ -91,7 +93,7 @@ NOTE: ownCloud does not preserve the mtime (modification time) of directories, t
 
 === Adding New Accounts
 
-You may configure multiple ownCloud accounts in your desktop sync client. Simply click the menu:Account[Add New] button on any account tab to add a new account, and then follow the account creation wizard. The new account will appear as a new tab in the settings dialog, where you can adjust its settings at any time. Use menu:Account[Remove] to delete accounts.
+You may configure multiple ownCloud accounts in your Desktop App. Simply click the menu:Account[Add New] button on any account tab to add a new account, and then follow the account creation wizard. The new account will appear as a new tab in the settings dialog, where you can adjust its settings at any time. Use menu:Account[Remove] to delete accounts.
 
 [NOTE]
 ====
@@ -100,7 +102,7 @@ To use *Two-Factor Authentication* (2FA), ownCloud server must have the {oauth2-
 
 == File Manager Overlay Icons
 
-The ownCloud sync client provides overlay icons, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indicate the sync status of your ownCloud files.
+The ownCloud Desktop App provides overlay icons, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indicate the sync status of your ownCloud files.
 
 The overlay icons are similar to the systray icons introduced above. They behave differently on files and directories according to sync status and errors.
 
@@ -110,7 +112,7 @@ If the file is ignored from syncing, for example because it is on your exclude l
 
 If there is a sync error, or the file is blacklisted, it displays an eye-catching red X. If the file is waiting to be synced, or is currently syncing, the overlay icon displays a blue cycling icon.
 
-When the client is offline, no icons are shown to reflect that the folder is currently out of sync and no changes are synced to the server.
+When the Desktop App is offline, no icons are shown to reflect that the folder is currently out of sync and no changes are synced to the server.
 
 The overlay icon of a synced directory indicates the status of the files in the directory. If there are any sync errors, the directory is marked with a warning icon.
 
@@ -118,7 +120,7 @@ If a directory includes ignored files that are marked with warning icons that do
 
 == Sharing From Your Desktop
 
-The ownCloud desktop sync client integrates with your file manager: Finder on Mac OS X, Explorer on Windows, and Nautilus on Linux. (Linux users must install the `owncloud-client-nautilus` plugin.) You can create share links, and share with internal ownCloud users the same way as in your ownCloud Web interface.
+The ownCloud Desktop App integrates with your file manager: Finder on Mac OS X, Explorer on Windows, and Nautilus on Linux. (Linux users must install the `owncloud-client-nautilus` plugin.) You can create share links, and share with internal ownCloud users the same way as in your ownCloud Web interface.
 
 image:navigating/mac-share.png[image, width=60%,pdfwidth=60%]
 
