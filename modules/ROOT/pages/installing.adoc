@@ -1,5 +1,6 @@
-= Installing the Desktop Synchronization Client
+= Installing the Desktop App
 :toc: right
+:toclevels: 4
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
 :ms-adddefault-url: https://docs.microsoft.com/en-us/windows/win32/msi/adddefault
 :desktop-clients-url: https://owncloud.com/desktop-app/
@@ -7,33 +8,45 @@
 :gnome-keyring-url: https://wiki.gnome.org/Projects/GnomeKeyring/
 :kwalletmanager-url: https://utils.kde.org/projects/kwalletmanager/
 :ubuntu-lts-url: https://wiki.ubuntu.com/LTS
+:libfuse2-url: https://docs.appimage.org/user-guide/troubleshooting/fuse.html#setting-up-fuse-2-x-alongside-of-fuse-3-x-on-recent-ubuntu-22-04-debian-and-their-derivatives
+:install-appimage-url: https://docs.appimage.org/introduction/quickstart.html#ref-quickstart
+:gnome-extensions-url: https://extensions.gnome.org/extension/615/appindicator-support/
+:appimagelauncher-url: https://docs.appimage.org/introduction/software-overview.html#ref-appimagelauncher
+:install-appimagelauncher-url: https://github.com/TheAssassin/AppImageLauncher/wiki
+:description: The Desktop App enables users to access and sync files and folders from their ownCloud, work on remote files right from the desktop as if they were stored on their computer – because they are. Continuous synchronization to and from the ownCloud server provides ease of use combined with comprehensive access control.
 
 == Introduction
 
-You can download the latest version of the ownCloud Desktop Synchronization Client from the {desktop-clients-url}[Desktop App Download] page. There are clients for _Linux_, _macOS_, and _Microsoft Windows_ available.
+{description}
 
 == System Requirements and Installation
+
+You can download the latest version of the ownCloud Desktop App from the {desktop-clients-url}[Desktop App Download] page. There are Desktop Apps for _Linux_, _macOS_, and _Microsoft Windows_ available. When using Linux, you can also use AppImage.
 
 === System Requirements
 
 Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distributions, see the list of supported distros below.
 
 Windows::
-* Windows 7+ +
-(x86 with 32-bit or x86-64; Native WinVFS available for Windows 10 version 1709 or later)
+* Windows 7+
+** x86 with 32-bit or x86-64 with 64-bit
+** Native WinVFS available for Windows 10 version 1709 or later
 
 macOS::
-* macOS 10.12+ +
-(x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available, M1 native support planned for Q4 2022 - no issues in regard to performance or otherwise known at this time!)
+* macOS 10.12+
+** x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available
+** M1 native support planned for Q4 2022 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
 * CentOS 7.x with _minimum_ version x=8 (x86-64)
+
 ** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
 +
 [source,bash]
 ----
 sudo yum install epel-release
 ----
+
 * Debian 10 & 11 (x86-64)
 * Fedora 34 & 35 (x86-64)
 * openSUSE Leap 15.3 (x86-64)
@@ -43,23 +56,147 @@ NOTE: For Linux distributions, we support, if technically feasible, the latest 2
 
 === Installation on Mac OS X and Windows
 
-Installation on Mac OS X and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured the sync client will automatically keep itself updated; see `autoupdate` for more information.
+Installation on Mac OS X and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured the Desktop App will automatically keep itself updated; see `autoupdate` for more information.
 
 === Installation on Linux
 
-Full installation::
-Linux users must follow the instructions on the download page to add the appropriate repository for their Linux distribution, install the signing key, and then use their package managers to install the desktop sync client. Linux users will also update their sync clients via package manager, and the client will display a notification when an update is available.
+* No matter whether the Desktop App is installed natively or used as an AppImage, you can add command line parameters when starting up post installation. One parameter to mention is the option `-s`. This option forces the settings page to be shown on startup. While not necessary during general usage, it can be helpful if system tray icons are not available any more within your desktop environment.
+
+* Linux users should also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the Desktop App can log in automatically.
+
+* Note, our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
+
+* Using GNOME on recent distributions like Ubuntu 22.04, Debian 11 or others, the system tray is typically no longer available. This makes it hard to get back an app that has been minimized to the system tray. You have to install an extension in order to restore the system tray in this case in order to be able to find and restore the minimized application.
 +
-Linux users must also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the sync client can login automatically.
-+
+--
+For distributions like Ubuntu 22.04 or Debian 11, please use the command below to install the extension, otherwise please follow the {gnome-extensions-url}[AppIndicator Support] installation.
+
+[source,bash]
+----
+sudo apt install gnome-shell-extension-appindicator
+----
+
+When the extension is installed, you need to restart the GNOME shell. To do so, hit btn:[Alt+F2] on the keyboard, type btn:[r] and  btn:[Enter]. Now you will see the new extensions added to the extensions list. To enable an extension, switch the button on the right to the btn:[On] position. For the particular system tray icon extension, the name for all distributions is **Ubuntu AppIndicators** because the notification system AppIndicators has been developed by Ubuntu. Once enabled, the system tray is shown again within the desktop environment.
+
+image::installing/gnome-shell-extension-appindicator-selector.png[width=350%,pdfwidth=60%]
+--
+
+==== Native installation
+
+Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available.
+
 You will also find links to source code archives and older versions on the download page.
 
-AppImage::
-Starting with Desktop version 2.9, an {appimage-wikipedia-url}[AppImage] build of the ownCloud desktop sync client is available to support more Linux platforms. You can download the AppImage right at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
+==== AppImage
+
+Starting with Desktop App version 2.9, an {appimage-wikipedia-url}[AppImage] build of the ownCloud Desktop App is available to support more Linux platforms. You can download the AppImage at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
+
+AppImage is an alternative way to use Linux applications -- instead of having multiple files in several places making up a package, the entire application is contained in a single file ending with an `.AppImage` suffix, including all necessary dependencies and libraries. ownCloud provides a single AppImage which runs on all (modern) Linux platforms.
+
+Known limitations for the 2.10.x AppImage::
+* CentOS 7 is currently not supported.
+
+* For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
+issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
+
+* The file browser integration, which means overlay icons and the context menu, is not included in the AppImage. You need to install file browser extension packages manually.
+
+* AppImages do not start automatically. You have to configure your desktop to automatically start the Desktop App when logging in.
+** For GNOME, search for _startup applications_ in the desktop menu.
+** As an alternative, use the {appimagelauncher-url}[AppImageLauncher] App which also helps managing AppImages.
+
+* There is no automatic updating. Any update is like installing the AppImage.
+
+Installing _libfuse2_ if required::
+--
+* Check if `libfuse2` is already installed:
++
+[source,bash]
+----
+dpkg -l libfuse2
+----
+
+* Check if there is an installation candidate for `libfuse2`:
++
+[source,bash]
+----
+sudo apt-cache show libfuse2
+----
+
+* Install `libfuse2`:
++
+[source,bash]
+----
+sudo apt install libfuse2
+----
+--
+
+Install the AppImageLauncher app::
+See the {install-appimagelauncher-url}[Install AppImageLauncher] wiki for details about installing it. AppImageLauncher does not need to be started. It hooks in when you start an AppImage. There are different responses when starting an AppImage:
++
+--
+How to launch an AppImage::
+When you open an AppImage file via your file browser that you have not opened before then double click on it:
++
+image:installing/appimagelauncher_open_question.png[AppImage First Time Usage,width=350]
+--
++
+--
+First time usage::
+After opening an AppImage, if AppImageLauncher has been started for the first time, it will ask you to define some basic settings:
++
+image:installing/appimagelauncher_first_run.png[AppImage First Time Usage,width=350]
+--
++
+--
+AppImage Integration Question::
+Post first time configuration or when you open the AppImage file via your file browser, for example by double clicking on it:
++
+image:installing/appimagelauncher_integrate_question.png[AppImage Integration Question,width=350]
+--
+
+Install and run the Desktop App AppImage::
+The example below uses the terminal but you can also use the GUI. For details see {install-appimage-url}[How to run an AppImage].
++
+--
+* Go to the {desktop-clients-url}[download] page and download the recent AppImage into the Applications folder in your home directory. Replace the URL from the example with the actual URL from the download page. Note the folder name `Applications` can be any name and helps to collect all AppImages you have on one location. The AppImageLauncher, if used, has this name predefined unless you change it.
++
+[source,bash]
+----
+mkdir -p ~/Applications
+----
++
+[source,bash]
+----
+cd ~/Applications
+----
++
+[source,bash]
+----
+wget https://download.owncloud.com/desktop/ownCloud/stable//2.10.1.7187/linux-appimage/ownCloud-2.10.1.7187.AppImage
+----
+
+* The following steps are only necessary when the AppImageLauncher is _not_ used:
+** Make the AppImage executable:
++
+[source,bash]
+----
+sudo chmod +x ownCloud-2.10.1.7187.AppImage
+----
+
+* Start the AppImage by invoking the following command:
++
+[source,bash]
+----
+~/Applications/ownCloud-2.10.1.7187.AppImage
+----
+
+* Note when you start the AppImage after setting it to be executable, AppImageLauncher will open if installed.
+--
 
 == Customizing the Windows Installation
 
-If you just want to install ownCloud Desktop Synchronization Client on your local system, you can simply launch the `.msi` file and configure it in the wizard that pops up.
+If you just want to install the ownCloud Desktop App on your local system, you can simply launch the `.msi` file and configure it in the wizard that pops up.
 
 === Features
 
@@ -70,7 +207,7 @@ The MSI installer provides several features that can be installed or removed ind
 msiexec /passive /i ownCloud-x.y.z.msi
 ----
 
-The command will install the ownCloud Desktop Synchronization Client into the default location with the default features enabled. If you want to disable, e.g., desktop shortcut icons you can simply change the above command to the following:
+The command will install the ownCloud Desktop App into the default location with the default features enabled. If you want to disable, e.g., desktop shortcut icons you can simply change the above command to the following:
 
 [source,console]
 ----
@@ -110,7 +247,7 @@ required
 
 ==== Installation
 
-You can also choose to only install the client itself by using the following command:
+You can also choose to only install the Desktop App itself by using the following command:
 
 [source,console]
 ----
@@ -184,20 +321,20 @@ msiexec /passive /i ownCloud-x.y.z.msi SKIPAUTOUPDATE="1"
 
 === Launch After Installation
 
-To launch the client automatically after installation, you can pass the `LAUNCH` property.
+To launch the Desktop App automatically after installation, you can pass the `LAUNCH` property.
 
 [source,console]
 ----
 msiexec /i ownCloud-x.y.z.msi LAUNCH="1"
 ----
 
-This option also removes the checkbox to let users decide if they want to launch the client for non-passive/quiet mode.
+This option also removes the checkbox to let users decide if they want to launch the Desktop App for non-passive/quiet mode.
 
 NOTE: This option does not have any effect without GUI.
 
 === No Reboot After Installation
 
-The ownCloud Client schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded. If you're taking care of the reboot yourself, you can set the `REBOOT` property.
+The ownCloud Desktop App schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded. If you're taking care of the reboot yourself, you can set the `REBOOT` property.
 
 [source,console]
 ----
@@ -226,7 +363,7 @@ On the _"Local Folder Option"_ screen you may sync all of your files on the ownC
 
 image:installing/client-3.png[Select which remote folders to sync, and which local folder to store them in, width=60%,pdfwidth=60%]
 
-When you have completed selecting your sync folders, click the _"Connect"_ button at the bottom right. The client will attempt to connect to your ownCloud server, and when it is successful you'll see two buttons:
+When you have completed selecting your sync folders, click the _"Connect"_ button at the bottom right. The Desktop App will attempt to connect to your ownCloud server, and when it is successful you'll see two buttons:
 
 * One to connect to your ownCloud Web GUI.
 * One to open your local folder.

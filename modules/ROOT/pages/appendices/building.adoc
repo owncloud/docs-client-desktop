@@ -1,4 +1,4 @@
-= Appendix Building the Client
+= Appendix Building the Desktop App
 :kde-craft-url: https://community.kde.org/Craft
 :kde-craft-build-from-source-url: https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Windows
 :install-powershell-url: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6
@@ -20,13 +20,13 @@
 
 == Introduction
 
-This section explains how to build the link:https://owncloud.org/download/#owncloud-desktop-client[ownCloud Client] from source for all major platforms.
-You should read this section if you want to develop for the desktop client.
+This section explains how to build the link:https://owncloud.org/download/#owncloud-desktop-client[ownCloud Desktop App] from source for all major platforms.
+You should read this section if you want to develop for the Desktop App.
 Build instructions are subject to change as development proceeds.
 
 NOTE: Please check the version for which you want to build.
 
-These instructions are updated to work with the latest version of the ownCloud Client.
+These instructions are updated to work with the latest version of the ownCloud Desktop App.
 
 == Getting the Source Code
 
@@ -38,7 +38,7 @@ xref:windows-development-build-with-kde-craft[Windows].
 
 == Linux
 
-For the published desktop clients we link against QT5 dependencies from our own repositories so that we can have the same versions on all distributions. This chapter shows you how to build the client yourself with this setup. If you want to use the QT5 dependencies from your system, see the next chapter.
+For the published Desktop Apps we link against QT5 dependencies from our own repositories so that we can have the same versions on all distributions. This chapter shows you how to build the Desktop App yourself with this setup. If you want to use the QT5 dependencies from your system, see the next chapter.
 
 You may wish to use source packages for your Linux distribution, as these give you the exact sources from which the binary packages are built. These are hosted on the 
 {owncloud-obs}[ownCloud repository from OBS].
@@ -59,7 +59,7 @@ echo 'deb-src http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/D
 ----
 ====
 
-The above registers the source repository of the released client. There is also `.../desktop:/testing/...` and e.g. `.../desktop:/daily:/2.7/...` for beta versions or daily snapshots.
+The above registers the source repository of the released Desktop App. There is also `.../desktop:/testing/...` and e.g. `.../desktop:/daily:/2.7/...` for beta versions or daily snapshots.
 
 
 Install the dependencies using the following commands for your specific Linux distribution. Make sure the repositories for source packages are enabled. These are:
@@ -137,13 +137,13 @@ brew install $(brew deps owncloud-client)
 ----
 git clone https://github.com/frankosterfeld/qtkeychain.git
 ----
-Make sure you make the same install prefix as later while building the client e.g.
+Make sure you make the same install prefix as later while building the Desktop App e.g.
 +
 [source,console]
 ----
 -DCMAKE_INSTALL_PREFIX=/Path/to/client/../install
 ----
-. For compilation of the client, follow the xref:generic-build-instructions[generic build instructions].
+. For compilation of the Desktop App, follow the xref:generic-build-instructions[generic build instructions].
 . Install the http://s.sudre.free.fr/Software/Packages/about.html[Packages] package creation tool.
 . In the build directory, run
 +
@@ -162,7 +162,7 @@ Do not call `make package` at any time when compiling for OS X, as this will bui
 
 == Windows Development Build with KDE Craft
 
-If you want to test some changes, you can build the ownCloud Client natively on Windows using {kde-craft-url}[KDE Craft].
+If you want to test some changes, you can build the ownCloud Desktop App natively on Windows using {kde-craft-url}[KDE Craft].
 You can also use it to build unsupported and unoptimized installers.
 
 === Install KDE Craft
@@ -188,11 +188,11 @@ TIP: Unless you need 32bit builds, you should stick to the default of x64 builds
 
 === Setup KDE Craft
 
-After you install KDE Craft, there are two steps left before the ownCloud Client can be compiled.
+After you install KDE Craft, there are two steps left before the ownCloud Desktop App can be compiled.
 These are:
 
 . xref:launch-the-kde-craft-environment[Launch the KDE Craft Environment]
-. xref:build-the-client[Build the Client]
+. xref:build-the-client[Build the Desktop App]
 
 ==== Launch the KDE Craft Environment
 
@@ -219,16 +219,16 @@ craft --add-blueprint-repository https://github.com/owncloud/craft-blueprints-ow
 
 TIP: You only need to do this once.
 
-==== Build The Client
+==== Build The Desktop App
 
-Finally, we can build the client with the following command:
+Finally, we can build the Desktop App with the following command:
 
 [source,powershell]
 ----
 craft owncloud-client
 ----
 
-This installs all required dependencies and builds the ownCloud Client from the `master` git branch. If you want to build a different branch, first install all dependencies and then clone the source code from git, like this:
+This installs all required dependencies and builds the ownCloud Desktop App from the `master` git branch. If you want to build a different branch, first install all dependencies and then clone the source code from git, like this:
 
 [source,powershell]
 ----
@@ -244,7 +244,7 @@ git checkout {latest-desktop-version}
 craft --set version={latest-desktop-version} owncloud-client
 ----
 
-Afterwards you can build the client like this:
+Afterwards you can build the Desktop App like this:
 
 [source,powershell]
 ----
@@ -252,9 +252,9 @@ craft --configure --make --install
 craft owncloud-client
 ----
 
-==== Run the Client
+==== Run the Desktop App
 
-Neither `craft owncloud-client` nor `craft --configure --make --install` make the ownCloud Client available in your PATH, they only install to the so-called image directory.  This is so KDE Craft knows which files belong to which package. In order to run the client, you first need to merge the image directory to the regular KDE Craft root (`C:\CraftRoot`). Afterwards, you can run `owncloud.exe` from your shell.
+Neither `craft owncloud-client` nor `craft --configure --make --install` make the ownCloud Desktop App available in your PATH, they only install to the so-called image directory.  This is so KDE Craft knows which files belong to which package. In order to run the Desktop App, you first need to merge the image directory to the regular KDE Craft root (`C:\CraftRoot`). Afterwards, you can run `owncloud.exe` from your shell.
 
 [source,powershell]
 ----
@@ -262,7 +262,7 @@ craft --qmerge owncloud-client
 owncloud.exe
 ----
 
-==== Package the Client (Unsupported)
+==== Package the Desktop App (Unsupported)
 
 Although this is not officially supported, it is, generally, possible to build an installer with:
 
@@ -281,9 +281,9 @@ This is not supported, optimised, nor regularly tested! Fully supported Windows 
 
 == Generic Build Instructions
 
-To build the most up-to-date version of the client:
+To build the most up-to-date version of the Desktop App:
 
-. Clone the latest versions of the client from http://git-scm.com[Git] as follows:
+. Clone the latest versions of the Desktop App from http://git-scm.com[Git] as follows:
 +
 [source,bash]
 ----
@@ -310,7 +310,7 @@ cd client-build
 ----
 
 [start=3]
-. Configure the client build:
+. Configure the Desktop App build:
 +
 [source,console]
 ----
@@ -346,7 +346,7 @@ make
 The ownCloud binary will appear in the `bin` directory.
 
 [start=5]
-. (Optional) Call `make install` to install the client to the `/usr/local/bin` directory (or as per CMAKE_INSTALL_PREFIX). +
+. (Optional) Call `make install` to install the Desktop App to the `/usr/local/bin` directory (or as per CMAKE_INSTALL_PREFIX). +
 The following are known CMake parameters:
 
 * `QTKEYCHAIN_LIBRARY=/path/to/qtkeychain.dylib -DQTKEYCHAIN_INCLUDE_DIR=/path/to/qtkeychain/`
@@ -358,7 +358,7 @@ The following are known CMake parameters:
 * `CMAKE_PREFIX_PATH=/path/to/Qt5.12.4/5.12.4/yourarch/lib/cmake/`: Builds using that Qt version.
 * `CMAKE_INSTALL_PREFIX=path`: Set an install prefix. This is mandatory on Mac OS.
 +
-. *Optional:* Run a client that was installed in a custom CMAKE_INSTALL_PREFIX may not pick up the correct libraries automatically. You can use LD_LIBRARY_PATH to help find the libraries like this:
+. *Optional:* Run a Desktop App that was installed in a custom CMAKE_INSTALL_PREFIX may not pick up the correct libraries automatically. You can use LD_LIBRARY_PATH to help find the libraries like this:
 +
 [source,console]
 ----

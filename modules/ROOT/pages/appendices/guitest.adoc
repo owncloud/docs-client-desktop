@@ -1,4 +1,4 @@
-= GUI Testing the Desktop Client
+= GUI Testing the Desktop App
 :toc: right
 :toclevels: 3
 
@@ -16,17 +16,17 @@
 
 == Introduction
 
-This document explains how to run GUI tests for the Desktop Client locally in your system. To run GUI tests, the Squish GUI Test Automation Tool for all kinds of cross-platform desktop, mobile, embedded and web applications is used.
+This document explains how to run GUI tests for the Desktop App locally in your system. To run GUI tests, the Squish GUI Test Automation Tool for all kinds of cross-platform desktop, mobile, embedded and web applications is used.
 
 == Prerequisites
 
-Before we can actually run the test, we will need to make a Desktop Client build and install and configure Squish first.
+Before we can actually run the test, we will need to make a Desktop App build and install and configure Squish first.
 
 NOTE: Before running tests, you need to make sure that you have disabled `oauth2` and `openidconnect` in ownCloud Server.
 
-=== Building the Desktop Client
+=== Building the Desktop App
 
-To be able to run tests, you need to xref:appendices/building.adoc[build the Desktop Client] from the latest master.
+To be able to run tests, you need to xref:appendices/building.adoc[build the Desktop App] from the latest master.
 
 == Prepare Tests
 
@@ -43,7 +43,7 @@ NOTE: You can use docker or Squish IDE to run the tests but if you want to add n
 
 ==== Install Squish IDE
 
-After building the ownCloud Client, install and configure Squish. To install Squish, follow these steps:
+After building the ownCloud Desktop App, install and configure Squish. To install Squish, follow these steps:
 
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
 . Depending upon the version and system you are using, you will get a file like `squish-6.6.2-qt512x-linux64.run`.
@@ -77,7 +77,7 @@ sudo python3 PythonChanger.py --force
 
 Some necessary steps before running tests:
 
-. Clone the {client-repo-url}[Desktop Client] from GitHub
+. Clone the {client-repo-url}[Desktop App] from GitHub
 . Copy `test/gui/config.sample.ini` to `test/suite_oc-desktop/config.ini`
 . Edit `test/gui/config.ini` and set `BACKEND_HOST=` to the URL of your ownCloud server, e.g. `BACKEND_HOST=http://localhost/owncloud-core`
 +
@@ -87,8 +87,8 @@ NOTE: BACKEND_HOST can be any server, but it is required that the password for t
 . Open the existing test-suite via: menu:File[Open Test Suite > test/gui]
 . Go to menu:Edit[Server Settings > Manage AUTs > Mapped AUTs]
 . Click btn:[Add] and select the compiled binary, e.g.: `client/client-build/bin/owncloud`
-. Close any running Desktop Clients by clicking btn:[Quit ownCloud] in the settings page
-. Run the AUT (Application under Test) to check if everything works properly via menu:Run[Lauch AUT] (the Desktop Client settings window should appear)
+. Close any running Desktop Apps by clicking btn:[Quit ownCloud] in the settings page
+. Run the AUT (Application under Test) to check if everything works properly via menu:Run[Lauch AUT] (the Desktop App settings window should appear)
 
 NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `~/squish-for-qt-6.x.x/etc/paths.ini` is user-readable.
 
@@ -115,7 +115,7 @@ NOTE: Before running middleware, install yarn following the instructions from {y
 === Run Tests Using Squish
 
 * Start the {owncloud-test-middleware-url}[owncloud-test-middleware]
-* Quit the desktop client if you have opened it earlier and make sure that desktop-client is not running in the background.
+* Quit the Desktop App if you have opened it earlier and make sure that Desktop App is not running in the background.
 * Click the play button for a {test-case-scenario-url}[test-case or scenario].
 
 === Run Tests Using Docker

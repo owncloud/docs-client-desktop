@@ -4,16 +4,16 @@
 
 == Introduction
 
-When using the client, depending on the operating system (OS) you are using, file and folder names can have different restrictions. Creating files and folders with allowed names on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
+When using the Desktop App, depending on the operating system (OS) you are using, file and folder names can have different restrictions. Creating files and folders with allowed names on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
 
 NOTE: This is not an ownCloud rule but an OS dependency
 
 [TIP]
 .Here are some rules of thumb
 ====
-. Do not use any of the mentioned characters or words in any OS when using the Desktop Sync Client.
-. When the sync client is on Linux/Unix and the target mount to sync on is on SMB, file and folder names on Linux/Unix must comply with the Windows rules for successful syncing.
-. When the sync client is on Linux/Unix and the target mount to sync on is on SMB and you want to just rename the file with different casings, rename the file to a total different name, let it sync and then rename it again to the name that you want.
+. Do not use any of the mentioned characters or words in any OS when using the Desktop App.
+. When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB, file and folder names on Linux/Unix must comply with the Windows rules for successful syncing.
+. When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB and you want to just rename the file with different casings, rename the file to a total different name, let it sync and then rename it again to the name that you want.
 ====
 
 == Forbidden Printable ASCII Characters
@@ -54,7 +54,7 @@ Windows::
 == Other Rules
 
 Linux/Unix::
-When the sync client is on Linux/Unix and the target mount to sync on is on SMB, you cannot have the same file or folder name but with different casings. A cross icon will be shown that indicates that the file can't be synced. Files on Linux/Unix must comply with the Windows rules for successful syncing.
+When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB, you cannot have the same file or folder name but with different casings. A cross icon will be shown that indicates that the file can't be synced. Files on Linux/Unix must comply with the Windows rules for successful syncing.
 
 Windows::
 Filenames cannot end in a space or dot
