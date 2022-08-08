@@ -91,11 +91,9 @@ You will also find links to source code archives and older versions on the downl
 
 Starting with Desktop App version 2.9, an {appimage-wikipedia-url}[AppImage] build of the ownCloud Desktop App is available to support more Linux platforms. You can download the AppImage at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
 
-AppImage is an alternative way to use Linux applications -- instead of having multiple files in several places making up a package, the entire application is contained in a single file ending with an `.AppImage` suffix, including all necessary dependencies and libraries. ownCloud provides a single AppImage which runs on all (modern) Linux platforms.
+AppImage is an alternative way to use Linux applications -- instead of having multiple files in several places making up a package, the entire application is contained in a single file ending with an `.AppImage` suffix, including all necessary dependencies and libraries. ownCloud provides a single AppImage based on CentOS 7, which runs on all modern and most older Linux platforms.
 
-Known limitations for the 2.10.x AppImage::
-* CentOS 7 is currently not supported.
-
+Known limitations for the 2.11.x AppImage::
 * For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
 issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
 
