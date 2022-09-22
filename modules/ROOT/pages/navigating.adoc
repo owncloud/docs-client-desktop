@@ -203,12 +203,17 @@ Proxy Settings::
 ** SOCKS5
 
 Download and Upload Bandwidth::
+
+The following options are available:
+
 * No limit
 * Limit automatically +
 When activated, the client limits the upload or download bandwidth to 25% of the currently available bandwidth for each operation. The available bandwidth is measured on the fly at the beginning of every operation for a very short period of time.
 * Limit to
 
 image::navigating/settings_network.png[Network Settings,width=60%,pdfwidth=60%]
+
+Changed settings will affect all new transfers (next upload chunk or next download), but not affect already running transfers.
 
 === Using the Ignored Files Editor
 
