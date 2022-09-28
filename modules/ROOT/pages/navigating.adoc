@@ -215,7 +215,7 @@ image::navigating/settings_network.png[Network Settings,width=60%,pdfwidth=60%]
 
 [NOTE]
 ====
-Enabling this feature will affect all new transfers (next upload chunk or next download), but not affect already running transfers. Changing this setting or disabling this feature with take effect immediately.
+Enabling this feature will affect all new transfers (next upload chunk or next download), but not affect already running transfers (current upload chunk or current download). Changing this setting or disabling this feature with take effect immediately.
 ====
 
 === Using the Ignored Files Editor
