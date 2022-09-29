@@ -179,6 +179,9 @@ The Settings Window has configuration options such as
 
 * Show sync folders in Explorer's Navigation Pane
 * Sync hidden files
++
+NOTE: Hidden files are files starting with a dot like `.filename.txt`, but not files which are hidden by setting a file attribute.
+
 * Show crash reporter and the
 * Buttons for btn:[Edit Ignored Files] (xref:using-the-ignored-files-editor[see below]) and btn:[Log settings]
 
