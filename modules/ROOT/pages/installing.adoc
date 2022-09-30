@@ -347,6 +347,18 @@ If your deployment tooling interprets this as an actual error and you want to av
 msiexec /i ownCloud-x.y.z.msi DO_NOT_SCHEDULE_REBOOT="1"
 ----
 
+=== Windows Installer Logging
+
+In case you experience issues, you can run the installer with logging enabled:
+
+[source,console]
+----
+msiexec /i ownCloud-x.y.z.msi /L*V "C:\log\example.log"
+----
+
+Here you can find more information:
+https://www.advancedinstaller.com/user-guide/qa-log.html
+
 == Installation Wizard
 
 The installation wizard takes you step-by-step through configuration options and account setup. First you need to enter the URL of your ownCloud server.
