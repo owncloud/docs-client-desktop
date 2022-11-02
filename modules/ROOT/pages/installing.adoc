@@ -358,8 +358,7 @@ In case you experience issues, you can run the installer with logging enabled:
 msiexec /i ownCloud-x.y.z.msi /L*V "C:\log\example.log"
 ----
 
-Here you can find more information:
-https://www.advancedinstaller.com/user-guide/qa-log.html
+See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I create an installation log] documentation for more information about the Msiexec.exe command and logging.
 
 == Installation Wizard
 
