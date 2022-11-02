@@ -4,7 +4,7 @@
 
 :squish-url: https://www.froglogic.com/squish/download/
 :free-trial-url: https://www.froglogic.com/squish/free-trial/
-:pythonchanger-url: https://kb.froglogic.com/squish/howto/using-external-python-interpreter-squish-6-6/PythonChanger.py
+:pythonchanger-url: https://kb.froglogic.com/squish/howto/changing-python-installation-used-squish-binary-packages/PythonChanger.py
 :owncloud-test-middleware-url: https://github.com/owncloud/owncloud-test-middleware
 :test-case-scenario-url: https://bdd.tips/#chapter=9
 :squish-docker-image-url: https://hub.docker.com/r/owncloudci/squish
@@ -20,7 +20,7 @@ This document explains how to run GUI tests for the Desktop App locally in your 
 
 == Prerequisites
 
-Before we can actually run the test, we will need to make a Desktop App build and install and configure Squish first.
+Before we can actually run the test, we will need to build a Desktop App and install and configure Squish first.
 
 NOTE: Before running tests, you need to make sure that you have disabled `oauth2` and `openidconnect` in ownCloud Server.
 
@@ -46,18 +46,21 @@ NOTE: You can use docker or Squish IDE to run the tests but if you want to add n
 After building the ownCloud Desktop App, install and configure Squish. To install Squish, follow these steps:
 
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
-. Depending upon the version and system you are using, you will get a file like `squish-6.6.2-qt512x-linux64.run`.
+. Depending upon the version and system you are using, you will get a file like `squish-x.x.x-qtxxx-x64.run`.
+
+NOTE: For desktop client >= 2.11, Squish with QT 5.15 is required.
+
 . Make the downloaded file executable by running the following example command:
 +
 [source,bash]
 ----
-sudo chmod +x ./squish-6.6.2-qt512x-linux64.run
+sudo chmod +x ./squish-x.x.x-qtxxx-x64.run
 ----
 . Execute the file:
 +
 [source,bash]
 ----
-sudo ./squish-6.6.2-qt512x-linux64.run
+sudo ./squish-x.x.x-qtxxx-x64.run
 ----
 . You will be asked for a license key. When asked, enter your existing license/url of the license server or get a {free-trial-url}[free trial license]
 . After you have entered the license key, Squish opens.
@@ -78,7 +81,7 @@ sudo python3 PythonChanger.py --force
 Some necessary steps before running tests:
 
 . Clone the {client-repo-url}[Desktop App] from GitHub
-. Copy `test/gui/config.sample.ini` to `test/suite_oc-desktop/config.ini`
+. Copy `test/gui/config.sample.ini` to `test/gui/config.ini`
 . Edit `test/gui/config.ini` and set `BACKEND_HOST=` to the URL of your ownCloud server, e.g. `BACKEND_HOST=http://localhost/owncloud-core`
 +
 NOTE: BACKEND_HOST can be any server, but it is required that the password for the user `admin` is set to `admin`.
