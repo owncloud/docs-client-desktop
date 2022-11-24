@@ -27,6 +27,10 @@ The Desktop App has been intentionally limited to sync no deeper than 100 sub-di
 
 When other users share data with you, it's downloaded to the sync folder and counted as space used by the Desktop App, although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status. For more information, see the {user_manual_quota}[Storage Quotas in the User Manual].
 
+=== The Desktop Client Shows Different File Sizes Than my Mobile App
+
+The file size values differ depending on the client you are using. Some operating systems like iOS and macOS use the decimal system (power of 10) where 1kB or one kilobyte consists of 1000 bytes, while Linux, Android and Windows use the binary system (power of 2) where 1KB consists of 1024 bytes and is called a kibibyte. So no reason to worry if you see different file sizes in your desktop client than on your mobile devices or the web interface.
+
 == Major Configuration Changes
 
 === I Want to Move My Local Sync Folder
