@@ -35,7 +35,7 @@ Windows::
 macOS::
 * macOS 10.12+
 ** x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available
-** M1 native support planned for Q4 2022 - no issues in regard to performance or otherwise known at this time!
+** M1 native support planned for Q2 2023 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
 * CentOS 7.x with _minimum_ version x=8 (x86-64)
@@ -54,9 +54,21 @@ sudo yum install epel-release
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
+=== Configuration Files
+
+Independent on the type of physical installation, a configuration file will be created when the app is started for the first time. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
+
+* When deleting an existing configuration file, no data synced locally will be deleted, but the app will start the xref:installation-wizard[Installation Wizard] and you have to configure again.
+
+* On Linux, when changing the deployment method like from native to AppImage, you can reuse an existing configuration file without changes.
+
+* If you want to re-deploy from scratch, you can safely delete the configuration file if one exists. In such a case, check for existing sync folders which may need to be deleted too.
+
 === Installation on Mac OS X and Windows
 
-Installation on Mac OS X and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured the Desktop App will automatically keep itself updated; see `autoupdate` for more information.
+Installation on Mac OS X and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured, the Desktop App will automatically keep itself updated if not manually disabled which you can change when using Windows. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
+
+For Windows, see the xref:customizing-the-windows-installation[Customizing the Windows Installation] section describing installer configuration options. 
 
 === Installation on Linux
 
@@ -308,7 +320,7 @@ msiexec /passive /i ownCloud-x.y.z.msi INSTALLDIR="C:\Program Files (x86)\Non St
 
 Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get the whitespace escaping right there. Specifying the `INSTALLDIR` like this only works on first installation, you cannot simply re-invoke the .msi with a different path. If you still need to change it, uninstall it first and reinstall it with the new path.
 
-=== Disabling Automatic Updates.
+=== Disabling Automatic Updates
 
 To disable automatic updates, you can pass the `SKIPAUTOUPDATE` property.
 
