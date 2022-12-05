@@ -34,7 +34,7 @@ Windows::
 
 macOS::
 * macOS 10.12+
-** x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for macOS 10.10 & 10.11 available
+** x86-64 or Apple M in Rosetta 2 emulation
 ** M1 native support planned for Q2 2023 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
