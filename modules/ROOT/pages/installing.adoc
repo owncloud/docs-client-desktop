@@ -56,13 +56,13 @@ NOTE: For Linux distributions, we support, if technically feasible, the latest 2
 
 === Configuration Files
 
-Independent on the type of physical installation, a configuration file will be created when the app is started for the first time. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
+Regardless of the type of physical installation, a configuration file will be created when the app is started for the first time. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
 
 * When deleting an existing configuration file, no data synced locally will be deleted, but the app will start the xref:installation-wizard[Installation Wizard] and you have to configure again.
 
 * On Linux, when changing the deployment method like from native to AppImage, you can reuse an existing configuration file without changes.
 
-* If you want to re-deploy from scratch, you can safely delete the configuration file if one exists. In such a case, check for existing sync folders which may need to be deleted too.
+* If you want to deploy from scratch again, you can safely delete the configuration file if one exists. In such a case, check for existing sync folders which may need to be deleted too.
 
 === Installation on macOS and Windows
 
