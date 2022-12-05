@@ -34,7 +34,7 @@ Windows::
 
 macOS::
 * macOS 10.12+
-** x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for Mac OS X 10.10 & 10.11 available
+** x86-64 or Apple M in Rosetta 2 emulation; unsupported legacy builds for macOS 10.10 & 10.11 available
 ** M1 native support planned for Q2 2023 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
@@ -64,9 +64,9 @@ Independent on the type of physical installation, a configuration file will be c
 
 * If you want to re-deploy from scratch, you can safely delete the configuration file if one exists. In such a case, check for existing sync folders which may need to be deleted too.
 
-=== Installation on Mac OS X and Windows
+=== Installation on macOS and Windows
 
-Installation on Mac OS X and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured, the Desktop App will automatically keep itself updated if not manually disabled which you can change when using Windows. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
+Installation on macOS and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured, the Desktop App will automatically keep itself updated if not manually disabled which you can change when using Windows. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
 
 For Windows, see the xref:customizing-the-windows-installation[Customizing the Windows Installation] section describing installer configuration options. 
 
