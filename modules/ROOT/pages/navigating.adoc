@@ -237,6 +237,8 @@ Patterns that end with a slash character (`/`) are applied to only directory com
 
 NOTE: Custom entries are currently not validated for syntactical correctness by the editor, so you will not see any warnings for bad syntax. If your synchronization does not work as you expected, check your syntax.
 
+NOTE: A restart of the client is needed in order for the changes to the editor to the take effect. 
+
 Each pattern string in the list is preceded by a checkbox. When the checkbox contains a check mark, in addition to ignoring the file or directory component matched by the pattern, any matched files are also deemed "fleeting metadata" and removed by the client.
 
 In addition to excluding files and directories that use patterns defined in this list:
