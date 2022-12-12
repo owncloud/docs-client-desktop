@@ -213,7 +213,7 @@ sudo chmod +x ownCloud-2.10.1.7187.AppImage
 
 ==== File Browser Extension Packages
 
-ownCloud supports installing shell / file browser extensions, which means overlay icons and the context menu, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
+ownCloud supports installing shell / file browser extensions, which means overlay icons and the context menu, via a bash-script-guided installation for Linux-based systems. This script covers main systems and file browsers, but by nature not all possible flavors and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
 
 [source,bash]
 ----
