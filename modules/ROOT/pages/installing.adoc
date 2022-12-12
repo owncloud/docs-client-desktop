@@ -96,9 +96,7 @@ image::installing/gnome-shell-extension-appindicator-selector.png[width=350%,pdf
 
 ==== Native installation
 
-Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note that xref:file-browser-extension-packages[file browser integration], which means overlay icons and the context menu, needs to be installed manually.
-
-
+Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note that xref:file-browser-extension-packages[file browser integration], which means overlay icons and the context menu, need to be installed manually.
 
 You will also find links to source code archives and older versions on the download page.
 
