@@ -14,6 +14,7 @@
 :appimagelauncher-url: https://docs.appimage.org/introduction/software-overview.html#ref-appimagelauncher
 :install-appimagelauncher-url: https://github.com/TheAssassin/AppImageLauncher/wiki
 :description: The Desktop App enables users to access and sync files and folders from their ownCloud, work on remote files right from the desktop as if they were stored on their computer – because they are. Continuous synchronization to and from the ownCloud server provides ease of use combined with comprehensive access control.
+:install-shell-integration-url: https://github.com/owncloud/client-desktop-install-shell-integration
 
 == Introduction
 
@@ -95,7 +96,9 @@ image::installing/gnome-shell-extension-appindicator-selector.png[width=350%,pdf
 
 ==== Native installation
 
-Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available.
+Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note that xref:file-browser-extension-packages[file browser integration], which means overlay icons and the context menu, needs to be installed manually.
+
+
 
 You will also find links to source code archives and older versions on the download page.
 
@@ -109,7 +112,7 @@ Known limitations for the 2.11.x AppImage::
 * For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
 issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
 
-* The file browser integration, which means overlay icons and the context menu, is not included in the AppImage. You need to install file browser extension packages manually.
+* The file browser integration, which means overlay icons and the context menu, is not included in the AppImage. You need to install the xref:file-browser-extension-packages[File Browser Extension Packages] manually.
 
 * AppImages do not start automatically. You have to configure your desktop to automatically start the Desktop App when logging in.
 ** For GNOME, search for _startup applications_ in the desktop menu.
@@ -203,6 +206,17 @@ sudo chmod +x ownCloud-2.10.1.7187.AppImage
 
 * Note when you start the AppImage after setting it to be executable, AppImageLauncher will open if installed.
 --
+
+==== File Browser Extension Packages
+
+ownCloud supports installing shell / file browser extensions, which means overlay icons and the context menu, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
+
+[source,bash]
+----
+curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
+----
+
+If curl ist not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
 
 == Customizing the Windows Installation
 
