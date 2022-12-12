@@ -214,7 +214,7 @@ ownCloud supports installing shell / file browser extensions, which means overla
 curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
 ----
 
-If curl ist not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
+If curl is not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
 
 == Customizing the Windows Installation
 
