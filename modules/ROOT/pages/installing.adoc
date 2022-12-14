@@ -96,7 +96,7 @@ image::installing/gnome-shell-extension-appindicator-selector.png[width=350%,pdf
 
 ==== Native installation
 
-Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note that xref:file-browser-extension-packages[file browser integration], which means overlay icons and the context menu, need to be installed manually.
+Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note to see xref:installing-shell-integration-packages[Installing Shell Integration Packages]. Overlay icons and a special context menu for your file browsers need to be installed manually.
 
 You will also find links to source code archives and older versions on the download page.
 
@@ -110,7 +110,7 @@ Known limitations for the 2.11.x AppImage::
 * For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
 issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
 
-* The file browser integration, which means overlay icons and the context menu, is not included in the AppImage. You need to install the xref:file-browser-extension-packages[File Browser Extension Packages] manually.
+* Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:file-browser-extension-packages[Installing Shell Integration Packages].
 
 * AppImages do not start automatically. You have to configure your desktop to automatically start the Desktop App when logging in.
 ** For GNOME, search for _startup applications_ in the desktop menu.
@@ -211,9 +211,9 @@ sudo chmod +x ownCloud-2.10.1.7187.AppImage
 * Note when you start the AppImage after setting it to be executable, AppImageLauncher will open if installed.
 --
 
-==== File Browser Extension Packages
+==== Installing Shell Integration Packages
 
-ownCloud supports installing shell / file browser extensions, which means overlay icons and the context menu, via a bash-script-guided installation for Linux-based systems. This script covers main systems and file browsers, but by nature not all possible flavors and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
+ownCloud supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
 
 [source,bash]
 ----
