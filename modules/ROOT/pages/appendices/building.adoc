@@ -192,7 +192,7 @@ After you install KDE Craft, there are two steps left before the ownCloud Deskto
 These are:
 
 . xref:launch-the-kde-craft-environment[Launch the KDE Craft Environment]
-. xref:build-the-client[Build the Desktop App]
+. xref:build-the-desktop-app[Build the Desktop App]
 
 ==== Launch the KDE Craft Environment
 
