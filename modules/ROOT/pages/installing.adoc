@@ -118,6 +118,12 @@ issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FU
 
 * There is no automatic updating. Any update is like installing the AppImage.
 
+Known limitations for the 3.0.x AppImage::
+The known limitations are the same as for 2.11.x except:
+
+* AppImages are now starting automatically.
+* AppImages now have automatic updating.
+
 Installing _libfuse2_ if required::
 --
 * Check if `libfuse2` is already installed:
