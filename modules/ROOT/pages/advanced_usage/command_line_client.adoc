@@ -32,7 +32,7 @@ Other command line switches supported by `owncloudcmd` include the following:
 | Don't be so verbose.
 
 | `--httpproxy <http://server:port>`
-| Specify a http proxy to use.
+| Specify a HTTP proxy to use.
 
 | `--trust`
 | Trust the SSL certification
@@ -44,7 +44,7 @@ Other command line switches supported by `owncloudcmd` include the following:
 | File containing the list of unsynced remote folders (selective sync)
 
 | `--server <url>`
-| Use [url] as the location of the server. OCIS only (server location and spaces url can differ)
+| Use [url] as the location of the server. Infinite Scale only (server location and spaces URL can differ)
 
 | `-u, --user <name>`
 | Use [name] as the login name
