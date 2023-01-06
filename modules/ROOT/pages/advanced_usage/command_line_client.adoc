@@ -1,9 +1,12 @@
 = The Command Line Client
 :toc: right
+:page-aliases: advanced_usage/command_line_options.adoc
 
 == Introduction
 
 The ownCloud Client packages contain a command line client, `owncloudcmd`, that can be used to synchronize ownCloud files to client machines.
+
+== Command Description
 
 `owncloudcmd` performs a single _sync run_ and then exits the synchronization process. In this manner, `owncloudcmd` processes the differences between client and server directories and propagates the files to bring both repositories to the same state. Contrary to the GUI-based client, `owncloudcmd` does not repeat synchronizations on its own. It also does not monitor for file system changes.
 
@@ -11,29 +14,70 @@ To invoke `owncloudcmd`, you must provide the local and the remote repository UR
 
 [source,console]
 ----
-owncloudcmd [OPTIONS...] sourcedir owncloudurl.
+owncloudcmd [options] source_dir server_url remote_folder.
 ----
 
-`sourcedir` is the local directory and `owncloudurl` is the server URL.
+* `sourcedir` is the local directory,
+* `owncloudurl` is the server URL and
+* `remote_folder` is a remote folder.
+
 Other command line switches supported by `owncloudcmd` include the following:
 
-[width="100%",cols="45%,55%",options="header"]
+[width="100%",cols="35%,65%",options="header"]
 |===
-| Switch | Description
-| `--user`, `-u` `[user]`|  Use `user` as the login name.
-| `--password`, `-p` `[password]`|  Use `password` as the password.
-| `-n`|  Use `netrc (5)` for login.
-| `--non-interactive`|  Do not prompt for questions.
-| `--silent`, `-s`|  Inhibits verbose log output.
-| `--trust`|  Trust any SSL certificate, including invalid ones.
-| `--httpproxy  http://[user@pass:]<server>:<port>`|  Uses `server` as HTTP proxy.
-| `--davpath [path]`|  Overrides the WebDAV Path with `path`
-| `--exclude [file]`|  Exclude list file.
-| `--unsyncedfolders [file]`|  File containing the list of un-synced remote folders (selective sync)
-| `--max-sync-retries [n]`|  Retries maximum n times (defaults to 3)
-| `-h`|  Sync hidden files,do not ignore them.
-|===
+| Switch
+| Description
 
+| `-s, --silent`
+| Don't be so verbose.
+
+| `--httpproxy <http://server:port>`
+| Specify a HTTP proxy to use.
+
+| `--trust`
+| Trust the SSL certification
+
+| `--exclude <file>`
+| Path to an exclude list [file]
+
+| `--unsyncedfolders <file>` 
+| File containing the list of unsynced remote folders (selective sync)
+
+| `--server <url>`
+| Use [url] as the location of the server. Infinite Scale only (server location and spaces URL can differ)
+
+| `-u, --user <name>`
+| Use [name] as the login name
+
+| `-p, --password <password>` 
+| Use [pass] as password
+
+| `-n`
+| Use netrc (5) for login
+
+| `--non-interactive`
+| Do not block execution with interaction
+
+| `--max-sync-retries <n>`
+| Retries maximum n times (default to 3)
+
+| `--uplimit <n>`
+| Limit the upload speed of files to n KB/s
+
+| `--downlimit <n>`
+| Limit the download speed of files to n KB/s
+
+| `--logdebug`
+| More verbose logging
+
+| `-h, --help`
+| Displays help on commandline options.
+
+| `--help-all`
+| Displays help including Qt specific options.
+
+| `-v, --version`
+| Displays version information.|===
 == Credential Handling
 
 `owncloudcmd` requires the user to specify the username and password using the standard URL pattern, for example:
