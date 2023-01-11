@@ -31,7 +31,7 @@ Depending on the operating system used, some minimum system requirements need to
 Windows::
 * Windows 7+
 ** x86 with 32-bit or x86-64 with 64-bit
-** Native WinVFS available for Windows 10 version 1709 or later
+** Native WinVFS available for Windows versions 1709 or later
 
 macOS::
 * macOS 10.12+
