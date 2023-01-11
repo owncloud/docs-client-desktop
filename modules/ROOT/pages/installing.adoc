@@ -31,7 +31,8 @@ Depending on the operating system used, some minimum system requirements need to
 Windows::
 * Windows 7+
 ** x86 with 32-bit or x86-64 with 64-bit
-** Native WinVFS available for Windows versions 1709 or later
+** Native WinVFS available for Windows versions 1709 or later. +
+For Windows Server you find the version in `winver` in the second row. The known versions can be identified via the following referenced list: https://en.wikipedia.org/wiki/Windows_Server#Semi-annual_releases_(discontinued)[Semi-annual releases (discontinued)].
 
 macOS::
 * macOS 10.12+
