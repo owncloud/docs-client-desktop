@@ -84,7 +84,9 @@ Some necessary steps before running tests:
 . Copy `test/gui/config.sample.ini` to `test/gui/config.ini`
 . Edit `test/gui/config.ini` and set `BACKEND_HOST=` to the URL of your ownCloud server, e.g. `BACKEND_HOST=http://localhost/owncloud-core`
 +
-NOTE: BACKEND_HOST can be any server, but it is required that the password for the user `admin` is set to `admin`.
+NOTE: *BACKEND_HOST* can be any server, but it is required that the password for the user *admin* is set to *admin*.
++
+NOTE: If you are testing against the oCIS server, set *OCIS=true* in the *config.ini*.
 
 . Start Squish
 . Open the existing test-suite via: menu:File[Open Test Suite > test/gui]
