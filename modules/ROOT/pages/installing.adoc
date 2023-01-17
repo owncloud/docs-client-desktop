@@ -91,7 +91,7 @@ sudo apt install gnome-shell-extension-appindicator
 
 When the extension is installed, you need to restart the GNOME shell. To do so, hit btn:[Alt+F2] on the keyboard, type btn:[r] and  btn:[Enter]. Now you will see the new extensions added to the extensions list. To enable an extension, switch the button on the right to the btn:[On] position. For the particular system tray icon extension, the name for all distributions is **Ubuntu AppIndicators** because the notification system AppIndicators has been developed by Ubuntu. Once enabled, the system tray is shown again within the desktop environment.
 
-image::installing/gnome-shell-extension-appindicator-selector.png[width=350%,pdfwidth=60%]
+image::installing/gnome-shell-extension-appindicator-selector.png[width=600,pdfwidth=60%]
 --
 
 ==== Native installation
@@ -155,21 +155,21 @@ See the {install-appimagelauncher-url}[Install AppImageLauncher] wiki for detail
 How to launch an AppImage::
 When you open an AppImage file via your file browser that you have not opened before then double click on it:
 +
-image:installing/appimagelauncher_open_question.png[AppImage First Time Usage,width=350]
+image::installing/appimagelauncher_open_question.png[AppImage First Time Usage, width=500]
 --
 +
 --
 First time usage::
 After opening an AppImage, if AppImageLauncher has been started for the first time, it will ask you to define some basic settings:
 +
-image:installing/appimagelauncher_first_run.png[AppImage First Time Usage,width=350]
+image::installing/appimagelauncher_first_run.png[AppImage First Time Usage,width=500]
 --
 +
 --
 AppImage Integration Question::
 Post first time configuration or when you open the AppImage file via your file browser, for example by double clicking on it:
 +
-image:installing/appimagelauncher_integrate_question.png[AppImage Integration Question,width=350]
+image::installing/appimagelauncher_integrate_question.png[AppImage Integration Question,width=500]
 --
 
 Install and run the Desktop App AppImage::
@@ -245,7 +245,7 @@ msiexec /passive /i ownCloud-x.y.z.msi REMOVE=DesktopShortcut
 See the following table for a list of available features:
 
 [width="100%",cols="20%,20%,27%,33%",options="header",]
-|=======================================================================
+|===
 | Feature 
 | Enabled by default 
 | Description 
@@ -271,7 +271,7 @@ required
 | Yes 
 | Adds Explorer integration 
 | `NO_SHELL_EXTENSIONS`
-|=======================================================================
+|===
 
 ==== Installation
 
@@ -392,15 +392,15 @@ See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I creat
 
 The installation wizard takes you step-by-step through configuration options and account setup. First you need to enter the URL of your ownCloud server.
 
-image:installing/client-1.png[form for entering ownCloud server URL, width=60%,pdfwidth=60%]
+image::installing/client-1.png[form for entering ownCloud server URL, width=500,pdfwidth=60%]
 
 Enter your ownCloud login on the next screen.
 
-image:installing/client-2.png[form for entering your ownCloud login, width=60%,pdfwidth=60%]
+image::installing/client-2.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
 
 On the _"Local Folder Option"_ screen you may sync all of your files on the ownCloud server, or select individual folders. The default local sync folder is `ownCloud`, in your home directory. You may change this as well.
 
-image:installing/client-3.png[Select which remote folders to sync, and which local folder to store them in, width=60%,pdfwidth=60%]
+image::installing/client-3.png[Select which remote folders to sync, and which local folder to store them in, width=500,pdfwidth=60%]
 
 When you have completed selecting your sync folders, click the _"Connect"_ button at the bottom right. The Desktop App will attempt to connect to your ownCloud server, and when it is successful you'll see two buttons:
 
