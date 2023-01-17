@@ -11,7 +11,6 @@
 ** xref:advanced_usage/command_line_client.adoc[The Command Line Client]
 ** xref:advanced_usage/configuration_file.adoc[Configuration File]
 ** xref:advanced_usage/environment_variables.adoc[Environment Variables]
-** xref:advanced_usage/command_line_client.adoc[Command-Line Options]
 ** xref:advanced_usage/low_disk_space.adoc[Low Disk Space]
 * xref:appendices/index.adoc[Appendices]
 ** xref:appendices/building.adoc[Building the Desktop App]
