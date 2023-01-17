@@ -4,6 +4,7 @@
 * xref:vfs.adoc[Using the Virtual Filesystem]
 * xref:filenames.adoc[Filename Considerations]
 * xref:conflicts.adoc[Manage Synchronisation Conflicts]
+* xref:web_app.adoc[Open Files with Office Web Apps]
 * xref:automatic_updater.adoc[Automatic Updating]
 * xref:removing.adoc[Removing the Desktop App]
 * xref:faq.adoc[FAQ]

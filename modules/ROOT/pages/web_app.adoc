@@ -1,0 +1,38 @@
+= Open Files with Office Web Apps
+:toc: right
+
+:description: When using Infinite Scale, you can open and edit synced office files locally using office web apps.
+
+== Introduction
+
+{description} This is very beneficial if:
+
+*  your local environment does not have an office package installed or available,
+* you are collaborating with others on the same document.
+
+When more than one person is working on the same document and using a locally installed office application, synchronization conflicts may happen if others sync a changed document while someone else is editing it. This can be hard to resolve. When using office web apps, collaborative working is managed by the web application and synchronization is no longer an issue.
+
+== Prerequisite
+
+* The user only needs a browser. No settings need to be made in the Desktop App.
+* The Infinite Scale instance in the backend needs to have been configured accordingly with office web apps enabled. The administrator can configure the system for multiple or only particular office file types. If office web apps are not configured and enabled for all available or particular office file types, the functionality is either not available in the context menu at all or only for the configured ones. Contact your administrator for more details.
+
+== Open Files via Office Web Apps
+
+The first image shows an office file via the browser.
+
+image::web_app/office_file_in_browser.png[file in browser, width=600,pdfwidth=70%]
+
+This file gets synced by the Desktop App and is locally available.
+
+image::web_app/office_file_in_explorer.png[file in explorer, width=600,pdfwidth=70%]
+
+btn:[Right-click] on the file to open the context menu and click menu:ownCloud[open in ...] to select the application available. Note that the web app shown is the one configured by the admin for this office file type. If menu:open in ...[] is not available, office web apps have either not been enabled by the administrator at all or not for this office file type.
+
+image::web_app/office_file_context_menu.png[file context menu, width=600,pdfwidth=70%]
+
+A browser window with the web app selected opens the file. When you are leaving the office web app, changed files are saved automatically.
+
+image::web_app/office_file_in_web_app.png[file in web app, width=550,pdfwidth=70%]
+
+Note that if multiple persons are accessing the same file via the office web app, the app can show who has opened the file. Depending on the office web app, final saving may occur when the last person accessing a file in the office web app closes the office web app session or the last tab. This is indicated by the changed modification time. Syncing back will only occur after the file has been saved.
