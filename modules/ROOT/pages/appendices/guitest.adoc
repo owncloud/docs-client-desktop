@@ -124,7 +124,7 @@ sudo docker pull owncloudci/squish
 * xref:run-tests-using-squish[Run Tests Using Squish]
 * xref:run-tests-using-docker[Run Tests Using Docker]
 
-NOTE: Before running middleware, install {yarn-install-url}[yarn] respectively {pnpm-install-url}[pnpm] and clone middleware from {owncloud-test-middleware-url}[here].
+NOTE: Before running middleware, install {yarn-install-url}[yarn] and clone middleware from {owncloud-test-middleware-url}[here].
 
 === Run Tests Using Squish
 
