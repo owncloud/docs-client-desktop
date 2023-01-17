@@ -77,7 +77,9 @@ Other command line switches supported by `owncloudcmd` include the following:
 | Displays help including Qt specific options.
 
 | `-v, --version`
-| Displays version information.|===
+| Displays version information.
+|===
+
 == Credential Handling
 
 `owncloudcmd` requires the user to specify the username and password using the standard URL pattern, for example:
