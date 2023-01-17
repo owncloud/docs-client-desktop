@@ -99,9 +99,9 @@ NOTE: If you are testing against the oCIS server, set *OCIS=true* in the *config
 
 NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `~/squish-for-qt-6.x.x/etc/paths.ini` is user-readable.
 
-===== Extra Steps for oCIS
+===== Extra Steps for Infinite Scale
 
-While running the tests against oCIS, playwright is used to automate the login process in the browser. Following extra steps need to be taken:
+While running the tests against Infinite Scale, playwright is used to automate the login process in the browser. The following extra steps need to be taken:
 
 . Install {node-install-url}[node] and {pnpm-install-url}[pnpm]
 . Go to `test/gui/webUI` and run `pnpm install`
