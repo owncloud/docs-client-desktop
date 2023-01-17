@@ -12,7 +12,8 @@
 :stepdefinitions-url: https://github.com/owncloud/owncloud-test-middleware/tree/main/src/stepDefinitions
 :object-map-object-url: https://www.froglogic.com/squish/features/object-map-object-identification-tools/
 :client-repo-url: https://github.com/owncloud/client/
-:yarn-install-url: https://classic.yarnpkg.com/en/docs/install/#debian-stable
+:node-install-url: https://nodejs.org/en/download/package-manager
+:pnpm-install-url: https://pnpm.io/installation
 
 == Introduction
 
@@ -84,7 +85,9 @@ Some necessary steps before running tests:
 . Copy `test/gui/config.sample.ini` to `test/gui/config.ini`
 . Edit `test/gui/config.ini` and set `BACKEND_HOST=` to the URL of your ownCloud server, e.g. `BACKEND_HOST=http://localhost/owncloud-core`
 +
-NOTE: BACKEND_HOST can be any server, but it is required that the password for the user `admin` is set to `admin`.
+NOTE: *BACKEND_HOST* can be any server, but it is required that the password for the user *admin* is set to *admin*.
++
+NOTE: If you are testing against the oCIS server, set *OCIS=true* in the *config.ini*.
 
 . Start Squish
 . Open the existing test-suite via: menu:File[Open Test Suite > test/gui]
@@ -94,6 +97,12 @@ NOTE: BACKEND_HOST can be any server, but it is required that the password for t
 . Run the AUT (Application under Test) to check if everything works properly via menu:Run[Lauch AUT] (the Desktop App settings window should appear)
 
 NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `~/squish-for-qt-6.x.x/etc/paths.ini` is user-readable.
+
+===== Extra Steps for oCIS
+While running the tests against oCIS, playwright is used to automate the login process in the browser. So we need to do the following extra steps:
+
+. Install {node-install-url}[node] and {pnpm-install-url}[pnpm]
+. Go to `test/gui/webUI` and run `pnpm install`
 
 === Using Docker
 
