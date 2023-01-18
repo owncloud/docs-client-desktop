@@ -51,11 +51,11 @@ according your needs.
 +
 To do so, in the Desktop App UI, which you can see below, click the drop-down menu menu:Account[Remove].
 +
-image:faq/ownCloud-remove_existing_connection.png[image, width=80%,pdfwidth=60%]
+image::faq/ownCloud-remove_existing_connection.png[image, width=500,pdfwidth=60%]
 +
 This will display a "*Confirm Account Removal*" dialog window. If you're sure, click btn:[Remove connection].
 +
-image:faq/ownCloud-remove_existing_connection_confirmation_dialog.png[image, width=60%,pdfwidth=60%]
+image::faq/ownCloud-remove_existing_connection_confirmation_dialog.png[image]
 
 ..  Add a new connection which syncs to the desired directory.
 +
@@ -70,7 +70,7 @@ Be careful before choosing the "Start a clean sync" option. The old sync folder 
 Instead, first move or copy the old local sync folder, containing a copy of the existing files, to the new location. Then, when creating the new connection choose "_keep existing data_" instead. The ownCloud Desktop App will check the files in the newly-added sync folder and find that they match what is on the server and not need to download anything.
 ====
 +
-image:faq/ownCloud-replacement_connection_wizard.png[image, width=80%,pdfwidth=60%]
+image::faq/ownCloud-replacement_connection_wizard.png[image, width=500,pdfwidth=60%]
 +
 Make your choice and click btn:[Connect...] This will then lead you through the Connection Wizard, just like when you set up the previous sync connection, but giving you the opportunity to choose a new sync directory.
 
@@ -94,7 +94,7 @@ Keeping software up to date is crucial for file integrity and security – if so
 
 The ownCloud Desktop App talks to a server, e.g. the ownCloud server, so you do not only have to upgrade your Desktop App when there is a new version for it, also the server has to be kept up-to-date by your sysadmin. Starting with version 2.5.0, the Desktop App will show a warning message if you connect to an outdated or unsupported server:
 
-image:faq/oc-unsupported-version-warning-message.png[image, width=80%,pdfwidth=60%]
+image::faq/oc-unsupported-version-warning-message.png[image, width=600,pdfwidth=60%]
 
 Only ownCloud 10.0.0 or Higher Is Supported::
 If you encounter such a message, you should ask your administrator to upgrade ownCloud to a secure version because earlier versions are not maintained anymore. An important feature of the ownCloud Desktop App is checksumming – each time you download or upload a file, the Desktop App and the server both check if the file was corrupted during the sync. This way you can be sure that you don’t lose any files.
@@ -106,7 +106,7 @@ That’s why you see this warning message, so you can evaluate your data securit
 
 === Multiple Accounts Sharing the Folder
 
-image:faq/01_multiple-accounts-sharing-folder.png[image, width=80%,pdfwidth=60%]
+image::faq/01_multiple-accounts-sharing-folder.png[image, width=550,pdfwidth=60%]
 
 Desktop App discovered multiple sync journals (SQLite database files) in the folder. That indicates that multiple Desktop Apps are using the same folder as a sync root. Under certain conditions it could also mean that there is an old `._sync_#HASH.db` or `.sync_#HASH.db` in the folder.
 
@@ -116,8 +116,12 @@ Such a file will have an old change date and usually can be removed.
 
 === Folder Is Used in a Folder Sync Connection
 
-image:faq/02_folder-used-in-sync-connection1.png[image, width=80%,pdfwidth=60%]
-image:faq/03_folder-used-in-sync-connection2.png[image, width=80%,pdfwidth=60%]
+image::faq/02_folder-used-in-sync-connection1.png[image, width=550,pdfwidth=60%]
+
+{empty}
+{empty}
+
+image::faq/03_folder-used-in-sync-connection2.png[image, width=550,pdfwidth=60%]
 
 Similar to the above case, the Desktop App discovered one or more `.sync_journal.db` files in the directory. That means the folder is either already used by a different Desktop App for syncing or we again have an old SQLite database file in that folder. This can also happen if a user tries to import an old folder.
 
@@ -127,7 +131,7 @@ Such a file will have an old change date and usually can be removed.
 
 === Parent Folder Managed by Another Desktop App
 
-image:faq/04_folder-used-by-different-client.png[image, width=80%,pdfwidth=60%]
+image::faq/04_folder-used-by-different-client.png[image, width=550,pdfwidth=60%]
 
 This error can only happen with native Windows VFS. The Desktop App discovered that the folder is part of a subtree that is managed by another Desktop App, for example testpilotcloud. The difference to the next error is that we can't be sure it's a different Desktop App or an orphaned sync root.
 
@@ -139,7 +143,7 @@ Pick another sync folder.
 
 === Folder Used by Different Desktop App
 
-image:faq/05_folder-managed-by-another-sync-client.png[image, width=80%,pdfwidth=60%]
+image::faq/05_folder-managed-by-another-sync-client.png[image, width=550,pdfwidth=60%]
 
 This error can only happen with native Windows VFS. Desktop App discovered that the folder is part of a subtree that is managed by another Desktop App, for example OneDrive.
 
