@@ -9,6 +9,10 @@
 
 {description}
 
+== VFS for Windows Server
+
+Without claim of completeness, actuality or support, Windows Server releases that are based on builds starting with 1709 should come with the native system API that is required to use VFS. Windows Servers 2016 and lower do not have native VFS included and will not be able to use VFS therefore.
+
 == Usage
 
 === Continuous File Upload to the Server Though No Modifications Made
