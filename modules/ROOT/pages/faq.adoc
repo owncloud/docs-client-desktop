@@ -3,7 +3,7 @@
 :wordpress1-url: http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/
 :user_manual_quota: https://doc.owncloud.com/server/next/user_manual/files/webgui/quota.html
 
-:description: Here you can find some of the most frequently asked questions about the ownCloud Desktop App.
+:description: Here you can find some of the most frequently asked questions about the ownCloud Desktop app.
 
 == Introduction
 
@@ -168,4 +168,4 @@ echo 524288 > /proc/sys/fs/inotify/max_user_watches.
 
 == Messages in the 'Not Synced' Tab
 
-When the Desktop App syncronizes, it clears the message list in the btn:[Not Synced] tab before each syncronisation starts and prints the result of the current syncronisation to the tab during processing. After a full sync, incremental syncs are made and only content that is not in sync is processed. Therefore, any messages listed that got resolved do no longer appear.
+When the Desktop app synchronizes, it clears the message list in the btn:[Not Synced] tab before each synchronization starts and prints the result of the current synchronization to the tab during processing. After a full sync, incremental syncs are made and only content that is not in sync is processed. Therefore, any listed messages  that got resolved no longer appear.
