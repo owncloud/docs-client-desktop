@@ -12,7 +12,7 @@ When doing a new release for the Desktop Client like `3.x`, a new version branch
     (in section `asciidoc.attributes`)
 5.  In `antora.yml` change the version from `next` to `3.x`
 6.  Run a build by entering `yarn antora-local`. No errors should occur
-7.  Commit the changes and push the new `3.x` branch. **DO NOT CREATE A PR!** (check if the push succeeded!)
+7.  Commit the changes and push the new `3.x` branch. **DO NOT CREATE A PR!** (check if the push succeeded, check branch protection rules)
 
 **Step 2: Configure the master branch to use the new `3.x` branch**
 
