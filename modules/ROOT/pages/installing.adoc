@@ -104,7 +104,7 @@ On Debian-based systems, it may happen after a while that when running `sudo apt
 
 [source,bash]
 ----
-sudo apt-key adv --refresh-keys --keyserver keyserver.debian.org
+sudo apt-key adv --refresh-keys --keyserver keyring.debian.org
 ----
 
 For Ubuntu, use:
