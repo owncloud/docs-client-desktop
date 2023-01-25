@@ -100,8 +100,13 @@ Linux users must follow the instructions on the {desktop-clients-url}[download] 
 
 You will also find links to source code archives and older versions on the download page.
 
-On Debian-based systems, it may happen after a while that when running `sudo apt update`, a notice about a signature verification error is returned. This can be solved by invoking the following command to update all signatures:
+On Debian-based systems, it may happen after a while that when running `sudo apt update`, a notice about a signature verification error is returned. This can be solved by refreshing the keys. On Debian invoke the following command to update all signatures:
 
+[source,bash]
+----
+sudo apt-key adv --refresh-keys --keyserver keyserver.debian.org
+----
+For Ubuntu, use:
 [source,bash]
 ----
 sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
