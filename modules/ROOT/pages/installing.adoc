@@ -94,11 +94,18 @@ When the extension is installed, you need to restart the GNOME shell. To do so, 
 image::installing/gnome-shell-extension-appindicator-selector.png[width=600,pdfwidth=60%]
 --
 
-==== Native installation
+==== Native Installation
 
 Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note to see xref:installing-shell-integration-packages[Installing Shell Integration Packages]. Overlay icons and a special context menu for your file browsers need to be installed manually.
 
 You will also find links to source code archives and older versions on the download page.
+
+On Debian based systems, it may happen after a while that when running `sudo apt update`, a notice about a signature verification error can be returned. This can be solved by envoking following command to update all sinatures:
+
+[source,bash]
+----
+sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+----
 
 ==== AppImage
 
