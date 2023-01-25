@@ -100,7 +100,7 @@ Linux users must follow the instructions on the {desktop-clients-url}[download] 
 
 You will also find links to source code archives and older versions on the download page.
 
-On Debian based systems, it may happen after a while that when running `sudo apt update`, a notice about a signature verification error can be returned. This can be solved by envoking following command to update all sinatures:
+On Debian-based systems, it may happen after a while that when running `sudo apt update`, a notice about a signature verification error is returned. This can be solved by invoking the following command to update all signatures:
 
 [source,bash]
 ----
