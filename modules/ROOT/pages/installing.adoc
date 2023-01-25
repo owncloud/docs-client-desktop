@@ -106,7 +106,9 @@ On Debian-based systems, it may happen after a while that when running `sudo apt
 ----
 sudo apt-key adv --refresh-keys --keyserver keyserver.debian.org
 ----
+
 For Ubuntu, use:
+
 [source,bash]
 ----
 sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
