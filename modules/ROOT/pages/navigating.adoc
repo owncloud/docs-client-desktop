@@ -250,7 +250,7 @@ For more detailed information see the xref:architecture.adoc#ignored-files[Ignor
 
 == Removing a Sync Connection
 
-When removing a synchronisation connection, the connection will get removed but all data synchronized will stay locally and does not get deleted. To remove a sync relationship, change to the account and select the synchornisation relationship that should get removed. When clicking the btn:[...] (three dots) icon, the following window appears:
+When removing a synchronization connection, all synchronized data will stay locally and not get deleted. To remove a sync relationship, change to the account and select the synchronization relationship that should get removed. When clicking the btn:[...] (three dots) icon, the following window appears:
 
 image::navigating/remove_sync_connection.png[Removing a Sync Relationship,width=250,pdfwidth=60%]
 
@@ -258,4 +258,4 @@ Select btn:[Remove folder sync connection] to remove it. If you also want to del
 
 TIP: Before removing the connection, click btn:[Show in Explorer]. This will open the source folder where all the synced data is located. This eases deleting this folder as you do not need to search for it after removing the sync connection.
 
-On Windows, you may get asked for elevated permissions deleting that folder. Follow the procedure shown or ask you administrator for assistance. In rare cases, the folder denies deletion even elevated permissions were given. In such a case, mark that folder in Explorer and press btn:[Shift + Delete] together and follow the procedure shown. This will delete that folder without using the trashbin.
+On Windows, you might be asked for elevated permissions to delete that folder. Follow the procedure shown or ask you administrator for assistance. In rare cases, the folder denies deletion even if elevated permissions were given. In such a case, mark that folder in Explorer and press btn:[Shift + Delete] together and follow the procedure shown. This will delete the folder without using the trash bin.
