@@ -258,4 +258,4 @@ Select btn:[Remove folder sync connection] to remove it. If you also want to del
 
 TIP: Before removing the connection, click btn:[Show in Explorer]. This will open the source folder where all the synced data is located. This eases deleting this folder as you do not need to search for it after removing the sync connection.
 
-On Windows, you might be asked for elevated permissions to delete that folder. Follow the procedure shown or ask you administrator for assistance. In rare cases, the folder denies deletion even if elevated permissions were given. In such a case, mark that folder in Explorer and press btn:[Shift + Delete] together and follow the procedure shown. This will delete the folder without using the trash bin.
+On Windows, you might be asked for elevated permissions to delete that folder. Follow the procedure shown or ask you administrator for assistance.
