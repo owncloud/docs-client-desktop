@@ -104,7 +104,18 @@ NOTE: If there are problems with starting Squish, please check the log file `~/.
 While running the tests against Infinite Scale, playwright is used to automate the login process in the browser. The following extra steps need to be taken:
 
 . Install {node-install-url}[node] and {pnpm-install-url}[pnpm]
-. Go to `test/gui/webUI` and run `pnpm install`
+. Go to `test/gui/webUI` and run 
++
+[source,bash]
+----
+pnpm install
+----
+. Install Playwright Chromium 
++
+[source,bash]
+----
+npx playwright install chromium
+----
 
 === Using Docker
 
