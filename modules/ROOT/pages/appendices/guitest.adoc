@@ -105,7 +105,6 @@ While running the tests against Infinite Scale, playwright is used to automate t
 
 . Install {node-install-url}[node] and {pnpm-install-url}[pnpm]
 . Go to `test/gui/webUI` and run 
-[source,bash]
 +
 [source,bash]
 ----
