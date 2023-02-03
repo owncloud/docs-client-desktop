@@ -247,3 +247,13 @@ In addition to excluding files and directories that use patterns defined in this
 * Files are removed that cause individual errors three times during a synchronization. However, the client provides the option of retrying a synchronization three additional times on files that produce errors.
 
 For more detailed information see the xref:architecture.adoc#ignored-files[Ignored Files section].
+
+== Removing a Sync Connection
+
+When removing a synchronization connection, all synchronized data will stay locally and not get deleted. To remove a sync relationship, change to the account and select the synchronization relationship that should get removed. When clicking the btn:[...] (three dots) icon, the following window appears:
+
+image::navigating/remove_sync_connection.png[Removing a Sync Relationship,width=250,pdfwidth=60%]
+
+Select btn:[Remove folder sync connection] to remove it. If you also want to delete the related data, go to the folder and delete it.
+
+TIP: Before removing the connection, click btn:[Show in Explorer]. This will open the source folder where all the synced data is located. This eases deleting this folder as you do not need to search for it after removing the sync connection.
