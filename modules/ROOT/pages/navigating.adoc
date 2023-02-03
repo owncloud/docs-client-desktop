@@ -257,5 +257,3 @@ image::navigating/remove_sync_connection.png[Removing a Sync Relationship,width=
 Select btn:[Remove folder sync connection] to remove it. If you also want to delete the related data, go to the folder and delete it.
 
 TIP: Before removing the connection, click btn:[Show in Explorer]. This will open the source folder where all the synced data is located. This eases deleting this folder as you do not need to search for it after removing the sync connection.
-
-On Windows, you might be asked for elevated permissions to delete that folder. Follow the procedure shown or ask you administrator for assistance.
