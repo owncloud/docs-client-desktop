@@ -86,7 +86,7 @@ Other command line switches supported by `owncloudcmd` include the following:
 
 [source,console]
 ----
-$ owncloudcmd /home/user/my_sync_folder https://carla:secret@server/owncloud/remote.php/webdav/
+$ owncloudcmd /home/user/my_sync_folder https://carla:secret@server/owncloud/remote.php/dav/files/carla/
 ----
 
 To synchronize the ownCloud directory `Music` to the local directory `media/music`, through a proxy listening on port `8080`, and on a gateway machine using IP address `192.168.178.1`, the command line would be:
@@ -95,7 +95,7 @@ To synchronize the ownCloud directory `Music` to the local directory `media/musi
 ----
 $ owncloudcmd --httpproxy http://192.168.178.1:8080 \
               $HOME/media/music \
-              https://server/owncloud/remote.php/webdav/Music.
+              https://server/owncloud/remote.php/dav/files/carla/Music.
 ----
 
 `owncloudcmd` will prompt for the username and password, unless they have been specified on the command line or `-n` has been passed.
