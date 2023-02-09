@@ -170,16 +170,16 @@ You can find more information about Apache logging at `http://httpd.apache.org/d
 
 == Crash Reports
 
-It may happen that the Desktop App unexpectedly crashes due to unforseen or undhandled cirumstances. In such a case, a crash report is generated. This report contains valuable information for ownCloud to debug the root cause. This report is not sent to ownCloud automatically by the Desktop App, the user has to confirm to do so. When the user has agreed to send the crash report, he gets a reference ID that can be used in communication with ownCloud for this issue.
+It may happen that the Desktop App unexpectedly crashes due to unforeseen or unhandled circumstances. In such a case, a crash report is generated. This report contains valuable information for ownCloud to debug the root cause. This report is not sent to ownCloud automatically by the Desktop app, the user has to confirm to do so. If users agree to send the crash report, they get a reference ID that can be used in communication with ownCloud for this issue.
 
-Crash reports are available for following environments:
+Crash reports are available for the following environments:
 
 * Windows
 * Mac (currently x64 only)
-* Linux Pakages
+* Linux packages
 * Linux AppImage
 
-The following table shows how a crash report window looks like and how when it has been sent.
+The following table shows a crash report window before and after it has been sent.
 
 [width="100%",cols="50%,50%",options=header]
 |===
