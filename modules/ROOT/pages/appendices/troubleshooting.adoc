@@ -168,6 +168,28 @@ It can be helpful to view your webserver's error log file to isolate any ownClou
 
 You can find more information about Apache logging at `http://httpd.apache.org/docs/current/logs.html`
 
+== Crash Reports
+
+It may happen that the Desktop App unexpectedly crashes due to unforeseen or unhandled circumstances. In such a case, a crash report is generated. This report contains valuable information for ownCloud to debug the root cause. This report is not sent to ownCloud automatically by the Desktop app, the user has to confirm to do so. If users agree to send the crash report, they get a reference ID that can be used in communication with ownCloud for this issue.
+
+Crash reports are available for the following environments:
+
+* Windows
+* Mac (currently x64 only)
+* Linux packages
+* Linux AppImage
+
+The following table shows a crash report window before and after it has been sent.
+
+[width="100%",cols="50%,50%",options=header]
+|===
+^| Crash Report Created
+^| Crash Report Sent
+
+| image:appendices/troubleshooting/crash-report-created.png[Crash report created,width=400]
+| image:appendices/troubleshooting/crash-report-sent.png[Crash report sent,width=400]
+|===
+
 == Core Dumps
 
 On Mac OS X and Linux systems, and in the unlikely event the Desktop App software crashes, the Desktop App is able to write a core dump file. Obtaining a core dump file can assist ownCloud Customer Support tremendously in the debugging process.
