@@ -110,23 +110,12 @@ Starting with Desktop App version 2.9, an {appimage-wikipedia-url}[AppImage] bui
 
 AppImage is an alternative way to use Linux applications -- instead of having multiple files in several places making up a package, the entire application is contained in a single file ending with an `.AppImage` suffix, including all necessary dependencies and libraries. ownCloud provides a single AppImage based on CentOS 7, which runs on all modern and most older Linux platforms.
 
-Known limitations for the 2.11.x AppImage::
+Known limitations for the 3.x AppImages::
 * For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
 issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
 
 * Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:file-browser-extension-packages[Installing Shell Integration Packages].
 
-* AppImages do not start automatically. You have to configure your desktop to automatically start the Desktop App when logging in.
-** For GNOME, search for _startup applications_ in the desktop menu.
-** As an alternative, use the {appimagelauncher-url}[AppImageLauncher] App which also helps managing AppImages.
-
-* There is no automatic updating. Any update is like installing the AppImage.
-
-Known limitations for the 3.0.x AppImage::
-The known limitations are the same as for 2.11.x except:
-
-* AppImages are now starting automatically.
-* AppImages now have automatic updating.
 
 Installing _libfuse2_ if required::
 --
