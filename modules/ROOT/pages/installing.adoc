@@ -29,8 +29,7 @@ You can download the latest version of the ownCloud Desktop App from the {deskto
 Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distributions, see the list of supported distros below.
 
 Windows::
-* Windows 7 or later
-** x86 with 32-bit or x86-64 with 64-bit
+* Windows 8 or later (x64)
 ** For xref:vfs.adoc[VFS support], Windows 10 versions 1709 or later.
 
 macOS::
@@ -39,19 +38,10 @@ macOS::
 ** M1 native support planned for Q2 2023 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
-* CentOS 7.x with _minimum_ version x=8 (x86-64)
-
-** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
-+
-[source,bash]
-----
-sudo yum install epel-release
-----
-
-* Debian 10 & 11 (x86-64)
-* Fedora 34 & 35 (x86-64)
-* openSUSE Leap 15.3 (x86-64)
-* Ubuntu 20.04 & 21.10 & 22.04 (x86-64)
+* Debian 11 (x86-64)
+* Fedora 35 & 36 & 37 (x86-64)
+* openSUSE Leap 15.3 & 15.4 (x86-64)
+* Ubuntu 21.10 & 22.04 & 22.10 (x86-64)
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
