@@ -292,7 +292,7 @@ git clone https://github.com/owncloud/client.git
 cd client
 ----
 + 
-Note that `master` is the default here, but it is a moving target and can be temporarily in a broken state. To be safer you can also check out a tag like `v3.1.0` or a branch like `3.1`.
+By default, `git` clones the development branch called `master`. This branch often works, but this is not guaranteed. If you want to build a stable release or a specific branch, you can use `git checkout <name>` inside the cloned `client` directory to switch to another target. You can find a list of all releases [here](https://github.com/owncloud/client/releases).
 +
 [source,bash]
 ----
