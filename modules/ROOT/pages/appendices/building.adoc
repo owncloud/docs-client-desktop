@@ -288,11 +288,9 @@ To build the most up-to-date version of the Desktop App:
 +
 [source,bash]
 ----
-git clone git://github.com/owncloud/client.git
+git clone https://github.com/owncloud/client.git
 cd client
 ----
-+
-Note that this clone command assumes a connected github account. If you don't have that, use this URL instead: https://github.com/owncloud/client.git
 + 
 Note that `master` is the default here, but it is a moving target and can be temporarily in a broken state. To be safer you can also check out a tag like `v3.1.0` or a branch like `3.1`.
 +
