@@ -29,8 +29,7 @@ You can download the latest version of the ownCloud Desktop App from the {deskto
 Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distributions, see the list of supported distros below.
 
 Windows::
-* Windows 7 or later
-** x86 with 32-bit or x86-64 with 64-bit
+* Windows 8 or later (x64)
 ** For xref:vfs.adoc[VFS support], Windows 10 versions 1709 or later.
 
 macOS::
@@ -39,19 +38,10 @@ macOS::
 ** M1 native support planned for Q2 2023 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
-* CentOS 7.x with _minimum_ version x=8 (x86-64)
-
-** Note the Python extensions for nautilus (GNOME) and its forks nemo (Cinnamon) and caja (MATE) are available only in the third-party EPEL archives which needs to be installed separately before the ownCloud package can be installed. To do so, run
-+
-[source,bash]
-----
-sudo yum install epel-release
-----
-
-* Debian 10 & 11 (x86-64)
-* Fedora 34 & 35 (x86-64)
-* openSUSE Leap 15.3 (x86-64)
-* Ubuntu 20.04 & 21.10 & 22.04 (x86-64)
+* Debian 11 (x86-64)
+* Fedora 35 & 36 & 37 (x86-64)
+* openSUSE Leap 15.3 & 15.4 (x86-64)
+* Ubuntu 21.10 & 22.04 & 22.10 (x86-64)
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
@@ -94,11 +84,25 @@ When the extension is installed, you need to restart the GNOME shell. To do so, 
 image::installing/gnome-shell-extension-appindicator-selector.png[width=600,pdfwidth=60%]
 --
 
-==== Native installation
+==== Native Installation
 
 Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note to see xref:installing-shell-integration-packages[Installing Shell Integration Packages]. Overlay icons and a special context menu for your file browsers need to be installed manually.
 
 You will also find links to source code archives and older versions on the download page.
+
+On Debian-based systems, it may happen after a while that when running `sudo apt update`, a notice about a signature verification error is returned. This can be solved by refreshing the keys. On Debian invoke the following command to update all signatures:
+
+[source,bash]
+----
+sudo apt-key adv --refresh-keys --keyserver keyring.debian.org
+----
+
+For Ubuntu, use:
+
+[source,bash]
+----
+sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+----
 
 ==== AppImage
 
@@ -106,23 +110,12 @@ Starting with Desktop App version 2.9, an {appimage-wikipedia-url}[AppImage] bui
 
 AppImage is an alternative way to use Linux applications -- instead of having multiple files in several places making up a package, the entire application is contained in a single file ending with an `.AppImage` suffix, including all necessary dependencies and libraries. ownCloud provides a single AppImage based on CentOS 7, which runs on all modern and most older Linux platforms.
 
-Known limitations for the 2.11.x AppImage::
+Known limitations for the 3.x AppImages::
 * For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
 issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
 
 * Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:file-browser-extension-packages[Installing Shell Integration Packages].
 
-* AppImages do not start automatically. You have to configure your desktop to automatically start the Desktop App when logging in.
-** For GNOME, search for _startup applications_ in the desktop menu.
-** As an alternative, use the {appimagelauncher-url}[AppImageLauncher] App which also helps managing AppImages.
-
-* There is no automatic updating. Any update is like installing the AppImage.
-
-Known limitations for the 3.0.x AppImage::
-The known limitations are the same as for 2.11.x except:
-
-* AppImages are now starting automatically.
-* AppImages now have automatic updating.
 
 Installing _libfuse2_ if required::
 --
