@@ -315,7 +315,7 @@ cd client-build
 +
 [source,console]
 ----
-cmake -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.10 -DCMAKE_INSTALL_PREFIX=$(pwd)/../install/ ..
+cmake -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.10 -DCMAKE_INSTALL_PREFIX=/usr/ ..
 ----
 +
 Please also check the beginning of ../src/CMakeLists.txt - The version number in `find_package(Qt5 5.xx ...` should match what you have available.
