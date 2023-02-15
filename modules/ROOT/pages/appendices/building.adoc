@@ -1,4 +1,8 @@
 = Appendix Building the Desktop App
+:toc: right
+:description: This section explains how to build the Desktop App from source for all major platforms.
+:page-aliases: building.adoc
+
 :kde-craft-url: https://community.kde.org/Craft
 :kde-craft-build-from-source-url: https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source/Windows
 :install-powershell-url: https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6
@@ -16,13 +20,10 @@
 :macports-url: http://www.macports.org
 :owncloud-obs: http://software.opensuse.org/download/package?project=isv:ownCloud:desktop&package=owncloud-client
 :opensuse-url: http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/
-:page-aliases: building.adoc
 
 == Introduction
 
-This section explains how to build the link:https://owncloud.org/download/#owncloud-desktop-client[ownCloud Desktop App] from source for all major platforms.
-You should read this section if you want to develop for the Desktop App.
-Build instructions are subject to change as development proceeds.
+{description} Here you can finde the source of the link:https://owncloud.org/download/#owncloud-desktop-client[ownCloud Desktop App]. You should read this section if you want to develop for the Desktop App. Build instructions are subject to change as development proceeds.
 
 NOTE: Please check the version for which you want to build.
 
