@@ -1,10 +1,10 @@
 = Using the Virtual Filesystem
 :toc: right
+:description: ownCloud offers the possibility for users to enable a virtual file system (VFS) when synchronizing data.
+
 :wikipedia-url: https://en.wikipedia.org/wiki/Virtual_file_system
 :placeholder-files-url: https://docs.microsoft.com/en-us/windows/win32/cfapi/build-a-cloud-file-sync-engine
 :onedrive-restrictions-url: https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa?ui=en-US&rs=en-US&ad=US#filenamepathlengths
-
-:description: ownCloud offers the possibility for users to enable a virtual file system (VFS) when synchronizing data.
 
 == Introduction
 

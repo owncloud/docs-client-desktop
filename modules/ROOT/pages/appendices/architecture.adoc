@@ -1,11 +1,12 @@
 = Appendix History and Architecture
 :toc: right
+:description: ownCloud provides Desktop Apps to synchronize the contents of local directories from computers, tablets, and handheld devices to the ownCloud server.
 :page-aliases: architecture.adoc
 :theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01
 
 == Introduction
 
-ownCloud provides Desktop Apps to synchronize the contents of local directories from computers, tablets, and handheld devices to the ownCloud server.
+{description}
 
 Synchronization is accomplished using http://www.csync.org[csync], a bidirectional file synchronizing tool that provides both a command line client and a library.
 A special module for csync was written to synchronize with the ownCloud built-in WebDAV server.

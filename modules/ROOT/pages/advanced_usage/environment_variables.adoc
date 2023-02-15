@@ -1,9 +1,10 @@
 = Environment Variables
 :toc: right
+:description: The behavior of the client can be controlled using environment variables.
 
 == Introduction
 
-The behavior of the client can also be controlled using environment variables.
+{description}
 
 NOTE: The value of the environment variables override the values in the configuration file.
 
