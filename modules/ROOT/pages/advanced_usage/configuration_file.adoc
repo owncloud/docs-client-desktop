@@ -1,10 +1,12 @@
 = Configuration File
-:toc:
+:toc: right
+:description: The ownCloud Desktop App uses a configuration file. It has several sections for particular settings. You will find more sections in the configuration file than described here.
+
 :ini-file-format-url: https://en.wikipedia.org/wiki/INI_file
 
 == Introduction
 
-The ownCloud Desktop App uses a configuration file. It has several sections for particular settings. You will find more sections in the configuration file than described here. Do not change any of those settings except support advises you to do so. 
+{description} Do not change any of those settings except support advises you to do so. 
 
 == Location of the Configuration File
  

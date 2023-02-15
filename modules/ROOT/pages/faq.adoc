@@ -1,9 +1,9 @@
 = Desktop Frequently Asked Questions (FAQ)
 :toc: right
+:description: Here you can find some of the most frequently asked questions about the ownCloud Desktop app.
+
 :wordpress1-url: http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/
 :user_manual_quota: https://doc.owncloud.com/server/next/user_manual/files/webgui/quota.html
-
-:description: Here you can find some of the most frequently asked questions about the ownCloud Desktop app.
 
 == Introduction
 
