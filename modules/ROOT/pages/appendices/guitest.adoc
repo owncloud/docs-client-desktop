@@ -1,6 +1,7 @@
 = GUI Testing the Desktop App
 :toc: right
 :toclevels: 3
+:description: This document explains how to run GUI tests for the Desktop App locally in your system.
 
 :squish-url: https://www.froglogic.com/squish/download/
 :free-trial-url: https://www.froglogic.com/squish/free-trial/
@@ -18,7 +19,7 @@
 
 == Introduction
 
-This document explains how to run GUI tests for the Desktop App locally in your system. To run GUI tests, the Squish GUI Test Automation Tool for all kinds of cross-platform desktop, mobile, embedded and web applications is used.
+{description} To run GUI tests, the Squish GUI Test Automation Tool for all kinds of cross-platform desktop, mobile, embedded and web applications is used.
 
 == Prerequisites
 

@@ -1,16 +1,18 @@
 = Appendix Troubleshooting
 :toc: right
+:description: When reporting bugs, it is helpful if you first determine what part of the system is causing the issue.
 :page-aliases: troubleshooting.adoc
+
 :files-antivirus-app-url: https://github.com/owncloud/files_antivirus
 
 == Introduction
+
+{description}
 
 The following two general issues can result in failed synchronization:
 
 * The server setup is incorrect.
 * The Desktop App contains a bug.
-
-When reporting bugs, it is helpful if you first determine what part of the system is causing the issue.
 
 == Identifying Basic Functionality Problems
 

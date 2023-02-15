@@ -1,6 +1,5 @@
 = Open Files with Office Web Apps
 :toc: right
-
 :description: When using Infinite Scale, you can open and edit synced office files locally using office web apps.
 
 == Introduction
