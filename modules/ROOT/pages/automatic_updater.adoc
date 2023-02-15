@@ -1,9 +1,10 @@
 = Automatic Updating of the Desktop App
 :toc: right
+:description: The Automatic Updater ensures that you always have the latest features and bug fixes for your ownCloud Desktop App.
 
 == Introduction
 
-The Automatic Updater ensures that you always have the latest features and bug fixes for your ownCloud Desktop App. The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
+{description} The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
 
 == Basic Workflow
 
