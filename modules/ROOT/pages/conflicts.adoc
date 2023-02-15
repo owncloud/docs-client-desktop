@@ -1,10 +1,11 @@
 = Manage Synchronisation Conflicts
 :toc: right
 :toclevels: 1
+:description: The ownCloud Desktop App uploads local changes and downloads remote changes. When a file has changed on the local and on the remote side between synchronization runs, the Desktop App will be unable to resolve the situation on its own.
 
 == Introduction
 
-The ownCloud Desktop App uploads local changes and downloads remote changes. When a file has changed on the local and on the remote side between synchronization runs, the Desktop App will be unable to resolve the situation on its own. It will create a conflict file with the local version, downloads the remote version and notifies the user that a conflict occurred which needs attention.
+{description} It will create a conflict file with the local version, downloads the remote version and notifies the user that a conflict occurred which needs attention.
 
 == Example Situation
 

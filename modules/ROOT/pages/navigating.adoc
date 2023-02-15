@@ -1,9 +1,9 @@
 = Using the Desktop App
 :toc: right
 :toclevels: 2
-:oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
-
 :description: The ownCloud Desktop App remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
+
+:oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
 
 == Introduction
 
