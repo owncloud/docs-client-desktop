@@ -319,6 +319,7 @@ cmake -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.15.2 -DCMAKE_INSTALL_PREFIX=/usr/ .
 ----
 +
 Please also check the beginning of ../src/CMakeLists.txt - The version number in `find_package(Qt5 5.xx ...` should match what you have available.
+For client 3.0 or later we use Qt 5.15.2 - for client 2.x we used Qt 5.12.10 or below. 
 For Linux builds (using QT5 libraries via build-dep) a typical setting is 
 +
 [source,console]
