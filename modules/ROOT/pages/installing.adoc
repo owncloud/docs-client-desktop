@@ -42,7 +42,7 @@ Linux::
 * Debian 11 (x86-64)
 * Fedora 35 & 36 & 37 (x86-64)
 * openSUSE Leap 15.3 & 15.4 (x86-64)
-* Ubuntu 21.10 & 22.04 & 22.10 (x86-64)
+* Ubuntu 22.04 & 22.10 (x86-64)
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
