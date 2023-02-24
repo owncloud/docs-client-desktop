@@ -150,4 +150,8 @@ Set to -1 to never require full local discovery.
 | `OWNCLOUD_OVERRIDE_SERVER_URL`
 | unset
 | Set to override a previously configured/branded server URL
+
+| `OCC_UPDATE_URL`
+| unset
+| This value can be set in the environment of the client to let the client choose a different update URL for testing purposes. 
 |===
