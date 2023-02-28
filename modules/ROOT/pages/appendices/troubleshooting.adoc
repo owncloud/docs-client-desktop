@@ -33,6 +33,25 @@ NOTE: Please note that this will also erase some of your settings about which fi
 
 See https://github.com/owncloud/client/issues/5226 for more discussion of this issue.
 
+== Error Updating Metadata Access Denied
+
+There are very rare cases when using Windows and VFS, that the Desktop app complains about denied access containing in the log following message, including the source file for reference:
+
+[source,plaintext]
+----
+"WindowsError: ffffffff80070005: Access is denied."
+----
+
+This can happen if the standard permissionson of the folder where the synced data resides has been changed for the owning user. To resolve this issue, the owning user needs `Full Control`. See the example images below how this should look like. You can get there by menu:right click on the folder name[Properties]:
+
+[width=100%,cols="50%,50%"]
+|===
+a| image::appendices/troubleshooting/folder_properties.png[Folder Properties,width=250]
+a| image::appendices/troubleshooting/advanced_security_settings.png[Advanced Security Settings,width=450]
+|===
+
+If the permission is not set to `Full Control`, you can either correct it or ask you administrator for support.
+
 == Isolating Other Issues
 
 Other issues can affect synchronization of your ownCloud files:
