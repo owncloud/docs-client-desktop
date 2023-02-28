@@ -63,7 +63,7 @@ Similar to OneDrive as it also uses Microsoft's virtual file system, there are s
 
 == ownCloud VFS Implementation
 
-Note that when using Windows and VFS, the Desktop app needs full control on the sync folder and its subsequent folders where the data gets stored. If this is not the case, access denied errors most likely will occur when syncing VFS data. For more details see the xref:appendices/troubleshooting.adoc#error-updating-metadata-access-denied[troubleshooting section].
+Note that when using Windows and VFS, the Desktop app needs full control of the sync folder and its subsequent folders where the data gets stored. If this is not the case, access denied errors most likely will occur when syncing VFS data. For more details see the xref:appendices/troubleshooting.adoc#error-updating-metadata-access-denied[troubleshooting section].
 
 === New Sync with VFS enabled
 
