@@ -42,7 +42,7 @@ There are very rare cases when using Windows and VFS, where the Desktop app comp
 "WindowsError: ffffffff80070005: Access is denied."
 ----
 
-This can happen if the standard permissionson of the folder where the synced data resides has been changed for the owning user. To resolve this issue, the owning user needs `Full Control`. See the example images below how this should look like. You can get there by menu:right click on the folder name[Properties]:
+This can happen if the standard permissions of the folder where the synced data resides has been changed for the owning user. To resolve this issue, the owning user needs `Full Control`. See the example images below how this should look like. You can get there by menu:right click on the folder name[Properties]:
 
 [width=100%,cols="50%,50%"]
 |===
