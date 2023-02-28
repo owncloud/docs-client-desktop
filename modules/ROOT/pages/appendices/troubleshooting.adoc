@@ -35,7 +35,7 @@ See https://github.com/owncloud/client/issues/5226 for more discussion of this i
 
 == Error Updating Metadata Access Denied
 
-There are very rare cases when using Windows and VFS, that the Desktop app complains about denied access containing in the log following message, including the source file for reference:
+There are very rare cases when using Windows and VFS, where the Desktop app complains about denied access. The log contains the following message, including the source file for reference:
 
 [source,plaintext]
 ----
@@ -50,7 +50,7 @@ a| image::appendices/troubleshooting/folder_properties.png[Folder Properties,wid
 a| image::appendices/troubleshooting/advanced_security_settings.png[Advanced Security Settings,width=450]
 |===
 
-If the permission is not set to `Full Control`, you can either correct it or ask you administrator for support.
+If the permission is not set to `Full Control`, you can either correct it or ask your administrator for support.
 
 == Isolating Other Issues
 
