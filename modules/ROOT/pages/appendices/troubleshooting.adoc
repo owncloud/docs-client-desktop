@@ -1,5 +1,6 @@
 = Appendix Troubleshooting
 :toc: right
+:toclevels: 3
 :description: When reporting bugs, it is helpful if you first determine what part of the system is causing the issue.
 :page-aliases: troubleshooting.adoc
 
@@ -114,7 +115,7 @@ Adding the `--logdebug` flag increases the verbosity of the generated log files.
 
 As an example, to define a test where you keep log data for two days, you can issue the following command:
 
-[source,console]
+[source,plaintext]
 ----
 owncloud --logdir /tmp/owncloud_logs --logexpire 48
 ----
@@ -125,21 +126,26 @@ If the ownCloud Desktop App isn't able to start and immediately crashes the firs
 
 On Linux and Mac simply open the terminal and run:
 
-[source,console]
+[source,plaintext]
 ----
 owncloud --logfile - --logflush
 ----
 
 On Windows open a PowerShell and run the following command:
 
-[source,console]
+[source,powershell]
 ----
-& 'C:\Program Files\ownCloud\owncloud.exe' --logfile - --logflush | Write-Host
+& 'C:\Program Files\ownCloud\owncloud.exe' --logfile - --logflush
 ----
 
 Make sure to copy the whole command and adjust the path to your `owncloud.exe`, if you have chosen to install the Desktop App in a different path.
 
-To further increase the verbosity of the output you can also combine these commands with the `--logdebug` argument.
+To further increase the verbosity of the output you can also combine these commands with the following argument:
+
+[source,plaintext]
+----
+--logdebug
+----
 
 ==== Control Log Content
 
@@ -147,7 +153,7 @@ Thanks to the Qt framework, logging can be controlled at run-time through the QT
 
 *Exclude log item categories*
 
-[source,console]
+[source,bash]
 ----
 QT_LOGGING_RULES='gui.socketapi=false;sync.database*=false' \
   /PATH/TO/CLIENT \
@@ -156,7 +162,7 @@ QT_LOGGING_RULES='gui.socketapi=false;sync.database*=false' \
 
 *Add HTTP logging entries*
 
-[source,console]
+[source,bash]
 ----
 QT_LOGGING_RULES='sync.httplogger=true' \
   /PATH/TO/CLIENT \
@@ -165,7 +171,7 @@ QT_LOGGING_RULES='sync.httplogger=true' \
 
 *Only show specific log item categories*
 
-[source,console]
+[source,bash]
 ----
 QT_LOGGING_RULES='*=false;sync.httplogger=true' \
   /PATH/TO/CLIENT \
