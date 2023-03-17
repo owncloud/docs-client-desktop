@@ -1,0 +1,56 @@
+= Command Line Parameters
+:toc: right
+:description: The ownCloud Client can be executed with various command line parameters. 
+:page-aliases: advanced_usage/command_line_options.adoc
+
+== Introduction
+
+{description}
+
+== Command Description
+
+[source,console]
+----
+owncloud [options]
+----
+
+Command line paramters supported by `owncloud` include the following:
+
+[width="100%",cols="35%,65%",options="header"]
+|===
+| Parameter
+| Description
+
+| `-h, --help`
+| Displays help on commandline options.
+
+| `-v, --version`
+| Displays version information.
+
+| `-s, --showsettings`
+| Show the settings dialog while starting.
+
+| `-q, --quit`
+| Quit the running instance.
+
+| `--logfile <filename>` 
+| Write log to file (use - to write to stdout).
+
+| `--logflush`
+| Flush the log file after every write.
+
+| `--logdebug`
+| Output debug-level messages in the log.
+
+| `--language <language>` 
+| Override UI language.
+
+| `--list-languages`
+| List available languages.
+
+| `--confdir <dirname>`
+| Use the given configuration folder.
+
+| `--debug`
+| Enable debug mode.
+|===
