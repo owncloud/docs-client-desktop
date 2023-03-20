@@ -157,5 +157,5 @@ Set to -1 to never require full local discovery.
 
 | `QT_LOGGING_RULES`
 | unset
-| This value can be used to control the log content, You can find examples here: troubleshooting.html#control-log-content and here: https://community.kde.org/Guidelines_and_HOWTOs/Debugging/Using_Error_Messages#Controlling_Messages
+| This value can be used to control the log content, see examples at xref:appendices/troubleshooting.adoc#control-log-content[Control Log Content] and  https://community.kde.org/Guidelines_and_HOWTOs/Debugging/Using_Error_Messages#Controlling_Messages[Controlling Messages].
 |===
