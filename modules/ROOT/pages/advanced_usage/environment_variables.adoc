@@ -143,10 +143,6 @@ Set to -1 to never require full local discovery.
 | unset
 | Set to "1" to enable uploading conflict files to the server.
 
-| `QT_LOGGING_RULES`
-| unset
-| Set to "sync.httplogger=true" to enable verbose http logging. See also troubleshooting.adoc for more.
-
 | `OWNCLOUD_OVERRIDE_SERVER_URL`
 | unset
 | Set to override a previously configured/branded server URL
