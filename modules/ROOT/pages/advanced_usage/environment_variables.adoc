@@ -143,11 +143,15 @@ Set to -1 to never require full local discovery.
 | unset
 | Set to "1" to enable uploading conflict files to the server.
 
-| `QT_LOGGING_RULES`
-| unset
-| Set to "sync.httplogger=true" to enable verbose http logging. See also troubleshooting.adoc for more.
-
 | `OWNCLOUD_OVERRIDE_SERVER_URL`
 | unset
 | Set to override a previously configured/branded server URL
+
+| `OCC_UPDATE_URL`
+| unset
+| This value can be set in the environment of the client to let the client choose a different update URL for testing purposes. 
+
+| `QT_LOGGING_RULES`
+| unset
+| This value can be used to control the log content, see examples at xref:appendices/troubleshooting.adoc#control-log-content[Control Log Content] and  https://community.kde.org/Guidelines_and_HOWTOs/Debugging/Using_Error_Messages#Controlling_Messages[Controlling Messages].
 |===

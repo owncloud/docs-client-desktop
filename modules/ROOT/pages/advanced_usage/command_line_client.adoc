@@ -1,7 +1,6 @@
 = The Command Line Client
 :toc: right
 :description: The ownCloud Client packages contain a command line client, owncloudcmd, that can be used to synchronize ownCloud files to client machines.
-:page-aliases: advanced_usage/command_line_options.adoc
 
 == Introduction
 
