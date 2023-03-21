@@ -14,7 +14,7 @@
 owncloud [options]
 ----
 
-Command line paramters supported by `owncloud` include the following:
+Command line parameters supported by `owncloud` include the following:
 
 [width="100%",cols="35%,65%",options="header"]
 |===
