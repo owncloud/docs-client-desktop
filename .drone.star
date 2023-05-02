@@ -17,9 +17,9 @@ def main(ctx):
     # Version branches never deploy themselves, but instead trigger a deployment in deployment_branch
     # This must not be changed in version branches
     deployment_branch = default_branch
-    pdf_branch = default_branch
+    pdf_branch = base_branch
 
-    return cancelPreviousBuilds() + [
+    return [
         checkStarlark(),
         build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_branch),
         trigger(ctx, environment, latest_version, deployment_branch, base_branch, pdf_branch),
@@ -256,27 +256,3 @@ def from_secret(name):
     return {
         "from_secret": name,
     }
-
-def cancelPreviousBuilds():
-    return [{
-        "kind": "pipeline",
-        "type": "docker",
-        "name": "cancel-previous-builds",
-        "clone": {
-            "disable": True,
-        },
-        "steps": [{
-            "name": "cancel-previous-builds",
-            "image": "owncloudci/drone-cancel-previous-builds",
-            "settings": {
-                "DRONE_TOKEN": {
-                    "from_secret": "drone_token",
-                },
-            },
-        }],
-        "trigger": {
-            "ref": [
-                "refs/pull/**",
-            ],
-        },
-    }]
