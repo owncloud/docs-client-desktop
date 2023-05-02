@@ -28,8 +28,8 @@ asciidoc:
     idseparator: '-'
     experimental: ''
 #   desktop
-    latest-desktop-version: '3.2'
-    previous-desktop-version: '3.1'
+    latest-desktop-version: '4.0'
+    previous-desktop-version: '3.2'
   extensions:
     - ./lib/extensions/tabs.js
     - ./lib/extensions/remote-include-processor.js
