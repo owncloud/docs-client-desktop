@@ -29,6 +29,15 @@ ifeval::["{page-component-version}" == "next"]
 :url-version: latest
 endif::[]
 
+// evaluate the url version which is either the
+// * branch name when it is a stable branch or
+// * latest when it is the next branch
+ 
+:url-version: {page-component-version}
+ifeval::["{page-component-version}" == "next"]
+:url-version: latest
+endif::[]
+
 == Introduction
 
 {description} Continuous synchronization to and from the ownCloud server provides ease of use combined with comprehensive access control.
