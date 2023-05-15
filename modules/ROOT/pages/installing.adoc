@@ -1,6 +1,8 @@
 = Installing the Desktop App
 :toc: right
 :toclevels: 4
+:client-version-win: 4.0.0.10896.x64
+:client-version-lin: 4.0.0.10896-x86_64
 :description: The Desktop App enables users to access and sync files and folders from their ownCloud, work on remote files right from the desktop as if they were stored on their computer – because they are.
 
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
@@ -16,6 +18,16 @@
 :appimagelauncher-url: https://docs.appimage.org/introduction/software-overview.html#ref-appimagelauncher
 :install-appimagelauncher-url: https://github.com/TheAssassin/AppImageLauncher/wiki
 :install-shell-integration-url: https://github.com/owncloud/client-desktop-install-shell-integration
+:client-download-url: https://download.owncloud.com/desktop/ownCloud/stable/
+
+// evaluate the url version which is either the
+// * branch name when it is a stable branch or
+// * latest when it is the next branch
+ 
+:url-version: {page-component-version}
+ifeval::["{page-component-version}" == "next"]
+:url-version: latest
+endif::[]
 
 == Introduction
 
@@ -34,15 +46,16 @@ Windows::
 ** For xref:vfs.adoc[VFS support], Windows 10 versions 1709 or later.
 
 macOS::
-* macOS 10.12+
+* macOS 10.13+
 ** x86-64 or Apple M in Rosetta 2 emulation
 ** M1 native support planned for Q2 2023 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
 * Debian 11 (x86-64)
-* Fedora 35 & 36 & 37 (x86-64)
-* openSUSE Leap 15.3 & 15.4 (x86-64)
-* Ubuntu 22.04 & 22.10 (x86-64)
+* Fedora 36 & 37 & 38 (x86-64)
+* openSUSE Leap 15.4 (x86-64)
+* Ubuntu 22.04 & 22.10 & 23.04 (x86-64)
+* **{appimage-wikipedia-url}[AppImage]** build of the ownCloud Desktop App is available to support more Linux platforms
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
@@ -107,11 +120,11 @@ sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
 
 ==== AppImage
 
-Starting with Desktop App version 2.9, an {appimage-wikipedia-url}[AppImage] build of the ownCloud Desktop App is available to support more Linux platforms. You can download the AppImage at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
+An {appimage-wikipedia-url}[AppImage] build of the ownCloud Desktop App is available to support more Linux platforms. You can download the AppImage at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
 
 AppImage is an alternative way to use Linux applications -- instead of having multiple files in several places making up a package, the entire application is contained in a single file ending with an `.AppImage` suffix, including all necessary dependencies and libraries. ownCloud provides a single AppImage based on CentOS 7, which runs on all modern and most older Linux platforms.
 
-Known limitations for the 3.x AppImages::
+Known limitations for the 4.x AppImages::
 * For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
 issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
 
@@ -182,24 +195,24 @@ mkdir -p ~/Applications
 cd ~/Applications
 ----
 +
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-wget https://download.owncloud.com/desktop/ownCloud/stable//2.10.1.7187/linux-appimage/ownCloud-2.10.1.7187.AppImage
+wget {client-download-url}{url-version}/linux-appimage/ownCloud-{client-version-lin}.AppImage
 ----
 
 * The following steps are only necessary when the AppImageLauncher is _not_ used:
 ** Make the AppImage executable:
 +
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-sudo chmod +x ownCloud-2.10.1.7187.AppImage
+sudo chmod +x ownCloud-{client-version-lin}.AppImage
 ----
 
 * Start the AppImage by invoking the following command:
 +
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-~/Applications/ownCloud-2.10.1.7187.AppImage
+~/Applications/ownCloud-{client-version-lin}.AppImage
 ----
 
 * Note when you start the AppImage after setting it to be executable, AppImageLauncher will open if installed.
@@ -218,22 +231,22 @@ If curl is not available or you are not sure or want to read more, see {install-
 
 == Customizing the Windows Installation
 
-If you just want to install the ownCloud Desktop App on your local system, you can simply launch the `.msi` file and configure it in the wizard that pops up.
+If you just want to install the ownCloud Desktop App on your local system, you can simply {client-download-url}{url-version}/win/[download,window=_blank] and launch the relevant `.msi` file and configure it in the wizard that pops up. For the examples below, the x64 installer is used.
 
 === Features
 
 The MSI installer provides several features that can be installed or removed individually, which you can also control via command-line, if you are automating the installation, then run the following command:
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi
+msiexec /passive /i ownCloud-{client-version-win}.msi
 ----
 
 The command will install the ownCloud Desktop App into the default location with the default features enabled. If you want to disable, e.g., desktop shortcut icons you can simply change the above command to the following:
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi REMOVE=DesktopShortcut
+msiexec /passive /i ownCloud-{client-version-win}.msi REMOVE=DesktopShortcut
 ----
 
 See the following table for a list of available features:
@@ -271,25 +284,25 @@ required
 
 You can also choose to only install the Desktop App itself by using the following command:
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi ADDDEFAULT=Client
+msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT=Client
 ----
 
 If you for instance want to install everything but the `DesktopShortcut` and the `ShellExtensions` feature, you have two possibilities:
 
 * You explicitly name all the features you actually want to install (whitelist) where `Client` is always installed anyway.
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi ADDDEFAULT=StartMenuShortcuts
+msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT=StartMenuShortcuts
 ----
 
 *  You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties.
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi NO_DESKTOP_SHORTCUT="1"
+msiexec /passive /i ownCloud-{client-version-win}.msi NO_DESKTOP_SHORTCUT="1"
 NO_SHELL_EXTENSIONS="1"
 ----
 
@@ -303,16 +316,16 @@ You can change the installed features later by using `REMOVE` and `ADDDEFAULT` p
 
 * If you want to add the desktop shortcut later, run the following command:
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi ADDDEFAULT="DesktopShortcut"
+msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT="DesktopShortcut"
 ----
 
 * If you want to remove it, simply run the following command:
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi REMOVE="DesktopShortcut"
+msiexec /passive /i ownCloud-{client-version-win}.msi REMOVE="DesktopShortcut"
 ----
 
 Windows keeps track of the installed features and using `REMOVE` or `ADDDEFAULT` will only affect the mentioned features.
@@ -325,9 +338,9 @@ NOTE: You cannot specify REMOVE on initial installation as it will disable all f
 
 You can adjust the installation folder by specifying the `INSTALLDIR` property like this.
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi INSTALLDIR="C:\Program Files (x86)\Non Standard ownCloud Client Folder"
+msiexec /passive /i ownCloud-{client-version-win}.msi INSTALLDIR="C:\Program Files (x86)\Non Standard ownCloud Client Folder"
 ----
 
 Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get the whitespace escaping right there. Specifying the `INSTALLDIR` like this only works on first installation, you cannot simply re-invoke the .msi with a different path. If you still need to change it, uninstall it first and reinstall it with the new path.
@@ -336,18 +349,18 @@ Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get t
 
 To disable automatic updates, you can pass the `SKIPAUTOUPDATE` property.
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-x.y.z.msi SKIPAUTOUPDATE="1"
+msiexec /passive /i ownCloud-{client-version-win}.msi SKIPAUTOUPDATE="1"
 ----
 
 === Launch After Installation
 
 To launch the Desktop App automatically after installation, you can pass the `LAUNCH` property.
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-x.y.z.msi LAUNCH="1"
+msiexec /i ownCloud-{client-version-win}.msi LAUNCH="1"
 ----
 
 This option also removes the checkbox to let users decide if they want to launch the Desktop App for non-passive/quiet mode.
@@ -358,26 +371,26 @@ NOTE: This option does not have any effect without GUI.
 
 The ownCloud Desktop App schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded. If you're taking care of the reboot yourself, you can set the `REBOOT` property.
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-x.y.z.msi REBOOT=ReallySuppress
+msiexec /i ownCloud-{client-version-win}.msi REBOOT=ReallySuppress
 ----
 
 This will make msiexec exit with error ERROR_SUCCESS_REBOOT_REQUIRED (3010).
 If your deployment tooling interprets this as an actual error and you want to avoid that, you may want to set the `DO_NOT_SCHEDULE_REBOOT` instead.
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-x.y.z.msi DO_NOT_SCHEDULE_REBOOT="1"
+msiexec /i ownCloud-{client-version-win}.msi DO_NOT_SCHEDULE_REBOOT="1"
 ----
 
 === Windows Installer Logging
 
 In case you experience issues, you can run the installer with logging enabled:
 
-[source,console]
+[source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-x.y.z.msi /L*V "C:\log\example.log"
+msiexec /i ownCloud-{client-version-win}.msi /L*V "C:\log\example.log"
 ----
 
 See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I create an installation log] documentation for more information about the Msiexec.exe command and logging.
