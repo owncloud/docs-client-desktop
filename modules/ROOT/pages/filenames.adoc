@@ -1,12 +1,12 @@
 = Filename Considerations
 :toc: right
-:description: When using the Desktop App, depending on the operating system (OS) you are using, file and folder names can have different restrictions.
+:description: When using the Desktop App, depending on the operating system (OS) you are using, file and folder names respectively their lengths can have different restrictions.
 
 :control_code_chart-url: https://en.wikipedia.org/wiki/ASCII#Control_code_chart
 
 == Introduction
 
-{description} Creating files and folders with allowed names on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
+{description} Creating files and folders with allowed names or max lengths on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
 
 NOTE: This is not an ownCloud rule but an OS dependency
 
@@ -16,7 +16,20 @@ NOTE: This is not an ownCloud rule but an OS dependency
 . Do not use any of the mentioned characters or words in any OS when using the Desktop App.
 . When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB, file and folder names on Linux/Unix must comply with the Windows rules for successful syncing.
 . When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB and you want to just rename the file with different casings, rename the file to a total different name, let it sync and then rename it again to the name that you want.
+. When the source file is on an environment that allows the path component of the path/filename length exceeding 260 characters, the file will not be syncable to a Windows standard client without additional measures. For details see below.
 ====
+
+== Maximum Path Length Limitation
+
+Though each file system has it limits as described in https://en.wikipedia.org/wiki/Comparison_of_file_systems#Limits[Wikipedia: Comparison of file systems], you normally will hardly reach them. On the other hand side, when using programming interfaces (API's) to create files, this can change, especially on Windows and in particular when using the Virtual Files (VFS) feature. Here, with the default Windows setting, the _path component_ for a file created via API is _limited_ to 260 characters - which can be reached quickly.
+
+When using the Desktop App for Windows having VFS configured, files may not be able to be synced if the source file was created in an environment where the path component exceeded the 260 character limit.
+
+In such a case, the Desktop App notifies the user about the inability of syncing the particular file.
+
+=== Fix for Windows
+
+To overcome the maximum path length limitation of 260 characters, Microsoft has provided a https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry#enable-long-paths-in-windows-10-version-1607-and-later[solution document,window=_blank] where they describe the opt-in process to relax the path length limitation when using API calls, like VFS does when creating files and folders.
 
 == Forbidden Printable ASCII Characters
 
