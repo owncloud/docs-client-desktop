@@ -6,7 +6,7 @@
 
 == Introduction
 
-{description} Creating files and folders with allowed names or maximum lengths on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations of different OS for file and folder names.
+{description} Creating files and folders with allowed names or maximum lengths on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations regarding file and folder names on different operating systems.
 
 NOTE: This is not an ownCloud rule but an OS dependency
 
@@ -21,7 +21,7 @@ NOTE: This is not an ownCloud rule but an OS dependency
 
 == Maximum Path Length Limitation
 
-Though each file system has it limits as described in https://en.wikipedia.org/wiki/Comparison_of_file_systems#Limits[Wikipedia: Comparison of file systems], you normally will rarely reach them. On the other hand, when using programming interfaces (API's) to create files, this can change, especially on Windows and in particular when using the Virtual Files (VFS) feature. Here, with the default Windows setting, the _path component_ for a file created via API is _limited_ to 260 characters - which can be reached quickly.
+Though each file system has its limits as described in https://en.wikipedia.org/wiki/Comparison_of_file_systems#Limits[Wikipedia: Comparison of file systems], you normally will rarely reach them. On the other hand, when using programming interfaces (APIs) to create files, this can change, especially on Windows and in particular when using the Virtual Files (VFS) feature. Here, with the default Windows setting, the _path component_ for a file created via API is _limited_ to 260 characters - which can be reached quickly.
 
 When using the Desktop App for Windows with VFS configured, files may not be able to be synced if the source file was created in an environment where the path component exceeded the 260 character limit.
 
