@@ -340,7 +340,7 @@ You can adjust the installation folder by specifying the `INSTALLDIR` property l
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi INSTALLDIR="C:\Program Files (x86)\Non Standard ownCloud Client Folder"
+msiexec /passive /i ownCloud-{client-version-win}.msi INSTALLDIR="C:\Program Files\Non Standard ownCloud Client Folder"
 ----
 
 Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get the whitespace escaping right there. Specifying the `INSTALLDIR` like this only works on first installation, you cannot simply re-invoke the .msi with a different path. If you still need to change it, uninstall it first and reinstall it with the new path.
@@ -394,6 +394,62 @@ msiexec /i ownCloud-{client-version-win}.msi /L*V "C:\log\example.log"
 ----
 
 See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I create an installation log] documentation for more information about the Msiexec.exe command and logging.
+
+=== Define Your Own Synchronization Folder Icon
+
+When setting up a new synchronization, ownCloud automatically assigns its icon to the synchronization folder for ease of identification. Though you can change this icon, it would be reverted back on next reboot to the ownCloud icon. Folder icon details are usually stored in the hidden desktop.ini file which is located _inside_ the folder under scrutiny. To make a manually defined icon persistent, a small change in this `desktop.ini` file is necessary. See the following description to do so:
+
+* Make the `desktop.ini` visible because it is hidden by default:
++
+--
+[width="100%",cols="70%,.^100%"]
+|===
+a| image:installing/show_in_explorer.png[Show in Explorer,width=250]
+| Open the Desktop app, click on the three dots and there on `Show in Explorer`.
+
+
+a| image:installing/explorer_view.png[Explorer View,width=250]
+| In the Explorer, go to the `View` tab
+
+a| image:installing/explorer_options.png[Explorer Options,width=250]
+| and click on the `Options` icon.
+
+a| image:installing/folder_view.png[Folder Options,width=250]
+| In `Folder Options` click on the `View` tab.
+
+a| image:installing/advanced_settings.png[Advanced Settings,width=250]
+| In `Advanced Settings`, change the marked items.
+|===
+--
+
+* Now, as the `desktop.ini` file is visible, add a setting to make an icon change persistent. To do so, open it with an editor.
+** The current content may look like this:
++
+--
+[source,plaintext]
+----
+[.ShellClassInfo]
+IconResource=C:\Program Files\ownCloud\owncloud.exe,0
+[ViewState]
+Mode=
+Vid=
+FolderType=Generic
+----
+--
+
+** Add the following to the current content at the bottom:
++
+--
+[source,plaintext]
+----
+[ownCloud]
+UpdateIcon=false
+----
+--
+
+* Make the `dektop.ini` file hidden again by undoing the `Advanced Settings` changes from the first step. After that, the `desktop.ini` file will be hidden again.
+
+* Finally apply any icon of your choice to the synchronization folder.
 
 == Installation Wizard
 
