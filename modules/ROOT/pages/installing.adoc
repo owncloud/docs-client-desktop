@@ -395,9 +395,9 @@ msiexec /i ownCloud-{client-version-win}.msi /L*V "C:\log\example.log"
 
 See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I create an installation log] documentation for more information about the Msiexec.exe command and logging.
 
-=== Define an Own Synchronisation Folder Icon
+=== Define Your Own Synchronization Folder Icon
 
-When setting up a new synchronisation, ownCloud automatically assigns its icon to the synchronisation folder for ease of identification. Though you can change this icon, it would be reverted back on next reboot to the ownCloud icon. Folder icon details are usually stored in the hidden desktop.ini file which is located _inside_ the folder under scrutiny. To make a manually defined icon persistent, a small change in this `desktop.ini` file is necessary. See the following description to do so:
+When setting up a new synchronization, ownCloud automatically assigns its icon to the synchronization folder for ease of identification. Though you can change this icon, it would be reverted back on next reboot to the ownCloud icon. Folder icon details are usually stored in the hidden desktop.ini file which is located _inside_ the folder under scrutiny. To make a manually defined icon persistent, a small change in this `desktop.ini` file is necessary. See the following description to do so:
 
 * Make the `desktop.ini` visible because it is hidden by default:
 +
@@ -409,13 +409,13 @@ a| image:installing/show_in_explorer.png[Show in Explorer,width=250]
 
 
 a| image:installing/explorer_view.png[Explorer View,width=250]
-| In the explorer, go to the `view` tab
+| In the Explorer, go to the `View` tab
 
 a| image:installing/explorer_options.png[Explorer Options,width=250]
-| and click on the `options` icon.
+| and click on the `Options` icon.
 
 a| image:installing/folder_view.png[Folder Options,width=250]
-| In `Folder Options` click on the `view` tab.
+| In `Folder Options` click on the `View` tab.
 
 a| image:installing/advanced_settings.png[Advanced Settings,width=250]
 | In `Advanced Settings`, change the marked items.
@@ -449,7 +449,7 @@ UpdateIcon=false
 
 * Make the `dektop.ini` file hidden again by undoing the `Advanced Settings` changes from the first step. After that, the `desktop.ini` file will be hidden again.
 
-* Finally apply any icon of your choice to the synchronisation folder.
+* Finally apply any icon of your choice to the synchronization folder.
 
 == Installation Wizard
 
