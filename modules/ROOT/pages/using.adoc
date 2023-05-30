@@ -67,26 +67,26 @@ The overlay icons are similar to the systray icons introduced above. They behave
 
 The overlay icon of an individual file indicates its current sync state. If the file is in sync with the server version, it displays a green checkmark.
 
-If the file is ignored from syncing, for example because it is on your exclude list, or because it is a symbolic link, it displays a warning icon.
+If the file is ignored while syncing, for example because it is on your exclude list or because it is a symbolic link, it displays a warning icon.
 
-If there is a sync error, or the file is blacklisted, it displays an eye-catching red X. If the file is waiting to be synced, or is currently syncing, the overlay icon displays a blue cycling icon.
+If there is a sync error, or the file is blacklisted, it displays an eye-catching red X. If the file is waiting to be synced, or is currently being synced, the overlay icon displays a blue cycling icon.
 
 When the Desktop App is offline, no icons are shown to reflect that the folder is currently out of sync and no changes are synced to the server.
 
 The overlay icon of a synced directory indicates the status of the files in the directory. If there are any sync errors, the directory is marked with a warning icon.
 
-If a directory includes ignored files that are marked with warning icons that does not change the status of the parent directories.
+If a directory includes ignored files that are marked with warning icons that does not change the status of the parent directory.
 
 == Accounts
 
 === Connection Wizard
 
-The connection wizard is always shown when the Desktop App has been started and no synchronisation connection has been setup so far. It takes you step-by-step through configuration options and account setup.
+The connection wizard is always shown when the Desktop app has been started and no synchronization connection has been set up so far. It takes you step-by-step through configuration options and account setup.
 
 * First you need to enter the URL of your ownCloud instance.
 +
 --
-Note that the URL given to you can be a different one than the final URL used by the Desktop App. This can be the case if a company has a generic setup URL that provides the Desktop App information about where to finally connect you. This mechanism is called https://en.wikipedia.org/wiki/WebFinger[WebFinger] and has the big benefit that one only needs to know the generic setup URL. The Desktop App tries to identify if webfinger is proveded via the given URL and acts accordingly based on the servers response. This all runs in the background but is explained here if you finally see a different URL being used than entered.
+Note that the URL given to you can be a different one than the final URL used by the Desktop app. This can be the case if a company has a generic setup URL that provides the Desktop app information about where to connect you. This mechanism is called https://en.wikipedia.org/wiki/WebFinger[WebFinger] and has the big benefit that one only needs to know the generic setup URL. The Desktop app tries to identify if webfinger is provided via the given URL and acts accordingly based on the server's response. This all runs in the background but is explained here in case you see a different URL being used than entered.
 
 image::using/client-1.png[form for entering ownCloud instance URL, width=500,pdfwidth=60%]
 --
@@ -97,10 +97,10 @@ image::using/client-1.png[form for entering ownCloud instance URL, width=500,pdf
 image::using/client-2.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
 --
 
-* Select what and how to sync
+* Select what and how to sync.
 +
 --
-On the _"Local Folder Option"_ screen you may sync all of your files on the ownCloud server, or select individual folders. The default local sync folder is `ownCloud`, in your home directory. You may change this as well.
+On the _"Local Folder Option"_ screen you may sync all of your files on the ownCloud server or select individual folders. The default local sync folder is `ownCloud`, in your home directory. You may change this as well.
 
 image::using/client-3.png[Select which remote folders to sync, and which local folder to store them in, width=500,pdfwidth=60%]
 --
@@ -108,9 +108,9 @@ image::using/client-3.png[Select which remote folders to sync, and which local f
 * Final step
 +
 --
-When you have completed selecting your sync folders, click the _"Connect"_ button at the bottom right. The Desktop App will attempt to connect to your ownCloud server, and when it is successful you'll see two buttons:
+After selecting your sync folders, click the _"Connect"_ button at the bottom right. The Desktop app will attempt to connect to your ownCloud server, and if it is successful you'll see two buttons:
 
-* One to connect to your ownCloud Web GUI.
+* One to connect to your ownCloud Web UI.
 * One to open your local folder.
 
 It will also start synchronizing your files.
@@ -122,7 +122,7 @@ You may configure multiple ownCloud accounts in your Desktop App. Simply click t
 
 [NOTE]
 ====
-To use *Two-Factor Authentication* (2FA), ownCloud server must have the {oauth2-app-url}[OAuth2 app] installed, configured, and enabled. Please contact your ownCloud administrator for more details.
+To use *Two-Factor Authentication* (2FA), ownCloud server must have the {oauth2-app-url}[OAuth2 app] installed, configured and enabled. Please contact your ownCloud administrator for more details.
 ====
 
 === Configuring ownCloud Account Settings
@@ -269,7 +269,7 @@ You might have some local files or directories that you do not want to backup an
 
 image::using/ignored_files_editor.png[Ingnored Files Editor,width=350,pdfwidth=60%]
 
-For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are contained in a system file. (typically `sync-exclude.lst`) located in the ownCloud Desktop App directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to show the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
+For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are contained in a system file. (typically `sync-exclude.lst`) located in the ownCloud Desktop app directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to show the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
 
 NOTE: Modifying the global exclude definition file might render the client unusable or result in undesired behavior.
 
