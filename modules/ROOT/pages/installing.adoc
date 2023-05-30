@@ -453,4 +453,4 @@ UpdateIcon=false
 
 == Connection Wizard
 
-When all is setup and the app has been started for the first time, you will be directed to the xref:using.adoc#connection-wizard[Connection Wizard] to setup a new synchronisation connection. The connection wizard will always be shown if no connection has been setup.
+When all is set up and the app has been started for the first time, you will be directed to the xref:using.adoc#connection-wizard[Connection Wizard] to set up a new synchronization connection. The connection wizard will always be shown if no connection has been set up.
