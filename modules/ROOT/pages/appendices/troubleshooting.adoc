@@ -12,7 +12,7 @@
 
 The following two general issues can result in failed synchronization:
 
-* The server setup is incorrect.
+* The instance setup is incorrect.
 * The Desktop App contains a bug.
 
 == Identifying Basic Functionality Problems
@@ -26,13 +26,15 @@ Ensure the WebDAV API is working::
 Use a WebDAV command line tool to test::
   A more sophisticated test method for troubleshooting synchronization issues is to use a WebDAV command line client and log into the ownCloud WebDAV server. One such command line client -- called `cadaver` -- is available for Linux distributions. You can use this application to further verify that the WebDAV server is running properly using PROPFIND calls. As an example, after installing the `cadaver` app, you can issue the `propget` command to obtain various properties pertaining to the current directory and also verify WebDAV server connection.
 
+== Directory Modification Time
+
+NOTE: ownCloud does not preserve the mtime (modification time) of directories, though it does update the mtimes on files.
+
 == CSync Unknown Error
 
 If you see this error message stop your Desktop App, delete the `._sync_xxxxxxx.db` file, and then restart your Desktop App. There is a hidden `._sync_xxxxxxx.db` file inside the folder of every account configured on your Desktop App.
 
 NOTE: Please note that this will also erase some of your settings about which files to download.
-
-See https://github.com/owncloud/client/issues/5226 for more discussion of this issue.
 
 == Error Updating Metadata Access Denied
 
