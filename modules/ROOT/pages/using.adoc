@@ -38,30 +38,26 @@ image:using/icon-error.png[image-error]
 
 The red circle with the white "x" indicates a configuration error, such as an incorrect login or server URL.
 
-=== Systray Icon
+=== The Systray Icon
 
-A right-click on the systray icon opens a menu for quick access to multiple operations.
+A btn:[right-click] on the systray icon opens a menu for quick access to multiple operations.
 
-image::using/menu.png[systray, width=400,pdfwidth=60%]
+image::using/systray-icon-menu.png[systray, width=400,pdfwidth=60%]
 
-This menu provides the following options:
+This menu provides quick access to options like:
 
-* Quick access to your accounts.
-* Sync status.
+* Your sync accounts,
+* The sync status,
 * Recent Changes, showing the latest activities.
-* Settings.
-* Help menu.
-* Pause synchronizations.
-* An option to log in or log out of all of your accounts at once.
-* Quit ownCloud, logging out and closing the Desktop App.
+* and more...
 
-A left-click on your systray icon opens the Desktop App to the account settings window.
+A btn:[left-click] on your systray icon opens the Desktop App to the account settings window.
 
 image::using/client6.png[image, width=600,pdfwidth=60%]
 
 === File Manager Overlay Icons
 
-The ownCloud Desktop App provides overlay icons, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indicate the sync status of your ownCloud files.
+The ownCloud Desktop App provides overlay icons, if not using the VFS feature, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indicate the sync status of your ownCloud files.
 
 The overlay icons are similar to the systray icons introduced above. They behave differently on files and directories according to sync status and errors.
 
