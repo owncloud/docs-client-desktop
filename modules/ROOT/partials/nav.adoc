@@ -1,6 +1,6 @@
 * xref:index.adoc[Introduction]
 * xref:installing.adoc[Installing the Desktop App]
-* xref:navigating.adoc[Using the Desktop App]
+* xref:using.adoc[Using the Desktop App]
 * xref:vfs.adoc[Using the Virtual Filesystem]
 * xref:filenames.adoc[Filename Considerations]
 * xref:conflicts.adoc[Manage Synchronisation Conflicts]
