@@ -165,7 +165,7 @@ The ownCloud Desktop App integrates with your file manager:
 * and Nautilus on Linux. +
 (Linux users must install the `owncloud-client-nautilus` plugin.)
 
-You can share with internal ownCloud users and groups, and create links to share with external users.
+You can share with internal ownCloud users and groups and create links to share with external users.
 
 * If you are not already at the location of the file or folder to share, right-click your systray icon, hover over the account you want to use, and left-click menu:Open folder["folder name"] to quickly enter your local ownCloud folder.
 +
