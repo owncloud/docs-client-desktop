@@ -161,7 +161,7 @@ image::using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
 The ownCloud Desktop App integrates with your file manager:
 
 * Explorer on Windows,
-* Finder on Mac OS X,
+* Finder on macOS,
 * and Nautilus on Linux. +
 (Linux users must install the `owncloud-client-nautilus` plugin.)
 
