@@ -158,21 +158,37 @@ image::using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
 
 == Sharing From Your Desktop
 
-The ownCloud Desktop App integrates with your file manager: Finder on Mac OS X, Explorer on Windows, and Nautilus on Linux. (Linux users must install the `owncloud-client-nautilus` plugin.) You can create share links, and share with internal ownCloud users the same way as in your ownCloud Web interface.
+The ownCloud Desktop App integrates with your file manager:
 
+* Explorer on Windows,
+* Finder on Mac OS X,
+* and Nautilus on Linux. +
+(Linux users must install the `owncloud-client-nautilus` plugin.)
+
+You can share with internal ownCloud users and groups respectively create links to share with external users.
+
+* If you are not already at the location of the file or folder to share, right-click your systray icon, hover over the account you want to use, and left-click menu:Open folder["folder name"] to quickly enter your local ownCloud folder.
++
+image::using/systray-menu.png[Systray Menu, width=300,pdfwidth=60%]
+
+* Go to the file or folder you want to share.
++
 image::using/explorer-files-view.png[image, width=500,pdfwidth=60%]
 
-Right-click your systray icon, hover over the account you want to use, and left-click  menu:Open folder["folder name"] to quickly enter your local ownCloud folder. Right-click the file or folder you want to share to expose the share dialog, and click menu:Share with ownCloud[].
+* Right-click the file or folder you want to share to expose the share dialog which openes the context menu, and click menu:ownCloud[Share].
++
+image::using/owncloud-share.png[Sharing Context Menu, width=3000,pdfwidth=70%]
 
-[width=100%,cols="^.50%,^.50%",options="header"]
-|===
-| Systray Menu
-| Sharing Context Menu
-a| image::using/systray-menu.png[Systray Menu, width=300,pdfwidth=60%]
-a| image::using/owncloud-share.png[Sharing Context Menu, width=3000,pdfwidth=70%]
-|===
+* Depending on the backend used, different things can happen:
 
-The share dialog has all the same options as your ownCloud Web interface.
+** *ownCloud Infinite Scale*
++
+The default browser opens and shows the share dialog of ownCloud Web to take the required settings. If you are not logged in, you will be asked to do so first.
+
+** *ownCloud Server*
++
+--
+The share dialog opens which has all the same options as your ownCloud Server Web interface.
 
 [width=100%,cols="^.50%,^.50%",options="header"]
 |===
@@ -182,7 +198,8 @@ a| image::using/share-user.png[Sharing with users and groups, width=350,pdfwidth
 a| image::using/share-public.png[Public sharing, width=350,pdfwidth=60%]
 |===
 
-Use *Share with ownCloud* to see who you have shared with, and to modify their permissions, or to delete the share.
+Use menu:ownCloud[Share] from the context menu to see who you have shared with and to modify their permissions or to delete the share.
+--
 
 == Activity Window
 
