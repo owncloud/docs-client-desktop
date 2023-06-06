@@ -87,7 +87,7 @@ Note that the URL given to you can be a different one than the final URL used by
 image::using/wizard-screen-url.png[form for entering ownCloud instance URL, width=500,pdfwidth=60%]
 --
 
-* Enter your ownCloud login on the next screen. Depending on what the administrator has configured, you may see different login screens. Note that with OpenID Connect (OIDC), you will be redirected to a browser for authentication:
+* Enter your ownCloud login on the next screen. Depending on what the administrator has configured, you may see different login screens. Note that with OAuth 2.0 and with OpenID Connect (OIDC), you will be redirected to a browser for authentication:
 +
 --
 [NOTE]
@@ -100,7 +100,7 @@ To use *Two-Factor Authentication* (2FA) with the ownCloud Server backend, ownCl
 2+| *Login with ownCloud embedded user database*
 2+a| image::using/wizard-screen-login.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
 
-2+| *Login with OIDC* +
+2+| *Login with OAuth 2.0 or OIDC* +
 (Follow the web login process)
 
 a| image::using/wizard-screen-login-browser.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
@@ -111,7 +111,7 @@ a| image::using/wizard-screen-grant-access.png[form for entering your ownCloud l
 * Advanced Configuration:
 +
 --
-When enabling btn:[Advanced configuration], you can refine your synchronisation configuration if desired. Here you can define the synchronisation method like using the xref:vfs.adoc[Virtual Filesystem] or the location for  synchronized data.
+When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired. Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for  synchronized data.
 
 image::using/wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=500,pdfwidth=60%]
 --
@@ -119,24 +119,24 @@ image::using/wizard-screen-advanced.png[Select which remote folders to sync, and
 * Final step:
 +
 --
-When fine with the configuration made, click the btn:[Finish] button at the bottom right. The Desktop app will attempt to connect to your ownCloud server, and will start synchronizing your files.
+Once you are satisfied with the configuration made, click the btn:[Finish] button at the bottom right. The Desktop app will attempt to connect to your ownCloud server and will start synchronizing your files.
 --
 
 === Adding New Accounts
 
-You may configure multiple ownCloud accounts in your Desktop App. Simply click the menu:Account[Add New] button in any already configured account and follow the xref:connection-wizard[Connection Wizard]. The new account will appear as a new item in the main window on top.
+You may configure multiple ownCloud accounts in your Desktop app. Simply click the menu:Account[Add New] button on the top left and follow the xref:connection-wizard[Connection Wizard]. The new account will appear as a new item in the main window on top.
 
-=== Removing An Account
+=== Removing an Account
 
 To remove an account, select the account to be removed and the button menu:Account[Remove] to remove it. Note that the account will be removed but no synchronisation data deleted.
 
 === Configuring Common Settings
 
-The settings tab contains common settings available and valid for all accounts configured. Here you can define network settings, bandwidth limitations, a confirmation setting to limit folder synchronisation size and more. 
+The settings tab contains common settings available and valid for all accounts configured. Here you can define network settings, bandwidth limitations, a confirmation setting to limit folder synchronization size and more. 
 
 === Configuring Account Settings
 
-At the top of the window are tabs for each configured synchronisation account, and tow others for Activity and Settings. Selecting one account, you have the following features:
+At the top of the window are tabs for each configured synchronization account and two more for Activity and Settings. Selecting one account, you have the following features available:
 
 * Connection status, showing which ownCloud server you are connected to, and your ownCloud username.
 * An *Account* button, which contains a dropdown menu with *Add New*, *Log Out*, and *Remove*.
