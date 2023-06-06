@@ -111,7 +111,7 @@ a| image::using/wizard-screen-grant-access.png[form for entering your ownCloud l
 * Advanced Configuration:
 +
 --
-When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired. Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for  synchronized data.
+When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired. Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for synchronized data.
 
 image::using/wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=500,pdfwidth=60%]
 --
