@@ -128,7 +128,7 @@ You may configure multiple ownCloud accounts in your Desktop app. Simply click t
 
 === Removing an Account
 
-To remove an account, select the account to be removed and the button menu:Account[Remove] to remove it. Note that the account will be removed but no synchronisation data deleted.
+To remove an account, select the account to be removed and click on the button menu:Account[Remove] to remove it. Note that the account will be removed but no synchronized data deleted.
 
 === Configuring Common Settings
 
