@@ -77,53 +77,66 @@ If a directory includes ignored files that are marked with warning icons that do
 
 === Connection Wizard
 
-The connection wizard is always shown when the Desktop app has been started and no synchronization connection has been set up so far. It takes you step-by-step through configuration options and account setup.
+The connection wizard is always shown when the Desktop app has been started and no synchronization connection has been set up so far or when clicking the btn:[Add Account] button. It takes you step-by-step through configuration options and account setup.
 
-* First you need to enter the URL of your ownCloud instance.
+* First you need to enter the URL of your ownCloud instance:
 +
 --
 Note that the URL given to you can be a different one than the final URL used by the Desktop app. This can be the case if a company has a generic setup URL that provides the Desktop app information about where to connect you. This mechanism is called https://en.wikipedia.org/wiki/WebFinger[WebFinger] and has the big benefit that one only needs to know the generic setup URL. The Desktop app tries to identify if webfinger is provided via the given URL and acts accordingly based on the server's response. This all runs in the background but is explained here in case you see a different URL being used than entered.
 
-image::using/client-1.png[form for entering ownCloud instance URL, width=500,pdfwidth=60%]
+image::using/wizard-screen-url.png[form for entering ownCloud instance URL, width=500,pdfwidth=60%]
 --
 
-* Enter your ownCloud login on the next screen.
+* Enter your ownCloud login on the next screen. Depending on what the administrator has configured, you may see different login screens. Note that with OpenID Connect (OIDC), you will be redirected to a browser for authentication:
 +
 --
-image::using/client-2.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
+[NOTE]
+====
+To use *Two-Factor Authentication* (2FA) with the ownCloud Server backend, ownCloud Server must have the {oauth2-app-url}[OAuth2 app] installed, configured and enabled. Please contact your ownCloud administrator for more details.
+====
+
+[width=100%,cols="^.^50%,^.^50%"]
+|===
+2+| *Login with ownCloud embedded user database*
+2+a| image::using/wizard-screen-login.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
+
+2+| *Login with OIDC* +
+(Follow the web login process)
+
+a| image::using/wizard-screen-login-browser.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
+a| image::using/wizard-screen-grant-access.png[form for entering your ownCloud login, width=320,pdfwidth=60%]
+|===
 --
 
-* Select what and how to sync.
+* Advanced Configuration:
 +
 --
-On the _"Local Folder Option"_ screen you may sync all of your files on the ownCloud server or select individual folders. The default local sync folder is `ownCloud`, in your home directory. You may change this as well.
+When enabling btn:[Advanced configuration], you can refine your synchronisation configuration if desired. Here you can define the synchronisation method like using the xref:vfs.adoc[Virtual Filesystem] or the location for  synchronized data.
 
-image::using/client-3.png[Select which remote folders to sync, and which local folder to store them in, width=500,pdfwidth=60%]
+image::using/wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=500,pdfwidth=60%]
 --
 
-* Final step
+* Final step:
 +
 --
-After selecting your sync folders, click the _"Connect"_ button at the bottom right. The Desktop app will attempt to connect to your ownCloud server, and if it is successful you'll see two buttons:
-
-* One to connect to your ownCloud Web UI.
-* One to open your local folder.
-
-It will also start synchronizing your files.
+When fine with the configuration made, click the btn:[Finish] button at the bottom right. The Desktop app will attempt to connect to your ownCloud server, and will start synchronizing your files.
 --
 
 === Adding New Accounts
 
-You may configure multiple ownCloud accounts in your Desktop App. Simply click the menu:Account[Add New] button on any account tab to add a new account, and then follow the account creation wizard. The new account will appear as a new tab in the settings dialog, where you can adjust its settings at any time. Use menu:Account[Remove] to delete accounts.
+You may configure multiple ownCloud accounts in your Desktop App. Simply click the menu:Account[Add New] button in any already configured account and follow the xref:connection-wizard[Connection Wizard]. The new account will appear as a new item in the main window on top.
 
-[NOTE]
-====
-To use *Two-Factor Authentication* (2FA), ownCloud server must have the {oauth2-app-url}[OAuth2 app] installed, configured and enabled. Please contact your ownCloud administrator for more details.
-====
+=== Removing An Account
 
-=== Configuring ownCloud Account Settings
+To remove an account, select the account to be removed and the button menu:Account[Remove] to remove it. Note that the account will be removed but no synchronisation data deleted.
 
-At the top of the window are tabs for each configured sync account, and three others for Activity, General and Network settings. On your account tabs you have the following features:
+=== Configuring Common Settings
+
+The settings tab contains common settings available and valid for all accounts configured. Here you can define network settings, bandwidth limitations, a confirmation setting to limit folder synchronisation size and more. 
+
+=== Configuring Account Settings
+
+At the top of the window are tabs for each configured synchronisation account, and tow others for Activity and Settings. Selecting one account, you have the following features:
 
 * Connection status, showing which ownCloud server you are connected to, and your ownCloud username.
 * An *Account* button, which contains a dropdown menu with *Add New*, *Log Out*, and *Remove*.
