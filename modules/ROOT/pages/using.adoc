@@ -171,7 +171,7 @@ image::using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
 
 === Account Reconnecting
 
-Synchronization happens on a regular basis and connects to the server configured every view minutes. A connection loss can occur when the network cable is unplugged or when switching to a different wireless network. In such a case a manual force reconnect button becomes available in case you want to immediately restart syncing for an account and not wait for an automatic reconnect. This button only becomes available if the Desktop app is in reconnection state.
+Synchronization happens on a regular basis and connects to the server every few minutes. A connection loss can occur when the network cable is unplugged or when switching to a different wireless network. In such a case a manual force reconnect button becomes available in case you want to immediately restart syncing for an account and not wait for an automatic reconnect. This button only becomes available if the Desktop app is in reconnection state.
 
 To manually force reconnecting for an account, select the account and click menu:Account[Reconnect]. 
 
