@@ -169,6 +169,14 @@ Enable the virtual file support for an account
 
 image::using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
 
+=== Account Reconnecting
+
+Synchronisation happens on a regular basis and connects to the server configured every view minutes. A connection loss can occur because of unplugging the network cable or switching to a new wirelss network. In such a case and if one wants to immediatley restart syncing for an account and not wait for the automatical reconnect, a manual force reconnect button becomes available. This button becomes only selectable if the Desktop app is in reconnection state.
+
+To manually force reconnecting for an account, select the account and click menu:Account[Reconnect]. 
+
+image::using/account-reconnect.png[Force reconnect, width=500,pdfwidth=60%]
+
 == Sharing From Your Desktop
 
 The ownCloud Desktop App integrates with your file manager:
