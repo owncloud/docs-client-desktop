@@ -179,7 +179,7 @@ image::using/account-reconnect.png[Force reconnect, width=500,pdfwidth=60%]
 
 === Force Syncing a Folder
 
-If there is data to be synced immediately, like when you are on the road and need to continue working offline, you can force syncing a folder of an account before the network connection goes is offline. To do so, select the account and then the folder to force sync and the menu:Three Dots[Force sync now] button. 
+If there is data to be synced immediately, like when you are on the road and need to continue working offline, you can force syncing a folder of an account before the network connection goes offline. To do so, select the account and then the folder to force sync and the menu:Three Dots[Force sync now] button. 
 
 image::using/account-force-sync-now.png[Force Sync Now, width=350,pdfwidth=60%]
 
