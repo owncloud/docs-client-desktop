@@ -51,9 +51,9 @@ macOS::
 ** M1 native support planned for Q2 2023 - no issues in regard to performance or otherwise known at this time!
 
 Linux::
-* Debian 11 (x86-64)
+* Debian 11 & 12 (x86-64)
 * Fedora 36 & 37 & 38 (x86-64)
-* openSUSE Leap 15.4 (x86-64)
+* openSUSE Leap 15.4 & 15.5 (x86-64)
 * Ubuntu 22.04 & 22.10 & 23.04 (x86-64)
 * **{appimage-wikipedia-url}[AppImage]** build of the ownCloud Desktop App is available to support more Linux platforms
 
