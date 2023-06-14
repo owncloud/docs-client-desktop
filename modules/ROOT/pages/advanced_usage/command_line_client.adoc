@@ -85,6 +85,9 @@ Following options are supported by `owncloudcmd`:
 | `--downlimit <n>`
 | Limit the download speed of files to n KB/s
 
+| `--sync-hidden-files`
+| Enables synchronization of hidden files
+
 | `--logdebug`
 | More verbose logging
 
