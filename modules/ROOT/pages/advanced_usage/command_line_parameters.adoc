@@ -5,7 +5,7 @@
 
 == Introduction
 
-{description}
+{description} These parameters are valid for both the native and the Linux AppImage xref:installing.adoc#system-requirements-and-installation[installation].
 
 == Command Description
 
