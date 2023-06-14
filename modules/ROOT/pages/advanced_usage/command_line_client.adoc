@@ -17,7 +17,7 @@ To invoke `owncloudcmd`, you must provide the local and the remote repository UR
 owncloudcmd [options] [arguments]
 ----
 
-For the arguments, all of them must be used in the following order, replace the placeholders with real data: 
+Regarding the arguments, all of them must be used in the following order and the placeholders replaced with real data: 
 
 [source,plaintext]
 ----
@@ -39,7 +39,7 @@ source_dir server_url remote_folder
 | The remote folder on the server.
 |===
 
-Following options are supported by `owncloudcmd`:
+The following options are supported by `owncloudcmd`:
 
 [width="100%",cols="35%,65%",options="header"]
 |===
@@ -130,7 +130,7 @@ To synchronize the ownCloud directory `Music` to the local directory `media/musi
 
 == Command Line Client When Using AppImages
 
-When using an xref:installing.adoc#appimage[AppImage] installation with Linux, there is no `owncloudcmd` command you can start but the name of the AppImage. To use the command line client of the AppImage, just use the name of the AppImage and append the `--cmd` option plus all other parameters as listed in the xref:#command-description[Command Description]. Replace `[...]` with the version you are using or take the name of the AppImage if you have renamed it otherwise. Example:
+When using an xref:installing.adoc#appimage[AppImage] installation with Linux, there is no `owncloudcmd` command you can start but the name of the AppImage. To use the command line client of the AppImage, just use the name of the AppImage and append the `--cmd` option plus all other parameters as listed in the xref:#command-description[Command Description]. Replace `[...]` with the version you are using or take the name of the AppImage if you have named it otherwise. Example:
 
 [source,bash]
 ----
