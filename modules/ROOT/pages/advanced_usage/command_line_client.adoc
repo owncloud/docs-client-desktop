@@ -118,7 +118,7 @@ To synchronize the ownCloud directory `Music` to the local directory `media/musi
 ----
 ./owncloudcmd --httpproxy http://192.168.178.1:8080 \
               $HOME/media/music \
-              https://server/owncloud/remote.php/dav/files/carla \
+              https://server/owncloud/remote.php/dav/files/carla/ \
               /Music.
 ----
 
