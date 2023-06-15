@@ -10,7 +10,7 @@
 
 `owncloudcmd` performs a single _sync run_ and then exits the synchronization process. In this manner, `owncloudcmd` processes the differences between client and server directories and propagates the files to bring both repositories to the same state. Contrary to the GUI-based client, `owncloudcmd` does not repeat synchronizations on its own. It also does not monitor for file system changes.
 
-To invoke `owncloudcmd`, you must provide the local and the remote repository URL using the following command, the example is based on Windows:
+To invoke `owncloudcmd`, you must provide the local and the remote repository URL using the following command. Note that for Windows, you must be in the directory where ownCloud is installed while on Linux, you can use the command from anywhere. To show its location in Linux, type `whereis owncloudcmd`.
 
 [source,console]
 ----
@@ -107,7 +107,7 @@ The following options are supported by `owncloudcmd`:
 
 [source,bash]
 ----
-./owncloudcmd /home/user/my_sync_folder \
+owncloudcmd /home/user/my_sync_folder \
               https://carla:secret@server/owncloud/remote.php/dav/files/carla/ \
               /
 ----
@@ -116,7 +116,7 @@ To synchronize the ownCloud directory `Music` to the local directory `media/musi
 
 [source,console]
 ----
-./owncloudcmd --httpproxy http://192.168.178.1:8080 \
+owncloudcmd --httpproxy http://192.168.178.1:8080 \
               $HOME/media/music \
               https://server/owncloud/remote.php/dav/files/carla/ \
               /Music.
