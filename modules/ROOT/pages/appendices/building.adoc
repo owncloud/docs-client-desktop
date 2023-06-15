@@ -9,7 +9,7 @@
 :python-2_7-url: https://www.python.org/download/releases/2.7/
 :python-3_6-url: https://www.python.org/downloads/release/python-360/
 :ms-visual-studio-2019-url: https://visualstudio.microsoft.com/en/downloads/
-:mingw-w64-url: https://www.mingw-w64.org/docs/overview/
+:mingw-w64-url: https://www.mingw-w64.org
 :cmake-url: http://www.cmake.org/download
 :git-url: http://git-scm.com
 :qt-download-url: http://www.qt.io/download
