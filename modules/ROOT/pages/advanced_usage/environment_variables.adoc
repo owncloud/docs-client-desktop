@@ -82,11 +82,6 @@ More information available under the "Low Disk Space" section.
 | Force-enable ("1") or force-disable ("0") HTTP2 support.
 Note that HTTP2 use also depends on whether the server supports it.
 
-| `OWNCLOUD_MINIMAL_TRAY_MENU`
-| unset
-| If set a minimal tray menu is used.
-Helpful if a platform's tray has problematic behavior.
-
 | `OWNCLOUD_TRAY_UPDATE_WHILE_VISIBLE`
 | 0
 | Set to "1" to allow the tray menu to be updated while it's visible to the user.
