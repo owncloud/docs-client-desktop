@@ -187,7 +187,7 @@ image::using/account-force-sync-now.png[Force Sync Now, width=500,pdfwidth=60%]
 
 Spaces are only available when connected to an Infinite Scale backend. In most cases they are similar to folders or external mounts when the backend is ownCloud Server and one might not see much differences though some exist:
 
-* On initial account setup, the available Spaces can be selected for the synchronisation process.
+* On initial account setup, all available Spaces are auto-selected for the synchronisation process.
 ** There are at minimum two Spaces added, which are the personal Space and the Space that contains all recieved shares. Shares are shown as folders in the local filesystem.
 * Post initial account setup, new spaces can be added via xref:using-an-account-that-connects-to-infinite-scale[Managing Resources to Synchronize].
 * When a space gets renamed in the WebUI, it also gets renamed in the sync window view but the local foldername where it is stored does not change.
