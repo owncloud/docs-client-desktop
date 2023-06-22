@@ -183,6 +183,48 @@ If there is data to be synced immediately, like when you are on the road and nee
 
 image::using/account-force-sync-now.png[Force Sync Now, width=500,pdfwidth=60%]
 
+=== Spaces
+
+Spaces are only available when connected to an Infinite Scale backend. In most cases they are similar to folders or external mounts when the backend is ownCloud Server and one might not see much differences though some exist:
+
+* On initial account setup, the available Spaces can be selected for the synchronisation process.
+** There are at minimum two Spaces added, which are the personal Space and the Space that contains all recieved shares. Shares are shown as folders in the local filesystem.
+* Post initial account setup, new spaces can be added via xref:using-an-account-that-connects-to-infinite-scale[Managing Resources to Synchronize].
+* When a space gets renamed in the WebUI, it also gets renamed in the sync window view but the local foldername where it is stored does not change.
+* Spaces can be customized with images in the WebUI. The image selected is also shown in the Desktop App.
+* When a Space gets disabled or deleted via the WebUI, no data is deleted locally.
+* If you have used Spaces with the Desktop App version 3.0, you must remove the account from the Desktop App and do an initial account setup again.  
+
+=== Managing Resources to Synchronize
+
+When an account gets added the first time, you can select which remote resources you want to synchronize. These resources are represented by the Desktop app as local folders using the base path defined during account setup. Depending on the backend connected, resources can be folders and/or external mounts when using ownCloud Server or Spaces when it comes to Infinite Scale.
+
+The base path defined on first sync is not the only path that can be used. Resources can have their individual base path. This is can be beneficial if you want selected resources to be located on different paths than the default.
+
+==== Using an Account That Connects To ownCloud Server:
+
+* You will see a list of available remote resources you can manage as shown in the screenshot below. When a new resource gets added at the server like via the WebUI, it will be listed here.
+
+** To add a resource to be synced as folder to the *same base path* or remove it from syncing, checkmark it to add or deselect to remove it. To finalize the selection, click the btn:[Apply] button on the bottom right.
+
+image::using/add-resource-server-same-folder.png[Add resource same path, width=300,pdfwidth=60%]
+
+** To add a resource to be synced as folder to a *different path* than the account base path, click at the bottom left on btn:[Add Folder]. Select the path and the resources to sync and complete the process.
+
+image::using/add-resource-server-different-folder.png[Add resource different path, width=300,pdfwidth=60%]
+
+==== Using an Account That Connects To Infinite Scale:
+
+When an account connects to Infinite Scale, the list of currently synced Spaces looks like the image below. It also shows the state of the synchronisation process:
+
+image::using/show-resources-ocis.png[Show resources Infinite Scale, width=300,pdfwidth=60%]
+
+When a new Space gets added via the WebUI, it will not be automatically listed here as this window only shows Spaces that are already synchronized.
+
+To add a new Space for synchronisation, click the btn:[Add Space] button, select the Space and define the path if you do not want to take the default base location. Finalize with btn:[Add Sync Connection]:
+ 
+image::using/add-resource-ocis.png[Add resource Infinite Scale, width=300,pdfwidth=60%]
+
 == Sharing From Your Desktop
 
 The ownCloud Desktop App integrates with your file manager:
