@@ -193,7 +193,7 @@ Spaces are only available when connected to an Infinite Scale backend. In most c
 * When a space gets renamed in the WebUI, it also gets renamed in the sync window view but the local foldername where it is stored does not change.
 * Spaces can be customized with images in the WebUI. The image selected is also shown in the Desktop App.
 * When a Space gets disabled or deleted via the WebUI, no data is deleted locally.
-* If you have used Spaces with the Desktop App version 3.0, you must remove the account from the Desktop App and do an initial account setup again.  
+* If you have used ownCloud Infinite Scale with the Desktop App older then 3.0, you must remove the account from the Desktop App and do an initial account setup again to work with Spaces.
 
 === Managing Resources to Synchronize
 
