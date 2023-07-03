@@ -43,7 +43,8 @@ Depending on the operating system used, some minimum system requirements need to
 
 Windows::
 * Windows 8 or later (x64)
-** For xref:vfs.adoc[VFS support], Windows 10 versions 1709 or later.
+** When using external drives storing the synchronisation data, it is highly recommended to format these drives with NTFS and not with FAT. This is because the FAT filesystem as many limitations which can cause unexpected or unwanted behaviour.
+** For xref:vfs.adoc[VFS support], Windows 10 versions 1709 or later. When using external drives,  NTFS is required.
 
 macOS::
 * macOS 10.13+
