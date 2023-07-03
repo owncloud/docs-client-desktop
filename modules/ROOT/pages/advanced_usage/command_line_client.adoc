@@ -49,7 +49,7 @@ The following options are supported by `owncloudcmd`:
 | `-s, --silent`
 | Don't be so verbose.
 
-| `--httpproxy <http://server:port>`
+| `--httpproxy ++<http://server:port>++`
 | Specify a HTTP proxy to use.
 
 | `--trust`
@@ -108,8 +108,8 @@ The following options are supported by `owncloudcmd`:
 [source,bash]
 ----
 owncloudcmd /home/user/my_sync_folder \
-              https://carla:secret@server/owncloud/remote.php/dav/files/carla/ \
-              /
+            https://carla:secret@server/owncloud/remote.php/dav/files/carla/ \
+            /
 ----
 
 To synchronize the ownCloud directory `Music` to the local directory `media/music`, through a proxy listening on port `8080`, and on a gateway machine using IP address `192.168.178.1`, the command line would be:
