@@ -9,6 +9,17 @@
 
 {description}
 
+== Clarification of Terms Used
+
+* *Polling* +
+Polling is defined as the task where the Desktop app queries the server for changes. If the server responds with a change that had happend on the backend, the client will start syncing the changes after polling has finished. Note that when there is a proxy configured, it can happen that the proxy does not return actual changes but a cached state.
+
+* *Syncing* +
+Syncing is defined as task where any changes, independent if occured at the Desktop app or on the service side will be synchronized. If syncing is enforced, it is not dependent on former polling.
+
+* *Local Discovery* +
+Local discovery is defined as task where the Desktop app looks for changes on the local filesystem. A local discovery can internally be enforced to check for changes that have been missed like when the Desktop app was shut down during changes happened on the local filesystem. Any changes identified on the local filesystem trigger a sync after local discovery has finished.
+
 == VFS for Windows Server
 
 Without claim of completeness, actuality or support, Windows Server releases that are based on builds starting with 1709 should come with the native system API that is required to use VFS. Windows Servers 2016 and lower do not have native VFS included and will not be able to use VFS therefore.
