@@ -43,7 +43,7 @@ about the terms. Note that the default values are always set and used unless you
 | `remotePollInterval` 
 | `30000` +
 (30s)
-| The interval in milliseconds the Desktop app polls the server for changed data. If not set explicitly via the Desktop app, the Desktop app queries the server if a server-side default is present. 
+| The interval in milliseconds the Desktop app polls the server for changes. If not set explicitly via the Desktop app, the Desktop app queries the server if a server-side default is present. 
 
 | `forceSyncInterval` 
 | `7200000` +
@@ -58,7 +58,7 @@ about the terms. Note that the default values are always set and used unless you
 | `notificationRefreshInterval` 
 | `300000` +
 (30s)
-| The interval in milliseconds in which the Desktop app checks for new server notifications. 
+| The interval in milliseconds in which the Desktop app checks the server for new notifications. 
 |===
 
 == Section `[General]`
