@@ -1,8 +1,8 @@
 = Installing the Desktop App
 :toc: right
 :toclevels: 4
-:client-version-win: 4.0.0.10896.x64
-:client-version-lin: 4.0.0.10896-x86_64
+:client-version-win: 4.1.0.11250.x64
+:client-version-appimage: 4.1.0.11250-x86_64
 :description: The Desktop App enables users to access and sync files and folders from their ownCloud, work on remote files right from the desktop as if they were stored on their computer – because they are.
 
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
@@ -197,7 +197,7 @@ cd ~/Applications
 +
 [source,bash,subs="attributes+"]
 ----
-wget {client-download-url}{url-version}/linux-appimage/ownCloud-{client-version-lin}.AppImage
+wget {client-download-url}{url-version}/linux-appimage/ownCloud-{client-version-appimage}.AppImage
 ----
 
 * The following steps are only necessary when the AppImageLauncher is _not_ used:
@@ -205,18 +205,21 @@ wget {client-download-url}{url-version}/linux-appimage/ownCloud-{client-version-
 +
 [source,bash,subs="attributes+"]
 ----
-sudo chmod +x ownCloud-{client-version-lin}.AppImage
+sudo chmod +x ownCloud-{client-version-appimage}.AppImage
 ----
 
 * Start the AppImage by invoking the following command:
 +
 [source,bash,subs="attributes+"]
 ----
-~/Applications/ownCloud-{client-version-lin}.AppImage
+~/Applications/ownCloud-{client-version-appimage}.AppImage
 ----
 
 * Note when you start the AppImage after setting it to be executable, AppImageLauncher will open if installed.
 --
+
+Automatically updating the AppImage::
+For automatically updating the AppImage see the xref:automatic_updater.adoc#linux[Automatic Updating of the Desktop App - Linux] documentation.
 
 ==== Installing Shell Integration Packages
 
