@@ -70,9 +70,6 @@ The following options are supported by `owncloudcmd`:
 | `-p, --password <password>` 
 | Use [pass] as password
 
-| `-n`
-| Use netrc (5) for login
-
 | `--non-interactive`
 | Do not block execution with interaction
 
