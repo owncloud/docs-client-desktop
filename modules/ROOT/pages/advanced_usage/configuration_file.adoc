@@ -42,7 +42,7 @@ See the xref:faq.adoc#clarification-of-terms-used[Clarification of Terms Used] f
 | `remotePollInterval` 
 | `30000` +
 (30s)
-| The interval in milliseconds the Desktop app polls the server for changes. If not set explicitly via the Desktop app, the Desktop app queries the server if a server-side default is present. 
+| The interval in milliseconds after the last sync the Desktop app polls the server for changes. If not set explicitly via the Desktop app, the Desktop app queries the server if a server-side default is present. 
 
 | `forceSyncInterval` 
 | `7200000` +
