@@ -12,7 +12,7 @@
 == Clarification of Terms Used
 
 * *Polling* +
-Polling is defined as the task where the Desktop app queries the server for changes. If the server responds with a change that had happened on the backend, the client will start syncing the changes after polling has finished. If there is a proxy configured, it can happen that the proxy does not return actual changes but a cached state.
+Polling is defined as the task where the Desktop app queries the server for changes. If the server responds with a change that had happened on the backend, the client will start syncing the changes after polling has finished.
 
 * *Sync* +
 Syncing is defined as the task where any changes will be synchronized, no matter if they occurred in the Desktop app or on the server side. Syncing does not depend on former polling while polling can result in a sync.
