@@ -56,7 +56,7 @@ See the xref:faq.adoc#clarification-of-terms-used[Clarification of Terms Used] f
 
 | `notificationRefreshInterval` 
 | `300000` +
-(30s)
+(5min)
 | The interval in milliseconds in which the Desktop app checks the server for new notifications. 
 |===
 
