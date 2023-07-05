@@ -119,7 +119,7 @@ press btn:[F12] or btn:[Ctrl-L] or btn:[Cmd+L] on your keyboard.
 +
 image:appendices/troubleshooting/log-files-to-keep.png[CLog files to keep,width=400]
 
-As an example, write logs to a defined directory with increased verbosity:
+As an example, write logs to a defined directory with increased verbosity using Linux:
 
 [source,plaintext]
 ----
