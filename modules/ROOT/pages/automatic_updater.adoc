@@ -6,7 +6,7 @@
 
 {description} The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
 
-IMPORTANT: When planning to upgrade from a Desktop app release =< 2.5 to a release >=5.0 you must make an intermediary step to release 4.0 before doing the final upgrade.
+IMPORTANT: When planning to upgrade from a Desktop app release <= 2.5 to a release >=5.0 you must make an intermediary step to release 4.0 before doing the final upgrade.
 
 == Basic Workflow
 
