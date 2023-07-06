@@ -77,7 +77,7 @@ def build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_
                 "pull": "always",
                 "image": "plugins/s3-cache:1",
                 "settings": {
-                    "endpoint": from_secret("cache_s3_endpoint"),
+                    "endpoint": from_secret("cache_s3_server"),
                     "access_key": from_secret("cache_s3_access_key"),
                     "secret_key": from_secret("cache_s3_secret_key"),
                     "restore": "true",
@@ -120,7 +120,7 @@ def build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_
                 "pull": "always",
                 "image": "plugins/s3-cache:1",
                 "settings": {
-                    "endpoint": from_secret("cache_s3_endpoint"),
+                    "endpoint": from_secret("cache_s3_server"),
                     "access_key": from_secret("cache_s3_access_key"),
                     "secret_key": from_secret("cache_s3_secret_key"),
                     "rebuild": "true",
@@ -144,7 +144,7 @@ def build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_
                 "pull": "always",
                 "image": "plugins/s3-cache:1",
                 "settings": {
-                    "endpoint": from_secret("cache_s3_endpoint"),
+                    "endpoint": from_secret("cache_s3_server"),
                     "access_key": from_secret("cache_s3_access_key"),
                     "secret_key": from_secret("cache_s3_secret_key"),
                     "flush": "true",
@@ -185,7 +185,7 @@ def build(ctx, environment, latest_version, deployment_branch, base_branch, pdf_
                 "pull": "if-not-exists",
                 "image": "plugins/slack",
                 "settings": {
-                    "webhook": from_secret("slack_webhook_private"),
+                    "webhook": from_secret("rocketchat_talk_webhook"),
                     "channel": "documentation",
                 },
                 "when": {
