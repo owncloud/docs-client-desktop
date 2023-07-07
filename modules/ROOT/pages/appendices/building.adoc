@@ -34,7 +34,7 @@ These instructions are updated to work with the latest version of the ownCloud D
 The
 xref:generic-build-instructions[generic build instructions]
 pull the latest code directly from GitHub, and work on
-xref:linux[Linux], xref:macos[Mac OS X], and 
+xref:linux[Linux], xref:macos[macOS], and 
 xref:windows-development-build-with-kde-craft[Windows].
 
 == Linux
@@ -327,7 +327,7 @@ For Linux builds (using QT5 libraries via build-dep) a typical setting is
 +
 However, the version number may vary. For Linux builds using system dependencies `-DCMAKE_PREFIX_PATH` is not needed. You must use absolute paths for the `include` and `library` directories.
 +
-On Mac OS X, you need to specify `-DCMAKE_INSTALL_PREFIX=target`, where `target` is a private location, i.e. in parallel to your build dir by specifying `../install`.
+On macOS, you need to specify `-DCMAKE_INSTALL_PREFIX=target`, where `target` is a private location, i.e. in parallel to your build dir by specifying `../install`.
 +
 qtkeychain must be compiled with the same prefix e.g., 
 +
