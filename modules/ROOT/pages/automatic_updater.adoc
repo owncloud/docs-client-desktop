@@ -4,7 +4,7 @@
 
 == Introduction
 
-{description} The Automatic Updater updates only on Mac OS X and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
+{description} The Automatic Updater updates only on macOS and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
 
 IMPORTANT: When planning to upgrade from a Desktop app release <= 2.5 to a release >=5.0 you must make an intermediary step to release 4.0 before doing the final upgrade.
 
@@ -20,9 +20,9 @@ If an update is available, and has been successfully downloaded, the ownCloud De
 
 NOTE: Administrative privileges are required to perform the update.
 
-=== Mac OS X
+=== macOS
 
-If a new update is available, the ownCloud Desktop App initializes a pop-up dialog to alert you of the update and requesting that you update to the latest version. Due to their use of the Sparkle frameworks, this is the default process for Mac OS X applications.
+If a new update is available, the ownCloud Desktop App initializes a pop-up dialog to alert you of the update and requesting that you update to the latest version. Due to their use of the Sparkle frameworks, this is the default process for macOS applications.
 
 === Linux
 
@@ -90,9 +90,9 @@ Your key names look like this:
 HKEY_LOCAL_MACHINE\Software\Policies\myCompanyName\myAppName
 ----
 
-=== Preventing Automatic Updates in Mac OS X Environments
+=== Preventing Automatic Updates in macOS Environments
 
-You can disable the automatic update mechanism, in the Mac OS X operating system, by copying the file `owncloud.app/Contents/Resources/deny_autoupdate_com.owncloud.desktopclient.plist` to `/Library/Preferences/com.owncloud.desktopclient.plist`.
+You can disable the automatic update mechanism, in the macOS operating system, by copying the file `owncloud.app/Contents/Resources/deny_autoupdate_com.owncloud.desktopclient.plist` to `/Library/Preferences/com.owncloud.desktopclient.plist`.
 
 === Preventing Automatic Updates in Linux Environments
 
