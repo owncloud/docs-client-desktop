@@ -225,7 +225,7 @@ The following table shows a crash report window before and after it has been sen
 
 == Core Dumps
 
-On Mac OS X and Linux systems, and in the unlikely event the Desktop App software crashes, the Desktop App is able to write a core dump file. Obtaining a core dump file can assist ownCloud Customer Support tremendously in the debugging process.
+On macOS and Linux systems, and in the unlikely event the Desktop App software crashes, the Desktop App is able to write a core dump file. Obtaining a core dump file can assist ownCloud Customer Support tremendously in the debugging process.
 
 To enable the writing of core dump files, you must define the `OWNCLOUD_CORE_DUMP` environment variable on the system.
 
