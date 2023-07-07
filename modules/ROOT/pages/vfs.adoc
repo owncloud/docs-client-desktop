@@ -146,9 +146,9 @@ image::vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=60
 
 ## Using attrib.exe to Manage States
 
-For experienced users, xref:vfs-states[VFS states] can be managed also via the command line using `attrib`. This is particular useful if you want to change the state of a complete folder/subfolder. Open a `PowerShell` command line window like via the start menu and change to the directory of the ownCloud sync folder/subfolder that contains the data you want to bulk change.
+Experienced users can also manage xref:vfs-states[VFS states] via the command line using `attrib`. This is particularly useful if you want to change the state of a complete folder/subfolder. Open a `PowerShell` command line window like via the start menu and change to the directory of the ownCloud sync folder/subfolder that contains the data you want to bulk change.
 
-Use the following command for help and to adapt switches according your needs.
+Use the following command for help and to adapt switches according to your needs.
 
 [source,powershell]
 ----
@@ -162,7 +162,7 @@ attrib /?
 attrib -U +P .\* /D /S
 ----
 
-* Make a set of files or folders online only including subfolders:
+* Make a set of files or folders only online available, including subfolders:
 +
 [source,powershell]
 ----
