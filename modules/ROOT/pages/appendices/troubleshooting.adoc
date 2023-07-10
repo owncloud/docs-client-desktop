@@ -54,7 +54,6 @@ In the image below, you see that there are no quotas for the personal/recieved s
 
 image::appendices/troubleshooting/sync-quota-spaces.png[Quotas in Infinite Scale,width=500]
 
-
 == Directory Modification Time
 
 NOTE: ownCloud does not preserve the mtime (modification time) of directories, though it does update the mtimes on files.
