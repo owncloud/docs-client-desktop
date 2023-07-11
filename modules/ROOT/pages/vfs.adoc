@@ -30,6 +30,7 @@ ____
 A sync engine is a service that syncs files, typically between a remote host and a local client. Sync engines on Windows often present those files to the user through the Windows file system and File Explorer.
 ____
 
+[#vfs-states]
 .Files can exist in three states:
 
 Full pinned file::
@@ -142,3 +143,28 @@ image::vfs/vfs-free-up-space.png[Free Up Space, width=400,pdfwidth=70%]
 . When done, Explorer will show the file in _Placeholder_ state.
 +
 image::vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=600,pdfwidth=70%]
+
+## Using attrib.exe to Manage States
+
+Experienced users can also manage xref:vfs-states[VFS states] via the command line using `attrib`. This is particularly useful if you want to change the state of a complete folder/subfolder. Open a `PowerShell` command line window like via the start menu and change to the directory of the ownCloud sync folder/subfolder that contains the data you want to bulk change.
+
+Use the following command for help and to adapt switches according to your needs.
+
+[source,powershell]
+----
+attrib /?
+----
+
+* Make a set of files or folders always available including subfolders:
++
+[source,powershell]
+----
+attrib -U +P .\* /D /S
+----
+
+* Make a set of files or folders only online available, including subfolders:
++
+[source,powershell]
+----
+attrib +U -P .\* /D /S
+----
