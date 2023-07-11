@@ -26,34 +26,6 @@ Ensure the WebDAV API is working::
 Use a WebDAV command line tool to test::
   A more sophisticated test method for troubleshooting synchronization issues is to use a WebDAV command line client and log into the ownCloud WebDAV server. One such command line client -- called `cadaver` -- is available for Linux distributions. You can use this application to further verify that the WebDAV server is running properly using PROPFIND calls. As an example, after installing the `cadaver` app, you can issue the `propget` command to obtain various properties pertaining to the current directory and also verify WebDAV server connection.
 
-== How to Interpret Quotas
-
-When a quota has been defined, either in the backend, the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
-
-image::appendices/troubleshooting/sync-quota-oc10.png[Quotas in ownCloud Server,width=500]
-
-See the following table to interpret the numbers shown correctly:
-
-[width="100%",cols="50%,50%",options=header]
-|===
-^| First Number (1)
-^| Second Number (2)
-
-a| * Data used in my quota
-* Plus data used in external storages +
-(If configured, ownCloud Server only)
-* Plus data used in other users' shares
-
-a| * Available quota
-* Plus data used in external storages +
-(If configured, ownCloud Server only)
-* Plus data used in other users' shares
-|===
-
-In the image below, you see that there are no quotas for the personal space or received shares, but for project spaces:
-
-image::appendices/troubleshooting/sync-quota-spaces.png[Quotas in Infinite Scale,width=500]
-
 == Directory Modification Time
 
 NOTE: ownCloud does not preserve the mtime (modification time) of directories, though it does update the mtimes on files.

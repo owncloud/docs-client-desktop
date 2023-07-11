@@ -26,6 +26,34 @@ Without claim of completeness, actuality or support, Windows Server releases tha
 
 == Usage
 
+=== How to Interpret Quotas
+
+When a quota has been defined, either in the backend, the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
+
+image::faq/sync-quota-oc10.png[Quotas in ownCloud Server,width=500]
+
+See the following table to interpret the numbers shown correctly:
+
+[width="100%",cols="50%,50%",options=header]
+|===
+^| First Number (1)
+^| Second Number (2)
+
+a| * Data used in my quota
+* Plus data used in external storages +
+(If configured, ownCloud Server only)
+* Plus data used in other users' shares
+
+a| * Available quota
+* Plus data used in external storages +
+(If configured, ownCloud Server only)
+* Plus data used in other users' shares
+|===
+
+In the image below, you see that there are no quotas for the personal space or received shares, but for project spaces:
+
+image::faq/sync-quota-spaces.png[Quotas in Infinite Scale,width=500]
+
 === Continuous File Upload to the Server Though No Modifications Made
 
 It is possible that another program is changing the modification date of the file. If the file has an `.eml` extension (Windows Mail, Windows Live Mail), the Microsoft Indexer automatically and continually changes the file.
