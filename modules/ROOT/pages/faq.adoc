@@ -28,7 +28,7 @@ Without claim of completeness, actuality or support, Windows Server releases tha
 
 === How to Interpret Quotas
 
-When a quota has been defined, either as general value in owncloud Server or in Infinite Scale at the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
+When a quota has been defined, either as general value in ownCloud Server or in Infinite Scale at the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
 
 [width=100%,cols="^.50%,^.50%",options="header"]
 |===
@@ -78,9 +78,9 @@ a|
 
 .Note to reference (a) in the table
 {empty} +
-ownCloud Server provides external storages and remote shares as folders. These folders do not count against the quota. To mitigate this situation in the Desktop app, the sizes of these folders are added to the quotas shown by the Desktop app automatically to avoid showing incorrect available space. In total, the quota values balance out and no mistaken differences are shown, though the absolut quota values may look higher than they are in reality - the absolute difference is correct. This difference shows if files to sync could be uploaded to the server successfully.
+ownCloud Server provides external storages and remote shares as folders. These folders do not count against the quota. To mitigate this situation in the Desktop app, the sizes of these folders are added to the quotas shown by the Desktop app automatically to avoid showing incorrect available space. In total, the quota values level out and no wrong differences are shown, though the absolute quota values may look higher than they are in reality - the absolute difference is correct. This difference shows if files to sync could be uploaded to the server successfully.
 
-Note that with Infinite Scale, each Space has its own sync relationship and therefore quota values show as they are respectively as defined.
+Note that with Infinite Scale, each space has its own sync relationship and therefore quota values show as they are defined for each.
 
 === Continuous File Upload to the Server Though No Modifications Made
 
