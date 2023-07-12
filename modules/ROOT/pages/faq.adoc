@@ -26,6 +26,62 @@ Without claim of completeness, actuality or support, Windows Server releases tha
 
 == Usage
 
+=== How to Interpret Quotas
+
+When a quota has been defined, either as general value in ownCloud Server or in Infinite Scale at the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
+
+[width=100%,cols="^.50%,^.50%",options="header"]
+|===
+a| ownCloud Server +
+Quotas shown for the sync relationship
+a| Infinite Scale +
+No quotas shown for the personal space or received shares, but for project spaces
+a| image::faq/sync-quota-oc10.png[Quotas in ownCloud Server,width=350]
+a| image::faq/sync-quota-spaces.png[Quotas in Infinite Scale,width=350]
+|===
+
+See the following table to interpret the numbers shown correctly:
+
+[width="100%",cols="50%,50%",options=header]
+|===
+^| First Number (1)
+^| Second Number (2)
+
+a|
+[,subs="quotes"]
+----
+  *Data used in my quota*
+
++ data used in external storages (a)
+  (ownCloud Server only)
+
++ data used in other users' shares (a)
+  (ownCloud Server only)
+
+= *Total used in my quota*
+----
+
+a|
+[,subs="quotes"]
+----
+  *Available quota*
+
++ data used in external storages (a)
+  (ownCloud Server only)
+
++ data used in other users' shares (a)
+  (ownCloud Server only)
+
+= *Total available in my quota*
+----
+|===
+
+.Note to reference (a) in the table
+{empty} +
+ownCloud Server provides external storages and remote shares as folders. These folders do not count against the quota. To mitigate this situation in the Desktop app, the sizes of these folders are added to the quotas shown by the Desktop app automatically to avoid showing incorrect available space. In total, the quota values level out and no wrong differences are shown, though the absolute quota values may look higher than they are in reality - the absolute difference is correct. This difference shows if files to sync could be uploaded to the server successfully.
+
+Note that with Infinite Scale, each space has its own sync relationship and therefore quota values show as they are defined for each.
+
 === Continuous File Upload to the Server Though No Modifications Made
 
 It is possible that another program is changing the modification date of the file. If the file has an `.eml` extension (Windows Mail, Windows Live Mail), the Microsoft Indexer automatically and continually changes the file.
