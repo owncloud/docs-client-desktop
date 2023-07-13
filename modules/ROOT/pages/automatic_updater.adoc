@@ -14,18 +14,22 @@ The following sections describe how to use the Automatic Updater on different op
 
 The ownCloud Desktop App checks for updates and downloads them when available. You can view the update status under menu:Settings[General > Updates] in the ownCloud Desktop App.
 
-If an update is available, and has been successfully downloaded, the ownCloud Desktop App starts a silent update prior to its next launch and then restarts itself. Should the silent update fail, the Desktop App offers a manual download.
+image::automatic_updater/updates-available.png[Update Notification Windows, width=350]
+
+If an update is available and has been successfully downloaded, the ownCloud Desktop App starts a silent update prior to its next launch and then restarts itself. Should the silent update fail, the Desktop App offers a manual download.
 
 NOTE: Administrative privileges are required to perform the update.
 
 === macOS
 
-If a new update is available, the ownCloud Desktop App initializes a pop-up dialog to alert you of the update and requesting that you update to the latest version. Due to their use of the Sparkle frameworks, this is the default process for macOS applications.
+If a new update is available, the ownCloud Desktop App initializes a *pop-up dialog* to alert you of the update and requesting that you update to the latest version. This is the default process for macOS applications.
 
 === Linux
 
 * Linux distributions provide their own update tools. +
 The ownCloud Desktop app on a Linux operating system does not perform any updates on its own. The client will inform you (menu:Settings[General > Updates]) when an update is available.
+
+image::automatic_updater/updates-available.png[Update Notification Windows, width=350]
 
 * AppImages +
 AppImages provide an auto-update feature. The check process takes place when (re)starting the AppImage. If a new AppImage is found, you get the following example screen where you can decide whether to install the new image or not. Updates are in-place and do not produce a new file name.
