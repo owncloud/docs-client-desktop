@@ -18,13 +18,13 @@ The ownCloud Desktop App checks for updates and downloads them when available. Y
 
 image::automatic_updater/updates-available.png[Update Notification Windows, width=350]
 
-If an update is available and has been successfully downloaded, the ownCloud Desktop App starts a silent update prior to its next launch and then restarts itself. Should the silent update fail, the Desktop App offers a manual download.
+If an update is available and has been successfully downloaded, the ownCloud Desktop app starts a silent update prior to its next launch and then restarts itself. Should the silent update fail, the Desktop app offers a manual download.
 
 NOTE: Administrative privileges are required to perform the update.
 
 === macOS
 
-If a new update is available, the ownCloud Desktop App initializes a *pop-up dialog* to alert you of the update and requesting that you update to the latest version. This is the default process for macOS applications.
+If a new update is available, the ownCloud Desktop app initializes a *pop-up dialog* to alert you of the update and requests that you update to the latest version. This is the default process for macOS applications.
 
 === Linux
 
