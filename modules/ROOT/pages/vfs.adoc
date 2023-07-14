@@ -171,12 +171,12 @@ attrib +U -P .\* /D /S
 
 == Manage Drive Space With Storage Sense
 
-Microsoft provides a mechanism called `Storage Sense` which can automatically free up drive space for applications that use VFS. This is done by turing files that were set to be xref:vfs-states[locally available] back to cloud-based content, which are xref:vfs-states[placeholder files] on the local drive, requiring no space.
+Microsoft provides a mechanism called `Storage Sense` which can automatically free up drive space for applications that use VFS. This is done by turning files that were set to be xref:vfs-states[locally available] back to cloud-based content, which are xref:vfs-states[placeholder files] on the local drive, requiring no space.
 
 You can enable or disable Storage Sense via Windows menu:Settings[System > Storage > Storage]:
 
 image::vfs/vfs-settings-storage.png[Access storage configuration, width=400]
 
-and configure the general behaviour respectively each VFS relationship individually via the following section:
+and configure the general behavior or each VFS relationship individually via the following section:
 
 image::vfs/vfs-configure-storage-sense.png[Setup Storage Sense, width=400]
