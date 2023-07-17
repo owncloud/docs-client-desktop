@@ -144,7 +144,7 @@ image::vfs/vfs-free-up-space.png[Free Up Space, width=400,pdfwidth=70%]
 +
 image::vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=600,pdfwidth=70%]
 
-## Using attrib.exe to Manage States
+== Using attrib.exe to Manage States
 
 Experienced users can also manage xref:vfs-states[VFS states] via the command line using `attrib`. This is particularly useful if you want to change the state of a complete folder/subfolder. Open a `PowerShell` command line window like via the start menu and change to the directory of the ownCloud sync folder/subfolder that contains the data you want to bulk change.
 
@@ -168,3 +168,15 @@ attrib -U +P .\* /D /S
 ----
 attrib +U -P .\* /D /S
 ----
+
+== Manage Drive Space With Storage Sense
+
+Microsoft provides a mechanism called `Storage Sense` which can automatically free up drive space for applications that use VFS. This is done by turning files that were set to be xref:vfs-states[locally available] back to cloud-based content, which are xref:vfs-states[placeholder files] on the local drive, requiring no space.
+
+You can enable or disable Storage Sense via Windows menu:Settings[System > Storage > Storage]:
+
+image::vfs/vfs-settings-storage.png[Access storage configuration, width=400]
+
+and configure the general behavior or each VFS relationship individually via the following section:
+
+image::vfs/vfs-configure-storage-sense.png[Setup Storage Sense, width=400]
