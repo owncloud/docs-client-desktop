@@ -97,10 +97,10 @@ To use *Two-Factor Authentication* (2FA) with the ownCloud Server backend, ownCl
 
 [width=100%,cols="^.^50%,^.^50%"]
 |===
-2+| *Login with ownCloud embedded user database*
+2+h| *Login with ownCloud embedded user database*
 2+a| image::using/wizard-screen-login.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
 
-2+| *Login with OAuth 2.0 or OIDC* +
+2+h| *Login with OAuth 2.0 or OIDC* +
 (Follow the web login process)
 
 a| image::using/wizard-screen-login-browser.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
