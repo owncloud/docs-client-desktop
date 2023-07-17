@@ -26,7 +26,10 @@ asciidoc:
 #   build relevant
     idprefix: ''
     idseparator: '-'
-    experimental: ''
+    # Antora User Interface Macros (btn, menu)
+    experimental: true
+    # Antora pagination (prev page, next page)
+    page-pagination: true
 #   desktop
     latest-desktop-version: '4.1'
     previous-desktop-version: '4.0'
