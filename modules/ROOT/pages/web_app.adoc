@@ -18,7 +18,7 @@ When more than one person is working on the same document and using a locally in
 
 == Open Files via Office Web Apps
 
-The first image shows an office file via the browser, based on Infinite Scale as backend.
+The first image shows an office file via the browser, based on the Infinite Scale backend.
 
 image::web_app/office_file_in_browser.png[file in browser, width=600,pdfwidth=70%]
 
