@@ -3,6 +3,7 @@
 :toclevels: 3
 :description: When reporting bugs, it is helpful if you first determine what part of the system is causing the issue.
 :page-aliases: troubleshooting.adoc
+:owncloud-log-tracing-url: https://doc.owncloud.com/server/latest/admin_manual/configuration/server/request_tracing.html
 
 :files-antivirus-app-url: https://github.com/owncloud/files_antivirus
 
@@ -124,7 +125,7 @@ When HTTP logging is enabled, log files will contain additional entries:
 | `[ info sync.httplogger ]`
 | Log item category label
 | `eca37889-6dea-42cf-81a2-c3826efbf146`
-| `X-Request-ID` to find corresponding requests and responses and to find related entries in `owncloud.log` or Apache logs
+| `X-REQUEST-ID` to find corresponding requests and responses and to find related entries in `owncloud.log` or Apache logs
 | `Header: { }`
 | List of all HTTP headers
 | `Data: []`
@@ -132,6 +133,11 @@ When HTTP logging is enabled, log files will contain additional entries:
 | `(112ms)`
 | Duration of the response (since the request was sent)
 |===
+
+The ownCloud desktop app sends the `X-REQUEST-ID` header with every request. You'll find the
+`X-REQUEST-ID` in the `owncloud.log`, and you can configure your webserver to add the
+`X-REQUEST-ID` to the logs. Here you can find more information at
+{owncloud-log-tracing-url}[Request Tracing]
 
 
 ==== Saving Files Directly
