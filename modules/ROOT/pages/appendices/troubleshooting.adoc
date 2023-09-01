@@ -104,6 +104,36 @@ image:appendices/troubleshooting/log_output_window.png[image,width=400]
 
 NOTE: That the choice to enable logging will be persisted across Desktop App restarts.
 
+==== Log HTTP requests and responses
+
+When HTTP logging is enabled, log files will contain additional entries:
+
+[source,plaintext]
+----
+23-09-01 16:31:14:031 [ info sync.httplogger ]:	"eca37889-6dea-42cf-81a2-c3826efbf146: Request: GET https://cloud.example…
+23-09-01 16:31:14:143 [ info sync.httplogger ]:	"eca37889-6dea-42cf-81a2-c3826efbf146: Response: GET 200 (112ms) https://cloud.example…
+----
+
+[cols="25%,75%",options="header"]
+|===
+| Log Content
+| Description
+
+| `23-09-01 16:31:14:031`
+| Timestamp
+| `[ info sync.httplogger ]`
+| Log item category label
+| `eca37889-6dea-42cf-81a2-c3826efbf146`
+| `X-Request-ID` to find corresponding requests and responses and to find related entries in `owncloud.log` or Apache logs
+| `Header: { }`
+| List of all HTTP headers
+| `Data: []`
+| HTTP bodies (JSON, XML)
+| `(112ms)`
+| Duration of the response (since the request was sent)
+|===
+
+
 ==== Saving Files Directly
 
 The ownCloud Desktop App allows you to save log files directly to a custom file or directory. This is a useful option for easily reproducible problems, as well as for cases where you want logs to be saved to a different location. To do so, you can start the Desktop app with startup flags. 
