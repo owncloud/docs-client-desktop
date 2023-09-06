@@ -3,6 +3,9 @@
 :toclevels: 3
 :description: When reporting bugs, it is helpful if you first determine what part of the system is causing the issue.
 :page-aliases: troubleshooting.adoc
+////
+if there are more references to the server admin docs, we must change this to use an xref with a full component reference. but this then needs also embedding server in this site.yml properly. 
+////
 :owncloud-log-tracing-url: https://doc.owncloud.com/server/latest/admin_manual/configuration/server/request_tracing.html
 
 :files-antivirus-app-url: https://github.com/owncloud/files_antivirus
@@ -90,8 +93,8 @@ Desktop App log files contain file and folder names, metadata, server URLs and o
 
 ==== Logging to a Temporary Directory
 
-.  Open the ownCloud Desktop App.
-.  Either +
+. Open the ownCloud Desktop App.
+. Either +
 click menu:Settings[Advanced > Log Settings] or +
 press btn:[F12] or btn:[Ctrl-L] or btn:[Cmd+L] on your keyboard.
 +
@@ -99,13 +102,13 @@ The Log Output window opens.
 +
 image:appendices/troubleshooting/log_output_window.png[image,width=400]
 +
-.  Enable the btn:[Enable logging to temporary folder] checkbox.
-.  Later, to find the log files, click the btn:[Open folder] button.
-.  Select the logs for the time frame in which the issue occurred.
+. Enable the btn:[Enable logging to temporary folder] checkbox.
+. Later, to find the log files, click the btn:[Open folder] button.
+. Select the logs for the time frame in which the issue occurred.
 
 NOTE: That the choice to enable logging will be persisted across Desktop App restarts.
 
-==== Log HTTP requests and responses
+==== Log HTTP Requests and Responses
 
 When HTTP logging is enabled, log files will contain additional entries:
 
@@ -115,30 +118,31 @@ When HTTP logging is enabled, log files will contain additional entries:
 23-09-01 16:31:14:143 [ info sync.httplogger ]:	"eca37889-6dea-42cf-81a2-c3826efbf146: Response: GET 200 (112ms) https://cloud.example…
 ----
 
-[cols="25%,75%",options="header"]
+[cols="30%,70%",options="header"]
 |===
 | Log Content
 | Description
 
 | `23-09-01 16:31:14:031`
 | Timestamp
+
 | `[ info sync.httplogger ]`
 | Log item category label
+
 | `eca37889-6dea-42cf-81a2-c3826efbf146`
 | `X-REQUEST-ID` to find corresponding requests and responses and to find related entries in `owncloud.log` or Apache logs
+
 | `Header: { }`
 | List of all HTTP headers
+
 | `Data: []`
 | HTTP bodies (JSON, XML)
+
 | `(112ms)`
 | Duration of the response (since the request was sent)
 |===
 
-The ownCloud desktop app sends the `X-REQUEST-ID` header with every request. You'll find the
-`X-REQUEST-ID` in the `owncloud.log`, and you can configure your web server to add the
-`X-REQUEST-ID` to the logs. Here you can find more information at
-{owncloud-log-tracing-url}[Request Tracing]
-
+The ownCloud desktop app sends the `X-REQUEST-ID` header with every request. You'll find the `X-REQUEST-ID` in the `owncloud.log`, and you can configure your web server to add the `X-REQUEST-ID` to the logs. Here you can find more information at {owncloud-log-tracing-url}[Request Tracing, window=_blank].
 
 ==== Saving Files Directly
 
