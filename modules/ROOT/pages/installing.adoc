@@ -387,17 +387,6 @@ If your deployment tooling interprets this as an actual error and you want to av
 msiexec /i ownCloud-{client-version-win}.msi DO_NOT_SCHEDULE_REBOOT="1"
 ----
 
-=== Windows Installer Logging
-
-In case you experience issues, you can run the installer with logging enabled:
-
-[source,console,subs="attributes+"]
-----
-msiexec /i ownCloud-{client-version-win}.msi /L*V "C:\log\example.log"
-----
-
-See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I create an installation log] documentation for more information about the Msiexec.exe command and logging.
-
 === Define Your Own Synchronization Folder Icon
 
 When setting up a new synchronization, ownCloud automatically assigns its icon to the synchronization folder for ease of identification. Though you can change this icon, it would be reverted back on next reboot to the ownCloud icon. Folder icon details are usually stored in the hidden desktop.ini file which is located _inside_ the folder under scrutiny. To make a manually defined icon persistent, a small change in this `desktop.ini` file is necessary. See the following description to do so:
