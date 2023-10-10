@@ -92,13 +92,18 @@ For Windows, see the xref:customizing-the-windows-installation[Customizing the W
 sudo apt install gnome-shell-extension-appindicator
 ----
 
-** For RedHat-based distros like AlmaLinux or Fedora, use the commands below to install the extension:
+** On distributions based on Red Hat Enterprise Linux (including AlmaLinux and Rocky Linux), you first need to install another package:
+
+[source,bash]
+----
+sudo dnf install epel-release
+----
+
+Then, proceed with the following command. On Fedora, it is sufficient to just run the following command:
 +
 [source,bash]
 ----
-sudo dnf install gnome-extensions-app -y
-sudo dnf install gnome-shell-extension-appindicator -y
-sudo reboot
+sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
 ----
 
 ** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
