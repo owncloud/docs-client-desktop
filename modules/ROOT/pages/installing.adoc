@@ -92,7 +92,7 @@ For Windows, see the xref:customizing-the-windows-installation[Customizing the W
 sudo apt install gnome-shell-extension-appindicator
 ----
 
-** For RedHat based distros like AlmaLinux, CentOS or Fedora, use the commands below to install the extension:
+** For RedHat-based distros like AlmaLinux, CentOS or Fedora, use the commands below to install the extension:
 +
 [source,bash]
 ----
@@ -104,9 +104,9 @@ sudo dnf install gnome-shell-extension-appindicator -y
 sudo reboot
 ----
 
-** For all other distributions follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
+** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
 
-* When the extension is installed, you need to restart the GNOME shell. To do so, hit btn:[Alt+F2] on the keyboard, type btn:[r] and  btn:[Enter]. Now you will see the new extensions added to the extensions list. To enable an extension, switch the button on the right to the btn:[On] position. For the particular system tray icon extension, the name for all distributions is **Ubuntu AppIndicators** because the notification system AppIndicators has been developed by Ubuntu. Once enabled, the system tray is shown again within the desktop environment.
+* When the extension is installed, you need to restart the GNOME shell. To do so, hit btn:[Alt+F2] on the keyboard, type btn:[r] and  btn:[Enter]. Now you will see the new extensions added to the extensions list. To enable an extension, switch the button on the right to the btn:[On] position. For this particular system tray icon extension, the name for all distributions is **Ubuntu AppIndicators** because the notification system AppIndicators has been developed by Ubuntu. Once enabled, the system tray is shown again within the desktop environment.
 +
 image::installing/gnome-shell-extension-appindicator-selector.png[width=600,pdfwidth=60%]
 
