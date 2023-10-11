@@ -84,19 +84,34 @@ For Windows, see the xref:customizing-the-windows-installation[Customizing the W
 * Note, our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
 
 * Using GNOME on recent distributions like Ubuntu 22.04, Debian 11 or others, the system tray is typically no longer available. This makes it hard to get back an app that has been minimized to the system tray. You have to install an extension in order to restore the system tray in this case in order to be able to find and restore the minimized application.
-+
---
-For distributions like Ubuntu 22.04 or Debian 11, please use the command below to install the extension, otherwise please follow the {gnome-extensions-url}[AppIndicator Support] installation.
 
+** For distributions like Ubuntu 22.04 or Debian 11, use the command below to install the extension:
++
 [source,bash]
 ----
 sudo apt install gnome-shell-extension-appindicator
 ----
 
-When the extension is installed, you need to restart the GNOME shell. To do so, hit btn:[Alt+F2] on the keyboard, type btn:[r] and  btn:[Enter]. Now you will see the new extensions added to the extensions list. To enable an extension, switch the button on the right to the btn:[On] position. For the particular system tray icon extension, the name for all distributions is **Ubuntu AppIndicators** because the notification system AppIndicators has been developed by Ubuntu. Once enabled, the system tray is shown again within the desktop environment.
+** On distributions based on Red Hat Enterprise Linux (including AlmaLinux and Rocky Linux), you first need to install another package:
 
+[source,bash]
+----
+sudo dnf install epel-release
+----
+
+Then, proceed with the following command. On Fedora, it is sufficient to just run the following command:
++
+[source,bash]
+----
+sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
+----
+
+** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
+
+* When the extension is installed, you need to log off and re-login to activate the changes.
+For this particular system tray icon extension, the name shown of the extension may depend and can be like **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray is shown again within the desktop environment.
++
 image::installing/gnome-shell-extension-appindicator-selector.png[width=600,pdfwidth=60%]
---
 
 ==== Native Installation
 
