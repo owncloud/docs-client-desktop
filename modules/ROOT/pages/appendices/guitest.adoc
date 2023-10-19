@@ -102,7 +102,7 @@ NOTE: If you are testing against the oCIS server, set *OCIS=true* in the *config
 
 NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `~/squish-for-qt-6.x.x/etc/paths.ini` is user-readable.
 
-===== Extra Steps for Infinite Scale or ownCloud server with oauth2
+===== Extra Steps for Infinite Scale or ownCloud Server with Oauth2
 
 While running the tests against Infinite Scale, playwright is used to automate the login process in the browser. The following extra steps need to be taken:
 
