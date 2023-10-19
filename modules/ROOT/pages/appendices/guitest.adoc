@@ -51,9 +51,9 @@ After building the ownCloud Desktop App, install and configure Squish. To instal
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
 . Depending upon the version and system you are using, you will get a file like `squish-x.x.x-qtxxx-x64.run`.
 
-NOTE: For desktop client >= 2.11 and <5, Squish with QT 5.15 is required.
+NOTE: For Desktop Client >= 2.11 and <5, Squish with QT 5.15 is required.
 
-NOTE: For desktop client >=5, Squish with QT 6.2 is the minimal supported QT version.
+NOTE: For Desktop Client >=5, Squish with at least QT 6.2 is required.
 
 . Make the downloaded file executable by running the following example command:
 +
