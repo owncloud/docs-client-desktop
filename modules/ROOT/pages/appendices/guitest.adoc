@@ -51,7 +51,9 @@ After building the ownCloud Desktop App, install and configure Squish. To instal
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
 . Depending upon the version and system you are using, you will get a file like `squish-x.x.x-qtxxx-x64.run`.
 
-NOTE: For desktop client >= 2.11, Squish with QT 5.15 is required.
+NOTE: For Desktop Client >= 2.11 and <5, Squish with QT 5.15 is required.
+
+NOTE: For Desktop Client >=5, Squish with at least QT 6.2 is required.
 
 . Make the downloaded file executable by running the following example command:
 +
@@ -100,7 +102,7 @@ NOTE: If you are testing against the oCIS server, set *OCIS=true* in the *config
 
 NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `~/squish-for-qt-6.x.x/etc/paths.ini` is user-readable.
 
-===== Extra Steps for Infinite Scale
+===== Extra Steps for Infinite Scale or ownCloud Server with Oauth2
 
 While running the tests against Infinite Scale, playwright is used to automate the login process in the browser. The following extra steps need to be taken:
 
