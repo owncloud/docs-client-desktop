@@ -31,8 +31,8 @@ asciidoc:
     # Antora pagination (prev page, next page)
     page-pagination: true
 #   desktop
-    latest-desktop-version: '5.0'
-    previous-desktop-version: '4.2'
+    latest-desktop-version: '5.1'
+    previous-desktop-version: '5.0'
   extensions:
     - ./lib/extensions/tabs.js
     - ./lib/extensions/remote-include-processor.js
