@@ -1,6 +1,6 @@
-# Create a New Version Branch for Desktop
+# Create a New Version Branch for the Desktop App
 
-When doing a new release for the Desktop Client like `4.x`, a new version branch must be created based on `master`. It is necessary to do this in four steps. Please set the new and former version numbers accordingly
+When doing a new release for the Desktop App like `5.x`, a new version branch must be created based on `master`. It is necessary to do this in four steps. Please set the new and former version numbers accordingly
 
 **Step 1: Create and configure the new `4.x` branch**
 
