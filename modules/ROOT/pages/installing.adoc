@@ -1,8 +1,8 @@
 = Installing the Desktop App
 :toc: right
 :toclevels: 4
-:client-version-win: 5.1.2.12260.x64
-:client-version-appimage: 5.1.2.12260-x86_64
+:client-version-win: 5.2.0.12726.x64
+:client-version-appimage: 5.2.0.12726-x86_64
 :description: The Desktop App enables users to access and sync files and folders from their ownCloud, work on remote files right from the desktop as if they were stored on their computer – because they are.
 
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
