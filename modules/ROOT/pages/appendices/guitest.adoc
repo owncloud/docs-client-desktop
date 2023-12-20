@@ -3,6 +3,7 @@
 :toclevels: 3
 :description: This document explains how to run GUI tests for the Desktop App locally in your system.
 
+:client-stable-download-url: https://download.owncloud.com/desktop/ownCloud/stable/
 :squish-url: https://www.froglogic.com/squish/download/
 :free-trial-url: https://www.froglogic.com/squish/free-trial/
 :pythonchanger-url: https://kb.froglogic.com/squish/howto/changing-python-installation-used-squish-binary-packages/PythonChanger.py
@@ -23,13 +24,14 @@
 
 == Prerequisites
 
-Before we can actually run the test, we will need to build a Desktop App and install and configure Squish first.
+Before we can run the test, we will need to xref:appendices/building.adoc[build the Desktop App from source] or {client-stable-download-url}[install the existing one] and configure Squish first.
+
+Install `python 3.10` along with some modules required for running Squish tests:
+
+. requests
+. pywin32 (required for Windows only)
 
 NOTE: Before running tests, you need to make sure that you have disabled `oauth2` and `openidconnect` in ownCloud Server.
-
-=== Building the Desktop App
-
-To be able to run tests, you need to xref:appendices/building.adoc[build the Desktop App] from the latest master.
 
 == Prepare Tests
 
@@ -46,27 +48,23 @@ NOTE: You can use docker or Squish IDE to run the tests but if you want to add n
 
 ==== Install Squish IDE
 
-After building the ownCloud Desktop App, install and configure Squish. To install Squish, follow these steps:
+To install Squish, follow these steps:
 
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
-. Depending upon the version and system you are using, you will get a file like `squish-x.x.x-qtxxx-x64.run`.
+. Depending upon the version and system you are using, you will get a file like `squish-x.x.x-qtxxx-x64.run` or `squish-x.x.x-qtxxx-x64.exe`.
 
-NOTE: For Desktop Client >= 2.11 and <5, Squish with QT 5.15 is required.
+NOTE: For Desktop Client >= 2.11 and <5, Squish with QT 5.15 is required. +
+For Desktop Client >=5, Squish with at least QT 6.2 is required.
 
-NOTE: For Desktop Client >=5, Squish with at least QT 6.2 is required.
+NOTE: Ensure that the Squish supports the QT version that was used to build the Desktop App.
 
-. Make the downloaded file executable by running the following example command:
+. [Linux only] Make the downloaded file executable by running the following example command:
 +
 [source,bash]
 ----
 sudo chmod +x ./squish-x.x.x-qtxxx-x64.run
 ----
-. Execute the file:
-+
-[source,bash]
-----
-sudo ./squish-x.x.x-qtxxx-x64.run
-----
+. Run the Squish installer.
 . You will be asked for a license key. When asked, enter your existing license/url of the license server or get a {free-trial-url}[free trial license]
 . After you have entered the license key, Squish opens.
 
@@ -96,11 +94,11 @@ NOTE: If you are testing against the oCIS server, set *OCIS=true* in the *config
 . Start Squish
 . Open the existing test-suite via: menu:File[Open Test Suite > test/gui]
 . Go to menu:Edit[Server Settings > Manage AUTs > Mapped AUTs]
-. Click btn:[Add] and select the compiled binary, e.g.: `client/client-build/bin/owncloud`
+. Click btn:[Add] and select the executable file, e.g.: `client/client-build/bin/owncloud` or `<owncloud-installation-path>/owncloud.exe`
 . Close any running Desktop Apps by clicking btn:[Quit ownCloud] in the settings page
 . Run the AUT (Application under Test) to check if everything works properly via menu:Run[Lauch AUT] (the Desktop App settings window should appear)
 
-NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `~/squish-for-qt-6.x.x/etc/paths.ini` is user-readable.
+NOTE: If there are problems with starting Squish, please check the log file `~/.squish/squishlibraryx.log.x`. Also make sure that the `<squish-installation-path>/etc/paths.ini` is user-readable.
 
 ===== Extra Steps for Infinite Scale or ownCloud Server with Oauth2
 
