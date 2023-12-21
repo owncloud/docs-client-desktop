@@ -87,7 +87,8 @@ To get the source dependencies on Debian and Ubuntu, run the following command:
 ----
 sudo apt install qtdeclarative5-dev libinotifytools-dev \
   qt5keychain-dev python3-sphinx \
-  libsqlite3-dev
+  libsqlite3-dev \
+  g++ extra-cmake-modules zlib1g-dev pkgconf
 ----
 ====
 
@@ -288,11 +289,11 @@ To build the most up-to-date version of the Desktop App:
 +
 [source,bash]
 ----
-git clone git://github.com/owncloud/client.git
+git clone https://github.com/owncloud/client.git
 cd client
 ----
-+
-Note master this default, but you can also check out a tag like v2.5.4
++ 
+By default, `git` clones the development branch called `master`. This branch often works, but this is not guaranteed. If you want to build a stable release or a specific branch, you can use `git checkout <name>` inside the cloned `client` directory to switch to another target. You can find a list of all releases [here](https://github.com/owncloud/client/releases).
 +
 [source,bash]
 ----
@@ -315,14 +316,16 @@ cd client-build
 +
 [source,console]
 ----
-cmake -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.4 -DCMAKE_INSTALL_PREFIX=/Users/path/to/client/../install/ ..
+cmake -DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.15.2 -DCMAKE_INSTALL_PREFIX=/usr/ ..
 ----
 +
+Please also check the beginning of ../src/CMakeLists.txt - The version number in `find_package(Qt5 5.xx ...` should match what you have available.
+For client 3.0 or later we use Qt 5.15.2 - for client 2.x we used Qt 5.12.10 or below. 
 For Linux builds (using QT5 libraries via build-dep) a typical setting is 
 +
 [source,console]
 ----
--DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.4/
+-DCMAKE_PREFIX_PATH=/opt/ownCloud/qt-5.12.10/
 ----
 +
 However, the version number may vary. For Linux builds using system dependencies `-DCMAKE_PREFIX_PATH` is not needed. You must use absolute paths for the `include` and `library` directories.
