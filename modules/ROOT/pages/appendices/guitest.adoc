@@ -51,12 +51,12 @@ NOTE: You can use docker or Squish IDE to run the tests but if you want to add n
 To install Squish, follow these steps:
 
 . Download the latest version of Squish from {squish-url}[froglogic] to a location of your choice.
-. Depending upon the version and system you are using, you will get a file like `squish-x.x.x-qtxxx-x64.run` or `squish-x.x.x-qtxxx-x64.exe`.
+. Depending on the version and system you are using, you will get a file like `squish-x.x.x-qtxxx-x64.run` or `squish-x.x.x-qtxxx-x64.exe`.
 
 NOTE: For Desktop Client >= 2.11 and <5, Squish with QT 5.15 is required. +
 For Desktop Client >=5, Squish with at least QT 6.2 is required.
 
-NOTE: Ensure that the Squish supports the QT version that was used to build the Desktop App.
+NOTE: Ensure that Squish supports the QT version that was used to build the Desktop App.
 
 . [Linux only] Make the downloaded file executable by running the following example command:
 +
