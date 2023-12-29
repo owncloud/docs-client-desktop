@@ -251,12 +251,12 @@ If curl is not available or you are not sure or want to read more, see {install-
 
 If you just want to install the ownCloud Desktop App on your local system, you can simply {client-download-url}{url-version}/win/[download,window=_blank] and launch the relevant `.msi` file and configure it in the wizard that pops up. For the examples below, the x64 installer is used.
 
-=== Microsft GPO (Group Policy Object) Installer
+=== Microsoft GPO (Group Policy Object) Installer
 
 ownCloud provides two versions of the Microsoft Installer:
 
-- `*.x64.msi`: This is the installer for regular users. Installer UI has multiple translations to guide end users through the install procedure.
-- `*.x64.GPO.msi`: The GPO installer works better for automated deployments in managed environments. It only has English language. The desktop client itself comes with all the usual langauges in the user interface.
+- `*.x64.msi`: This is the installer for regular users. The installer UI has multiple translations to guide end users through the install procedure.
+- `*.x64.GPO.msi`: The GPO installer works better for automated deployments in managed environments. It is only available in English. The desktop client itself comes with all the usual languages for the user interface.
 
 === Features
 
