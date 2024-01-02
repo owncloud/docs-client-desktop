@@ -42,7 +42,7 @@ You can download the latest version of the ownCloud Desktop App from the {deskto
 Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distributions, see the list of supported distros below.
 
 Windows::
-* Windows 10 or later (x64)
+* Windows 10 version 1607 or later (x64)
 ** When using external drives storing the synchronization data, it is highly recommended to format these drives with NTFS and not with FAT. This is because the FAT filesystem has many limitations which can cause unexpected or unwanted behavior.
 ** For xref:vfs.adoc[VFS support], Windows 10 versions 1709 or later. When using external drives, NTFS is required.
 
