@@ -7,3 +7,5 @@ nav:
 
 asciidoc:
   attributes:
+    latest-desktop-version: {page-component-version}   # do not change, this is the value of the version key
+    previous-desktop-version: {page-component-version} # do not change, this is the value of the version key
