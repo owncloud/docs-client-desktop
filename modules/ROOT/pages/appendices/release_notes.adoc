@@ -15,7 +15,7 @@ The ownCloud Desktop Client is now available in version 5.2.1! If you have an en
 * Windows VFS: Prevent rename to ignored file name
 * Change how all files deleted is handled
 * Enable crash reporter in commandline client
-* Log http request when it is send
+* Log http request when it is sent
 * Display a progress spinner during the initial setup
 * Reduce how often file changes are handled
 * Persist filter settings for Not Synced tab
@@ -48,11 +48,11 @@ ownCloud Desktop Client 5.2.1 also delivers several important technical improvem
 *	Hide hidden folders again in the selective sync view
 *	Fix check if a file is a placeholder
 *	Hydration state of file after a directory was replaced with a file
-*	Only syncronize after the server settings where refreshed
+*	Only syncronize after the server settings were refreshed
 *	Consitently use the same icon for folders
 *	Branding of folder status overlay
 *	Creation of folder on the server
-*	Selective sync when not the remote root is synced
+*	Selective sync when other than the remote root is synced
 
 For an exhaustive list of bug fixes and changes, please refer to the full change log at {desktop-changelog-url}[GitHub]
 
