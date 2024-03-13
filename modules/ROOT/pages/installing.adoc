@@ -41,21 +41,48 @@ You can download the latest version of the ownCloud Desktop App from the {deskto
 
 Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distributions, see the list of supported distros below.
 
-Windows::
-* Windows 10 or later (x64)
-** When using external drives storing the synchronization data, it is highly recommended to format these drives with NTFS and not with FAT. This is because the FAT filesystem has many limitations which can cause unexpected or unwanted behavior.
-** For xref:vfs.adoc[VFS support], Windows 10 versions 1709 or later. When using external drives, NTFS is required.
+{empty}
 
-macOS::
-* macOS 10.15+
-** x86-64 or ARM64 (Apple Silicon)
+[width="100%",cols="20%,80%",options="header",]
+|===
+| OS
+| Version
 
-Linux::
-* Debian 11 & 12 (x86-64)
-* Fedora 38 & 39 (x86-64)
-* openSUSE Leap 15.4 & 15.5 (x86-64)
-* Ubuntu 22.04 & 23.04 & 23.10 (x86-64)
-* **{appimage-wikipedia-url}[AppImage]** build of the ownCloud Desktop App is available to support more Linux platforms
+a| *Windows*
+a| When using external drives storing the synchronization data, NTFS is required. Also see the xref:vfs.adoc[VFS support] documentation.
+--
+* Windows 11
+* Windows 10 or later (x64) +
+Version 1809+
+--
+
+a| *macOS* +
+x86-64 or ARM64 +
+(Apple Silicon)
+a| * macOS 14 Sonoma
+* macOS 13 Ventura
+* macOS 12 Monterey
+* macOS 11 Big Sur
+* macOS 10.15 Catalina
+
+a| *Linux* +
+(x86-64)
+a| * Debian
+** Debian 12
+** Debian 11
+* Fedora
+** Fedora 39
+** Fedora 38
+** Fedora 37
+* openSUSE Leap
+** openSUSE Leap 15.5
+** openSUSE Leap 15.4
+* Ubuntu
+** Ubuntu 23.10
+** Ubuntu 23.04
+** Ubuntu 22.04 LTS
+* An **xref:appimage[AppImage]** build of the ownCloud Desktop App is available to support more Linux platforms
+|===
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
