@@ -30,13 +30,13 @@ If a new update is available, the ownCloud Desktop app initializes a *pop-up dia
 
 * Linux distributions provide their own update tools. +
 The ownCloud Desktop app on a Linux operating system does not perform any updates on its own. The client will inform you (menu:Settings[General > Updates]) when an update is available.
-
-image::automatic_updater/updates-available.png[Update Notification Windows, width=350]
++
+image:automatic_updater/updates-available.png[Update Notification Windows, width=350]
 
 * AppImages +
 AppImages provide an auto-update feature. The check process takes place when (re)starting the AppImage. If a new AppImage is found, you get the following example screen where you can decide whether to install the new image or not. Updates are in-place and do not produce a new file name.
 + 
-image::automatic_updater/app-image-update-available.png[Autoupdating an AppImage, width=300,pdfwidth=60%]
+image:automatic_updater/app-image-update-available.png[Autoupdating an AppImage, width=300,pdfwidth=60%]
 
 
 == Preventing Automatic Updates
