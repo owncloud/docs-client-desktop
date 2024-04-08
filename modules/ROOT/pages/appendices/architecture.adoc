@@ -93,13 +93,13 @@ include::{examplesdir}architecture/cloud-capabilities-json-response.json[]
 
 A checksum is calculated with the previously negotiated algorithm by the Desktop App and sent along with the file in an HTTP Header: `OC-Checksum: [algorithm]:[checksum]`.
 
-image:appendices/architecture/client-activity.png[image]
+image::appendices/architecture/client-activity.png[image, width=350]
 
 During file upload, the server computes SHA1, MD5, and Adler-32 checksums and compares one of them to the checksum supplied by the Desktop App.
 
 On mismatch, the server returns HTTP Status code 400 (Bad Request) thus signaling the Desktop App that the upload failed. The server then discards the upload, and the Desktop App blacklists the file:
 
-image:appendices/architecture/testing-checksums.png[image]
+image::appendices/architecture/testing-checksums.png[image, width=350]
 
 [source,xml]
 ----

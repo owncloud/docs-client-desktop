@@ -42,7 +42,7 @@ The red circle with the white "x" indicates a configuration error, such as an in
 
 A btn:[right-click] on the systray icon opens a menu for quick access to multiple operations.
 
-image::using/systray-icon-menu.png[systray, width=400,pdfwidth=60%]
+image::using/systray-icon-menu.png[systray, width=350,pdfwidth=60%]
 
 This menu provides quick access to options like:
 
@@ -53,7 +53,7 @@ This menu provides quick access to options like:
 
 A btn:[left-click] on your systray icon opens the Desktop App to the account settings window.
 
-image::using/client6.png[image, width=600,pdfwidth=60%]
+image::using/client6.png[image, width=350,pdfwidth=60%]
 
 === File Manager Overlay Icons
 
@@ -84,7 +84,7 @@ The connection wizard is always shown when the Desktop app has been started and 
 --
 Note that the URL given to you can be a different one than the final URL used by the Desktop app. This can be the case if a company has a generic setup URL that provides the Desktop app information about where to connect you. This mechanism is called https://en.wikipedia.org/wiki/WebFinger[WebFinger] and has the big benefit that one only needs to know the generic setup URL. The Desktop app tries to identify if webfinger is provided via the given URL and acts accordingly based on the server's response. This all runs in the background but is explained here in case you see a different URL being used than entered.
 
-image::using/wizard-screen-url.png[form for entering ownCloud instance URL, width=500,pdfwidth=60%]
+image:using/wizard-screen-url.png[form for entering ownCloud instance URL, width=350,pdfwidth=60%]
 --
 
 * Enter your ownCloud login on the next screen. Depending on what the administrator has configured, you may see different login screens. Note that with OAuth 2.0 and with OpenID Connect (OIDC), you will be redirected to a browser for authentication:
@@ -98,12 +98,12 @@ To use *Two-Factor Authentication* (2FA) with the ownCloud Server backend, ownCl
 [width=100%,cols="^.^50%,^.^50%"]
 |===
 2+h| *Login with ownCloud embedded user database*
-2+a| image::using/wizard-screen-login.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
+2+a| image::using/wizard-screen-login.png[form for entering your ownCloud login, width=350,pdfwidth=60%]
 
 2+h| *Login with OAuth 2.0 or OIDC* +
 (Follow the web login process)
 
-a| image::using/wizard-screen-login-browser.png[form for entering your ownCloud login, width=500,pdfwidth=60%]
+a| image::using/wizard-screen-login-browser.png[form for entering your ownCloud login, width=350,pdfwidth=60%]
 a| image::using/wizard-screen-grant-access.png[form for entering your ownCloud login, width=320,pdfwidth=60%]
 |===
 --
@@ -113,7 +113,7 @@ a| image::using/wizard-screen-grant-access.png[form for entering your ownCloud l
 --
 When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired. Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for synchronized data.
 
-image::using/wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=500,pdfwidth=60%]
+image:using/wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=350,pdfwidth=60%]
 --
 
 * Final step:
@@ -156,18 +156,18 @@ Choose What to Sync::
 Select the folders and mounts in the main window to be synced. This appears only when your file tree is collapsed, and expands the file tree.
 
 Force sync now / Restart sync::
-Start the sync process immediately - if none is running, or restart a running sync process
+Start the sync process immediately - if none is running, or restart a running sync process.
 
 Pause Sync::
 Pauses sync operations without making any changes to your account. It will continue to update file and folder lists, without downloading or updating files.
 
 Remove Folder Sync Connection::
-Stop all sync activity
+Stop all sync activity.
 
 Enable virtual file support::
-Enable the virtual file support for an account
-
-image::using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
+Enable the virtual file support for an account:
++
+image:using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
 
 === Account Reconnecting
 
@@ -175,13 +175,13 @@ Synchronization happens on a regular basis and connects to the server every few 
 
 To manually force reconnecting for an account, select the account and click menu:Account[Reconnect]. 
 
-image::using/account-reconnect.png[Force reconnect, width=500,pdfwidth=60%]
+image::using/account-reconnect.png[Force reconnect, width=350,pdfwidth=60%]
 
 === Force Syncing a Folder
 
 If there is data to be synced immediately, like when you are on the road and need to continue working offline, you can force syncing a folder of an account before the network connection goes offline. To do so, select the account and then the folder to force sync and the menu:Three Dots[Force sync now] button. 
 
-image::using/account-force-sync-now.png[Force Sync Now, width=500,pdfwidth=60%]
+image::using/account-force-sync-now.png[Force Sync Now, width=350,pdfwidth=60%]
 
 === Spaces
 
@@ -212,12 +212,12 @@ In case selective sync has been chosen, different options are available to add r
 * You will see a list of available remote resources you can manage as shown in the screenshot below. If a new resource gets added on the server like via the Web UI, it will be listed here.
 
 ** To add a resource to be synced as folder to the *same base path*, set the check mark. To remove a resource from syncing, deselect it. To finalize the selection, click the btn:[Apply] button on the bottom right.
-
-image::using/add-resource-server-same-folder.png[Add resource same path, width=300,pdfwidth=60%]
++
+image:using/add-resource-server-same-folder.png[Add resource same path, width=300,pdfwidth=60%]
 
 ** To add a resource to be synced as folder to a *different path* than the account base path, click in the bottom left corner on btn:[Add Folder]. Select the path and the resources to sync and complete the process.
-
-image::using/add-resource-server-different-folder.png[Add resource different path, width=300,pdfwidth=60%]
++
+image:using/add-resource-server-different-folder.png[Add resource different path, width=300,pdfwidth=60%]
 
 ==== Using an Account That Connects To Infinite Scale:
 
@@ -244,15 +244,15 @@ You can share with internal ownCloud users and groups and create links to share 
 
 * If you are not already at the location of the file or folder to share, right-click your systray icon, hover over the account you want to use, and left-click menu:Open folder["folder name"] to quickly enter your local ownCloud folder.
 +
-image::using/systray-menu.png[Systray Menu, width=300,pdfwidth=60%]
+image:using/systray-menu.png[Systray Menu, width=300,pdfwidth=60%]
 
 * Go to the file or folder you want to share.
 +
-image::using/explorer-files-view.png[image, width=500,pdfwidth=60%]
+image:using/explorer-files-view.png[image, width=350,pdfwidth=60%]
 
 * Right-click the file or folder you want to share to expose the share dialog which opens the context menu, and click menu:ownCloud[Share].
 +
-image::using/owncloud-share.png[Sharing Context Menu, width=3000,pdfwidth=70%]
+image:using/owncloud-share.png[Sharing Context Menu, width=350,pdfwidth=70%]
 
 * Depending on the backend used, different things can happen:
 
@@ -288,8 +288,8 @@ Displays local activities such as which local folders your files went into.
 
 Not Synced::
 Shows errors such as files not synced because of being excluded or any other failing status.
-
-image::using/client-8.png[not_synced, width=600,pdfwidth=60%]
++
+image:using/client-8.png[not_synced, width=350,pdfwidth=60%]
 
 In Windows, double-clicking an activity entry pointing to an existing file in tabs *Server Activities* or *Sync Protocol*, will open the folder containing the file and highlight it.
 
@@ -303,7 +303,7 @@ The desktop client will display notifications from your ownCloud server that req
 
 For example, when a user on a remote ownCloud creates a new Federated share for you, you can accept it from your desktop client. This also displays notifications sent to users by the ownCloud admin via the Announcements app.
 
-image::using/client12.png[server_notifications,width=600,pdfwidth=60%]
+image::using/client12.png[server_notifications,width=350,pdfwidth=60%]
 
 == Settings Window
 
@@ -331,8 +331,8 @@ This is only valid if not using the xref:vfs.adoc[VFS] feature.
 
 * Ask confirmation before downloading folders larger than [folder size]
 * Ask for confirmation before synchronizing external storages
-
-image::using/client-9.png[advanced approval, width=600,pdfwidth=60%]
++
+image:using/client-9.png[advanced approval, width=350,pdfwidth=60%]
 
 TIP: While you can select whether to show or hide the crash reporter, from the Settings Window, you can also configure whether to show or hide it from the xref:advanced_usage/configuration_file.adoc#section-general[general section of the configuration file] as well. Doing so can help with debugging on-startup-crashes.
 
@@ -354,9 +354,10 @@ The following options are available:
 * No limit
 * Limit automatically +
 When activated, the client limits the upload or download bandwidth to 25% of the currently available bandwidth for each operation. The available bandwidth is measured on the fly at the beginning of every operation for a very short period of time.
-* Limit to
 
-image::using/settings_network.png[Network Settings,width=600,pdfwidth=60%]
+* Limit to
++
+image:using/settings_network.png[Network Settings,width=350,pdfwidth=60%]
 
 [NOTE]
 ====
@@ -367,9 +368,12 @@ Enabling this feature will affect all new transfers (next upload chunk or next d
 
 You might have some local files or directories that you do not want to backup and store on the server. To identify and exclude these files or directories, you can use the menu:Settings[Advanced > Ignored Files Editor].
 
-NOTE: Note that rules for ignored files are also applied to folders.
+[NOTE]
+====
+Note that rules for ignored files are also applied to folders.
 
-image::using/ignored_files_editor.png[Ingnored Files Editor,width=350,pdfwidth=60%]
+image:using/ignored_files_editor.png[Ingnored Files Editor,width=350,pdfwidth=60%]
+====
 
 For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are contained in a system file. (typically `sync-exclude.lst`) located in the ownCloud Desktop app directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to show the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
 
@@ -396,7 +400,7 @@ For more detailed information see the xref:architecture.adoc#ignored-files[Ignor
 
 When removing a synchronization connection, all synchronized data will stay locally and not get deleted. To remove a sync relationship, change to the account and select the synchronization relationship that should get removed. When clicking the btn:[...] (three dots) icon, the following window appears:
 
-image::using/remove_sync_connection.png[Removing a Sync Relationship,width=250,pdfwidth=60%]
+image::using/remove_sync_connection.png[Removing a Sync Relationship,width=200,pdfwidth=60%]
 
 Select btn:[Remove folder sync connection] to remove it. If you also want to delete the related data, go to the folder and delete it.
 
