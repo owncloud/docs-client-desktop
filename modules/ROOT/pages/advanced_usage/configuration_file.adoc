@@ -12,7 +12,7 @@
  
 The location of the configuration file depends on the operating system used. You can locate this configuration file as follows:
 
-[cols="25%,75%",options="header"]
+[width=100%,cols="30%,70%",options="header"]
 |===
 | System
 | Location
@@ -33,7 +33,7 @@ WARNING: Use caution when making changes to the ownCloud Desktop App configurati
 
 See the xref:faq.adoc#clarification-of-terms-used[Clarification of Terms Used] for an in-depth explanation. Note that the default values are always set and used unless you change them.
 
-[width="100%",cols="45%,^25%,100%",options="header"]
+[width="100%",cols="50%,^25%,100%",options="header"]
 |===
 | Variable
 | Default
@@ -62,7 +62,7 @@ See the xref:faq.adoc#clarification-of-terms-used[Clarification of Terms Used] f
 
 == Section `[General]`
 
-[width="100%",cols="45%,^25%,100%",options="header"]
+[width="100%",cols="50%,^25%,100%",options="header"]
 |===
 | Variable | Default | Meaning 
 

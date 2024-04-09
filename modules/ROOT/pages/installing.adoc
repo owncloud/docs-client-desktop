@@ -120,25 +120,27 @@ sudo apt install gnome-shell-extension-appindicator
 ----
 
 ** On distributions based on Red Hat Enterprise Linux (including AlmaLinux and Rocky Linux), you first need to install another package:
-
++
+--
 [source,bash]
 ----
 sudo dnf install epel-release
 ----
 
 Then, proceed with the following command. On Fedora, it is sufficient to just run the following command:
-+
+
 [source,bash]
 ----
 sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
 ----
+--
 
 ** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
 
 * When the extension is installed, you need to log off and re-login to activate the changes.
 For this particular system tray icon extension, the name shown of the extension may depend and can be like **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray is shown again within the desktop environment.
 +
-image::installing/gnome-shell-extension-appindicator-selector.png[width=600,pdfwidth=60%]
+image:installing/gnome-shell-extension-appindicator-selector.png[width=350,pdfwidth=60%]
 
 ==== Native Installation
 
@@ -204,21 +206,17 @@ See the {install-appimagelauncher-url}[Install AppImageLauncher] wiki for detail
 How to launch an AppImage::
 When you open an AppImage file via your file browser that you have not opened before then double click on it:
 +
-image::installing/appimagelauncher_open_question.png[AppImage First Time Usage, width=500]
---
-+
---
+image:installing/appimagelauncher_open_question.png[AppImage First Time Usage, width=350]
+
 First time usage::
 After opening an AppImage, if AppImageLauncher has been started for the first time, it will ask you to define some basic settings:
 +
-image::installing/appimagelauncher_first_run.png[AppImage First Time Usage,width=500]
---
-+
---
+image:installing/appimagelauncher_first_run.png[AppImage First Time Usage,width=350]
+
 AppImage Integration Question::
 Post first time configuration or when you open the AppImage file via your file browser, for example by double clicking on it:
 +
-image::installing/appimagelauncher_integrate_question.png[AppImage Integration Question,width=500]
+image:installing/appimagelauncher_integrate_question.png[AppImage Integration Question,width=350]
 --
 
 Install and run the Desktop App AppImage::
@@ -449,10 +447,10 @@ a| image:installing/show_in_explorer.png[Show in Explorer,width=250]
 | Open the Desktop app, click on the three dots and there on `Show in Explorer`.
 
 
-a| image:installing/explorer_view.png[Explorer View,width=250]
+a| image:installing/explorer_view.png[Explorer View,width=350]
 | In the Explorer, go to the `View` tab
 
-a| image:installing/explorer_options.png[Explorer Options,width=250]
+a| image:installing/explorer_options.png[Explorer Options,width=350]
 | and click on the `Options` icon.
 
 a| image:installing/folder_view.png[Folder Options,width=250]

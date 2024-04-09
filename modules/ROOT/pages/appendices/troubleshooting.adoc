@@ -51,10 +51,10 @@ There are very rare cases when using Windows and VFS, where the Desktop app comp
 
 This can happen if the standard permissions of the folder where the synced data resides has been changed for the owning user. To resolve this issue, the owning user needs `Full Control`. See the example images below how this should look like. You can get there by menu:right click on the folder name[Properties]:
 
-[width=100%,cols="50%,50%"]
+[role=center,width=100%,cols="50%,50%"]
 |===
-a| image::appendices/troubleshooting/folder_properties.png[Folder Properties,width=250]
-a| image::appendices/troubleshooting/advanced_security_settings.png[Advanced Security Settings,width=450]
+a| image::appendices/troubleshooting/folder_properties.png[Folder Properties,width=200]
+a| image::appendices/troubleshooting/advanced_security_settings.png[Advanced Security Settings,width=350]
 |===
 
 If the permission is not set to `Full Control`, you can either correct it or ask your administrator for support.
@@ -100,7 +100,7 @@ press btn:[F12] or btn:[Ctrl-L] or btn:[Cmd+L] on your keyboard.
 +
 The Log Output window opens.
 +
-image:appendices/troubleshooting/log_output_window.png[image,width=400]
+image:appendices/troubleshooting/log_output_window.png[image,width=350]
 +
 . Enable the btn:[Enable logging to temporary folder] checkbox.
 . Later, to find the log files, click the btn:[Open folder] button.
@@ -117,6 +117,8 @@ When HTTP logging is enabled, log files will contain additional entries:
 23-09-01 16:31:14:031 [ info sync.httplogger ]:	"eca37889-6dea-42cf-81a2-c3826efbf146: Request: GET https://cloud.example…
 23-09-01 16:31:14:143 [ info sync.httplogger ]:	"eca37889-6dea-42cf-81a2-c3826efbf146: Response: GET 200 (112ms) https://cloud.example…
 ----
+
+{empty} +
 
 [cols="30%,70%",options="header"]
 |===
@@ -157,7 +159,7 @@ To save log files to a file or a directory:
 clicking menu:Settings[Advanced > Log Settings > Log files to keep] or +
 press btn:[F12] or btn:[Ctrl-L] or btn:[Cmd+L] on your keyboard.
 +
-image:appendices/troubleshooting/log-files-to-keep.png[CLog files to keep,width=400]
+image:appendices/troubleshooting/log-files-to-keep.png[CLog files to keep,width=350]
 
 As an example, write logs to a defined directory with increased verbosity using Linux:
 
@@ -241,10 +243,12 @@ See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I creat
 
 The macOS installer brings its own log console. Just run the *.PKG as usual. At the first install screen in the menu bar, click menu:Window[Installer Log (Command + L)].
 
+{empty} +
+
 [width=100%,cols="50%,50%"]
 |===
-a| image::appendices/troubleshooting/log-install-macos1.png[macOS Installer Enable Logging,width=250]
-a| image::appendices/troubleshooting/log-install-macos2.png[macOS Installer Log View,width=450]
+a| image::appendices/troubleshooting/log-install-macos1.png[macOS Installer Enable Logging,width=200]
+a| image::appendices/troubleshooting/log-install-macos2.png[macOS Installer Log View,width=400]
 |===
 
 === ownCloud Server Log File
@@ -277,7 +281,9 @@ Crash reports are available for the following environments:
 
 The following table shows a crash report window before and after it has been sent.
 
-[width="100%",cols="50%,50%",options=header]
+{empty} +
+
+[role=center,width="100%",cols="50%,50%",options=header]
 |===
 ^| Crash Report Created
 ^| Crash Report Sent
