@@ -72,21 +72,21 @@ To set up a new synchronization with virtual file system enabled, perform the fo
 
 . Add a new synchronization by clicking the btn:[+ Add account] button.
 +
-image::vfs/vfs-add-account.png[Add Account, width=400,pdfwidth=80%]
+image:vfs/vfs-add-account.png[Add Account, width=350,pdfwidth=80%]
 
 . Enter the server address and your credentials in the following dialogs.
 
 . Select the radio button btn:[Use virtual files] and set the local folder where your synchronization data will reside.
 +
-image::vfs/vfs-sync-type.png[Set the Sync Type, width=600,pdfwidth=50%]
+image:vfs/vfs-sync-type.png[Set the Sync Type, width=350,pdfwidth=50%]
 
 . When everything is done, you should see a similar screen as below, showing that the setup completed successfully.
 +
-image::vfs/vfs-setup-successful.png[Setup Successful, width=600,pdfwidth=70%]
+image:vfs/vfs-setup-successful.png[Setup Successful, width=350,pdfwidth=70%]
 
 . After the first sync, your synchronization folder will show your items with the _Placeholder_ icon.
 +
-image::vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=600,pdfwidth=80%]
+image:vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=350,pdfwidth=80%]
 
 . When opening a file, the file gets downloaded and its synchronization icon changes to _Full_.
 
@@ -96,7 +96,7 @@ If you have full synchronization enabled, you can change to a virtual file syste
 
 . Open your existing synchronization, click the btn:[...] button and menu:Enable virtual file support[].
 +
-image::vfs/vfs-convert-to-vfs.png[Convert Full to VFS, width=600,pdfwidth=80%]
+image:vfs/vfs-convert-to-vfs.png[Convert Full to VFS, width=350,pdfwidth=80%]
 
 . Your local files will get replaced by _placeholders_, thus freeing up the space previously occupied.
 
@@ -106,15 +106,15 @@ You can also change the synchronization setting from virtual file system to full
 
 . Open your existing synchronization, click the btn:[...] button and menu:Disable virtual file support[].
 +
-image::vfs/vfs-disable-virtual-file-support-1.png[Disable VFS 1, width=600,pdfwidth=80%]
+image:vfs/vfs-disable-virtual-file-support-1.png[Disable VFS 1, width=350,pdfwidth=80%]
 
 . A notification window will ask you to confirm before completing the conversion.
 +
-image::vfs/vfs-disable-virtual-file-support-2.png[Disable VFS 2, width=600,pdfwidth=80%]
+image:vfs/vfs-disable-virtual-file-support-2.png[Disable VFS 2, width=350,pdfwidth=80%]
 
 . When done, your files will be fully downloaded, which you can tell by the sync icons, see the example image below. Depending on the quantity and size of the files, this may take a while.
 +
-image::vfs/vfs-full-sync-no-vfs.png[Full Snyc No VFS, width=600,pdfwidth=70%]
+image:vfs/vfs-full-sync-no-vfs.png[Full Snyc No VFS, width=350,pdfwidth=70%]
 
 === Manage VFS from Windows Explorer
 
@@ -124,25 +124,25 @@ You can manage `individual` files or `complete folders` in the Explorer window b
  
 . To create a Full Pinned file (have a local copy of it), use the action btn:[Always keep on this device].
 +
-image::vfs/vfs-always-keep-on-this-device.png[Always keep on this Device, width=600,pdfwidth=80%]
+image:vfs/vfs-always-keep-on-this-device.png[Always keep on this Device, width=350,pdfwidth=80%]
 +
 The state of the file will change to synchronizing.
 +
-image::vfs/vfs-always-keep-on-this-device-syncing.png[Always keep on this Device Syncing]
+image:vfs/vfs-always-keep-on-this-device-syncing.png[Always keep on this Device Syncing, width=350,pdfwidth=60%]
 +
 When the local copy has been created, the state (icon) changes to _Full Pinned_.
 +
-image::vfs/vfs-always-keep-on-this-device-synced.png[Always keep on this Device Syned]
+image:vfs/vfs-always-keep-on-this-device-synced.png[Always keep on this Device Syned, width=350,pdfwidth=60%]
 
 ==== Free up Space
 
 . To free up the space the file occupied, use the action btn:[Free up space].
 +
-image::vfs/vfs-free-up-space.png[Free Up Space, width=400,pdfwidth=70%]
+image:vfs/vfs-free-up-space.png[Free Up Space, width=300,pdfwidth=60%]
 
 . When done, Explorer will show the file in _Placeholder_ state.
 +
-image::vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=600,pdfwidth=70%]
+image:vfs/vfs-setup-successful-explorer.png[Setup Successful Explorer, width=360,pdfwidth=70%]
 
 == Using attrib.exe to Manage States
 
@@ -175,8 +175,8 @@ Microsoft provides a mechanism called `Storage Sense` which can automatically fr
 
 You can enable or disable Storage Sense via Windows menu:Settings[System > Storage > Storage]:
 
-image::vfs/vfs-settings-storage.png[Access storage configuration, width=400]
+image::vfs/vfs-settings-storage.png[Access storage configuration, width=350]
 
 and configure the general behavior or each VFS relationship individually via the following section:
 
-image::vfs/vfs-configure-storage-sense.png[Setup Storage Sense, width=400]
+image::vfs/vfs-configure-storage-sense.png[Setup Storage Sense, width=350]

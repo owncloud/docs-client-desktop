@@ -20,18 +20,18 @@ When more than one person is working on the same document and using a locally in
 
 The first image shows an office file via the browser, based on the Infinite Scale backend.
 
-image::web_app/office_file_in_browser.png[file in browser, width=600,pdfwidth=70%]
+image::web_app/office_file_in_browser.png[file in browser, width=350,pdfwidth=70%]
 
 This file gets synced by the Desktop App and is locally available.
 
-image::web_app/office_file_in_explorer.png[file in explorer, width=600,pdfwidth=70%]
+image::web_app/office_file_in_explorer.png[file in explorer, width=350,pdfwidth=70%]
 
 btn:[Right-click] on the file to open the context menu and click menu:ownCloud[Open in ...] to select the application available. Note that the web app shown is the one configured by the admin for this file type. If menu:Open in ...[] is not available, web apps have either not been enabled by the administrator at all or not for this file type.
 
-image::web_app/office_file_context_menu.png[file context menu, width=600,pdfwidth=70%]
+image::web_app/office_file_context_menu.png[file context menu, width=350,pdfwidth=70%]
 
 A browser window with the web app selected opens the file. When you are leaving the web app, changed files are saved automatically.
 
-image::web_app/office_file_in_web_app.png[file in web app, width=550,pdfwidth=70%]
+image::web_app/office_file_in_web_app.png[file in web app, width=350,pdfwidth=70%]
 
 Note that if multiple persons are accessing the same file via the web app, the app may show who has opened the file. Depending on the web app, final saving may occur when the last person accessing a file in the web app closes the web app session or the last tab. This is indicated by the changed modification time. Syncing back will only occur after the file has been saved.
