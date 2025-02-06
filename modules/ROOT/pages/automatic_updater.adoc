@@ -85,7 +85,7 @@ HKEY_LOCAL_MACHINE\Software\Policies\ownCloud\ownCloud
 .  Add the key `skipUpdateCheck` (of type DWORD).
 .  Specify a value of `1` to the machine.
 
-NOTE: Enterprise branded Desktop Apps (https://doc.owncloud.com/branded_clients/[Building Branded ownCloud Clients]) have different key names, which are set in ownBrander using the Application Vendor and Application Name fields.
+NOTE: Enterprise branded Desktop Apps have different key names, which are set during the branding process using the Application Vendor and Application Name fields.
 
 Your key names look like this:
 
