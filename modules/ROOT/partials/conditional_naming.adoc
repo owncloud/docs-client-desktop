@@ -1,0 +1,20 @@
+
+ifeval::["{targetbuild}" == "oc"]
+:client-version-win: oc_client-version-win
+:bin_name: ownCloud
+:ini_name: ownCloud
+:url-version: {page-component-version}
+ifeval::["{page-component-version}" == "next"]
+:url-version: latest
+endif::[]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+:client-version-win: kw_client-version-win
+:bin_name: kiteworks
+:ini_name: Kiteworks
+:url-version: {kw_version}
+ifeval::["{page-component-version}" == "next"]
+:url-version: latest
+endif::[]
+endif::[]
