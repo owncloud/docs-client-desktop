@@ -1,9 +1,8 @@
-= Installing the Desktop App
+= Deployment or Installing
 :toc: right
 :toclevels: 4
-:client-version-win: 5.3.2.15463.x64
 :client-version-appimage: 5.3.2.15463-x86_64
-:description: The Desktop App enables users to access and sync files and folders from their ownCloud, work on remote files right from the desktop as if they were stored on their computer – because they are.
+:description: This documentation will guide you through the deployment or installation of the Desktop App.
 
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
 :ms-adddefault-url: https://docs.microsoft.com/en-us/windows/win32/msi/adddefault
@@ -24,18 +23,13 @@
 // * branch name when it is a stable branch or
 // * latest when it is the next branch
  
-:url-version: {page-component-version}
-ifeval::["{page-component-version}" == "next"]
-:url-version: latest
-endif::[]
+inlude::partial$conditional-naming.adoc[]
 
 == Introduction
 
-{description} Continuous synchronization to and from the ownCloud server provides ease of use combined with comprehensive access control.
+{description}
 
 == System Requirements and Installation
-
-You can download the latest version of the ownCloud Desktop App from the {desktop-clients-url}[Desktop App Download] page. There are Desktop Apps for _Linux_, _macOS_, and _Microsoft Windows_ available. When using Linux, you can also use AppImage.
 
 === System Requirements
 
@@ -70,31 +64,44 @@ a| * The **xref:appimage[AppImage]** build of the ownCloud Desktop App is availa
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
+=== Download
+
+ifeval::["{targetbuild}" == "oc"]
+You can download the latest version of the Desktop App from the {desktop-clients-url}[Desktop App Download] page. There are Desktop Apps for _Linux_, _macOS_, and _Microsoft Windows_ available. When using Linux, you can also use AppImage.
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+To get the latest version of the Desktop App... +
+[.yellow]#@oksana, we need to define and describe how / where the source at KW can be downloaded#
+endif::[]
+
 === Configuration Files
 
-Regardless of the type of physical installation, a configuration file will be created when the app is started for the first time. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
+Regardless of the type of physical installation, a configuration file will be created when the app is first started. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
 
-* When deleting an existing configuration file, no data synced locally will be deleted, but the app will start the xref:installation-wizard[Installation Wizard] and you have to configure again.
+* Deleting an existing configuration file will not delete any locally synchronized data, but it will launch the xref:installation-wizard[Installation Wizard] and you will need to re-configure.
 
-* On Linux, when changing the deployment method like from native to AppImage, you can reuse an existing configuration file without changes.
+ifeval::["{targetbuild}" == "oc"]
+* On Linux, if you change the deployment method, such as from Native to AppImage, you can reuse an existing configuration file without any changes.
+endif::[]
 
-* If you want to deploy from scratch again, you can safely delete the configuration file if one exists. In such a case, check for existing sync folders which may need to be deleted too.
+* If you want to re-deploy from scratch, you can safely delete the configuration file if it exists. In this case, check for existing sync folders that may also need to be deleted.
 
 === Installation on macOS and Windows
 
-Installation on macOS and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured, the Desktop App will automatically keep itself updated if not manually disabled which you can change when using Windows. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
+Installation on macOS and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. Once installed and configured, the Desktop App will automatically update itself unless you manually disable it, which you can do on Windows. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
 
 For Windows, see the xref:customizing-the-windows-installation[Customizing the Windows Installation] section describing installer configuration options. 
 
 === Installation on Linux
 
-* No matter whether the Desktop App is installed natively or used as an AppImage, you can add command line parameters when starting up post installation. One parameter to mention is the option `-s`. This option forces the settings page to be shown on startup. While not necessary during general usage, it can be helpful if system tray icons are not available any more within your desktop environment.
+* You can add command line parameters when starting up the Desktop App post installation. One parameter to mention is the option `-s`. This option forces the settings page to be shown on startup. While not necessary during general usage, it can be helpful if system tray icons are not available any more within your desktop environment.
 
 * Linux users should also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the Desktop App can log in automatically.
 
 * Note, our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
 
-* Using GNOME on recent distributions like Ubuntu 22.04, Debian 11 or others, the system tray is typically no longer available. This makes it hard to get back an app that has been minimized to the system tray. You have to install an extension in order to restore the system tray in this case in order to be able to find and restore the minimized application.
+* Using GNOME on recent distributions like Ubuntu +22.04, Debian +11 or others, the system tray is typically no longer available. This makes it hard to get back an app that has been minimized to the system tray. You have to install an extension in order to restore the system tray in this case in order to be able to find and restore the minimized application.
 
 ** For distributions like Ubuntu 22.04 or Debian 11, use the command below to install the extension:
 +
@@ -273,14 +280,14 @@ The MSI installer provides several features that can be installed or removed ind
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi
+msiexec /passive /i {bin_name}-{client-version-win}.x64.msi
 ----
 
 The command will install the ownCloud Desktop App into the default location with the default features enabled. If you want to disable, e.g., desktop shortcut icons you can simply change the above command to the following:
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi REMOVE=DesktopShortcut
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi REMOVE=DesktopShortcut
 ----
 
 See the following table for a list of available features:
@@ -320,7 +327,7 @@ You can also choose to only install the Desktop App itself by using the followin
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT=Client
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi ADDDEFAULT=Client
 ----
 
 If you for instance want to install everything but the `DesktopShortcut` and the `ShellExtensions` feature, you have two possibilities:
@@ -329,14 +336,14 @@ If you for instance want to install everything but the `DesktopShortcut` and the
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT=StartMenuShortcuts
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi ADDDEFAULT=StartMenuShortcuts
 ----
 
 *  You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties.
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi NO_DESKTOP_SHORTCUT="1"
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi NO_DESKTOP_SHORTCUT="1"
 NO_SHELL_EXTENSIONS="1"
 ----
 
@@ -352,14 +359,14 @@ You can change the installed features later by using `REMOVE` and `ADDDEFAULT` p
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT="DesktopShortcut"
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi ADDDEFAULT="DesktopShortcut"
 ----
 
 * If you want to remove it, simply run the following command:
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi REMOVE="DesktopShortcut"
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi REMOVE="DesktopShortcut"
 ----
 
 Windows keeps track of the installed features and using `REMOVE` or `ADDDEFAULT` will only affect the mentioned features.
@@ -374,7 +381,7 @@ You can adjust the installation folder by specifying the `INSTALLDIR` property l
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi INSTALLDIR="C:\Program Files\Non Standard ownCloud Client Folder"
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi INSTALLDIR="C:\Program Files\Non Standard ownCloud Client Folder"
 ----
 
 Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get the whitespace escaping right there. Specifying the `INSTALLDIR` like this only works on first installation, you cannot simply re-invoke the .msi with a different path. If you still need to change it, uninstall it first and reinstall it with the new path.
@@ -385,7 +392,7 @@ To disable automatic updates, you can pass the `SKIPAUTOUPDATE` property.
 
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi SKIPAUTOUPDATE="1"
+msiexec /passive /i ownCloud-{client-version-win}.x64.msi SKIPAUTOUPDATE="1"
 ----
 
 === Launch After Installation
@@ -394,7 +401,7 @@ To launch the Desktop App automatically after installation, you can pass the `LA
 
 [source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-{client-version-win}.msi LAUNCH="1"
+msiexec /i ownCloud-{client-version-win}.x64.msi LAUNCH="1"
 ----
 
 This option also removes the checkbox to let users decide if they want to launch the Desktop App for non-passive/quiet mode.
@@ -407,7 +414,7 @@ The ownCloud Desktop App schedules a reboot after installation to make sure the 
 
 [source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-{client-version-win}.msi REBOOT=ReallySuppress
+msiexec /i ownCloud-{client-version-win}.x64.msi REBOOT=ReallySuppress
 ----
 
 This will make msiexec exit with error ERROR_SUCCESS_REBOOT_REQUIRED (3010).
@@ -415,14 +422,14 @@ If your deployment tooling interprets this as an actual error and you want to av
 
 [source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-{client-version-win}.msi DO_NOT_SCHEDULE_REBOOT="1"
+msiexec /i ownCloud-{client-version-win}.x64.msi DO_NOT_SCHEDULE_REBOOT="1"
 ----
 
 === Define Your Own Synchronization Folder Icon
 
-When setting up a new synchronization, ownCloud automatically assigns its icon to the synchronization folder for ease of identification. Though you can change this icon, it would be reverted back on next reboot to the ownCloud icon. Folder icon details are usually stored in the hidden desktop.ini file which is located _inside_ the folder under scrutiny. To make a manually defined icon persistent, a small change in this `desktop.ini` file is necessary. See the following description to do so:
+When setting up a new synchronization, ownCloud automatically assigns its icon to the synchronization folder for ease of identification. Though you can change this icon, it would be reverted back on next reboot to the ownCloud icon. Folder icon details are usually stored in the hidden Desktop.ini file which is located _inside_ the folder under scrutiny. To make a manually defined icon persistent, a small change in this `Desktop.ini` file is necessary. See the following description to do so:
 
-* Make the `desktop.ini` visible because it is hidden by default:
+* Make the `Desktop.ini` visible because it is hidden by default:
 +
 --
 [width="100%",cols="70%,.^100%"]
@@ -445,18 +452,14 @@ a| image:installing/advanced_settings.png[Advanced Settings,width=250]
 |===
 --
 
-* Now, as the `desktop.ini` file is visible, add a setting to make an icon change persistent. To do so, open it with an editor.
+* Now, as the `Desktop.ini` file is visible, add a setting to make an icon change persistent. To do so, open it with an editor.
 ** The current content may look like this:
 +
 --
 [source,plaintext]
 ----
 [.ShellClassInfo]
-IconResource=C:\Program Files\ownCloud\owncloud.exe,0
-[ViewState]
-Mode=
-Vid=
-FolderType=Generic
+IconResource=C:\\Program Files\\kiteworks\\kiteworks.exe
 ----
 --
 
@@ -470,7 +473,7 @@ UpdateIcon=false
 ----
 --
 
-* Make the `dektop.ini` file hidden again by undoing the `Advanced Settings` changes from the first step. After that, the `desktop.ini` file will be hidden again.
+* Make the `dektop.ini` file hidden again by undoing the `Advanced Settings` changes from the first step. After that, the `Desktop.ini` file will be hidden again.
 
 * Finally apply any icon of your choice to the synchronization folder.
 

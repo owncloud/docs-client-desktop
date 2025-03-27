@@ -1,14 +1,33 @@
-= Introduction
+= Introduction to the Desktop App
+:toc: right
+:toclevels: 2
+:description: This is the description of the Desktop App which allows you to synchronize your files from connected servers to your local computer. 
 
-:page-aliases: glossary.adoc
+== Introduction
 
-Available for Windows, macOS, and various Linux distributions, the ownCloud Desktop App enables you to:
+{description} The app is available for *Windows*, *macOS*, and various *Linux* distributions.
 
-* Specify one or more directories on your computer that you want to synchronize to the ownCloud server.
-* Always have the latest files synchronized, wherever they are located.
+== Key Benefits
 
-Your files are always automatically synchronized between your ownCloud server and local PC.
+The Desktop App enables you to:
 
-== Improvements and New Features
+* Specify one or more servers to connect to.
+* Specify one or more resources to synchronize.
+* Automatically synchronize data in both directions.
+* Manage synchronization conflicts, if any.
 
-Each release of the ownCloud Desktop App has new features and improvements, for details see the https://owncloud.com/changelog/desktop/[complete changelog].
+== Target Audience
+
+This documentation is intended for *users* and personnel responsible for *deployments*.
+
+== Prerequisites
+
+Once the Desktop App is deployed, the configuration and use of the application varies very little across operating systems (OS).
+
+The deployment guide describes the requirements in detail::
+--
+* For all OS
+** The Desktop App requires a minimum version for the OS to run.
+* OS dependent
+** There may be additional requirements that depend on the OS used.
+--
