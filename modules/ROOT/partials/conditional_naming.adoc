@@ -1,20 +1,30 @@
 
 ifeval::["{targetbuild}" == "oc"]
-:client-version-win: oc_client-version-win
+:client-version: {oc_client-version}
 :bin_name: ownCloud
 :ini_name: ownCloud
 :url-version: {page-component-version}
+:client-version-appimage: {client-version}-x86_64
 ifeval::["{page-component-version}" == "next"]
 :url-version: latest
 endif::[]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-:client-version-win: kw_client-version-win
+:client-version: {kw_client-version}
 :bin_name: kiteworks
 :ini_name: Kiteworks
 :url-version: {kw_version}
+:client-version-appimage: {client-version}-x86_64
 ifeval::["{page-component-version}" == "next"]
 :url-version: latest
 endif::[]
 endif::[]
+
+////
+// print for testing
+{bin_name} +
+{ini_name} +
+{url-version} +
+{client-version-appimage}
+////
