@@ -14,7 +14,10 @@ asciidoc:
     # currently allowed values are: 'oc' and 'kw' 
     targetbuild: kw
     #
+    # kw build version
+    kw_version: 2.0
+    #
     # this is the version string that is used for kw or oc to reference the binary
-    kw_client-version-win: 2.0.0.15919
-    oc_client-version-win: 6.0.0.15919
+    kw_client-version: 2.0.0.15919
+    oc_client-version: 6.0.0.15919
     
