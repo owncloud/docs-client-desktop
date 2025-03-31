@@ -5,6 +5,9 @@
 :description: The ownCloud Desktop App remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
 
 :oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
+:theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
@@ -394,7 +397,51 @@ In addition to excluding files and directories that use patterns defined in this
 * The ownCloud Client always excludes files containing characters that cannot be synchronized to other file systems. 
 * Files are removed that cause individual errors three times during a synchronization. However, the client provides the option of retrying a synchronization three additional times on files that produce errors.
 
-For more detailed information see the xref:architecture.adoc#ignored-files[Ignored Files section].
+=== Ignored Files
+
+The ownCloud Desktop App supports the ability to exclude or ignore certain files from the synchronization process. Some system-wide file patterns that are used to exclude or ignore files are included with the Desktop App by default and the ownCloud Desktop App provides the ability to add custom patterns.
+
+By default, the ownCloud Desktop App ignores the following files:
+
+* Files matched by one of the patterns defined in the Ignored Files Editor.
+* Files starting with `._sync_*.db*`, `.sync_*.db*`,
+`.csync_journal.db*`, `.owncloudsync.log*`, as these files are reserved for journaling.
+* Files with a name longer than 254 characters.
+* The file `Desktop.ini` in the root of a synced folder.
+* Files matching the pattern `_conflict-` unless conflict file uploading is enabled.
+* Files matching the pattern `(conflicted copy` unless conflict file uploading is enabled.
+* Windows only: Files containing characters that do not work on typical Windows filesystems `(\, /, :, ?, *, ", >, <, |)`.
+* Windows only: Files with a trailing space or dot.
+* Windows only: Filenames that are reserved on Windows.
+
+If a pattern selected using a checkbox in the xref:navigating.adoc#using-the-ignored-files-editor[Ignored Files Editor], or if a line in the exclude file starts with the character `]` directly followed by the file pattern, files matching the pattern are considered.
+
+*fleeting meta data*.
+
+These files are ignored and _removed_ by the Desktop App if found in the synchronized folder. This is suitable for meta files created by some applications that have no sustainable meaning.
+
+If a pattern ends with the forward slash (`/`) character, only directories are matched. The pattern is only applied for directory components of filenames selected using the checkbox.
+
+To match filenames against the exclude patterns, the UNIX standard C library function `fnmatch` is used.
+This process checks the filename against the specified pattern using standard shell wildcard pattern matching. For more information, please refer to {theopengroup-url}[the pattern matching documentation].
+
+The path that is checked is the relative path under the sync root directory.
+
+*Pattern and File Match Examples:*.
+
+[width="59%",cols="28%,72%",options="header",]
+|===============================
+| Pattern | File Matches
+| `~$*`   | `~$foo`, `~$example.doc`
+| `fl?p`  | `flip`, `flap`
+| `moo/`  | `map/moo/`, `moo/`
+|===============================
+
+=== The Sync Journal
+
+The Desktop App stores the ETag number in a per-directory database, called the _journal_. This database is a hidden file contained in the directory to be synchronized.
+
+If the journal database is removed, the ownCloud Desktop App CSync backend rebuilds the database by comparing the files and their modification times. This process ensures that both server and Desktop App are synchronized using the appropriate NTP time before restarting the Desktop App following a database removal.
 
 == Removing a Sync Connection
 

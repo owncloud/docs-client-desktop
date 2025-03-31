@@ -1,6 +1,6 @@
-= Desktop Frequently Asked Questions (FAQ)
+= Desktop App Frequently Asked Questions (FAQ)
 :toc: right
-:description: Here you can find some of the most frequently asked questions about the ownCloud Desktop app.
+:description: Here you can find some of the most frequently asked questions about the Desktop app.
 
 :wordpress1-url: http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/
 :user_manual_quota: https://doc.owncloud.com/server/next/user_manual/files/webgui/quota.html
@@ -20,15 +20,11 @@ Syncing is defined as the task where any changes will be synchronized, no matter
 * *Local Discovery* +
 Local discovery is defined as the task where the Desktop app looks for changes on the local filesystem. A local discovery can internally be enforced to check for changes that have been missed for example when the Desktop app was shut down during ongoing changes on the local filesystem. Any changes identified on the local filesystem trigger a sync after local discovery has finished.
 
-== VFS for Windows Server
-
-Without claim of completeness, actuality or support, Windows Server releases that are based on builds starting with 1709 should come with the native system API that is required to use VFS. Windows Servers 2016 and lower do not have native VFS included and will not be able to use VFS therefore.
-
 == Usage
 
 === How to Interpret Quotas
 
-When a quota has been defined, either as general value in ownCloud Server or in Infinite Scale at the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
+When a quota has been defined, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
 
 [width=100%,cols="^.50%,^.50%",options="header"]
 |===

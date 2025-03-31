@@ -1,7 +1,7 @@
-= Deploying or Installing
+= Installing or Deploying
 :toc: right
 :toclevels: 3
-:description: This documentation will guide you through the deployment or installation of the Desktop App.
+:description: This documentation will guide you through the deployment or installation of the Desktop App for various operating systems.
 
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
 :ms-adddefault-url: https://docs.microsoft.com/en-us/windows/win32/msi/adddefault
@@ -20,9 +20,9 @@ include::partial$conditional_naming.adoc[]
 
 {description}
 
-== System Requirements and Installation
+== System Requirements
 
-=== System Requirements
+=== Minimum Supported Operating System Version
 
 Depending on the operating system used, some minimum system requirements need to be met. See the list of supported versions/distros below.
 
@@ -44,7 +44,8 @@ Version 1809+
 a| *macOS* +
 x86-64 or ARM64 +
 (Apple Silicon)
-a| * macOS 14 Sonoma
+a| * macOS 15 Sequoia
+* macOS 14 Sonoma
 * macOS 13 Ventura
 * macOS 12 Monterey
 
@@ -62,35 +63,15 @@ You can download the latest version of the Desktop App from the {desktop-clients
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-To get the latest version of the Desktop App... +
-[.yellow]#@oksana, we need to define and describe how / where the source at KW can be downloaded#
+To get the latest version of the Desktop App for your operating system, login to your {ini_name} instance and:
+
+* As a user, go to the Personal Settings page and download if provided the appropriate build if it has not already been installed by your company.
+* As admin, log into the admin console, then go to menu:Application Setup[Clients and Plugins > KwDav Desktop Client Sync > Downloads] and download the appropriate build.
 endif::[]
 
-=== Configuration Files
+== Preparations Linux
 
-Regardless of the type of physical installation, a configuration file will be created when the app is first started. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
-
-* Deleting an existing configuration file will not delete any locally synchronized data, but it will launch the configuration wizard which is described in the User Guide and you will need to re-configure.
-
-ifeval::["{targetbuild}" == "oc"]
-* On Linux, if you change the deployment method, such as from Native to AppImage, you can reuse an existing configuration file without any changes.
-endif::[]
-
-* If you are re-deploying from scratch, you can safely delete the configuration file if it exists. In this case, check for existing sync folders that might also need to be deleted.
-
-=== Installation on macOS and Windows
-
-Installation on macOS and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard
-
-ifeval::["{targetbuild}" == "oc"]
-For Windows, once installed and configured, the Desktop App will update itself automatically unless you manually disable it. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
-endif::[]
-
-For Windows when using a centralized deployment, see the xref:customize-the-windows-deployment-or-installation[Customize the Windows Deployment or Installation] section, which describes the configuration options of the installer.
-
-=== Installation on Linux
-
-==== Preparation
+=== General
 
 * Note that our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
 
@@ -128,46 +109,36 @@ sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
 ** Once the extension is installed, you will need to log out and log in again to activate the changes.
 For this particular system tray icon extension, the name of the extension displayed may vary and may be such as **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray will be displayed again within the desktop environment.
 +
-image:installing/gnome-shell-extension-appindicator-selector.png[width=350,pdfwidth=60%]
+image:installing/gnome-shell-extension-appindicator-selector.png[width=350]
 
-ifeval::["{targetbuild}" == "oc"]
-==== Native Installation
-
-Linux users will need to follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key, and use their package manager to install the Desktop App. Linux users will also update their Desktop App using their package manager. The Desktop App will display a notification when an update is available. See xref:installing-shell-integration-packages[Installing Shell Integration Packages]. Overlay icons and a special shortcut menu for your file browsers must be installed manually.
-
-You can also find links to source code archives and older versions on the download page.
-
-On Debian-based systems, it may happen after a while that running `sudo apt update` returns a message about a signature verification error. This can be solved by updating the keys. On Debian, use the following command to update all signatures:
-
-[source,bash]
-----
-sudo apt-key adv --refresh-keys --keyserver keyring.debian.org
-----
-
-For Ubuntu, use:
-
-[source,bash]
-----
-sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
-----
-endif::[]
-
-==== AppImage
-
-An {appimage-wikipedia-url}[AppImage, window=_blank] build of the Desktop App is available to support more Linux platforms.
-ifeval::["{targetbuild}" == "oc"]
-You can download the AppImage at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
-endif::[]
-ifeval::["{targetbuild}" == "kw"]
-To get the latest version of the Desktop App... +
-[.yellow]#@oksana, we need to define and describe how / where the AppImage source at KW can be downloaded#
-endif::[]
-
-AppImages are an alternative way to deploy Linux applications -- instead of having multiple files in multiple locations making up a package, the entire application is contained in a single file with an `.AppImage` extension, including all necessary dependencies and libraries. The AppImage will run on all modern and most older Linux platforms.
+////
+// shell integration is for 6.0 / 2.0 currently not available !!
 
 ifeval::["{targetbuild}" == "oc"]
 Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:installing-shell-integration-packages[Installing Shell Integration Packages].
 endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+* Automatically update the AppImage: +
+For automatic updating of the AppImage, see the xref:automatic_updater.adoc#linux[Automatic Updating of the Desktop Application - Linux] documentation.
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+=== Installing Shell Integration Packages
+
+{ini_name} supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
+
+[source,bash]
+----
+curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
+----
+
+If curl is not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
+endif::[]
+
+////
+
+=== AppImages
 
 AppImages require one package to be installed before usage which is `libfuse2t64`. Check the following procedure if it is already present and how to install if not.
 
@@ -195,95 +166,61 @@ sudo apt install libfuse2t64
 ----
 --
 
-===== Install and run the Desktop App AppImage
+== Configuration Files
 
-The example below uses the terminal but you can also use the GUI. Note the folder name `Applications` can be any name and helps to collect all AppImages you have on one location.
+Regardless of the physical installation, a configuration file will be created when the app is first started. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
 
-* Create a target folder if not exists to store your AppImages:
-+
---
-[source,bash]
-----
-mkdir -p ~/Applications
-----
-
-[source,bash]
-----
-cd ~/Applications
-----
---
+* Deleting an existing configuration file will not delete any locally synchronized data, but it will launch the configuration wizard which is described in the User Guide and you will need to re-configure.
 
 ifeval::["{targetbuild}" == "oc"]
-* Download the binary: +
-Replace the URL from the example with the actual URL from the download page.
-+
-[source,bash,subs="attributes+"]
-----
-wget {client-download-url}{url-version}/linux-appimage/{ini_name}-{client-version-appimage}.AppImage
-----
+* On Linux, if you change the deployment method, such as from Native to AppImage, you can reuse an existing configuration file without any changes.
 endif::[]
+
+* If you are re-deploying from scratch, you can safely delete the configuration file if it exists. In this case, check for existing sync folders that might also need to be deleted.
+
+== Install or Deploy on Windows
+
+Note that the filenames shown in the following sections are examples only and may need to be replaced with their real names.
+
+=== Installation on Windows
+
+* When deploying centrally, skip this section and see xref:deploying-on-windows[Deploying on Windows] for configuration options of the installer.
+
+* Installation on Windows is the same as for any software application: download the installer as described in the xref:download[Download] section, double-click it to launch the installation and follow the installation wizard.
 
 ifeval::["{targetbuild}" == "kw"]
-* Download the latest version of the Desktop App and move it to the `Applications` directory: +
-[.yellow]#@oksana, we need to define and describe how / where the AppImage source at KW can be downloaded#
-endif::[]
-
-* Make the AppImage executable:
+** See the following example images of the installation process:
 +
-[source,bash,subs="attributes+"]
-----
-sudo chmod +x {bin_name}-{client-version-appimage}.AppImage
-----
-
-* Start the AppImage by invoking the following command:
-+
-[source,bash,subs="attributes+"]
-----
-~/Applications/{bin_name}-{client-version-appimage}.AppImage
-----
-
-ifeval::["{targetbuild}" == "oc"]
-* Automatically update the AppImage: +
-For automatic updating of the AppImage, see the xref:automatic_updater.adoc#linux[Automatic Updating of the Desktop Application - Linux] documentation.
+--
+image:installing/kw-windows-install-setup.png[Install App,width=100]
+image:installing/kw-windows-install-setup-custom.png[Custom Setup,width=100]
+image:installing/kw-windows-install-setup-ready.png[Start Install,width=100]
+image:installing/kw-windows-installing-uac.png[UAC,width=100]
+image:installing/kw-windows-install-finished.png[Install Finished,width=100]
+image:installing/kw-windows-startmenu-entry.png[Start Menue,width=100]
+--
 endif::[]
 
 ifeval::["{targetbuild}" == "oc"]
-==== Installing Shell Integration Packages
-
-{ini_name} supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
-
-[source,bash]
-----
-curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
-----
-
-If curl is not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
+Once installed and configured, the Desktop App will update itself automatically unless you manually disable it. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
 endif::[]
 
-== Customize the Windows Deployment or Installation
+=== Deploying on Windows
 
-If you just want to install the Desktop App on your local system, you can simply {client-download-url}{url-version}/win/[download,window=_blank] and launch the relevant `.msi` file, run and configure it in the wizard that pops up. The examples below use the x64 installer. +
-[.yellow]#@oksana, we need to define and describe how / where the source at KW can be downloaded#
+The binary provided has additional features relevant to deployment.
+ 
+==== Features of the MSI Installer
 
-=== Microsoft GPO (Group Policy Object) Installer
-
-{ini_name} provides two versions of the Microsoft Installer:
-
-- `*.x64.msi`: +
-This is the installer for regular users. The installer UI has multiple translations to guide end users through the install procedure.
-- `*.x64.GPO.msi`: +
-The GPO installer works better for automated deployments in managed environments. It is only available in English. The desktop client itself comes with all the usual languages for the user interface.
-
-=== Features
-
-The MSI installer provides several features that can be installed or removed individually, which you can also control from the command line if you want to automate the installation, then run the following command:
+The MSI installer has several features that can be installed or removed individually. You can also control from the command line if you want to automate the installation. To do so, run the following command:
 
 [source,console,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi
 ----
 
-This command installs the Desktop App in the default location with the default features enabled. For example, if you want to disable desktop shortcut icons, you can simply change the above command to the following:
+This command installs the Desktop App in the default location with the default features enabled.
+
+For example, if you want to disable desktop shortcut icons, you can simply change the above command to the following:
 
 [source,console,subs="attributes+"]
 ----
@@ -321,7 +258,9 @@ required
 | `NO_SHELL_EXTENSIONS`
 |===
 
-==== Installation
+===== Installation
+
+//note that after a discussion with @deepdiver, the settings shown have not changed from 5.3.x to 6.0.0
 
 The Desktop App comes with a few binaries that include the Desktop App itself, a command line interface, and a crash reporter. You can choose to install only the Desktop App by running the following command:
 
@@ -333,49 +272,48 @@ msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT=Client
 For example, if you want to install everything except the `DesktopShortcut` and the `ShellExtensions` feature, you have two options:
 
 * You explicitly name all the features you really want to install (whitelist), where `Client` is always installed anyway.
-
++
 [source,console,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT=StartMenuShortcuts
 ----
 
 * You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties.
-
++
 [source,console,subs="attributes+"]
 ----
-msiexec /passive /i {bin_name}-{client-version}.x64.msi NO_DESKTOP_SHORTCUT="1"
-NO_SHELL_EXTENSIONS="1"
+msiexec /passive /i {bin_name}-{client-version}.x64.msi NO_DESKTOP_SHORTCUT="1" NO_SHELL_EXTENSIONS="1"
 ----
 
 NOTE: The {ini_name} .msi file remembers these properties, so you don't need to specify them on upgrades.
 
 NOTE: You cannot use them to change the installed features, if you want to do that, see the next section.
 
-==== Changing Installed Features
+===== Changing Installed Features
 
 You can change the installed features later by using the `REMOVE` and `ADDDEFAULT` properties.
 
 * If you want to add the desktop shortcut later, run the following command:
-
++
 [source,console,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT="DesktopShortcut"
 ----
 
 * If you want to remove it, just run the following command:
-
++
 [source,console,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi REMOVE="DesktopShortcut"
 ----
 
-Windows keeps track of the installed features and using `REMOVE` or `ADDDEFAULT` will only affect the features mentioned.
+Windows keeps track of the installed features. Using `REMOVE` or `ADDDEFAULT` will only affect the features mentioned.
 
-Compare {ms-remove-url}[REMOVE, window=_blank] and {ms-adddefault-url}[ADDDEFAULT, window=_blank] on the Windows Installer Guide.
+Compare {ms-remove-url}[REMOVE, window=_blank] and {ms-adddefault-url}[ADDDEFAULT, window=_blank] at the Windows Installer Guide.
 
 NOTE: You cannot specify `REMOVE` during the initial installation because it will disable all features.
 
-=== Installation Folder
+==== Installation Folder
 
 You can set the installation folder by specifying the `INSTALLDIR` property like this.
 
@@ -384,10 +322,10 @@ You can set the installation folder by specifying the `INSTALLDIR` property like
 msiexec /passive /i {bin_name}-{client-version}.x64.msi INSTALLDIR="C:\Program Files\Non Standard {ini_name} Client Folder"
 ----
 
-Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get the whitespace escaping right there. Specifying the `INSTALLDIR` like this only works the first time you install, you cannot simply re-run the .msi with a different path. If you need to change it, uninstall it first and reinstall it with the new path.
+Be careful when using PowerShell instead of `cmd.exe`. It can be tricky to get the whitespace escaping right there. Specifying the `INSTALLDIR` like this only works the first time you install, you cannot simply re-run the .msi with a different path. If you need to change it, uninstall it first and reinstall it with the new path.
 
 ifeval::["{targetbuild}" == "oc"]
-=== Disabling Automatic Updates
+==== Disabling Automatic Updates
 
 To disable automatic updates, you can pass the `SKIPAUTOUPDATE` property.
 
@@ -397,7 +335,7 @@ msiexec /passive /i {bin_name}-{client-version}.x64.msi SKIPAUTOUPDATE="1"
 ----
 endif::[]
 
-=== Launch After Installation
+==== Launch After Installation
 
 To launch the Desktop App automatically after installation, you can pass the `LAUNCH` property.
 
@@ -410,7 +348,7 @@ This option also removes the checkbox that lets users decide whether to launch t
 
 NOTE: This option does not have any effect without GUI.
 
-=== No Reboot After Installation
+==== No Reboot After Installation
 
 The {ini_name} Desktop App schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded. If you're taking care of the reboot yourself, you can set the `REBOOT` property.
 
@@ -477,6 +415,97 @@ UpdateIcon=false
 * Hide the `Desktop.ini` file by undoing the `Advanced Settings` changes from the first step. The `Desktop.ini` file will then be hidden again.
 
 * Finally apply an icon of your choice to the synchronization folder.
+
+== Installation on macOS
+
+* Installation on macOS is the same as for any software application: download the installer, double-click it to launch the installation and follow the installation wizard
+
+ifeval::["{targetbuild}" == "kw"]
+** See the following example images of the installation process:
++
+--
+image:installing/kw-macos-introduction.png[Introduction,width=100]
+image:installing/kw-macos-installation-type.png[Installation Type,width=100]
+image:installing/kw-macos-grant-install.png[Grant Install,width=100]
+image:installing/kw-macos-install-success.png[Install Success,width=100]
+image:installing/kw-macos-installer-move-to-trash.png[Move to Trashbin,width=100]
+--
+endif::[]
+
+== Installation on Linux
+=== Install and run the Linux Desktop App AppImage
+
+An {appimage-wikipedia-url}[AppImage, window=_blank] build of the Desktop App is available to support more Linux platforms.
+You can download the AppImage as described in the xref:download[Download] section of this document.
+
+AppImages are an alternative way to deploy Linux applications -- instead of having multiple files in multiple locations making up a package, the entire application is contained in a single file with an `.AppImage` extension, including all necessary dependencies and libraries. The AppImage will run on all modern and most older Linux platforms.
+
+The example below uses the terminal but you can also use the GUI. Note the folder name `Applications` can be any name and helps to collect all AppImages you have on one location.
+
+* Create a target folder if not exists to store your AppImages:
++
+--
+[source,bash]
+----
+mkdir -p ~/Applications
+----
+
+[source,bash]
+----
+cd ~/Applications
+----
+--
+
+ifeval::["{targetbuild}" == "oc"]
+* Download the binary: +
+Replace the URL from the example with the actual URL from the download page.
++
+[source,bash,subs="attributes+"]
+----
+wget {client-download-url}{url-version}/linux-appimage/{ini_name}-{client-version-appimage}.AppImage
+----
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+* Download the latest version of the Desktop App the xref:download[Download] section of this document and move it to the `Applications` directory: +
+endif::[]
+
+* Make the AppImage executable: +
+Note that the filename is only an example.
++
+[source,bash,subs="attributes+"]
+----
+sudo chmod +x {bin_name}-{client-version-appimage}.AppImage
+----
+
+* Start the AppImage by invoking the following command:
++
+[source,bash,subs="attributes+"]
+----
+~/Applications/{bin_name}-{client-version-appimage}.AppImage
+----
+
+ifeval::["{targetbuild}" == "oc"]
+==== Linux Native Installation
+
+Linux users will need to follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key, and use their package manager to install the Desktop App. Linux users will also update their Desktop App using their package manager. The Desktop App will display a notification when an update is available. See xref:installing-shell-integration-packages[Installing Shell Integration Packages]. Overlay icons and a special shortcut menu for your file browsers must be installed manually.
+
+You can also find links to source code archives and older versions on the download page.
+
+On Debian-based systems, it may happen after a while that running `sudo apt update` returns a message about a signature verification error. This can be solved by updating the keys. On Debian, use the following command to update all signatures:
+
+[source,bash]
+----
+sudo apt-key adv --refresh-keys --keyserver keyring.debian.org
+----
+
+For Ubuntu, use:
+
+[source,bash]
+----
+sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
+----
+endif::[]
 
 == Connection Wizard
 
