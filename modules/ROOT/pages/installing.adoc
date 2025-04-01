@@ -398,7 +398,7 @@ For automatic updating of the AppImage, see the xref:automatic_updater.adoc#linu
 endif::[]
 
 ifeval::["{targetbuild}" == "oc"]
-=== Installing Shell Integration Packages
+==== Installing Shell Integration Packages
 
 {ini_name} supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
 
