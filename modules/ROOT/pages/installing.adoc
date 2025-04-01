@@ -56,7 +56,7 @@ a| * The **xref:appimage[AppImage]** build of the Desktop App is available to su
 
 NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
 
-=== Download
+== Download
 
 ifeval::["{targetbuild}" == "oc"]
 You can download the latest version of the Desktop App from the {desktop-clients-url}[Desktop App Download] page. There are Desktop Apps for _Linux_, _macOS_, and _Microsoft Windows_ available. When using Linux, you can also use AppImage.
@@ -65,106 +65,9 @@ endif::[]
 ifeval::["{targetbuild}" == "kw"]
 To get the latest version of the Desktop App for your operating system, login to your {ini_name} instance and:
 
-* As a user, go to the Personal Settings page and download if provided the appropriate build if it has not already been installed by your company.
+* As a user, go to the menu:Personal Settings[] page and download, if provided, the appropriate build if it has not already been installed by your company.
 * As admin, log into the admin console, then go to menu:Application Setup[Clients and Plugins > KwDav Desktop Client Sync > Downloads] and download the appropriate build.
 endif::[]
-
-== Preparations Linux
-
-=== General
-
-* Note that our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
-
-* You can add command line parameters when launching the Desktop App after installation. One parameter worth mentioning is the `-s` option. This option forces the settings page to be displayed on startup. While not necessary for general use, it can be helpful if system tray icons are no longer available in your desktop environment.
-
-* Linux users should also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the Desktop App can log in automatically.
-
-* When using GNOME on recent distributions such as Ubuntu +22.04, Debian +11, or others, the system tray is typically not available. This makes it difficult to restore an application that has been minimized to the system tray. In this case, you need to install a system tray recovery extension to be able to find and restore the minimized application.
-
-** For distributions such as Ubuntu +22.04 or Debian +11, use the command below to install the extension:
-+
-[source,bash]
-----
-sudo apt install gnome-shell-extension-appindicator
-----
-
-** For distributions based on Red Hat Enterprise Linux (including AlmaLinux and Rocky Linux), you must first install a different package:
-+
---
-[source,bash]
-----
-sudo dnf install epel-release
-----
-
-Then run the following command. On Fedora, it is sufficient to simply run the following command:
-
-[source,bash]
-----
-sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
-----
---
-
-** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
-
-** Once the extension is installed, you will need to log out and log in again to activate the changes.
-For this particular system tray icon extension, the name of the extension displayed may vary and may be such as **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray will be displayed again within the desktop environment.
-+
-image:installing/gnome-shell-extension-appindicator-selector.png[width=350]
-
-////
-// shell integration is for 6.0 / 2.0 currently not available !!
-
-ifeval::["{targetbuild}" == "oc"]
-Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:installing-shell-integration-packages[Installing Shell Integration Packages].
-endif::[]
-
-ifeval::["{targetbuild}" == "oc"]
-* Automatically update the AppImage: +
-For automatic updating of the AppImage, see the xref:automatic_updater.adoc#linux[Automatic Updating of the Desktop Application - Linux] documentation.
-endif::[]
-
-ifeval::["{targetbuild}" == "oc"]
-=== Installing Shell Integration Packages
-
-{ini_name} supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
-
-[source,bash]
-----
-curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
-----
-
-If curl is not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
-endif::[]
-
-////
-
-=== AppImages
-
-AppImages require one package to be installed before usage which is `libfuse2t64`. Check the following procedure if it is already present and how to install if not.
-
-Check the _libfuse2t64_ package and install if required::
---
-* Check if `libfuse2t64` is already installed:
-+
-[source,bash]
-----
-dpkg -l libfuse2t64
-----
-
-* Check if there is an installation candidate for `libfuse2t64`:
-+
-[source,bash]
-----
-sudo apt-cache show libfuse2t64
-----
-
-* Install `libfuse2t64`:
-+
-[source,bash]
-----
-sudo apt install libfuse2t64
-----
---
 
 == Configuration Files
 
@@ -418,7 +321,7 @@ UpdateIcon=false
 
 == Installation on macOS
 
-* Installation on macOS is the same as for any software application: download the installer, double-click it to launch the installation and follow the installation wizard
+* Installation on macOS is the same as for any software application: download the installer, double-click it to launch the installation and follow the installation wizard.
 
 ifeval::["{targetbuild}" == "kw"]
 ** See the following example images of the installation process:
@@ -433,7 +336,105 @@ image:installing/kw-macos-installer-move-to-trash.png[Move to Trashbin,width=100
 endif::[]
 
 == Installation on Linux
-=== Install and run the Linux Desktop App AppImage
+
+=== Preparations
+
+==== General
+
+* Note that our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
+
+* You can add command line parameters when launching the Desktop App after installation. One parameter worth mentioning is the `-s` option. This option forces the settings page to be displayed on startup. While not necessary for general use, it can be helpful if system tray icons are no longer available in your desktop environment.
+
+* Linux users should also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the Desktop App can log in automatically.
+
+* When using GNOME on recent distributions such as Ubuntu +22.04, Debian +11, or others, the system tray is typically not available. This makes it difficult to restore an application that has been minimized to the system tray. In this case, you need to install a system tray recovery extension to be able to find and restore the minimized application.
+
+** For distributions such as Ubuntu +22.04 or Debian +11, use the command below to install the extension:
++
+[source,bash]
+----
+sudo apt install gnome-shell-extension-appindicator
+----
+
+** For distributions based on Red Hat Enterprise Linux (including AlmaLinux and Rocky Linux), you must first install a different package:
++
+--
+[source,bash]
+----
+sudo dnf install epel-release
+----
+
+Then run the following command. On Fedora, it is sufficient to simply run the following command:
+
+[source,bash]
+----
+sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
+----
+--
+
+** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
+
+** Once the extension is installed, you will need to log out and log in again to activate the changes.
+For this particular system tray icon extension, the name of the extension displayed may vary and may be such as **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray will be displayed again within the desktop environment.
++
+image:installing/gnome-shell-extension-appindicator-selector.png[width=350]
+
+////
+// shell integration is for 6.0 / 2.0 currently not available !!
+
+ifeval::["{targetbuild}" == "oc"]
+Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:installing-shell-integration-packages[Installing Shell Integration Packages].
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+* Automatically update the AppImage: +
+For automatic updating of the AppImage, see the xref:automatic_updater.adoc#linux[Automatic Updating of the Desktop Application - Linux] documentation.
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+=== Installing Shell Integration Packages
+
+{ini_name} supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
+
+[source,bash]
+----
+curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
+----
+
+If curl is not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
+endif::[]
+
+////
+
+=== AppImages
+
+AppImages require one package to be installed before usage which is `libfuse2t64`. Check the following procedure if it is already present and how to install if not.
+
+Check the _libfuse2t64_ package and install if required::
+--
+* Check if `libfuse2t64` is already installed:
++
+[source,bash]
+----
+dpkg -l libfuse2t64
+----
+
+* Check if there is an installation candidate for `libfuse2t64`:
++
+[source,bash]
+----
+sudo apt-cache show libfuse2t64
+----
+
+* Install `libfuse2t64`:
++
+[source,bash]
+----
+sudo apt install libfuse2t64
+----
+--
+
+==== Install and run the Linux Desktop App AppImage
 
 An {appimage-wikipedia-url}[AppImage, window=_blank] build of the Desktop App is available to support more Linux platforms.
 You can download the AppImage as described in the xref:download[Download] section of this document.
