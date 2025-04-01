@@ -349,7 +349,14 @@ endif::[]
 
 * When using GNOME on recent distributions such as Ubuntu +22.04, Debian +11, or others, the system tray is typically not available. This makes it difficult to restore an application that has been minimized to the system tray. In this case, you need to install a system tray recovery extension to be able to find and restore the minimized application.
 
-** For distributions such as Ubuntu +22.04 or Debian +11, use the command below to install the extension:
+** To manage installed extensions, you need to use the `Extension Manager`. If it is not available on your system, you need to install it first:
++
+[source,bash]
+----
+sudo apt install gnome-shell-extension-manager
+----
+
+** See the following steps to install and configure the `gnome-shell-extension-appindicator`:
 +
 [source,bash]
 ----
@@ -374,8 +381,7 @@ sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
 
 ** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
 
-** Once the extension is installed, you will need to log out and log in again to activate the changes.
-For this particular system tray icon extension, the name of the extension displayed may vary and may be such as **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray will be displayed again within the desktop environment.
+** Once the extension is installed, you will need to log out and log in again to activate the changes. To manage extensions, open the `Extensions Manager`. For this particular system tray icon extension, the name of the extension displayed may vary and may be such as **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray will be displayed again within the desktop environment.
 +
 image:installing/gnome-shell-extension-appindicator-selector.png[width=350]
 
