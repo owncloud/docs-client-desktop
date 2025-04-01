@@ -3,12 +3,7 @@
 :toclevels: 3
 :description: When reporting bugs, it is helpful if you first determine what part of the system is causing the issue.
 
-////
-if there are more references to the server admin docs, we must change this to use an xref with a full component reference. but this then needs also embedding server in this site.yml properly. 
-////
-:client-version-win: 4.1.0.11250.x64
-:owncloud-log-tracing-url: https://doc.owncloud.com/server/latest/admin_manual/configuration/server/request_tracing.html
-:files-antivirus-app-url: https://github.com/owncloud/files_antivirus
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
@@ -16,27 +11,27 @@ if there are more references to the server admin docs, we must change this to us
 
 The following two general issues can result in failed synchronization:
 
-* The instance setup is incorrect.
+* The instance setup you synchroinize with is incorrect.
 * The Desktop App contains a bug.
 
 == Identifying Basic Functionality Problems
 
-Performing a general ownCloud Server test::
-  The first step in troubleshooting synchronization issues is to verify that you can log on to the ownCloud web application. To verify connectivity to the ownCloud server try logging in via your Web browser. If you are not prompted for your username and password, or if a red warning box appears on the page, your server setup requires modification. Please verify that your server installation is working correctly.
+Performing a general test::
+  The first step in troubleshooting synchronization issues is to verify that you can log on to the {ini_name} web application. To verify connectivity to the {ini_name} server try logging in via your Web browser. If you are not prompted for your credentials, or if a red warning box appears on the page, the server setup requires review. Please contact your administration departement and verify that the server installation is working correctly.
 
 Ensure the WebDAV API is working::
-  If all Desktop Apps fail to connect to the ownCloud Server, but access using the Web interface functions properly, the problem is often a misconfiguration of the WebDAV API. The ownCloud Desktop App uses the built-in WebDAV access of the server content. Verify that you can log on to ownCloud's WebDAV server. To verify connectivity with the ownCloud WebDAV server, open a browser window and enter the address to the ownCloud WebDAV server. For example, if your ownCloud instance is installed at `\https://yourserver.com/owncloud`, your WebDAV server address is `\https://yourserver.com/owncloud/remote.php/webdav`. If you are prompted for your username and password but, after providing the correct credentials, authentication fails, please ensure that your authentication backend is configured properly.
+  If all Desktop Apps fail to connect to the {ini_name} instance, but access using the Web interface functions properly, the problem is often a misconfiguration of the WebDAV API. The Desktop App uses the built-in WebDAV access of the server content. Verify that you can log on to ownCloud's WebDAV server. To verify connectivity with the ownCloud WebDAV server, open a browser window and enter the address to the ownCloud WebDAV server. For example, if your ownCloud instance is installed at `\https://yourserver.com/owncloud`, your WebDAV server address is `\https://yourserver.com/owncloud/remote.php/webdav`. If you are prompted for your username and password but, after providing the correct credentials, authentication fails, please ensure that your authentication backend is configured properly.
 
 Use a WebDAV command line tool to test::
   A more sophisticated test method for troubleshooting synchronization issues is to use a WebDAV command line client and log into the ownCloud WebDAV server. One such command line client -- called `cadaver` -- is available for Linux distributions. You can use this application to further verify that the WebDAV server is running properly using PROPFIND calls. As an example, after installing the `cadaver` app, you can issue the `propget` command to obtain various properties pertaining to the current directory and also verify WebDAV server connection.
 
 == Directory Modification Time
 
-NOTE: ownCloud does not preserve the mtime (modification time) of directories, though it does update the mtimes on files.
+NOTE: The Desktop App does not preserve the mtime (modification time) of directories, though it does update the mtimes on files.
 
 == CSync Unknown Error
 
-If you see this error message stop your Desktop App, delete the `._sync_xxxxxxx.db` file, and then restart your Desktop App. There is a hidden `._sync_xxxxxxx.db` file inside the folder of every account configured on your Desktop App.
+If you see this error message stop your Desktop App, delete the `._sync_xxxxxxx.db` file, and then restart your Desktop App. This is a hidden file and you must allow showing hidden files in your files browser first.
 
 NOTE: Please note that this will also erase some of your settings about which files to download.
 
@@ -61,24 +56,16 @@ If the permission is not set to `Full Control`, you can either correct it or ask
 
 == Isolating Other Issues
 
-Other issues can affect synchronization of your ownCloud files:
+Other issues can affect synchronization of your files:
 
 * If you find that the results of the synchronizations are unreliable, please ensure that the folder to which you are synchronizing is not shared with other synchronization applications.
-* Synchronizing the same directory with ownCloud and other synchronization software such as Unison, rsync, Microsoft Windows Offline Folders, or other cloud services such as Dropbox or Microsoft SkyDrive is not supported and should not be attempted. In the worst case, it is possible that synchronizing folders or files using ownCloud and other synchronization software or services can result in data loss.
+* Synchronizing the same directory with ownCloud and other synchronization software such as Unison, rsync, Microsoft Windows Offline Folders, or other cloud services such as Dropbox or Microsoft OneDrive is not supported and should not be attempted. In the worst case, it is possible that synchronizing folders or files using ownCloud and other synchronization software or services can result in data loss.
 * If you find that only specific files are not synchronized, the synchronization protocol might be having an effect. Some files are automatically ignored because they are system files, other files might be ignored because their filename contains characters that are not supported on certain file systems. For more detailed information see the xref:using.adoc#ignored-files[Ignored Files] section.
 * If you are operating your own server, and use the local storage backend (the default), make sure that ownCloud has exclusive access to the directory.
 
-[WARNING]
-====
-The data directory on the server is exclusive to ownCloud and must not be modified manually.
-
-* If you are using a different file backend on the server, you can try to exclude a bug in the backend by reverting to the built-in backend.
-* If you are experiencing slow upload/download speed or similar performance issues be aware that those could be caused by on-access virus scanning solutions, either on the server (like the {files-antivirus-app-url}[files_antivirus app]) or the Desktop App.
-====
-
 == Log Files
 
-Effectively debugging software requires as much relevant information as can be obtained. To assist the ownCloud support personnel, please try to provide as many relevant logs as possible. Log output can help with tracking down problems and, if you report a bug, log output can help to resolve an issue more quickly.
+Effectively debugging software requires as much relevant information as can be obtained. To assist the {ini_name} support personnel, please try to provide as many relevant logs as possible. Log output can help with tracking down problems and, if you report a bug, log output can help to resolve an issue more quickly.
 
 The Desktop App log file is often the most helpful log to provide.
 
@@ -144,7 +131,7 @@ When HTTP logging is enabled, log files will contain additional entries:
 | Duration of the response (since the request was sent)
 |===
 
-The ownCloud desktop app sends the `X-REQUEST-ID` header with every request. You'll find the `X-REQUEST-ID` in the `owncloud.log`, and you can configure your web server to add the `X-REQUEST-ID` to the logs. Here you can find more information at {owncloud-log-tracing-url}[Request Tracing, window=_blank].
+The Desktop App sends the `X-REQUEST-ID` header with every request. You'll find the `X-REQUEST-ID` in the `{bin_name}.log`, and you can configure your web server to add the `X-REQUEST-ID` to the logs.
 
 ==== Saving Files Directly
 
@@ -170,20 +157,20 @@ owncloud --logdir /tmp/owncloud_logs --logdebug
 
 ==== Logging in the Console
 
-If the ownCloud Desktop App isn't able to start and immediately crashes the first two options are not available. Therefore, it might be necessary to start the ownCloud Desktop App using the command line in order to see the error message
+If the Desktop App isn't able to start and immediately crashes the first two options are not available. Therefore, it might be necessary to start the Desktop App using the command line in order to see the error message
 
 On Linux and Mac simply open the terminal and run:
 
-[source,plaintext]
+[source,plaintext,subs="attributes+"]
 ----
-owncloud --logfile - --logflush
+{bin_name} --logfile - --logflush
 ----
 
 On Windows open a PowerShell and run the following command:
 
-[source,powershell]
+[source,powershell,subs="attributes+,macros+"]
 ----
-& 'C:\Program Files\ownCloud\owncloud.exe' --logfile - --logflush
++& 'C:\Program Files\+{ini_name}+\+{bin_name}+.exe' --logfile - --logflush+
 ----
 
 Make sure to copy the whole command and adjust the path to your `owncloud.exe`, if you have chosen to install the Desktop App in a different path.
@@ -234,7 +221,7 @@ In case you experience issues, you can run the installer with logging enabled:
 
 [source,console,subs="attributes+"]
 ----
-msiexec /i ownCloud-{client-version-win}.msi /L*V "C:\log\example.log"
+msiexec /i {bin_name}-{client-version}.x64.msi /L*V "C:\log\example.log"
 ----
 
 See the: https://www.advancedinstaller.com/user-guide/qa-log.html[How do I create an installation log] documentation for more information about the msiexec.exe command and logging.
@@ -251,33 +238,9 @@ a| image::troubleshooting/log-install-macos1.png[macOS Installer Enable Logging,
 a| image::troubleshooting/log-install-macos2.png[macOS Installer Log View,width=400]
 |===
 
-=== ownCloud Server Log File
-
-The ownCloud server also maintains an ownCloud specific log file. This log file must be enabled through the ownCloud Administration page. On that page, you can adjust the log level. We recommend that when setting the log file level that you set it to a verbose level like `Debug` or `Info`.
-
-You can view the server log file using the web interface or you can open it directly from the file system in the ownCloud server data directory.
-
-Need more information on this. How is the log file accessed? Need to explore procedural steps in access and in saving this file, similar to how the log file is managed for the Desktop App. Perhaps it is detailed in the Admin Guide and a link should be provided from here. I will look into that when I begin heavily editing the Admin Guide.
-
-=== Webserver Log Files
-
-It can be helpful to view your webserver's error log file to isolate any ownCloud-related problems. For Apache on Linux, the error logs are typically located in the `/var/log/apache2` directory. Some helpful files include the following:
-
-* `error_log` -- Maintains errors associated with PHP code.
-* `access_log` -- Typically records all requests handled by the server; very useful as a debugging tool because the log line contains information specific to each request and its result.
-
-Here you can find more information about http://httpd.apache.org/docs/current/logs.html[Apache logging].
-
 == Crash Reports
 
-It may happen that the Desktop App unexpectedly crashes due to unforeseen or unhandled circumstances. In such a case, a crash report is generated. This report contains valuable information for ownCloud to debug the root cause. This report is not sent to ownCloud automatically by the Desktop app, the user has to confirm to do so. If users agree to send the crash report, they get a reference ID that can be used in communication with ownCloud for this issue.
-
-Crash reports are available for the following environments:
-
-* Windows
-* Mac (currently x64 only)
-* Linux packages
-* Linux AppImage
+It may happen that the Desktop App unexpectedly crashes due to unforeseen or unhandled circumstances. In such a case, a crash report is generated. This report contains valuable information for ownCloud to debug the root cause. This report is not sent to {ini_name} automatically by the Desktop App, the user has to confirm to do so. If users agree to send the crash report, they get a reference ID that can be used in communication with {ini_name} for this issue.
 
 The following table shows a crash report window before and after it has been sent.
 
@@ -294,7 +257,7 @@ The following table shows a crash report window before and after it has been sen
 
 == Core Dumps
 
-On macOS and Linux systems, and in the unlikely event the Desktop App software crashes, the Desktop App is able to write a core dump file. Obtaining a core dump file can assist ownCloud Customer Support tremendously in the debugging process.
+On macOS and Linux systems, and in the unlikely event the Desktop App software crashes, the Desktop App is able to write a core dump file. Obtaining a core dump file can assist {ini_name} Customer Support tremendously in the debugging process.
 
 To enable the writing of core dump files, you must define the `OWNCLOUD_CORE_DUMP` environment variable on the system.
 

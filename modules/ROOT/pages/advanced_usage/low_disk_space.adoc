@@ -1,6 +1,6 @@
 = Low Disk Space
 :toc: right
-:description: When disk space is low, the ownCloud Desktop App will be unable to synchronize all files. This section describes its behavior in a low disk space situation as well as the adjustable environment variables that influence it.
+:description: When disk space is low, the Desktop App will be unable to synchronize all files. This section describes its behavior in a low disk space situation as well as the adjustable environment variables that influence it.
 
 == Introduction
 

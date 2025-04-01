@@ -6,20 +6,25 @@ include::partial$conditional_naming.adoc[]
 ** xref:vfs.adoc[Using the Virtual Filesystem]
 ** xref:filenames.adoc[Filename Considerations]
 ** xref:conflicts.adoc[Manage Synchronisation Conflicts]
-** xref:web_app.adoc[Open Files with Office Web Apps]
 
 ifeval::["{targetbuild}" == "oc"]
+** xref:web_app.adoc[Open Files with Office Web Apps]
 ** xref:automatic_updater.adoc[Automatic Updating]
 endif::[]
 
 ** xref:removing.adoc[Removing the Desktop App]
 ** xref:faq.adoc[FAQ]
 ** xref:troubleshooting.adoc[Troubleshooting]
+
 ** Advanced Usage
 *** xref:advanced_usage/command_line_parameters.adoc[Command Line Parameters]
 *** xref:advanced_usage/configuration_file.adoc[Configuration File]
+
+ifeval::["{targetbuild}" == "oc"]
 *** xref:advanced_usage/environment_variables.adoc[Environment Variables]
 *** xref:advanced_usage/low_disk_space.adoc[Low Disk Space]
+endif::[]
+
 *** xref:advanced_usage/command_line_client.adoc[The Command Line Client]
 * Deployment Guide
 ** xref:installing.adoc[Installing or Deploying]
