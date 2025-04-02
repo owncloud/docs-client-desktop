@@ -2,7 +2,7 @@
 :toc: right
 :toclevels: 2
 :page-aliases: navigating.adoc
-:description: The ownCloud Desktop App remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
+:description: The Desktop App remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
 
 :oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
 :theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01

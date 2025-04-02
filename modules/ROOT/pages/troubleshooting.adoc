@@ -16,14 +16,11 @@ The following two general issues can result in failed synchronization:
 
 == Identifying Basic Functionality Problems
 
-Performing a general test::
-  The first step in troubleshooting synchronization issues is to verify that you can log on to the {ini_name} web application. To verify connectivity to the {ini_name} server try logging in via your Web browser. If you are not prompted for your credentials, or if a red warning box appears on the page, the server setup requires review. Please contact your administration departement and verify that the server installation is working correctly.
+Performing a login test::
+  The first step in troubleshooting synchronization problems is to verify that you can log on to the {ini_name} web application. To verify connectivity to the {ini_name} instance, try logging in using your web browser. If you cannot access it, or are not prompted for your credentials etc., contact your administration department to verify your credentials or that the instance setup is working correctly.
 
-Ensure the WebDAV API is working::
-  If all Desktop Apps fail to connect to the {ini_name} instance, but access using the Web interface functions properly, the problem is often a misconfiguration of the WebDAV API. The Desktop App uses the built-in WebDAV access of the server content. Verify that you can log on to ownCloud's WebDAV server. To verify connectivity with the ownCloud WebDAV server, open a browser window and enter the address to the ownCloud WebDAV server. For example, if your ownCloud instance is installed at `\https://yourserver.com/owncloud`, your WebDAV server address is `\https://yourserver.com/owncloud/remote.php/webdav`. If you are prompted for your username and password but, after providing the correct credentials, authentication fails, please ensure that your authentication backend is configured properly.
-
-Use a WebDAV command line tool to test::
-  A more sophisticated test method for troubleshooting synchronization issues is to use a WebDAV command line client and log into the ownCloud WebDAV server. One such command line client -- called `cadaver` -- is available for Linux distributions. You can use this application to further verify that the WebDAV server is running properly using PROPFIND calls. As an example, after installing the `cadaver` app, you can issue the `propget` command to obtain various properties pertaining to the current directory and also verify WebDAV server connection.
+Ensure the connection is working::
+  If all Desktop App fail to connect to the {ini_name} instance, but access via the web interface works properly, the problem is often a misconfiguration or a change in the URL or proxy being used. Please contact your Admin to verify that the instance setup is working correctly and that you are using the correct connection URL or proxy.
 
 == Directory Modification Time
 
@@ -44,13 +41,23 @@ There are very rare cases when using Windows and VFS, where the Desktop app comp
 "WindowsError: ffffffff80070005: Access is denied."
 ----
 
-This can happen if the standard permissions of the folder where the synced data resides has been changed for the owning user. To resolve this issue, the owning user needs `Full Control`. See the example images below how this should look like. You can get there by menu:right click on the folder name[Properties]:
+This can happen if the standard permissions of the folder where the synced data resides has been changed for the owning user. To resolve this issue, the owning user needs `Full Control`. See the example images below how this should look like. You can get there by right click on the menu:Folder Name[Properties]:
 
+ifeval::["{targetbuild}" == "oc"]
 [role=center,width=100%,cols="50%,50%"]
 |===
-a| image::troubleshooting/folder_properties.png[Folder Properties,width=200]
-a| image::troubleshooting/advanced_security_settings.png[Advanced Security Settings,width=350]
+a| image::troubleshooting/oc-folder-properties.png[Folder Properties,width=150]
+a| image::troubleshooting/oc-advanced-security-settings.png[Advanced Security Settings,width=250]
 |===
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+[role=center,width=100%,cols="50%,50%"]
+|===
+a| image::troubleshooting/kw-windows-folder-properties.png[Folder Properties,width=150]
+a| image::troubleshooting/kw-windows-advanced-security-settings.png[Advanced Security Settings,width=250]
+|===
+endif::[]
 
 If the permission is not set to `Full Control`, you can either correct it or ask your administrator for support.
 
@@ -59,9 +66,8 @@ If the permission is not set to `Full Control`, you can either correct it or ask
 Other issues can affect synchronization of your files:
 
 * If you find that the results of the synchronizations are unreliable, please ensure that the folder to which you are synchronizing is not shared with other synchronization applications.
-* Synchronizing the same directory with ownCloud and other synchronization software such as Unison, rsync, Microsoft Windows Offline Folders, or other cloud services such as Dropbox or Microsoft OneDrive is not supported and should not be attempted. In the worst case, it is possible that synchronizing folders or files using ownCloud and other synchronization software or services can result in data loss.
+* Synchronizing the same directory with {ini_name} and other synchronization software such as Unison, rsync, Microsoft Windows Offline Folders, or other cloud services such as Dropbox or Microsoft OneDrive is not supported and should not be attempted. In the worst case, it is possible that synchronizing folders or files using the Desktop App and other synchronization software or services can result in data loss.
 * If you find that only specific files are not synchronized, the synchronization protocol might be having an effect. Some files are automatically ignored because they are system files, other files might be ignored because their filename contains characters that are not supported on certain file systems. For more detailed information see the xref:using.adoc#ignored-files[Ignored Files] section.
-* If you are operating your own server, and use the local storage backend (the default), make sure that ownCloud has exclusive access to the directory.
 
 == Log Files
 
@@ -83,11 +89,18 @@ Desktop App log files contain file and folder names, metadata, server URLs and o
 . Open the ownCloud Desktop App.
 . Either +
 click menu:Settings[Advanced > Log Settings] or +
-press btn:[F12] or btn:[Ctrl-L] or btn:[Cmd+L] on your keyboard.
+press btn:[F12] (Windows) or btn:[Ctrl-L] (Linux) or btn:[Cmd+L] (macOS) on your keyboard.
 +
 The Log Output window opens.
 +
-image:troubleshooting/log_output_window.png[image,width=350]
+--
+ifeval::["{targetbuild}" == "oc"]
+image:troubleshooting/oc-windows-log-output-window.png[image,width=250]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+image:troubleshooting/kw-windows-log-output-window.png[image,width=250]
+endif::[]
+--
 +
 . Enable the btn:[Enable logging to temporary folder] checkbox.
 . Later, to find the log files, click the btn:[Open folder] button.
@@ -139,29 +152,40 @@ The ownCloud Desktop App allows you to save log files directly to a custom file 
 
 To save log files to a file or a directory:
 
-1. The `--logfile <file>` flag forces the Desktop app to save the log to a file, where `<file>` is the filename to which you want to save the file.
-2. The `--logdir <dir>` flag forces the Desktop app to save the log into the specified directory, where `<dir>` is an existing directory. Note that each sync run creates a new file.
-3. When adding the `--logdebug` flag to any of the flags above, the verbosity of the generated log files increases.
-4. To limit the number of log files created, use the general setting by: +
-clicking menu:Settings[Advanced > Log Settings > Log files to keep] or +
-press btn:[F12] or btn:[Ctrl-L] or btn:[Cmd+L] on your keyboard.
+1. The `--logfile <file>` flag: +
+Forces the Desktop app to save the log to a file, where `<file>` is the filename to which you want to save the file.
+2. The `--logdir <dir>` flag: +
+Forces the Desktop app to save the log into the specified directory, where `<dir>` is an existing directory. Note that each sync run creates a new file.
+3. When adding the `--logdebug` flag to any of the flags above: +
+The verbosity of the generated log files increases.
+4. To limit the number of log files created, use the general setting by:
+* clicking menu:Settings[Advanced > Log Settings > Log files to keep] or
+* press btn:[F12] (Windows) or btn:[Ctrl-L] (Linux) or btn:[Cmd+L] (macOS) on your keyboard.
+
 +
-image:troubleshooting/log-files-to-keep.png[CLog files to keep,width=350]
+--
+ifeval::["{targetbuild}" == "oc"]
+image:troubleshooting/oc-windows-log-files-to-keep.png[CLog files to keep,width=250]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+image:troubleshooting/kw-windows-log-files-to-keep.png[CLog files to keep,width=250]
+endif::[]
+--
 
 As an example, write logs to a defined directory with increased verbosity using Linux:
 
-[source,plaintext]
+[source,bash,subs="attributes+"]
 ----
-owncloud --logdir /tmp/owncloud_logs --logdebug
+{bin_name} --logdir /tmp/{bin_name}_logs --logdebug
 ----
 
 ==== Logging in the Console
 
-If the Desktop App isn't able to start and immediately crashes the first two options are not available. Therefore, it might be necessary to start the Desktop App using the command line in order to see the error message
+If the Desktop App isn't able to start and immediately crashes, the first two options are not available. Therefore, it might be necessary to start the Desktop App using the command line in order to see the error message
 
-On Linux and Mac simply open the terminal and run:
+On Linux and macOS simply open the terminal and run:
 
-[source,plaintext,subs="attributes+"]
+[source,bash,subs="attributes+"]
 ----
 {bin_name} --logfile - --logflush
 ----

@@ -48,6 +48,8 @@ Command line parameters supported by the Desktop App include the following:
 | `--debug`
 | Enable debug mode.
 
+ifeval::["{targetbuild}" == "oc"]
 | `--cmd`
 | Forward all arguments to the command client. This argument must be the first.
+endif::[]
 |===
