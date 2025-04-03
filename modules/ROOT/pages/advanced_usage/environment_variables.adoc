@@ -1,6 +1,6 @@
 = Environment Variables
 :toc: right
-:description: The behavior of the client can be controlled using environment variables.
+:description: The behavior of the Desktop App can be controlled using environment variables.
 
 == Introduction
 

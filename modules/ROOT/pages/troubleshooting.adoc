@@ -63,6 +63,11 @@ endif::[]
 
 If the permission is not set to `Full Control`, you can either correct it or ask your administrator for assistance.
 
+== Low Disk Space
+
+* Downloads that would reduce the free disk space below 250 MB will be skipped or aborted.
+* Synchronization of a folder will stop completely if the remaining disk space falls below 50 MB.
+
 == Isolating Other Issues
 
 Other issues that can affect the synchronization of your files:
