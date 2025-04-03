@@ -111,23 +111,19 @@ File size values differ depending on the client you are using. Some operating sy
 
 === Synchronisation Delay When Using a Network Drive
 
-Due to technical limitations, the Desktop App cannot detect local changes if the local sync folder is located on a mounted network volume. Only full local discovery, which by default runs every hour if not changed, will detect changes and trigger the upload. If desired, a smaller local discovery value can be configured to sync local changes more frequently. For more details see the: xref:advanced_usage/configuration_file.adoc#section-owncloud[Configuration File] documentation.
+Due to technical limitations, the Desktop App cannot detect local changes if the local sync folder is located on a mounted network volume. Only full local discovery, which by default runs every hour if not changed, will detect changes and trigger the upload. If desired, a smaller local discovery value can be configured to sync local changes more frequently. For more details see the xref:advanced_usage/configuration_file.adoc#section-owncloud[Configuration File] documentation.
 
 == Major Configuration Changes
 
 === I Want to Move My Local Sync Folder
 
-The ownCloud Desktop App does not provide a way to change the local sync folder directly. However, it can be done in two ways:
+The Desktop App does not provide a way to change the local sync folder directly. However, there is a way to do it without fully resyncing. Do this for each synchronization connection that you want to move to a new local destination:
 
-. Copy the folder and avoid a full re-sync:
 
-.. Stop the Desktop App and edit the `localPath=` line in the
-xref:advanced_usage/configuration_file.adoc#location-of-the-configuration-file[configuration file]
-according your needs.
+. First, select the synchronization connection and remove it. For details to do so see xref:using.adoc#removing-a-synchronization-connection[Removing a Synchronization Connection].
 
-.. Copy (or move) all your data from the current to the new location manually and start the Desktop App.
 
-. Create a new sync connection with a new location: 
+
 
 ..  Remove the existing connection which syncs to the old directory.
 +
