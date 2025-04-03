@@ -149,35 +149,15 @@ For details on how to add a new synchronization connection, see xref:using.adoc#
 When the new sync connection is added, the first sync will detect the previous sync state and data, preventing a full re-sync. Any upcoming changes will be synchronized as usual.
 --
 
-=== I Want to Change My Server URL
-
-Since changing server URLs is a potentially dangerous operation the ownCloud Desktop App does not provide a user interface for this change. Typically, server URL changes should be implemented by serving a permanent redirect to the new location on the old URL. The Desktop App will then permanently update the server URL the next time it queries the old url.
-
-For situations where arranging for a redirect is impossible, url changes can be done by editing the config file. Before doing so make sure that the new url does indeed point to the same server, with the same users and the same data. Then go through these steps:
-
-1. Shut down the ownCloud Desktop App.
-2. Locate the xref:advanced_usage/configuration_file.adoc#location-of-the-configuration-file[configuration file]
-3. Open it with a text editor.
-4. Find your old server URL and adjust it.
-5. Save the file and start the ownCloud Desktop App again.
-
 == Error Messages
 
 === Warning Message for Unsupported Versions
 
 Keeping software up to date is crucial for file integrity and security – if software is outdated, there can be unfixed bugs. That’s why you should always upgrade your software when there is a new version.
 
-The ownCloud Desktop App talks to a server, e.g. the ownCloud server, so you do not only have to upgrade your Desktop App when there is a new version for it, also the server has to be kept up-to-date by your sysadmin. Starting with version 2.5.0, the Desktop App will show a warning message if you connect to an outdated or unsupported server:
+If the versions of the Desktop App and the backend are no longer compatible, you may receive a warning message in the Desktop App. Contact your support for assistance or upgrade the Desktop App.
 
-image::faq/oc-unsupported-version-warning-message.png[image, width=350,pdfwidth=60%]
-
-Only ownCloud 10.0.0 or Higher Is Supported::
-If you encounter such a message, you should ask your administrator to upgrade ownCloud to a secure version because earlier versions are not maintained anymore. An important feature of the ownCloud Desktop App is checksumming – each time you download or upload a file, the Desktop App and the server both check if the file was corrupted during the sync. This way you can be sure that you don’t lose any files.
-+
-There are servers out there which don’t have checksumming implemented on their side, or which are not tested by ownCloud’s QA team. They can’t ensure file integrity, they have potential security issues, and we can’t guarantee that they are compatible with the ownCloud Desktop App.
-
-We Care About Your Data and Want It to Be Safe::
-That’s why you see this warning message, so you can evaluate your data security. Don’t worry – you can still use the Desktop App with an unsupported server, but do so at your own risk.
+IMPORTANT: Never download the Desktop App from unknown or uncertified resources.
 
 === Multiple Accounts Sharing the Folder
 
