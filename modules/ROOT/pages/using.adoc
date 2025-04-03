@@ -455,6 +455,10 @@ When you remove a sync connection, all synchronized data remains local and is no
 
 TIP: Before disconnecting, click btn:[Show in Explorer]. This will open the source folder that contains all the synchronized data for this connection. This makes it easier to move or delete this folder, since you do not have to search for it after removing it.
 
+ifeval::["{targetbuild}" == "kw"]
+--
 image:using/kw-windows-sync-folder-three-dot-selector.png[Select the Three Dots Menu,width=90]
 image:using/kw-windows-sync-folder-three-dot-remove.png[Select Remove Folder Sync Connection,width=100]
 image:using/kw-windows-sync-folder-confirm-removal.png[Confirm Removal,width=100]
+--
+endif::[]

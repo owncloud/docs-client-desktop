@@ -4,6 +4,8 @@
 
 :wordpress1-url: http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/
 
+include::partial$conditional_naming.adoc[]
+
 == Introduction
 
 {description}
@@ -115,42 +117,37 @@ Due to technical limitations, the Desktop App cannot detect local changes if the
 
 == Major Configuration Changes
 
-=== I Want to Move My Local Sync Folder
+=== Relocating a Local Sync Folder
 
-The Desktop App does not provide a way to change the local sync folder directly. However, there is a way to do it without fully resyncing. Do this for each synchronization connection that you want to move to a new local destination:
+The Desktop App does not provide a way to change the location of the sync folder directly. However, there is a way to do it without fully resyncing. Do this for each synchronization connection that you want to move to a new local destination:
 
+. First, select the synchronization connection and remove it. +
+For details how to do so see xref:using.adoc#removing-a-synchronization-connection[Removing a Synchronization Connection].
 
-. First, select the synchronization connection and remove it. For details to do so see xref:using.adoc#removing-a-synchronization-connection[Removing a Synchronization Connection].
+. Then, move the folder to the target location. +
+The example moves `My Folder` from `{ini_name}` -> `{ini_name} New`. +
+Note in the screenshot of the original location, that the `Status` field is empty because there is no active synchronization setup which is a mandatory requirement for this process.
++
+--
+ifeval::["{targetbuild}" == "kw"]
+image:faq/kw-windows-sync-folder-location.png[Source Folder,width=100]
+image:multi-location/kw-arrow-right.png[width=50]
+image:faq/kw-windows-sync-folder-location-new.png[Target Folder,width=100]
+endif::[]
+--
 
+. Finally, add a new connection that syncs *the same synchronization connection* to the desired new directory. To select a destination folder, using the example above, you have to take: +
+`{ini_name} New` *and NOT* `{ini_name} New\My Folder`!
++
+--
+IMPORTANT: During the process of moving folders, do not change any data locally or on the server. This will cause synchronization conflicts that must be resolved manually.
 
+For details on how to add a new synchronization connection, see xref:using.adoc#removing-a-synchronization-connection[Adding a Synchronization Connection].
 
+[.yellow]#needs a new chapter in using.adoc#
 
-..  Remove the existing connection which syncs to the old directory.
-+
-To do so, in the Desktop App UI, which you can see below, click the drop-down menu menu:Account[Remove].
-+
-image:faq/ownCloud-remove_existing_connection.png[image, width=350,pdfwidth=60%]
-+
-This will display a "*Confirm Account Removal*" dialog window. If you're sure, click btn:[Remove connection].
-+
-image:faq/ownCloud-remove_existing_connection_confirmation_dialog.png[image, width=350,pdfwidth=60%]
-
-..  Add a new connection which syncs to the desired directory.
-+
-Click the drop-down menu menu:Account[Add new].
-+
-This opens the ownCloud Connection Wizard, which you can see below, _but_ with an extra option. This option provides the ability to either keep the existing data _(synced by the previous connection)_ or to start a clean sync _(erasing the existing data)_.
-+
-[IMPORTANT]
-====
-Be careful before choosing the "Start a clean sync" option. The old sync folder _may_ contain a considerable amount of data, ranging into the gigabytes or terabytes. If it does, after the Desktop App creates the new connection, it will have to download *all* of that information again.
-
-Instead, first move or copy the old local sync folder, containing a copy of the existing files, to the new location. Then, when creating the new connection choose "_keep existing data_" instead. The ownCloud Desktop App will check the files in the newly-added sync folder and find that they match what is on the server and not need to download anything.
-====
-+
-image:faq/ownCloud-replacement_connection_wizard.png[image, width=350,pdfwidth=60%]
-+
-Make your choice and click btn:[Connect...] This will then lead you through the Connection Wizard, just like when you set up the previous sync connection, but giving you the opportunity to choose a new sync directory.
+When the new sync connection is added, the first sync will detect the previous sync state and data, preventing a full re-sync. Any upcoming changes will be synchronized as usual.
+--
 
 === I Want to Change My Server URL
 
