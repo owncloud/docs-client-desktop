@@ -13,8 +13,8 @@ ifeval::["{targetbuild}" == "oc"]
 endif::[]
 
 ** xref:removing.adoc[Removing the Desktop App]
-** xref:faq.adoc[FAQ]
 ** xref:troubleshooting.adoc[Troubleshooting]
+** xref:faq.adoc[FAQ]
 
 ** Advanced Usage
 *** xref:advanced_usage/command_line_parameters.adoc[Command Line Parameters]

@@ -11,6 +11,8 @@ include::partial$conditional_naming.adoc[]
 
 {description}
 
+This documentation focuses on issues that require additional support, not on behaviors. See the xref:faq.adoc[FAQ] for behavior-related issues.
+ 
 The following two general issues can result in failed synchronization:
 
 * The instance setup you synchroinize with is incorrect.
@@ -23,10 +25,6 @@ Performing a login test::
 
 Ensure the connection is working::
   If all Desktop App fail to connect to the {ini_name} instance, but access via the web interface works properly, the problem is often a misconfiguration or a change in the URL or proxy being used. Please contact your Admin to verify that the instance connected to is working correctly and that you are using the correct connection URL or proxy.
-
-== Directory Modification Time
-
-NOTE: The Desktop App does not keep the mtime (modification time) of directories, although it does update the mtimes of files.
 
 == CSync Unknown Error
 
@@ -183,7 +181,7 @@ As an example, write logs to a defined directory with increased verbosity using 
 
 [source,bash,subs="attributes+"]
 ----
-{bin_name} --logdir /tmp/{bin_name}_logs --logdebug
+./{bin_name}.AppImage --logdir /tmp/{bin_name}_logs --logdebug
 ----
 
 ==== Logging in the Console
@@ -199,11 +197,18 @@ If the Desktop App fails to start and crashes immediately, the first two options
 +
 Make sure to copy the whole command and adjust the path to your `{bin_name}` executable, if you have chosen to install the Desktop App in a different path.
 
-* On Linux and macOS, simply open the terminal and run:
+* On macOS, simply open the terminal and run:
 +
 [source,bash,subs="attributes+"]
 ----
 {bin_name} --logfile - --logflush
+----
+
+* On Linux, simply open the terminal and run, replace the path and file name accordingly:
++
+[source,bash,subs="attributes+"]
+----
+~/Applications/{bin_name}-{client-version-appimage}.AppImage --logfile - --logflush
 ----
 
 To further increase the verbosity of the output you can also combine these commands with the following argument:
