@@ -1,6 +1,6 @@
 = Using the Virtual Filesystem
 :toc: right
-:description: ownCloud offers the possibility for users to enable a virtual file system (VFS) when synchronizing data.
+:description: The Desktop App provides the use of a virtual file system (VFS) when synchronizing data for Windows clients.
 
 :wikipedia-url: https://en.wikipedia.org/wiki/Virtual_file_system
 :placeholder-files-url: https://docs.microsoft.com/en-us/windows/win32/cfapi/build-a-cloud-file-sync-engine
@@ -8,17 +8,19 @@
 
 == Introduction
 
-{description} This has the big advantage that all files and folders are visible to the Desktop App, but the files are not downloaded until the user requests to do so. Here are some of the key benefits:
+{description} This has the great advantage that all files and folders are visible to the Desktop App, but the files are not downloaded until the user requests it. Here are some of the main advantages:
 
-* Full access to files and folders without having to download them all first
-* Selectively sync folders and files based on user requirements
-* Optimize space usage on the Desktop App
+* Full access to files and folders without the need for downloads.
+* Selectively synchronize folders and files based on user needs.
+* Optimize the use of space on the Desktop App.
 
-The quote below gives you a brief overview of what a virtual file system is about.
+IMPORTANT: The virtual filesystem is only available for Windows clients.
+
+The following quote gives a brief overview of what a virtual file system is:
 
 [quote, {wikipedia-url}]
 ____
-A virtual file system (VFS) or virtual filesystem switch is an abstract layer on top of a more concrete file system. The purpose of a VFS is to allow client applications to access different types of concrete file systems in a uniform way. A VFS can, for example, be used to access local and network storage devices transparently without the client application noticing the difference. It can be used to bridge the differences in Windows, classic Mac OS/macOS and Unix filesystems, so that applications can access files on local file systems of those types without having to know what type of file system they are accessing.
+A virtual file system (VFS) or virtual filesystem switch is an abstract layer on top of a more concrete file system. The purpose of a VFS is to allow client applications to access different types of concrete file systems in a uniform way. A VFS can, for example, be used to access local and network storage devices transparently without the client application noticing the difference. It can be used to bridge the differences in Windows, classic macOS and Unix filesystems, so that applications can access files on local file systems of those types without having to know what type of file system they are accessing.
 ____
 
 == Microsoft VFS Implementation
@@ -31,41 +33,47 @@ A sync engine is a service that syncs files, typically between a remote host and
 ____
 
 [#vfs-states]
-.Files can exist in three states:
+Files can exist in three states::
++
+--
+* *Full pinned file:* +
+The file has been explicitly _hydrated_ by the user via File Explorer and is guaranteed to be available offline.
 
-Full pinned file::
-The file has been _hydrated_ explicitly by the user through File Explorer and is guaranteed to be available offline.
+* *Full file:* +
+The file is implicitly _hydrated_ and could be _dehydrated_ by the system if space is needed.
 
-Full file::
-The file has been _hydrated_ implicitly and could be _dehydrated_ by the system if space is needed.
+* *Placeholder file:* +
+An empty representation of the file and is only available if the sync service is available.
 
-Placeholder file::
-An empty representation of the file and only available if the sync service is available.
+The following picture shows how the file statuses: _full pinned_, _full_, and _placeholder_ are displayed in File Explorer:
 
-The following image demonstrates how the _full pinned_, _full_ and _placeholder_ file states are shown in File Explorer.
-
-image::vfs/vfs-ms-cloud-file-states-file-explorer.png[File States, width=400,pdfwidth=80%]
+image::vfs/vfs-ms-cloud-file-states-file-explorer.png[File States, width=300]
+--
 
 === Limitations and Restrictions
 
 ==== Limitations
 
-A virtual file system needs a root folder all synchronization items will be stored in. The following locations are *not* allowed as synchronization root:
+A virtual file system needs a root folder where all synchronization items will be stored. The following locations are *not* allowed as a synchronization root:
 
 * The root of a disk like `D:\`
 * A non-NTFS Filesystem
-* Mounted network shares
+* Mounted network shares ^*^
 * Symbolic links or junction points
 * Assigned drives
 
++*+ ... Only a full scan is performed by the desktop application, which happens at regular but long intervals. See the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation for details. Shared locations should not be used due to other possible negative side effects.
+
 ==== Restrictions
 
-Similar to OneDrive as it also uses Microsoft's virtual file system, there are some additional restrictions which should be considered like the _maximum file size_, _invalid file or folder names_, etc. See the {onedrive-restrictions-url}[Restrictions and limitations in OneDrive and SharePoint] for more information.
+Similar to OneDrive, since it also uses Microsoft's virtual file system, there are some additional restrictions that should be considered, such as _maximum file size_, _invalid file or folder names_, and so on. See the {onedrive-restrictions-url}[Restrictions and limitations in OneDrive and SharePoint] and xref:filenames.adoc[Filename Considerations] documentation for more information.
 
-== ownCloud VFS Implementation
+== Desktop App's VFS Implementation
 
-Note that when using Windows and VFS, the Desktop app needs full control of the sync folder and its subsequent folders where the data gets stored. If this is not the case, access denied errors most likely will occur when syncing VFS data. For more details see the xref:troubleshooting.adoc#error-updating-metadata-access-denied[troubleshooting section].
+Note that when using Windows and VFS, the Desktop App *must* have full control over the sync folder and its subfolders where the data is stored. If this is not the case, you will most likely get access denied errors when syncing VFS data. For more details, see the xref:troubleshooting.adoc#error-updating-metadata-access-denied[Troubleshooting] guide for more details.
 
+ifeval::["{targetbuild}" == "oc"]
+[.yellow]#the following needs to be updated and moved to using#
 === New Sync with VFS enabled
 
 To set up a new synchronization with virtual file system enabled, perform the following steps: 
@@ -115,10 +123,11 @@ image:vfs/vfs-disable-virtual-file-support-2.png[Disable VFS 2, width=350,pdfwid
 . When done, your files will be fully downloaded, which you can tell by the sync icons, see the example image below. Depending on the quantity and size of the files, this may take a while.
 +
 image:vfs/vfs-full-sync-no-vfs.png[Full Snyc No VFS, width=350,pdfwidth=70%]
+endif::[]
 
 === Manage VFS from Windows Explorer
 
-You can manage `individual` files or `complete folders` in the Explorer window by menu:right-clicking[] on them. This opens a drop-down menu of actions that can be performed on a specific file or folder. The following example shows this on files, but it can be applied on folders too.
+You can manage *individual* files or *entire folders* in the Explorer window by menu:right-click[] on them. This opens a drop-down menu of actions that can be performed on a specific file or folder. The following example shows this for files, but it can be applied to folders as well.
 
 ==== Create a Local Copy
  
