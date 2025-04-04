@@ -130,18 +130,25 @@ endif::[]
 You can manage *individual* files or *entire folders* in the Explorer window by menu:right-click[] on them. This opens a drop-down menu of actions that can be performed on a specific file or folder. The following example shows this for files, but it can be applied to folders as well.
 
 ==== Create a Local Copy
- 
+
+. Select the folder with the file you want to have a full copy of (*Full Pinned*)
+. Select the context menu for the file by doing a btn:[right click]
 . To create a Full Pinned file (have a local copy of it), use the action btn:[Always keep on this device].
-+
-image:vfs/vfs-always-keep-on-this-device.png[Always keep on this Device, width=350,pdfwidth=80%]
-+
-The state of the file will change to synchronizing.
-+
-image:vfs/vfs-always-keep-on-this-device-syncing.png[Always keep on this Device Syncing, width=350,pdfwidth=60%]
-+
-When the local copy has been created, the state (icon) changes to _Full Pinned_.
-+
-image:vfs/vfs-always-keep-on-this-device-synced.png[Always keep on this Device Syned, width=350,pdfwidth=60%]
+. The state of the file will change to synchronizing.
+. When the local copy has been created, the icon in the btn:[Status] column changes to _Full Pinned_.
+
+ifeval::["{targetbuild}" == "oc"]
+image:vfs/oc-vfs-always-keep-on-this-device.png[Always keep on this Device, width=100]
+image:vfs/oc-vfs-always-keep-on-this-device-syncing.png[Always keep on this Device Syncing, width=100]
+image:vfs/oc-vfs-always-keep-on-this-device-synced.png[Always keep on this Device Synced, width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:vfs/kw-windows-syncroot-with-contents.png[Select File to be Full Pinned, width=100]
+image:vfs/kw-vfs-always-keep-on-this-device.png[Always keep on this Device, width=100]
+image:vfs/kw-vfs-always-keep-on-this-device-syncing.png[Always keep on this Device Syncing, width=100]
+image:vfs/kw-vfs-always-keep-on-this-device-synced.png[Always keep on this Device Synced, width=100]
+endif::[]
 
 ==== Free up Space
 
