@@ -3,6 +3,7 @@
 :description: Here you can find some of the most frequently asked questions about the Desktop app.
 
 :wordpress1-url: http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/
+:using-sysctl-url: https://www.cyberciti.biz/faq/reload-sysctl-conf-on-linux-using-sysctl/
 
 include::partial$conditional_naming.adoc[]
 
@@ -13,13 +14,13 @@ include::partial$conditional_naming.adoc[]
 == Clarification of Terms Used
 
 * *Polling* +
-Polling is defined as the task where the Desktop app queries the server for changes - among other things. If the server responds with a change that had happened on the backend, the client will start syncing the changes after polling has finished.
+Polling is defined as the task where the Desktop App polls the server for changes, among other things. If the server responds with a change that has happened on the backend, the client will start synchronizing the changes after polling has finished.
 
-* *Sync* +
-Syncing is defined as the task where any changes will be synchronized, no matter if they occurred in the Desktop app or on the server side. Syncing does not depend on former polling while polling can result in a sync.
+* *Synchronization* +
+Synchronization is defined as the task where all changes are synchronized, regardless of whether they occurred in the Desktop App or on the server side. Synchronization does not depend on previous polling, while polling can result in synchronization.
 
 * *Local Discovery* +
-Local discovery is defined as the task where the Desktop app looks for changes on the local filesystem. A local discovery can internally be enforced to check for changes that have been missed for example when the Desktop app was shut down during ongoing changes on the local filesystem. Any changes identified on the local filesystem trigger a sync after local discovery has finished.
+Local discovery is defined as the task where the Desktop App looks for changes on the local file system. A local discovery can be enforced internally to check for changes that were missed, for example, when the Desktop App was shut down while changes were in progress on the local filesystem. Any changes detected on the local file system will trigger a sync after the local discovery is complete.
 
 == Usage
 
@@ -99,7 +100,7 @@ If you have files with an `.eml` extension (Windows Mail, Windows Live Mail), th
 
 === Sync Stops When Trying to Sync Deeper Than 100 Subdirectories
 
-The Desktop App has been intentionally limited to sync no deeper than 100 subdirectories. The hard limit exists to protect against cyclic bugs like symbolic link loops. If a deeply nested directory is excluded from sync, it will be listed with other ignored files and directories in the "Not synced" tab of the "Activity" pane.
+The Desktop App has been intentionally limited to sync no deeper than 100 subdirectories. The hard limit exists to protect against cyclic bugs like symbolic link loops. If a deeply nested directory is excluded from sync, it will be listed with other ignored files and directories in the menu:Activity[Not Synced] pane.
 
 ifeval::["{targetbuild}" == "oc"]
 === My Sync Folder Displays a Different Quota Than the Web Interface
@@ -159,69 +160,52 @@ If the versions of the Desktop App and the backend are no longer compatible, you
 
 IMPORTANT: Never download the Desktop App from unknown or uncertified resources.
 
-=== Multiple Accounts Sharing the Folder
+=== Multiple Accounts Share the Same Folder
 
-Desktop App discovered multiple sync journals (SQLite database files) in the folder. That indicates that multiple Desktop Apps are using the same folder as a sync root. Under certain conditions it could also mean that there is an old `._sync_#HASH.db` or `.sync_#HASH.db` in the folder.
+The Desktop App can handle multiple accounts. If you set up a new sync connection for a particular account but try to use a folder that is already configured to sync for another account and contains a sync journal, you will receive an error message and have to select a different folder during setup.
 
-image::faq/01_multiple-accounts-sharing-folder.png[image, width=350,pdfwidth=60%]
+NOTE: You cannot share the same sync folder with multiple accounts.
 
-*Resolve:*
+=== Folder is Used in a Folder Sync Connection
 
-Such a file will have an old change date and usually can be removed.
+If you setup a new synchronization connection for an account but try to use a folder that is already configured for synchronization for this account and contains a sync journal, you will get an error message that you need to pick another folder. 
 
-=== Folder Is Used in a Folder Sync Connection
+NOTE: You cannot share the same sync folder for multiple sync connections.
 
-Similar to the above case, the Desktop App discovered one or more `.sync_journal.db` files in the directory. That means the folder is either already used by a different Desktop App for syncing or we again have an old SQLite database file in that folder. This can also happen if a user tries to import an old folder.
+=== The Folder is Used by a Different Client
 
-{empty} +
+The Desktop App detected that the folder you are using to sync is part of a subtree that is managed by another sync app, such as OneDrive. You might also have tried to use a sync root for a new sync connection that is in a subtree of an existing sync connection.
 
-[role=center,width=100%,cols="^.50%,^.50%",options="header"]
-|===
-a| Connect, folder already used
-a| Add folder sync connection
-a| image::faq/02_folder-used-in-sync-connection1.png[image, width=350]
-a| image::faq/03_folder-used-in-sync-connection2.png[image, width=350]
-|===
+NOTE: The Desktop App must use the configured synchronization folder exclusively.
 
-*Resolve:*
+=== Warning About Changes in Synchronized Folders not Being Tracked Reliably
 
-Such a file will have an old change date and usually can be removed.
+On Linux or macOS, if the synchronized folder contains a large number of subfolders, the operating system may not allow enough `inotify` watches to monitor changes in all of them.
 
-=== Parent Folder Managed by Another Desktop App
+In this case, the Desktop App will not be able to immediately start the synchronization process when a file in one of the unmonitored folders changes. Instead, the Desktop App will display a warning and manually check the folders for changes at regular intervals of two hours by default.
 
-This error can only happen with native Windows VFS. The Desktop App discovered that the folder is part of a subtree that is managed by another Desktop App, for example testpilotcloud. The difference to the next error is that we can't be sure it's a different Desktop App or an orphaned sync root.
+This problem can be mitigated by setting the `fs.inotify.max_user_watches` to a higher value such as `524288` (2^19^) permanently in the `/etc/sysctl.conf` configuration file. Read the {using-sysctl-url}[How to reload sysctl.conf variables in Linux, windows=_blank] guide for more details.
 
-image::faq/04_folder-used-by-different-client.png[image, width=350,pdfwidth=60%]
-
-Both errors are windows only. In the future we will try to prevent the situation leading to this.
-
-*Resolve:*
-
-Pick another sync folder.
-
-=== Folder Used by Different Desktop App
-
-image::faq/05_folder-managed-by-another-sync-client.png[image, width=350,pdfwidth=60%]
-
-This error can only happen with native Windows VFS. Desktop App discovered that the folder is part of a subtree that is managed by another Desktop App, for example OneDrive.
-
-*Resolve:*
-
-Pick another sync folder.
-
-=== Warning About Changes in Synchronized Folders Not Being Tracked Reliably
-
-On Linux, when the synchronized folder contains a high number of subfolders, the operating system may not allow for enough `inotify` watches to monitor the changes in all of them.
-
-In this case the Desktop App will not be able to immediately start the synchronization process when a file in one of the unmonitored folders changes. Instead, the Desktop App will show the warning and manually scan folders for changes at a regular interval (two hours by default).
-
-This problem can be solved by setting the `fs.inotify.max_user_watches sysctl` to a higher value like `524288` permanently in the config file `/etc/sysctl.conf` or temporarily with the following command:
-
-[source,console]
+Linux::
++
+--
+[source,bash]
 ----
-echo 524288 > /proc/sys/fs/inotify/max_user_watches.
+sudo sysctl -w fs.inotify.max_user_watches=524288
+sudo sysctl -p
 ----
+--
+
+macOS::
++
+--
+[source,bash]
+----
+sudo sysctl -w kern.maxfiles=524288
+sudo sysctl -p
+----
+--
 
 == Messages in the 'Not Synced' Tab
 
-When the Desktop app synchronizes, it clears the message list in the btn:[Not Synced] tab before each synchronization starts and prints the result of the current synchronization to the tab during processing. After a full sync, incremental syncs are made and only content that is not in sync is processed. Therefore, any listed messages  that got resolved no longer appear.
+When the Desktop App synchronizes, it clears the message list in the menu:Activity[Not Synced] pane before each synchronization starts and prints the result of the current synchronization to the tab during processing. After a full sync, incremental syncs are performed and only content that was not previously synced is processed. Therefore, any listed messages that have been resolved will no longer appear.

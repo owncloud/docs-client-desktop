@@ -33,11 +33,11 @@ Depending on the operating system used, some minimum system requirements need to
 | OS
 | Version
 
-a| *Windows*
+a| *Windows x64*
 a| When using external drives storing the synchronization data, NTFS is required. Also see the xref:vfs.adoc[VFS support] documentation.
 --
 * Windows 11
-* Windows 10 or later (x64) +
+* Windows 10 or later+
 Version 1809+
 --
 
