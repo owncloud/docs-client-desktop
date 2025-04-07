@@ -28,7 +28,7 @@ Depending on the operating system used, some minimum system requirements need to
 
 {empty}
 
-[width="100%",cols="20%,80%",options="header",]
+[width="100%",cols="20%,80%",options="header"]
 |===
 | OS
 | Version
