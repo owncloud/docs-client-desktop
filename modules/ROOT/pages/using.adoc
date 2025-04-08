@@ -13,11 +13,15 @@ include::partial$conditional_naming.adoc[]
 
 {description} Bringing it to the front is usually only needed to set up or maintain sync connections and configurations. This document describes how to configure and use the Desktop App.
 
-== The Systray
+== Basic Information and Icons
 
-The Desktop App can not only be fully closed with the Quit image:using/quit-symbol.png[Quit Synbol, width=18] symbol on the top right, but also be closed to the system tray to run continuously in the background.
+Before going into configuration and usage topics, some basic information is is provided about the systray integration, icons used and more. This simplifies the handling and information displayed by the Desktop App.
 
-* A btn:[right-click] on the {ini_name} systray icon opens a menu for quick access to multiple operations.
+=== The Systray
+
+After the Desktop App has been started, it can not only be fully closed with the Quit image:using/quit-symbol.png[Quit Synbol, width=18] symbol on the top right, but also be closed to the system tray to run continuously in the background.
+
+* A btn:[right-click] on the {ini_name} systray icon opens a menu for quick access to multiple operations. The images shown are for Windows.
 +
 --
 ifeval::["{targetbuild}" == "oc"]
@@ -42,9 +46,9 @@ image:using/kw-windows-account-settings.png[Account Settings, width=100]
 endif::[]
 --
 
-=== Systray Icons
+==== Systray Icons
 
-The Desktop App uses the following icons. See the table for more information about their meaning.
+The Desktop App uses the following systray icons. See the table for more information about their meaning.
 
 {empty}
 
@@ -102,23 +106,59 @@ endif::[]
 | The red circle with the white `x` indicates a configuration error, such as an incorrect login or server URL.
 |===
 
-== File Manager Overlay Icons
+=== Overlay Icons
 
-The Desktop App provides overlay icons, if not using the VFS feature, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indicate the sync status of your {ini_name} files.
+ifeval::["{targetbuild}" == "oc"]
+Overlay Icons indicate the sync status of your {ini_name} files in the file manager.
 
-The overlay icons are similar to the systray icons introduced above. They behave differently on files and directories according to sync status and errors.
+[NOTE]
+====
+File Manager Overlay Icons are currently only available for:
 
-The overlay icon of an individual file indicates its current sync state. If the file is in sync with the server version, it displays a green checkmark.
+* The Windows operating system. +
+The term File Manager is therefore equal to the Windows File Explorer.
+* The overlay icons you see depend on whether you are using Selective Sync or the Virtual File System (VFS).
+** When using Selective Sync, custom overlay icons are displayed for files and folders, see the description of overlay icons below.
+** If you are using VFS see the xref:vfs.adoc[Using the Virtual Filesystem] documentation.
+====
 
-If the file is ignored while syncing, for example because it is on your exclude list or because it is a symbolic link, it displays a warning icon.
+////
+Internal: currently not available for linux and macos because we first need to resetup our build system for providing these with releases > 6.0. when this is done, we can re-add the text but must also describe hwo to install these FMOI for those OS'es
 
-If there is a sync error, or the file is blacklisted, it displays an eye-catching red X. If the file is waiting to be synced, or is currently being synced, the overlay icon displays a blue cycling icon.
+The Desktop App provides overlay icons, if not using the VFS feature, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indica
+te the sync status of your {ini_name} files.
+////
 
-When the Desktop App is offline, no icons are shown to reflect that the folder is currently out of sync and no changes are synced to the server.
+Overlay icons are similar to the xref:systray-icons[Systray Icons]. They behave differently on files and directories depending on sync status and errors. You will find them on each file or folder that is part of the synchronization setup and are not excluded from syncing.
 
-The overlay icon of a synced directory indicates the status of the files in the directory. If there are any sync errors, the directory is marked with a warning icon.
+* When the Desktop App is not running or offline, no icons are shown to reflect that the folder is currently out of sync and no changes are synced to the server.
 
-If a directory includes ignored files that are marked with warning icons that does not change the status of the parent directory.
+* The icon of a synchronized directory shows the status of the files in the directory. If there are any sync errors, the directory is marked with the error icon.
+
+* If a directory contains ignored files marked with warning icons, this does not change the status of the parent directory.
+
+* The overlay icon of an individual file indicates its current sync state.
+
+** image:using/fmoi_ok.png[OK Synbol, width=18] If the file is in sync with the server version, it displays the green checkmark icon.
+
+** image:using/fmoi_sync.png[Sync Synbol, width=18] If the file is waiting to sync or is currently syncing, it displays the blue cycling icon.
+
+** image:using/fmoi_warn.png[Warn Synbol, width=18] If the file is ignored during sync, for example because it is on your exclude list or because it is a symbolic link, it displays the yellow warning icon.
+
+** image:using/fmoi_error.png[Error Synbol, width=18] If there is a sync error or the file is blacklisted, it displays the red X icon.
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+Overlay Icons indicate the sync status of your {ini_name} files in the Windows File Explorer.
+
+The File Explorer uses icons for the Virtual File System (VFS) that are provided by Microsoft. For details on VFS see the xref:vfs.adoc[Using the Virtual Filesystem] documentation.
+endif::[]
+
+== Virtual Filesystem
+
+The Virtual File System allows users to access file trees without downloading them. Users can choose to store files or folders locally instead of using placeholders. Placeholders behave just like real files and are downloaded when accessed. This allows you to synchronize large directories without actually taking a copy of the files.
+
+See the xref:vfs.adoc[Using the Virtual Filesystem] documentation for more and important information _before_ you start a synchronization connection.
 
 == Accounts
 

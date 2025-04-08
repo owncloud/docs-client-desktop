@@ -20,7 +20,7 @@ IMPORTANT: The virtual filesystem is only available for Windows clients.
 
 The following quote gives a brief overview of what a virtual file system is:
 
-[quote, '{wikipedia-url}[Wikipedia]']
+[quote, '{wikipedia-url}[Wikipedia,window=_blank]']
 ____
 A virtual file system (VFS) or virtual filesystem switch is an abstract layer on top of a more concrete file system. The purpose of a VFS is to allow client applications to access different types of concrete file systems in a uniform way. A VFS can, for example, be used to access local and network storage devices transparently without the client application noticing the difference. It can be used to bridge the differences in Windows, classic macOS and Unix filesystems, so that applications can access files on local file systems of those types without having to know what type of file system they are accessing.
 ____
@@ -29,13 +29,13 @@ ____
 
 === Background
 
-[quote, '{placeholder-files-url}[Microsoft]']
+[quote, '{placeholder-files-url}[Microsoft,window=_blank]']
 ____
 A sync engine is a service that syncs files, typically between a remote host and a local client. Sync engines on Windows often present those files to the user through the Windows file system and File Explorer.
 ____
 
 [#vfs-states]
-Files can exist in three states::
+Files can exist in the following states::
 +
 --
 * *Full pinned file:* +
@@ -47,9 +47,14 @@ The file is implicitly _hydrated_ and could be _dehydrated_ by the system if spa
 * *Placeholder file:* +
 An empty representation of the file and is only available if the sync service is available.
 
-The following picture shows how the file statuses: _full pinned_, _full_, and _placeholder_ are displayed in File Explorer:
+* *Syncing file:* +
+The file is planned for or currently in the process of synchrinozation..
 
-image::vfs/vfs-ms-cloud-file-states-file-explorer.png[File States, width=300]
+The following picture shows how the file statuses: +
+_full pinned_, _full_, _placeholder_ and _syncing_ +
+are displayed in File Explorer:
+
+image::vfs/vfs-ms-cloud-file-states-file-explorer.png[File States]
 --
 
 === Limitations and Restrictions
