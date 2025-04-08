@@ -158,7 +158,7 @@ endif::[]
 
 The Virtual File System allows users to access file trees without downloading them. Users can choose to store files or folders locally instead of using placeholders. Placeholders behave just like real files and are downloaded when accessed. This allows you to synchronize large directories without actually taking a copy of the files.
 
-See the xref:vfs.adoc[Using the Virtual Filesystem] documentation for more and important information _before_ you start a synchronization connection.
+NOTE: See the limitations section of the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation for more and important information _before_ you start a synchronization connection.
 
 == Accounts
 
