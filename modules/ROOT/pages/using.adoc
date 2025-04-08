@@ -154,7 +154,7 @@ Overlay Icons indicate the sync status of your {ini_name} files in the Windows F
 The File Explorer uses icons for the Virtual File System (VFS) that are provided by Microsoft. For details on VFS see the xref:vfs.adoc[Using the Virtual Filesystem] documentation.
 endif::[]
 
-== Virtual Filesystem
+=== Virtual Filesystem
 
 The Virtual File System allows users to access file trees without downloading them. Users can choose to store files or folders locally instead of using placeholders. Placeholders behave just like real files and are downloaded when accessed. This allows you to synchronize large directories without actually taking a copy of the files.
 
