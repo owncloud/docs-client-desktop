@@ -269,7 +269,7 @@ endif::[]
 
 * With the menu:Manage Account[] menu you can:
 
-** menu:Log Out[] +
+** menu:Log out[] +
 Allows you to log out of an account for security reasons without removing the sync connection or data. Note that each sync connection for an account has the ability to pause and resume sync individually without logging out.
 
 ** menu:Log in[] +
