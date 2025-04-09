@@ -284,7 +284,7 @@ Allows you to open the browser instead of the File Explorer to view all the data
 
 ==== Adding New Accounts
 
-To add accounts to your Desktop App, click on the menu:Add Account[] image:using/kw-windows-add-account-icon.png[Add Account Icon, width=18] button on the top bar and follow the xref:connection-wizard[Connection Wizard]. The added account will appear as a new item in the main window at the top.
+To add accounts to your Desktop App, click on the menu:Add Account[] image:using/add-account-icon.png[Add Account Icon, width=18] button on the top bar and follow the xref:connection-wizard[Connection Wizard]. The added account will appear as a new item in the main window at the top.
 
 ==== Removing an Account
 
