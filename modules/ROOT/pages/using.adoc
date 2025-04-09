@@ -191,7 +191,7 @@ NOTE: The URL you are given may be different from the final URL used by the Desk
 +
 [NOTE]
 ====
-If you plan to use multiple accounts, consider using a common base location in the file system for all accounts, which makes them easier to identify via a root folder. This means that you do not take the default suggested path, but customize it to your needs when enabling the btn:[Advanced configuration].
+If you plan to use multiple accounts, consider using a common base location in the file system for all accounts, which makes them easier to identify via a root folder. This means that you do not take the default suggested path, but customize it to your needs when enabling the btn:[Advanced configuration]. Consider reading the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation first to avoid using problematic paths.
 
 .Example
 [source,plaintext,subs="attributes+,macros+"]
