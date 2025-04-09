@@ -6,6 +6,7 @@
 
 :oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
 :theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01
+:webfinger_url: https://en.wikipedia.org/wiki/WebFinger
 
 include::partial$conditional_naming.adoc[]
 
@@ -15,7 +16,7 @@ include::partial$conditional_naming.adoc[]
 
 == Basic Information and Icons
 
-Before going into configuration and usage topics, some basic information is is provided about the systray integration, icons used and more. This simplifies the handling and information displayed by the Desktop App.
+Before going into configuration and usage topics, some basic information is provided about systray integration, icons used, and more. This will make it easier to use and understand the information displayed by the Desktop App.
 
 === The Systray
 
@@ -151,62 +152,102 @@ endif::[]
 ifeval::["{targetbuild}" == "kw"]
 Overlay Icons indicate the sync status of your {ini_name} files in the Windows File Explorer.
 
-The File Explorer uses icons for the Virtual File System (VFS) that are provided by Microsoft. For details on VFS see the xref:vfs.adoc[Using the Virtual Filesystem] documentation.
+File Explorer uses icons provided by Microsoft for the Virtual File System (VFS). For details about VFS and the icons used, see the xref:vfs.adoc[Using the Virtual Filesystem] documentation.
 endif::[]
 
+ifeval::["{targetbuild}" == "oc"]
+=== Location for Sync Connections
+
+NOTE: All sync connections are subject to the same rules described in the limitations section of the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation. This is important information to read _before_ you start a sync connection.
+
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
 === Virtual Filesystem
 
 The Virtual File System allows users to access file trees without downloading them. Users can choose to store files or folders locally instead of using placeholders. Placeholders behave just like real files and are downloaded when accessed. This allows you to synchronize large directories without actually taking a copy of the files.
 
 NOTE: See the limitations section of the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation for more and important information _before_ you start a synchronization connection.
+endif::[]
 
 == Accounts
 
+A sync connection requires an account that specifies the server to connect to, the user, and the user's credentials for that server. Once an account is created, a user can select, manage, or remove individual sync connections at any time in the Desktop App. Each possible connection is provided by the server to which it is connected.
+
+If an account has not been set up as it was on the first start after installation, or if the last account was removed, the xref:connection-wizard[Connection Wizard] is automatically displayed to add an account when starting the Desktop App.
+
+If an account exists, you can at any time add another account for a different server with the btn:[Add Account] button.
+
 === Connection Wizard
 
-The connection wizard is always shown when the Desktop app has been started and no synchronization connection has been set up so far or when clicking the btn:[Add Account] button. It takes you step-by-step through configuration options and account setup.
+The Connection Wizard requires the following information to complete:
 
-* First you need to enter the URL of your ownCloud instance:
+. The URL of the server to connect to.
 +
---
-Note that the URL given to you can be a different one than the final URL used by the Desktop app. This can be the case if a company has a generic setup URL that provides the Desktop app information about where to connect you. This mechanism is called https://en.wikipedia.org/wiki/WebFinger[WebFinger] and has the big benefit that one only needs to know the generic setup URL. The Desktop app tries to identify if webfinger is provided via the given URL and acts accordingly based on the server's response. This all runs in the background but is explained here in case you see a different URL being used than entered.
+NOTE: The URL you are given may be different from the final URL used by the Desktop App or displayed in the browser. This may be the case if a company has a generic setup URL that gives the Desktop App information about where to connect you. This mechanism is called {webfinger_url}[WebFinger] and has the great advantage that you only need to know the generic setup URL. The Desktop App tries to determine if WebFinger is available via the given URL and acts accordingly based on the server's response. This all happens in the background, but is explained here in case you see a different URL being used than the one you entered.
 
-image:using/wizard-screen-url.png[form for entering ownCloud instance URL, width=350,pdfwidth=60%]
---
-
-* Enter your ownCloud login on the next screen. Depending on what the administrator has configured, you may see different login screens. Note that with OAuth 2.0 and with OpenID Connect (OIDC), you will be redirected to a browser for authentication:
+. The user and his credentials.
+. The base location on your local file system to store the data for a sync connection.
 +
---
 [NOTE]
 ====
-To use *Two-Factor Authentication* (2FA) with the ownCloud Server backend, ownCloud Server must have the {oauth2-app-url}[OAuth2 app] installed, configured and enabled. Please contact your ownCloud administrator for more details.
+If you plan to use multiple accounts, consider using a common base location in the file system for all accounts, which makes them easier to identify via a root folder. This means that you do not take the default suggested path, but customize it to your needs when enabling the btn:[Advanced configuration].
+
+.Example
+[source,plaintext,subs="attributes+,macros+"]
+----
+`+C:\Users\xyz\+{ini_name}`    -> `+C:\Users\xyz\sync\+{ini_name}`
+`+C:\Users\xyz\otherAccount+` -> `+C:\Users\xyz\sync\otherAccount+`
+----
 ====
 
-[width=100%,cols="^.^50%,^.^50%"]
-|===
-2+h| *Login with ownCloud embedded user database*
-2+a| image::using/wizard-screen-login.png[form for entering your ownCloud login, width=350,pdfwidth=60%]
+{empty}
 
-2+h| *Login with OAuth 2.0 or OIDC* +
-(Follow the web login process)
-
-a| image::using/wizard-screen-login-browser.png[form for entering your ownCloud login, width=350,pdfwidth=60%]
-a| image::using/wizard-screen-grant-access.png[form for entering your ownCloud login, width=320,pdfwidth=60%]
-|===
+First, enter the URL of your {ini_name} instance::
++
+--
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-wizard-screen-url.png[Form Entering the Instance URL, width=100,]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+image:using/oc-wizard-screen-url.png[Form Entering the Instance URL, width=100,]
+endif::[]
 --
 
-* Advanced Configuration:
+{empty}
+
+Enter your {ini_name} login on the next screen::
++
+--
+Note that with modern authentication methods such as OpenID Connect (OIDC), you will be redirected to a browser for authentication. Images may vary depending on your corporate setup:
+
+.Login with OIDC (Follow the web login process)
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-wizard-screen-url.png[Form Entering your login, width=100]
+image:using/oc-wizard-screen-grant-access.png[Form Granting Access, width=80]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-wizard-screen-url.png[Form Entering your login, width=100]
+image:using/kw-wizard-open-in-browser.png[Open in Browser, width=100]
+image:using/kw-wizard-browser-opened.png[Browser Opened, width=95]
+image:using/kw-wizard-all-set.png[All Set, width=100]
+endif::[]
+--
+
+{empty}
+
+Advanced Configuration::
 +
 --
 When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired. Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for synchronized data.
 
-image:using/wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=350,pdfwidth=60%]
+image:using/oc-wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=100]
 --
 
-* Final step:
+Final step::
 +
 --
-Once you are satisfied with the configuration made, click the btn:[Finish] button at the bottom right. The Desktop app will attempt to connect to your ownCloud server and will start synchronizing your files.
+Once you are satisfied with the configuration made, click the btn:[Finish] button at the bottom right. The Desktop App will attempt to connect to your {ini_name} server.
 --
 
 === Adding New Accounts
