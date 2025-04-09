@@ -239,28 +239,36 @@ endif::[]
 Advanced Configuration::
 +
 --
-When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired. Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for synchronized data.
+When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired.
+ifeval::["{targetbuild}" == "oc"]
+Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for synchronized data.
 
-image:using/oc-wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=100]
+image:using/oc-wizard-all-set-advanced.png[Advanced configuration, width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+
+image:using/kw-wizard-all-set-advanced.png[Advanced configuration, width=100]
+endif::[]
 --
 
 Final step::
 +
 --
-Once you are satisfied with the configuration made, click the btn:[Finish] button at the bottom right. The Desktop App will attempt to connect to your {ini_name} server.
+When you are satisfied with the configuration you have made, click the btn:[Finish] button at the bottom right. The Desktop App will attempt to connect to your {ini_name} server.
 --
 
 === Adding New Accounts
 
-You may configure multiple ownCloud accounts in your Desktop app. Simply click the menu:Account[Add New] button on the top left and follow the xref:connection-wizard[Connection Wizard]. The new account will appear as a new item in the main window on top.
+You can configure multiple accounts in your Desktop App. Just click on the menu:Account[Add New] button at the top left and follow the xref:connection-wizard[Connection Wizard]. The new account will appear as a new item in the main window at the top.
 
 === Removing an Account
 
-To remove an account, select the account to be removed and click on the button menu:Account[Remove] to remove it. Note that the account will be removed but no synchronized data deleted.
+To remove an account, select the account you want to remove and click the menu:Account[Remove] button to remove it. Note that the account will be removed but no synchronized data deleted.
 
 === Configuring Common Settings
 
-The settings tab contains common settings available and valid for all accounts configured. Here you can define network settings, bandwidth limitations, a confirmation setting to limit folder synchronization size and more. 
+The menu:Settings[] pane contains common settings that are available to all configured accounts. Here you can set network settings, define additional names to exclude from synchronization, and more.
 
 === Configuring Account Settings
 
