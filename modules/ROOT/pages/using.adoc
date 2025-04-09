@@ -176,7 +176,7 @@ A sync connection requires an account that specifies the server to connect to, t
 
 If an account has not been set up as it was on the first start after installation, or if the last account was removed, the xref:connection-wizard[Connection Wizard] is automatically displayed to add an account when starting the Desktop App.
 
-If an account exists, you can at any time add another account for a different server with the btn:[Add Account] button.
+If an account exists, you can at any time add another account for a different server or a different user with the btn:[Add Account] image:using/add-account-icon.png[Add Account Icon, width=18] button.
 
 === Connection Wizard
 
