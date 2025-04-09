@@ -258,13 +258,37 @@ Final step::
 When you are satisfied with the configuration you have made, click the btn:[Finish] button at the bottom right. The Desktop App will attempt to connect to your {ini_name} server.
 --
 
-=== Adding New Accounts
+=== Managing Accounts
 
-You can configure multiple accounts in your Desktop App. Just click on the menu:Account[Add New] button at the top left and follow the xref:connection-wizard[Connection Wizard]. The new account will appear as a new item in the main window at the top.
+You can add or remove existing accounts from the Desktop App. The following sections describe how to do this.
 
-=== Removing an Account
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-manage-account.png[Manage Accounts, width=95]
+image:using/kw-windows-manage-account-open.png[Manage Accounts, width=100]
+endif::[]
 
-To remove an account, select the account you want to remove and click the menu:Account[Remove] button to remove it. Note that the account will be removed but no synchronized data deleted.
+* With the menu:Manage Account[] menu you can:
+
+** menu:Log Out[] +
+Allows you to log out of an account for security reasons without removing the sync connection or data. Note that each sync connection for an account has the ability to pause and resume sync individually without logging out.
+
+** menu:Log in[] +
+Logs in after logging out to resume sync for all connections of this account.
+
+** menu:Reconnect[] +
+May be necessary if there was an unrecoverable network problem and the account was disconnected.
+
+** menu:Show in web browser[] +
+Allows you to open the browser instead of the File Explorer to view all the data of the connected account.
+
+
+==== Adding New Accounts
+
+To add accounts to your Desktop App, click on the menu:Add Account[] image:using/kw-windows-add-account-icon.png[Add Account Icon, width=18] button on the top bar and follow the xref:connection-wizard[Connection Wizard]. The added account will appear as a new item in the main window at the top.
+
+==== Removing an Account
+
+To remove an account, select the account you want to remove in the top bar and click the menu:Manage Account[Remove] to remove it. Note that the account will be removed but no synchronized data deleted. Synchronized data needs to be removed manually. A good rule of thumb is to open the sync location with File Explorer before removing the account, which makes it easier to remove the data.
 
 === Configuring Common Settings
 
