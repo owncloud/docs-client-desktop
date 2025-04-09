@@ -58,50 +58,50 @@ The Desktop App uses the following systray icons. See the table for more informa
 | Description
 
 ifeval::["{targetbuild}" == "oc"]
-| image:using/oc-systray-icon-ok.png[image-syncok,width=50]
+| image:using/oc-systray-icon-ok.png[image-syncok,width=30]
 endif::[]
 ifeval::["{targetbuild}" == "kw"]
-| image:using/kw-systray-icon-ok.png[image-syncok,width=50]
+| image:using/kw-systray-icon-ok.png[image-syncok,width=30]
 endif::[]
 | The status indicator uses icons to show the current status of your synchronization. The green circle with the white checkmark indicates that your synchronization is running and you are connected to your {ini_name} server.
 
 ifeval::["{targetbuild}" == "oc"]
-| image:using/oc-systray-icon-syncing.png[image-syncing,width=50]
+| image:using/oc-systray-icon-syncing.png[image-syncing,width=30]
 endif::[]
 ifeval::["{targetbuild}" == "kw"]
-| image:using/kw-systray-icon-syncing.png[image-syncing,width=50]
+| image:using/kw-systray-icon-syncing.png[image-syncing,width=30]
 endif::[]
 | The blue icon with white semicircles means that synchronization is in progress.
 
 ifeval::["{targetbuild}" == "oc"]
-| image:using/oc-systray-icon-paused.png[image-paused,width=50]
+| image:using/oc-systray-icon-paused.png[image-paused,width=30]
 endif::[]
 ifeval::["{targetbuild}" == "kw"]
-| image:using/kw-systray-icon-paused.png[image-paused,width=50]
+| image:using/kw-systray-icon-paused.png[image-paused,width=30]
 endif::[]
 | The yellow icon with parallel lines indicates that your synchronization is paused.
 
 ifeval::["{targetbuild}" == "oc"]
-| image:using/oc-systray-icon-offline.png[image-offline,width=50]
+| image:using/oc-systray-icon-offline.png[image-offline,width=30]
 endif::[]
 ifeval::["{targetbuild}" == "kw"]
-| image:using/kw-systray-icon-offline.png[image-offline,width=50]
+| image:using/kw-systray-icon-offline.png[image-offline,width=30]
 endif::[]
 | The gray icon with three white dots means that your Desktop App has lost its connection to the {ini_name} server.
 
 ifeval::["{targetbuild}" == "oc"]
-| image:using/oc-systray-icon-information.png[image-information,width=50]
+| image:using/oc-systray-icon-information.png[image-information,width=30]
 endif::[]
 ifeval::["{targetbuild}" == "kw"]
-| image:using/kw-systray-icon-information.png[image-information,width=50]
+| image:using/kw-systray-icon-information.png[image-information,width=30]
 endif::[]
 | The white circle with the letter `i` is the information icon. You should click on it to see what it has to tell you.
 
 ifeval::["{targetbuild}" == "oc"]
-| image:using/oc-systray-icon-error.png[image-error,width=50]
+| image:using/oc-systray-icon-error.png[image-error,width=30]
 endif::[]
 ifeval::["{targetbuild}" == "kw"]
-| image:using/kw-systray-icon-error.png[image-error,width=50]
+| image:using/kw-systray-icon-error.png[image-error,width=30]
 endif::[]
 | The red circle with the white `x` indicates a configuration error, such as an incorrect login or server URL.
 |===
