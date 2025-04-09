@@ -196,8 +196,8 @@ If you plan to use multiple accounts, consider using a common base location in t
 .Example for a common base folder named `sync`
 [source,plaintext,subs="attributes+,macros+"]
 ----
-`+C:\Users\xyz\+{ini_name}`    -> `+C:\Users\xyz\sync\+{ini_name}`
-`+C:\Users\xyz\otherAccount+` -> `+C:\Users\xyz\sync\otherAccount+`
+`+C:\Users\user_name\+{ini_name}`    -> `+C:\Users\user_name\sync\+{ini_name}`
+`+C:\Users\user_name\otherAccount+` -> `+C:\Users\user_name\sync\otherAccount+`
 ----
 ====
 
