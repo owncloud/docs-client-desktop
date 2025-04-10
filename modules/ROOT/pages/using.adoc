@@ -1,6 +1,6 @@
 = Using the Desktop App
 :toc: right
-:toclevels: 2
+:toclevels: 3
 :page-aliases: navigating.adoc
 :description: In everyday work, the Desktop App usually remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
 
@@ -258,7 +258,7 @@ Final step::
 When you are satisfied with the configuration you have made, click the btn:[Finish] button at the bottom right. The Desktop App will attempt to connect to your {ini_name} server.
 --
 
-=== Managing Accounts
+=== Manage Accounts
 
 You can add or remove existing accounts from the Desktop App. The following sections describe how to do this.
 
@@ -276,33 +276,65 @@ Allows you to log out of an account for security reasons without removing the sy
 Logs in after logging out to resume sync for all connections of this account.
 
 ** menu:Reconnect[] +
-May be necessary if there was an unrecoverable network problem and the account was disconnected.
+Synchronization occurs periodically, connecting to the server every few minutes. You may lose your connection if you unplug your network cable or switch to a different wireless network. In this case, a manual force reconnect button is available if you want to immediately restart sync for an account rather than wait for an automatic reconnect. This button is only available when the Desktop App is in reconnect state.
 
 ** menu:Show in web browser[] +
 Allows you to open the browser instead of the File Explorer to view all the data of the connected account.
 
+** menu:Remove[] +
+Lets you remove an account. See the xref:removing-an-account[Removing an Account] section below for details.
 
-==== Adding New Accounts
+==== Add New Accounts
 
 To add accounts to your Desktop App, click on the menu:Add Account[] image:using/add-account-icon.png[Add Account Icon, width=18] button on the top bar and follow the xref:connection-wizard[Connection Wizard]. The added account will appear as a new item in the main window at the top.
 
-==== Removing an Account
+==== Remove an Account
 
-To remove an account, select the account you want to remove in the top bar and click the menu:Manage Account[Remove] to remove it. Note that the account will be removed but no synchronized data deleted. Synchronized data needs to be removed manually. A good rule of thumb is to open the sync location with File Explorer before removing the account, which makes it easier to remove the data.
+To remove an account, select the account you want to remove in the top bar and click the menu:Manage Account[Remove] to remove it. Note that the account will be removed but no synchronized data deleted. Synchronized data needs to be removed manually. A good rule of thumb is to open the sync location with File Explorer before removing the account, which will make it easier to remove the data later.
 
-=== Configuring Common Settings
+== Sync Relationships
 
-The menu:Settings[] pane contains common settings that are available to all configured accounts. Here you can set network settings, define additional names to exclude from synchronization, and more.
+After you create an account, you can add new sync relationships, manage existing ones, or remove selected ones.
+
+=== Add Sync Relationships
+
+It is easy to add more sync relationships if required.
+
+* Click btn:[Add Folder] to open available folders that can be added.
+* Select the folder to add.
+* Define the path for the sync relationship data.
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-add-folder-menu.png[Add Folder, width=100]
+image:using/kw-windows-add-folder-clicked.png[Add Folder List, width=100]
+image:using/kw-windows-add-folder-path.png[Define Where to Store the Sync Relationship, width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+==== Define Available Folders on the Server
+
+To make a folder available for synchronization on the server, you must first set its properties to do so.
+
+[NOTE]
+====
+Changing the synchronization property is:
+
+* Only availabe on folders located in the {ini_name} root.
+* Not available in subfolders.
+* Not available for individual files.
+====
+
+In the {ini_name} browser UI, click the tree dots to the right of the root folder you want to enable or disable sync. Then select menu:Folder properties[Allow desktop sync] to the state you want to set.
+
+image:using/kw-browser-three-dots.png[Kiteworks UI Click Three Dots Menu, width=100]
+image:using/kw-browser-three-dots-folder-properties.png[Kiteworks UI Three Dots Menu Opened, width=130]
+endif::[]
+
+=== Manage Sync Relationships
+
+=== Remove Sync Relationships
 
 === Configuring Account Settings
-
-At the top of the window are tabs for each configured synchronization account and two more for Activity and Settings. Selecting one account, you have the following features available:
-
-* Connection status, showing which ownCloud server you are connected to, and your ownCloud username.
-* An *Account* button, which contains a dropdown menu with *Add New*, *Log Out*, and *Remove*.
-* Used and available space on the server.
-* Current synchronization status.
-* *Add Folder Sync Connection* button.
 
 The little button with three dots (the overflow menu) that sits to the right of the sync status bar offers four additional options:
 
@@ -328,14 +360,6 @@ Enable virtual file support::
 Enable the virtual file support for an account:
 +
 image:using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
-
-=== Account Reconnecting
-
-Synchronization happens on a regular basis and connects to the server every few minutes. A connection loss can occur when the network cable is unplugged or when switching to a different wireless network. In such a case a manual force reconnect button becomes available in case you want to immediately restart syncing for an account and not wait for an automatic reconnect. This button only becomes available if the Desktop app is in reconnection state.
-
-To manually force reconnecting for an account, select the account and click menu:Account[Reconnect]. 
-
-image::using/account-reconnect.png[Force reconnect, width=350,pdfwidth=60%]
 
 === Force Syncing a Folder
 
@@ -476,7 +500,7 @@ image::using/client12.png[server_notifications,width=350,pdfwidth=60%]
 
 == Settings Window
 
-The Settings Window has configuration options such as:
+The menu:Settings[] pane contains common settings that are available to all configured accounts. Here you can set network settings, define additional names to exclude from synchronization, and more.
 
 === General Settings
 
