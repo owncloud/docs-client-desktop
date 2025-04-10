@@ -296,22 +296,8 @@ To remove an account, select the account you want to remove in the top bar and c
 
 After you create an account, you can add new sync relationships, manage existing ones, or remove selected ones.
 
-=== Add Sync Relationships
-
-It is easy to add more sync relationships if required.
-
-* Click btn:[Add Folder] to open available folders that can be added.
-* Select the folder to add.
-* Define the path for the sync relationship data.
-
 ifeval::["{targetbuild}" == "kw"]
-image:using/kw-windows-add-folder-menu.png[Add Folder, width=100]
-image:using/kw-windows-add-folder-clicked.png[Add Folder List, width=100]
-image:using/kw-windows-add-folder-path.png[Define Where to Store the Sync Relationship, width=100]
-endif::[]
-
-ifeval::["{targetbuild}" == "kw"]
-==== Define Available Folders on the Server
+=== Define Available Folders on the Server
 
 To make a folder available for synchronization on the server, you must first set its properties to do so.
 
@@ -328,6 +314,20 @@ In the {ini_name} browser UI, click the tree dots to the right of the root folde
 
 image:using/kw-browser-three-dots.png[Kiteworks UI Click Three Dots Menu, width=100]
 image:using/kw-browser-three-dots-folder-properties.png[Kiteworks UI Three Dots Menu Opened, width=130]
+endif::[]
+
+=== Add Sync Relationships
+
+It is easy to add more sync relationships if required.
+
+* Click btn:[Add Folder] to open available folders that can be added.
+* Select the folder to add.
+* Define the path for the sync relationship data.
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-add-folder-menu.png[Add Folder, width=100]
+image:using/kw-windows-add-folder-clicked.png[Add Folder List, width=100]
+image:using/kw-windows-add-folder-path.png[Define Where to Store the Sync Relationship, width=100]
 endif::[]
 
 === Manage Sync Relationships
