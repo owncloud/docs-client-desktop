@@ -219,7 +219,7 @@ endif::[]
 Enter your {ini_name} login on the next screen::
 +
 --
-Note that with modern authentication methods such as OpenID Connect (OIDC), you will be redirected to a browser for authentication. Images may vary depending on your corporate setup:
+Note that with modern authentication methods such as OpenID Connect (OIDC), you will be redirected to a browser for authentication. Images and authentication methods may vary depending on your corporate setup:
 
 .Login with OIDC (Follow the web login process)
 ifeval::["{targetbuild}" == "oc"]
@@ -241,7 +241,7 @@ Advanced Configuration::
 --
 When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired.
 ifeval::["{targetbuild}" == "oc"]
-Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for synchronized data.
+Here you can specify the synchronization method, such as using the xref:vfs.adoc[Virtual Filesystem] if available on your operating system, what data you want to synchronize, or the location for the synchronized data.
 
 image:using/oc-wizard-all-set-advanced.png[Advanced configuration, width=100]
 endif::[]
@@ -296,10 +296,12 @@ To remove an account, select the account you want to remove in the top bar and c
 
 After you create an account, you can add new sync relationships, manage existing ones, or remove selected ones.
 
+For each action described, first select the account whose sync relationships you want to edit.
+
 ifeval::["{targetbuild}" == "kw"]
 === Define Available Folders on the Server
 
-To make a folder available for synchronization on the server, you must first set its properties to do so.
+To make a folder available for synchronization on {ini_name}, you must first set its properties to do so.
 
 [NOTE]
 ====
@@ -315,6 +317,8 @@ In the {ini_name} browser UI, click the tree dots to the right of the root folde
 image:using/kw-browser-three-dots.png[Kiteworks UI Click Three Dots Menu, width=100]
 image:using/kw-browser-three-dots-folder-properties.png[Kiteworks UI Three Dots Menu Opened, width=130]
 endif::[]
+
+NOTE: If a sync relationship has been established and you uncheck btn:[Allow desktop sync], the existing sync connection will not be affected. If the sync relationship is removed and you try to reestablish the relationship, the now unchecked folder will not appear in the list of available folders.
 
 === Add Sync Relationships
 
@@ -332,41 +336,47 @@ endif::[]
 
 === Manage Sync Relationships
 
+To manage a sync relationship, click on the btn:[Three Dots] button to open the menu as shown in the screenshot.
+
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-folder-menu.png[Folder Menu, width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-folder-menu.png[Folder Menu, width=100]
+endif::[]
+
+* With the btn:[Three Dots] menu you can:
+
+ifeval::["{targetbuild}" == "kw"]
+** menu:Show in Explorer[] +
+Opens your local {ini_name} sync folder for this sync relationship.
+
+** menu:Show in web browser[] +
+Opens {ini_name} via the browser.
+
+** menu:Force sync now[] +
+If you need to synchronize data immediately, such as when you are traveling and need to continue working offline, you can force a folder to sync before you go offline.
+
+** menu:Pause sync[] / menu:Restart sync[] +
+Pauses or restarts a paused sync operations.
+
+** menu:Remove folder sync connection[] +
+See the section xref:remove-sync-relationships[Remove Sync Relationships] below for details.
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+** Enable virtual file support
+Enable virtual file support for this sync relationship, if supported by the operating system.
+endif::[]
+
 === Remove Sync Relationships
 
-=== Configuring Account Settings
+As part of the xref:manage-sync-relationships[Manage Sync Relationships] as described above, you can remove a folder from any synchronization activity. Note that the folder will be removed but no synchronized data deleted. Synchronized data needs to be removed manually. A good rule of thumb is to open the sync location with File Explorer before removing the account, which will make it easier to remove the data later.
 
-The little button with three dots (the overflow menu) that sits to the right of the sync status bar offers four additional options:
+Note that if you create a new sync connection for the previously removed folder, the Desktop App will not use the existing folder, but will create a new one.
 
-Show in Explorer::
-Opens your local ownCloud sync folder.
-
-Show in web browser::
-Opens your ownCloud via the browser.
-
-Choose What to Sync::
-Select the folders and mounts in the main window to be synced. This appears only when your file tree is collapsed, and expands the file tree.
-
-Force sync now / Restart sync::
-Start the sync process immediately - if none is running, or restart a running sync process.
-
-Pause Sync::
-Pauses sync operations without making any changes to your account. It will continue to update file and folder lists, without downloading or updating files.
-
-Remove Folder Sync Connection::
-Stop all sync activity.
-
-Enable virtual file support::
-Enable the virtual file support for an account:
-+
-image:using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
-
-=== Force Syncing a Folder
-
-If there is data to be synced immediately, like when you are on the road and need to continue working offline, you can force syncing a folder of an account before the network connection goes offline. To do so, select the account and then the folder to force sync and the menu:Three Dots[Force sync now] button. 
-
-image::using/account-force-sync-now.png[Force Sync Now, width=350,pdfwidth=60%]
-
+ifeval::["{targetbuild}" == "oc"]
 === Spaces
 
 Spaces are only available when connected to an Infinite Scale backend. In most cases, they are similar to folders or external mounts when the backend is ownCloud Server and one might not see differences, though some exist:
@@ -430,22 +440,22 @@ You can share with internal ownCloud users and groups and create links to share 
 +
 --
 ifeval::["{targetbuild}" == "oc"]
-image::using/oc-windows-systray-icon-menu.png[Systray Menu, width=200]
+image::using/oc-windows-systray-icon-menu.png[Systray Menu, width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-image:using/kw-windows-systray-icon.png[Systray Icon, width=200]
-image:using/kw-windows-systray-icon-menu.png[Systray Menu, width=200]
+image:using/kw-windows-systray-icon.png[Systray Icon, width=100]
+image:using/kw-windows-systray-icon-menu.png[Systray Menu, width=100]
 endif::[]
 --
 
 * Go to the file or folder you want to share.
 +
-image:using/explorer-files-view.png[image, width=350]
+image:using/explorer-files-view.png[image, width=100]
 
 * Right-click the file or folder you want to share to expose the share dialog which opens the context menu, and click menu:ownCloud[Share].
 +
-image:using/owncloud-share.png[Sharing Context Menu, width=350,pdfwidth=70%]
+image:using/owncloud-share.png[Sharing Context Menu, width=100]
 
 * Depending on the backend used, different things can happen:
 
@@ -462,12 +472,13 @@ The share dialog opens which has all the same options as your ownCloud Server We
 |===
 | Sharing with users and groups
 | Public sharing
-a| image::using/share-user.png[Sharing with users and groups, width=350,pdfwidth=60%]
-a| image::using/share-public.png[Public sharing, width=350,pdfwidth=60%]
+a| image::using/share-user.png[Sharing with users and groups, width=100]
+a| image::using/share-public.png[Public sharing, width=100]
 |===
 
 Use menu:ownCloud[Share] from the context menu to see who you have shared with and to modify their permissions or to delete the share.
 --
+endif::[]
 
 == Activity Window
 
@@ -490,34 +501,48 @@ On Linux, you can do the same with menu:mouse[right-click > Show file in browser
 
 In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL+a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
 
+ifeval::["{targetbuild}" == "oc"]
 === Server Notifications
 
-The desktop client will display notifications from your ownCloud server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
+The Desktop App will display notifications from your {ini_name} server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
 
 For example, when a user on a remote ownCloud creates a new Federated share for you, you can accept it from your desktop client. This also displays notifications sent to users by the ownCloud admin via the Announcements app.
 
-image::using/client12.png[server_notifications,width=350,pdfwidth=60%]
+image:using/oc-server-notifications.png[Server Notifications,width=100]
+endif::[]
 
 == Settings Window
 
 The menu:Settings[] pane contains common settings that are available to all configured accounts. Here you can set network settings, define additional names to exclude from synchronization, and more.
 
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-settings-menu.png[Settings Menu,width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-settings-menu.png[Settings Menu,width=100]
+endif::[]
+
 === General Settings
 
-* Launch on System Startup
-* Show Desktop Notifications
-* Use Monochrome Icons
+* Launch on System Startup.
+ifeval::["{targetbuild}" == "oc"]
+* Show Desktop Notifications.
+endif::[]
+* Use Monochrome Icons.
+* Select a non-default language from a menu.
 
 === Advanced
 
-* Show sync folders in Explorer's Navigation Pane
 * Sync hidden files
 +
 NOTE: Hidden files are files starting with a dot like `.filename.txt`, but not files which are hidden by setting a file attribute.
 
-* Show crash reporter and the
-* Buttons for btn:[Edit Ignored Files] (xref:using-the-ignored-files-editor[see below]) and btn:[Log settings]
+* Show crash reporter.
+* Define where to move remotely deleted files.
+* Buttons for btn:[Edit Ignored Files] (xref:using-the-ignored-files-editor[see below]) and btn:[Log settings].
 
+ifeval::["{targetbuild}" == "oc"]
 === Advanced - Approval Synchronizing Folders
 
 This is only valid if not using the xref:vfs.adoc[VFS] feature.
@@ -525,20 +550,25 @@ This is only valid if not using the xref:vfs.adoc[VFS] feature.
 * Ask confirmation before downloading folders larger than [folder size]
 * Ask for confirmation before synchronizing external storages
 +
-image:using/client-9.png[advanced approval, width=350,pdfwidth=60%]
+image:using/oc-windows-settings-menu.png[advanced approval, width=100]
 
 TIP: While you can select whether to show or hide the crash reporter, from the Settings Window, you can also configure whether to show or hide it from the xref:advanced_usage/configuration_file.adoc#section-general[general section of the configuration file] as well. Doing so can help with debugging on-startup-crashes.
+endif::[]
 
 === Using the Network Window
 
-The Network settings window enables you to define network proxy settings and defines limits to the download and upload bandwidth.
+The Network Settings section allows you to configure various network related settings.
 
-Proxy Settings::
-* No proxy
-* Use system proxy
-* Specify proxy manually as
-** HTTP(S)
-** SOCKS5
+* Pause synchronization with metered Internet connections. +
+This can be useful when using a cellular connection and roaming. 
+
+* The Proxy settings contain:
+** No proxy
+** Use system proxy
+** Specify proxy manually
+
+ifeval::["{targetbuild}" == "oc"]
+IMPORTANT: The bandwidth settings are deprecated. When the last manually defined setting is reset to default, the entire bandwidth section will no longer be visible. The bandwidth section will be removed in a future release.
 
 Download and Upload Bandwidth::
 
@@ -550,48 +580,59 @@ When activated, the client limits the upload or download bandwidth to 25% of the
 
 * Limit to
 +
-image:using/settings_network.png[Network Settings,width=350,pdfwidth=60%]
+image:using/settings_network.png[Network Settings,width=100]
 
 [NOTE]
 ====
 Enabling this feature will affect all new transfers (next upload chunk or next download), but not affect already running transfers (current upload chunk or current download). Changing this setting or disabling this feature with take effect immediately.
 ====
+endif::[]
 
-=== Using the Ignored Files Editor
+=== The Ignored Files Editor
 
-You might have some local files or directories that you do not want to backup and store on the server. To identify and exclude these files or directories, you can use the menu:Settings[Advanced > Ignored Files Editor].
+IMPORTANT: This section is for advanced users only!
+
+==== Using the Ignored Files Editor
+
+You may have some local files or directories that you do not want to backup and store on the server. To identify and exclude these files or directories, you can use the menu:Settings[Advanced > Ignored Files Editor].
 
 [NOTE]
 ====
 Note that rules for ignored files are also applied to folders.
 
-image:using/ignored_files_editor.png[Ingnored Files Editor,width=350,pdfwidth=60%]
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+endif::[]
 ====
 
-For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are contained in a system file. (typically `sync-exclude.lst`) located in the ownCloud Desktop app directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to show the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
+For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are stored in a system file. (typically `sync-exclude.lst`) located in the {ini_name} Desktop App directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to display the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
 
-NOTE: Modifying the global exclude definition file might render the client unusable or result in undesired behavior.
+NOTE: Changing the global exclude definition file can render the client unusable or cause undesirable behavi
 
-Each line in the editor contains an ignore pattern string. When creating custom patterns, in addition to being able to use normal characters to define an ignore pattern, you can use wildcards characters for matching values. As an example, you can use an asterisk (`*`) to identify an arbitrary number of characters or a question mark (`?`) to identify a single character.
+Each line in the editor contains an ignore pattern string. When creating custom patterns, in addition to using normal characters to define an ignore pattern, you can use wildcard characters to match values. For example, you can use an asterisk (`*`) to match any number of characters, or a question mark (`?`) to match a single character.
 
-Patterns that end with a slash character (`/`) are applied to only directory components of the path being checked.
+Patterns that end with a slash (`/`) are applied only to directory components of the path being scanned.
 
-NOTE: Custom entries are currently not validated for syntactical correctness by the editor, so you will not see any warnings for bad syntax. If your synchronization does not work as you expected, check your syntax.
+NOTE: User-defined entries are not currently checked for syntactical correctness by the editor, so you will not see any warnings about bad syntax. If your synchronization does not work as expected, check your syntax.
 
-NOTE: A restart of the client is needed in order for the changes to take effect. 
+NOTE: A restart of the Desktop App is required in order for the changes to take effect. 
 
-Each pattern string in the list is preceded by a checkbox. When the checkbox contains a check mark, in addition to ignoring the file or directory component matched by the pattern, any matched files are also deemed "fleeting metadata" and removed by the client.
+Each pattern string in the list is preceded by a checkbox. If the checkbox contains a check mark, not only will the file or directory component matching the pattern be ignored, but any matching files will also be considered "ephemeral metadata" and removed by the Desktop App.
 
 In addition to excluding files and directories that use patterns defined in this list:
 
-* The ownCloud Client always excludes files containing characters that cannot be synchronized to other file systems. 
-* Files are removed that cause individual errors three times during a synchronization. However, the client provides the option of retrying a synchronization three additional times on files that produce errors.
+* The Desktop App always excludes files that contain characters that cannot be synchronized with other file systems.
+* Files that cause individual errors three times during a sync will be removed. However, the client provides the option to retry a synchronization three additional times for files that cause errors.
 
-=== Ignored Files
+==== Default Ignored Files
 
-The ownCloud Desktop App supports the ability to exclude or ignore certain files from the synchronization process. Some system-wide file patterns that are used to exclude or ignore files are included with the Desktop App by default and the ownCloud Desktop App provides the ability to add custom patterns.
+The Desktop App supports the ability to exclude or ignore certain files from the sync process. Some system-wide file patterns that are used to exclude or ignore files are included by default. You can also add your own patterns.
 
-By default, the ownCloud Desktop App ignores the following files:
+By default, the Desktop App ignores the following files:
 
 * Files matched by one of the patterns defined in the Ignored Files Editor.
 * Files starting with the following pattern are reserved for journaling: +
@@ -632,23 +673,3 @@ Pattern and File Match Examples::
 | `moo/`  | `map/moo/`, `moo/`
 |===============================
 --
-
-=== The Sync Journal
-
-The Desktop App stores the ETag number in a per-directory database, called the _journal_. This database is a hidden file contained in the directory to be synchronized.
-
-If the journal database is removed, the ownCloud Desktop App CSync backend rebuilds the database by comparing the files and their modification times. This process ensures that both server and Desktop App are synchronized using the appropriate NTP time before restarting the Desktop App following a database removal.
-
-== Removing a Synchronization Connection
-
-When you remove a sync connection, all synchronized data remains local and is not deleted. To remove a sync connection, switch to the account and select the sync connection to remove. Click the btn:[...] (three dots) icon, then select to remove the folder sync connection, and finally confirm the removal:
-
-TIP: Before disconnecting, click btn:[Show in Explorer]. This will open the source folder that contains all the synchronized data for this connection. This makes it easier to move or delete this folder, since you do not have to search for it after removing it.
-
-ifeval::["{targetbuild}" == "kw"]
---
-image:using/kw-windows-sync-folder-three-dot-selector.png[Select the Three Dots Menu,width=90]
-image:using/kw-windows-sync-folder-three-dot-remove.png[Select Remove Folder Sync Connection,width=100]
-image:using/kw-windows-sync-folder-confirm-removal.png[Confirm Removal,width=100]
---
-endif::[]
