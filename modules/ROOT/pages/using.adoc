@@ -482,24 +482,34 @@ endif::[]
 
 == Activity Window
 
-The Activity window contains the log of your recent activities, organized over three tabs:
+The Activity window contains the log of your recent activities, organized in the following tabs:
 
-Server Activities::
-Includes new shares and files downloaded and deleted.
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-activity-pane-server.png[Activity Pane, width=100]
 
-Sync Protocol::
-Displays local activities such as which local folders your files went into.
+* Server Activities: +
+Includes new shares and downloaded and deleted files
 
-Not Synced::
-Shows errors such as files not synced because of being excluded or any other failing status.
-+
-image:using/client-8.png[not_synced, width=350,pdfwidth=60%]
+* Sync Protocol: +
+Shows local activity, such as which local folders your files have gone to.
+endif::[]
 
-In Windows, double-clicking an activity entry pointing to an existing file in tabs *Server Activities* or *Sync Protocol*, will open the folder containing the file and highlight it.
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-activity-pane-local.png[Activity Pane, width=100]
 
-On Linux, you can do the same with menu:mouse[right-click > Show file in browser]
+* Local Activities: +
+Includes files uploaded, downloaded or deleted. +
+Note that menu:mouse[right click] will opens a menu for more actions.
+endif::[]
 
-In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL+a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
+* Not Synced: +
+Shows errors such as files not synced because they are excluded or any other error status.
+
+In Windows, double-clicking an activity entry pointing to an existing file will open the folder containing the file and highlight it.
+
+On Linux or macOS, you can do the same with menu:mouse[right-click > Show file in browser]
+
+In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL + a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
 
 ifeval::["{targetbuild}" == "oc"]
 === Server Notifications
