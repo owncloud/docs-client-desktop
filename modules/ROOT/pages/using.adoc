@@ -499,7 +499,7 @@ image:using/kw-windows-activity-pane-local.png[Activity Pane, width=100]
 
 * Local Activities: +
 Includes files uploaded, downloaded or deleted. +
-Note that menu:mouse[right click] will opens a menu for more actions.
+Note that menu:mouse[right click] opens a menu for more actions.
 endif::[]
 
 * Not Synced: +
