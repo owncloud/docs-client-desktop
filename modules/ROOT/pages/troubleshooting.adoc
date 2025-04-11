@@ -46,8 +46,8 @@ This can happen if the default permissions of the folder containing the synchron
 ifeval::["{targetbuild}" == "oc"]
 [role=center,width=100%,cols="50%,50%"]
 |===
-a| image::troubleshooting/oc-folder-properties.png[Folder Properties,width=150]
-a| image::troubleshooting/oc-advanced-security-settings.png[Advanced Security Settings,width=250]
+a| image::troubleshooting/oc-windows-folder-properties.png[Folder Properties,width=150]
+a| image::troubleshooting/oc-windows-advanced-security-settings.png[Advanced Security Settings,width=250]
 |===
 endif::[]
 
@@ -264,7 +264,7 @@ See the: {install_log_url}[How do I create an installation log] documentation fo
 
 ==== Installer Logging for macOS
 
-The macOS installer comes with its own logging console. Just run the \*.PKG as usual. At the first install screen in the menu bar, click menu:Window[Installer Log (Command + L)].
+The macOS installer comes with its own logging console. Just run the +*.PKG+ file as usual. At the first install screen in the menu bar, click menu:Window[Installer Log (Command + L)].
 
 {empty} +
 

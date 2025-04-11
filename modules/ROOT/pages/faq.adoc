@@ -123,7 +123,7 @@ Due to technical limitations, the Desktop App cannot detect local changes if the
 The Desktop App does not provide a way to change the location of the sync folder directly. However, there is a way to do it without fully resyncing. Do this for each synchronization connection that you want to move to a new local destination:
 
 . First, select the synchronization connection and remove it. +
-For details how to do so see xref:using.adoc#removing-a-synchronization-connection[Removing a Synchronization Connection].
+For details how to do so see xref:using.adoc#remove-sync-relationships[Remove Sync Relationships].
 
 . Then, move the folder to the target location. +
 The example moves `My Folder` from `{ini_name}` -> `{ini_name} New`. +
@@ -182,7 +182,7 @@ On Linux or macOS, if the synchronized folder contains a large number of subfold
 
 In this case, the Desktop App will not be able to immediately start the synchronization process when a file in one of the unmonitored folders changes. Instead, the Desktop App will display a warning and manually check the folders for changes at regular intervals of two hours by default.
 
-This problem can be mitigated by setting the `fs.inotify.max_user_watches` to a higher value such as `524288` (2^19^) permanently in the `/etc/sysctl.conf` configuration file. Read the {using-sysctl-url}[How to reload sysctl.conf variables in Linux, windows=_blank] guide for more details.
+This problem can be mitigated by setting the `fs.inotify.max_user_watches` to a higher value such as `524288` (2^19^) permanently in the `/etc/sysctl.conf` configuration file. Read the {using-sysctl-url}[How to reload sysctl.conf variables in Linux, window=_blank] guide for more details.
 
 Linux::
 +

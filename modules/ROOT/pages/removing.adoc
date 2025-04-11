@@ -1,6 +1,6 @@
 = Removing the Desktop App
 :toc: right
-:description: This page describes the necessary steps to remove the Desktop App.
+:description: This page describes the steps necessary to remove the Desktop App, if permitted by the company.
 
 include::partial$conditional_naming.adoc[]
 

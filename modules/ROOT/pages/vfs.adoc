@@ -74,7 +74,7 @@ A virtual file system needs a root folder where all synchronization items will b
 
 ==== Restrictions
 
-Similar to OneDrive, since it also uses Microsoft's virtual file system, there are some additional restrictions that should be considered, such as _maximum file size_, _invalid file or folder names_, and so on. See the {onedrive-restrictions-url}[Restrictions and limitations in OneDrive and SharePoint] and xref:filenames.adoc[Filename Considerations] documentation for more information.
+Similar to OneDrive, since it also uses Microsoft's virtual file system, there are some additional restrictions that should be considered, such as _maximum file size_, _invalid file or folder names_, and so on. See the {onedrive-restrictions-url}[Restrictions and limitations in OneDrive and SharePoint, window=_blank] and xref:filenames.adoc[Filename Considerations] documentation for more information.
 
 == Desktop App's VFS Implementation
 
