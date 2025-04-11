@@ -2,7 +2,7 @@
 :toc: right
 :toclevels: 3
 :page-aliases: navigating.adoc
-:description: In everyday work, the Desktop App usually remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
+:description: In everyday work, the Desktop App usually remains in the background and is visible as an icon in the system tray (Windows, KDE, GNOME if extra configured), menu bar (macOS), or notification area (Linux).
 
 :oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
 :theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01
@@ -366,8 +366,8 @@ See the section xref:remove-sync-relationships[Remove Sync Relationships] below 
 endif::[]
 
 ifeval::["{targetbuild}" == "oc"]
-** Enable virtual file support
-Enable virtual file support for this sync relationship, if supported by the operating system.
+** menu:Enable virtual file support[] / menu:Disable virtual file support[] +
+Enable or disable virtual file support for this sync relationship, if supported by the operating system.
 endif::[]
 
 === Remove Sync Relationships
@@ -407,23 +407,23 @@ In case selective sync has been chosen, different options are available to add r
 
 ** To add a resource to be synced as folder to the *same base path*, set the check mark. To remove a resource from syncing, deselect it. To finalize the selection, click the btn:[Apply] button on the bottom right.
 +
-image:using/add-resource-server-same-folder.png[Add resource same path, width=300,pdfwidth=60%]
+image:using/add-resource-server-same-folder.png[Add resource same path, width=100]
 
 ** To add a resource to be synced as folder to a *different path* than the account base path, click in the bottom left corner on btn:[Add Folder]. Select the path and the resources to sync and complete the process.
 +
-image:using/add-resource-server-different-folder.png[Add resource different path, width=300,pdfwidth=60%]
+image:using/add-resource-server-different-folder.png[Add resource different path, width=100]
 
 ==== Using an Account That Connects To Infinite Scale:
 
 When an account connects to Infinite Scale, the list of currently synced spaces looks like the image below. It also shows the state of the synchronization process:
 
-image::using/show-resources-ocis.png[Show resources Infinite Scale, width=300,pdfwidth=60%]
+image::using/show-resources-ocis.png[Show resources Infinite Scale, width=100]
 
 When a new space gets added via the Web UI, it will not be automatically listed here as this window only shows spaces that are already synchronized.
 
 To add a new space for synchronization, click the btn:[Add Space] button, select the space and define the path if you do not want to take the default base location. Finalize with btn:[Add Sync Connection]:
  
-image::using/add-resource-ocis.png[Add resource Infinite Scale, width=300,pdfwidth=60%]
+image::using/add-resource-ocis.png[Add resource Infinite Scale, width=100]
 
 == Sharing From Your Desktop
 

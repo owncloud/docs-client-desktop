@@ -143,11 +143,9 @@ endif::[]
 --
 IMPORTANT: During the process of moving folders, do not change any data locally or on the server. This will cause synchronization conflicts that must be resolved manually.
 
-For details on how to add a new synchronization connection, see xref:using.adoc#removing-a-synchronization-connection[Adding a Synchronization Connection].
+For details on how to add a new synchronization relationship, see xref:using.adoc#add-sync-relationships[Add Sync Relationships].
 
-[.yellow]#needs a new chapter in using.adoc#
-
-When the new sync connection is added, the first sync will detect the previous sync state and data, preventing a full re-sync. Any upcoming changes will be synchronized as usual.
+When the new sync relationship is added, the first sync will detect the previous sync state and data, preventing a full re-sync. Any upcoming changes will be synchronized as usual.
 --
 
 == Error Messages

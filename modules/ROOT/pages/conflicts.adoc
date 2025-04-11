@@ -19,7 +19,22 @@ When you try to upload your local changes, the Desktop App will notice that the 
 
 In this situation, the `mydata.txt` file has the remote changes and will continue to be updated with further remote changes as they occur. Your local changes have not been sent to the server unless you have enabled xref:force-uploading-conflicted-files[Force Uploading Conflicted Files].
 
+////
+[.yellow]#we need to solve this#
+
+note that I currently dont know how to identify a conflict:
+
+* for vfs, these icons are generally avaialble (we use onedrive): https://en.wikipedia.org/wiki/List_of_shell_icon_overlay_identifiers but it is unclear which one we use for a conflict
+* systray icons we have control over, but which one are we using for a conflict
+* for non-vfs we have:
+** overlay icons:
+*** windows: we have and use overlay icons as long we are not using vfs, the exclamation mark is used
+*** linux and macos: we currently do not use them due to lack of overlay implementation
+
+the following text can be added (to be verified before !!!) when the situation is solved:
+
 The Desktop App notifies you of this situation via system notifications in the system tray. An icon displays a yellow "unresolved conflicts" badge in the Desktop App's Account Settings window. Clicking this badge displays a list of unresolved conflicts. Clicking one of them opens an Explorer window pointing to the file.
+////
 
 To resolve this conflict, open both files, compare the differences, and copy your local changes from the "conflicted copy" file to the base file, if applicable. In this example, you could change `mydata.txt` to say "local and remote contents" and delete the file with "conflicted copy" in its name. This will resolve the conflict.
 
