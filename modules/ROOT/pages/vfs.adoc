@@ -5,6 +5,7 @@
 :wikipedia-url: https://en.wikipedia.org/wiki/Virtual_file_system
 :placeholder-files-url: https://docs.microsoft.com/en-us/windows/win32/cfapi/build-a-cloud-file-sync-engine
 :onedrive-restrictions-url: https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa?ui=en-US&rs=en-US&ad=US#filenamepathlengths
+:storage-sense-url: https://support.microsoft.com/en-us/windows/manage-drive-space-with-storage-sense-654f6ada-7bfc-45e5-966b-e24aded96ad5
 
 include::partial$conditional_naming.adoc[]
 
@@ -14,7 +15,7 @@ include::partial$conditional_naming.adoc[]
 
 * Full access to files and folders without the need for downloads.
 * Selectively synchronize folders and files based on user needs.
-* Optimize the use of space on the Desktop App.
+* Optimize space with the Desktop App.
 
 IMPORTANT: The virtual filesystem is only available for Windows clients.
 
@@ -158,7 +159,7 @@ attrib +U -P .\* /D /S
 
 == Manage Drive Space With Storage Sense
 
-Microsoft provides a mechanism called `Storage Sense` that can automatically free up disk space for applications that use VFS. This is done by converting files that were set to be xref:vfs-states[locally available] back to cloud-based content that is xref:vfs-states[placeholder files] on the local drive, which takes up no space.
+Microsoft provides a mechanism called {storage-sense-url}[Storage Sense, window=_blank] that can automatically free up disk space for applications that use VFS. This is done by converting files that were set to be xref:vfs-states[locally available] back to cloud-based content that is xref:vfs-states[placeholder files] on the local drive, which takes up no space.
 
 . Enable or disable Storage Sense via Windows menu:Settings[System > Storage > Storage]:
 . Configure the general behavior or each VFS relationship individually via the following section:

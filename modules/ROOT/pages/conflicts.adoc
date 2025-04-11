@@ -31,6 +31,8 @@ note that I currently dont know how to identify a conflict:
 *** windows: we have and use overlay icons as long we are not using vfs, the exclamation mark is used
 *** linux and macos: we currently do not use them due to lack of overlay implementation
 
+any change also impacts vfs.adoc#vfs-states
+
 the following text can be added (to be verified before !!!) when the situation is solved:
 
 The Desktop App notifies you of this situation via system notifications in the system tray. An icon displays a yellow "unresolved conflicts" badge in the Desktop App's Account Settings window. Clicking this badge displays a list of unresolved conflicts. Clicking one of them opens an Explorer window pointing to the file.
