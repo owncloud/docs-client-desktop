@@ -83,7 +83,7 @@ endif::[]
 
 == Install or Deploy on Windows
 
-Note that the filenames shown in the following sections are examples only and may need to be replaced with their real names.
+NOTE: Filenames shown in the following sections are examples only and may need to be replaced with their real names.
 
 === Installation on Windows
 
