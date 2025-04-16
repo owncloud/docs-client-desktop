@@ -12,7 +12,7 @@ include::partial$conditional_naming.adoc[]
 
 Use the appropriate command depending on the environment you installed it. The example uses Windows:
  
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 {bin_name}.exe [options]
 ----

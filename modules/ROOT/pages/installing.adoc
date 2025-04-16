@@ -116,7 +116,7 @@ The binary provided has additional features relevant to deployment.
 
 The MSI installer has several features that can be installed or removed individually. You can also control from the command line if you want to automate the installation. To do so, run the following command:
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi
 ----
@@ -125,7 +125,7 @@ This command installs the Desktop App in the default location with the default f
 
 For example, if you want to disable desktop shortcut icons, you can simply change the above command to the following:
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi REMOVE=DesktopShortcut
 ----
@@ -167,7 +167,7 @@ required
 
 The Desktop App comes with a few binaries that include the Desktop App itself, a command line interface, and a crash reporter. You can choose to install only the Desktop App by running the following command:
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT=Client
 ----
@@ -176,14 +176,14 @@ For example, if you want to install everything except the `DesktopShortcut` and 
 
 * You explicitly name all the features you really want to install (whitelist), where `Client` is always installed anyway.
 +
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT=StartMenuShortcuts
 ----
 
 * You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties.
 +
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi NO_DESKTOP_SHORTCUT="1" NO_SHELL_EXTENSIONS="1"
 ----
@@ -198,14 +198,14 @@ You can change the installed features later by using the `REMOVE` and `ADDDEFAUL
 
 * If you want to add the desktop shortcut later, run the following command:
 +
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT="DesktopShortcut"
 ----
 
 * If you want to remove it, just run the following command:
 +
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi REMOVE="DesktopShortcut"
 ----
@@ -220,7 +220,7 @@ NOTE: You cannot specify `REMOVE` during the initial installation because it wil
 
 You can set the installation folder by specifying the `INSTALLDIR` property like this.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi INSTALLDIR="C:\Program Files\Non Standard {ini_name} Client Folder"
 ----
@@ -232,7 +232,7 @@ ifeval::["{targetbuild}" == "oc"]
 
 To disable automatic updates, you can pass the `SKIPAUTOUPDATE` property.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /passive /i {bin_name}-{client-version}.x64.msi SKIPAUTOUPDATE="1"
 ----
@@ -242,7 +242,7 @@ endif::[]
 
 To launch the Desktop App automatically after installation, you can pass the `LAUNCH` property.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /i {bin_name}-{client-version}.x64.msi LAUNCH="1"
 ----
@@ -255,14 +255,14 @@ NOTE: This option does not have any effect without GUI.
 
 The {ini_name} Desktop App schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded. If you're taking care of the reboot yourself, you can set the `REBOOT` property.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /i {bin_name}-{client-version}.x64.msi REBOOT=ReallySuppress
 ----
 
 This will cause msiexec to exit with an ERROR_SUCCESS_REBOOT_REQUIRED (3010) error. If your deployment tool interprets this as a real error and you want to avoid that, you can set `DO_NOT_SCHEDULE_REBOOT` instead.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /i {bin_name}-{client-version}.x64.msi DO_NOT_SCHEDULE_REBOOT="1"
 ----

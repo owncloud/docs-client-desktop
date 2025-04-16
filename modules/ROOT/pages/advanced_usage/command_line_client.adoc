@@ -14,7 +14,7 @@ include::partial$conditional_naming.adoc[]
 
 To invoke `{bin_name}cmd`, you must provide the local and the remote repository URL using the following command. Note that for Windows, you must be in the directory where {ini_name} is installed while on Linux, you can use the command from anywhere. To show its location in Linux, type `whereis {bin_name}cmd`.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 {bin_name}cmd [options] [arguments]
 ----
@@ -116,7 +116,7 @@ endif::[]
 
 To synchronize the {bin_name} directory `Test` to the local directory `media/test`, through a proxy listening on port `8080`, and on a gateway machine using IP address `192.168.178.1`, the command line would be:
 
-[source,console,subs="attributes+,macros+"]
+[source,bash,subs="attributes+,macros+"]
 ----
 {bin_name}cmd +--httpproxy http://192.168.178.1:8080 \+
               +$HOME/media/test \+

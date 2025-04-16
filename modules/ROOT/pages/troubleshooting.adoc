@@ -269,7 +269,7 @@ QT_LOGGING_RULES='*=false;sync.httplogger=true' \
 
 If you experience problems, you can run the installer with logging enabled. Replace the filename, which is just an example, as needed:
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
 msiexec /i {bin_name}-{client-version}.x64.msi /L*V "C:\log\example.log"
 ----
