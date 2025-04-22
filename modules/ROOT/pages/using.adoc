@@ -332,7 +332,7 @@ NOTE: If a sync relationship has been established and you uncheck btn:[Allow des
 
 === Add Sync Relationships
 
-It is easy to add more sync relationships if required.
+It is easy to add more sync relationships if required. Note that the steps to complete adding a sync relationship vary depending on the operating system you are using. The screenshots show the steps when using Windows.
 
 * Click btn:[Add Folder] to open available folders that can be added.
 * Select the folder to add.
