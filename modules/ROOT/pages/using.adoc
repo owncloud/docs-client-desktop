@@ -346,7 +346,7 @@ endif::[]
 
 === Manage Sync Relationships
 
-To manage a sync relationship, click on the btn:[Three Dots] button to open the menu as shown in the screenshot.
+To manage a sync relationship, click on the btn:[Three Dots] button to open the menu as shown in the screenshot. Note that the list varies depending on the operating system you are using. The screenshots shows the list when using Windows.
 
 ifeval::["{targetbuild}" == "oc"]
 image:using/oc-windows-folder-menu.png[Folder Menu, width=100]
