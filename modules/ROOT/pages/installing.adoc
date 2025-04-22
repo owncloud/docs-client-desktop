@@ -414,7 +414,7 @@ endif::[]
 
 === AppImages
 
-AppImages require one package to be installed before usage which is `libfuse2t64`. Check the following procedure if it is already present and how to install if not. Note that if there is no installatin candiate for `libfuse2t64`, use `libfuse2` instead. Installing libfuse v2 does no harm if libfuse v3 is already installed.
+AppImages require one package to be installed before usage which is `libfuse2t64`. Check the following procedure if it is already present and how to install if not. Note that if there is no installation candiate for `libfuse2t64`, use `libfuse2` instead. Installing libfuse v2 does no harm if libfuse v3 is already installed.
 
 Check the _libfuse2t64_ package and install if required::
 --
