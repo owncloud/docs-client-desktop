@@ -51,11 +51,9 @@ An empty representation of the file and is only available if the sync service is
 * *Syncing file:* +
 The file is planned for or currently in the process of synchrinozation..
 
-The following picture shows how the file statuses: +
-_full pinned_, _full_, _placeholder_ and _syncing_ +
-are displayed in File Explorer:
+The following picture shows how the file statuses: _full pinned_, _full_, _placeholder_ and _syncing_ are displayed in File Explorer:
 
-image::vfs/vfs-ms-cloud-file-states-file-explorer.png[File States]
+image:vfs/vfs-ms-cloud-file-states-file-explorer.png[File States]
 --
 
 === Limitations and Restrictions
