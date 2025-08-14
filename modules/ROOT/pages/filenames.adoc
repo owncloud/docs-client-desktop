@@ -2,34 +2,73 @@
 :toc: right
 :description: When using the Desktop App, depending on the operating system (OS) you are using, file and folder names and their lengths can have different restrictions.
 
-:control_code_chart-url: https://en.wikipedia.org/wiki/ASCII#Control_code_chart
+:wiki-fs-limits-url: https://en.wikipedia.org/wiki/Comparison_of_file_systems#Limits
+:file-path-limitation-url: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry#enable-long-paths-in-windows-10-version-1607-and-later
+:control-code-chart-url: https://en.wikipedia.org/wiki/ASCII#Control_code_chart
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
 {description} Creating files and folders with allowed names or maximum lengths on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations regarding file and folder names on different operating systems.
 
-NOTE: This is not an ownCloud rule but an OS dependency
+[NOTE]
+====
+This is not a
+ifeval::["{targetbuild}" == "oc"]
+// a or an
+n
+endif::[]
+{ini_name} rule but an OS dependency.
+====
 
 [TIP]
 .Here are some rules of thumb
 ====
 . Do not use any of the mentioned characters or words in any OS when using the Desktop App.
-. When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB, file and folder names on Linux/Unix must comply with the Windows rules for successful syncing.
-. When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB and you want to just rename the file with different casings, rename the file to a total different name, let it sync and then rename it again to the name that you want.
+. When the Desktop App is on Linux or macOS and the target mount to sync on is on Windows, file and folder names on Linux or macOS must comply with the Windows rules for successful syncing.
+. When the Desktop App is on Linux or macOS and the target mount to sync on is on Windows and you want to just rename the file with different casings, rename the file to a total different name, let it sync and then rename it again to the name that you want.
 . When the source file is on an environment that allows the path component of the path/filename length exceeding 260 characters, the file will not be syncable to a Windows standard client without additional measures. For details see below.
 ====
 
+== Examples and Pitfalls
+
+The following examples are put on top of this document to highlight file naming issues that can be avoided easily. 
+
+ifeval::["{targetbuild}" == "oc"]
+. If you create a file in Linux or macOS like `my-filename.` (see the dot at the end) or `my-filename.LPT1` (see the reserved name LPT1), you can sync the file with your Desktop App if the mount target is on Linux. If a Windows user tries to synchronize these files, Windows will reject the file. Comparing the file list in both environments shows that one side has more files than the other. There will be *no notification* as this is an OS dependency. 
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+. Naming rules for non Windows users:
++
+--
+[IMPORTANT]
+====
+Linux and macOS users of the Desktop App should strongly consider using file names that follow Windows naming rules. If this is not respected, files that do not follow the naming rules will not be synchronized. There will be *no notification* as this is an OS dependency!
+====
+
+Example source file names on macOS that will fail to sync to Windows:
+
+.. `This been tested.`
+.. `Has this been tested?.txt`
+.. `Test results on 20:30.docx`
+--
+endif::[]
+
+. If you rename an existing file in Linux or macOS by just changing the case like `{bin_name}` -> `{ini_name}`, it is very likely to get problems on the Windows side because the file looks (and is) the same for Windows.
+
 == Maximum Path Length Limitation
 
-Though each file system has its limits as described in https://en.wikipedia.org/wiki/Comparison_of_file_systems#Limits[Wikipedia: Comparison of file systems], you normally will rarely reach them. On the other hand, when using programming interfaces (APIs) to create files, this can change, especially on Windows and in particular when using the Virtual Files (VFS) feature. Here, with the default Windows setting, the _path component_ for a file created via API is _limited_ to 260 characters - which can be reached quickly.
+Although every file system has its limits, as described in {wiki-fs-limits-url}[Wikipedia: Comparison of file systems,window=_blank], you will normally rarely reach them. However, this can change when using application programming interfaces (APIs) to create files, especially on Windows and especially when using the Virtual Files (VFS) feature. Here, with the Windows default setting, the _path component_ for an API-created file is _limited_ to 260 characters - which can be reached quickly.
 
-When using the Desktop App for Windows with VFS configured, files may not be able to be synced if the source file was created in an environment where the path component exceeded the 260 character limit.
+When using the Desktop for Windows with VFS configured, files may not be synchronized if the source file was created in an environment where the path component exceeds the 260-character limit.
 
-In such a case, the Desktop App notifies the user about the inability of syncing the particular file.
+In such a case, the Desktop App will notify the user about the inability to sync the particular file.
 
-=== Fix for Windows
+=== Path Length fix for Windows
 
-To overcome the maximum path length limitation of 260 characters, Microsoft has provided a https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry#enable-long-paths-in-windows-10-version-1607-and-later[solution document,window=_blank] where they describe the opt-in process to relax the path length limitation when using API calls, like VFS does when creating files and folders.
+To get around the 260 character maximum path length limitation, Microsoft has provided a {file-path-limitation-url}[solution document,window=_blank] where they describe the opt-in process to relax the path length limitation when using API calls, as VFS does when creating files and folders.
 
 == Forbidden Printable ASCII Characters
 
@@ -49,12 +88,12 @@ Windows::
 
 == Non-Printable Characters
 
-If your files are created via a program, do not use non-printable characters. See the {control_code_chart-url}[Wikipedia "Control code chart" section] for more information on ASCII control characters.
+If your files are created via a program, do not use non-printable characters. See the {control-code-chart-url}[Wikipedia "Control code chart" section,window=_blank] for more information on ASCII control characters.
 
 Linux/Unix::
 `0` (NULL byte)
 +
-NOTE: While it is legal under Linux/Unix file systems to create files with control characters in the filename, they might be inaccessible and/or unsyncable.
+NOTE: While it is legal under Linux or macOS file systems to create files with control characters in the filename, they may be inaccessible and/or unsyncable.
 
 Windows::
 0-31 (ASCII control characters)
@@ -66,16 +105,10 @@ The following file names are reserved:
 Windows::
 `CON, PRN, AUX, NUL COM1, COM2, COM3, COM4, COM5, COM6, COM7, COM8, COM9, LPT1, LPT2, LPT3, LPT4, LPT5, LPT6, LPT7, LPT8, LPT9`
 
-== Other Rules
-
-Linux/Unix::
-When the Desktop App is on Linux/Unix and the target mount to sync on is on SMB, you cannot have the same file or folder name but with different casings. A cross icon will be shown that indicates that the file can't be synced. Files on Linux/Unix must comply with the Windows rules for successful syncing.
+== Other Important Rules
 
 Windows::
-Filenames cannot end in a space or dot
+Filenames must not end with a space or a dot.
 
-== Examples and Pitfalls
-
-. When creating a file in Linux/Unix like `my-filename.` (see the dot at the end) or `my-filename.LPT1` (see the reserved name LPT1), you can sync the file to your ownCloud if the mount target is Linux/Unix. When a Windows user tries to sync these files, Windows rejects the file. Comparing the file list in both environments shows that one side has more files than the other. There will be *no notification* as this is an OS dependency. 
-
-. When renaming an existing file in Linux/Unix by just changing the casing like `owncloud` -> `ownCloud`, you might get issues on the windows sync side as for Windows the file looks the same.
+Linux or macOS::
+When the Desktop App is on Linux or macOS and the server you sync to is on Windows, you cannot have the same file or folder name but with different casings. A cross icon will appear, indicating that indicates that the file can't be synced. Files on Linux or macOS must match with the Windows rules for a successful sync.

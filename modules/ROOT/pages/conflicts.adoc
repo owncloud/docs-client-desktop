@@ -1,31 +1,52 @@
 = Manage Synchronisation Conflicts
 :toc: right
-:toclevels: 1
-:description: The ownCloud Desktop App uploads local changes and downloads remote changes. When a file has changed on the local and on the remote side between synchronization runs, the Desktop App will be unable to resolve the situation on its own.
+:description: The Desktop App uploads local changes and downloads remote changes. If a file has changed locally *and* remotely between sync runs, the Desktop app will not be able to resolve the situation on its own.
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
-{description} It will create a conflict file with the local version, downloads the remote version and notifies the user that a conflict occurred which needs attention.
+{description} A conflict file is created with the local version and the remote version is downloaded. A notification is displayed that a conflict has occurred that requires attention.
 
 == Example Situation
 
-Imagine there is a file called `mydata.txt` your synchronized folder. It has not changed for a while and contains the text "contents" locally and remotely. Now, nearly at the same time you update it locally to say "_local contents_" while the file on the server gets updated to contain "_remote contents_" by someone else.
+Imagine there is a file called `mydata.txt` in your synchronized folder. It has not changed for a while and contains the text "contents" locally and remotely. Now, at almost the same time, you update it locally to say "_local contents" while the file on the server is updated by someone else to say "_remote contents".
 
-When attempting to upload your local changes the Desktop App will notice that the server version has also changed. It creates a conflict, and you will now have two files on your local machine:
+When you try to upload your local changes, the Desktop App will notice that the server version has also changed. This creates a conflict, and you will now have two files on your local machine:
 
-* `mydata.txt` containing "_remote contents_"
-* `mydata (conflicted copy 2018-04-10 093612).txt` containing "_local contents_"
+* `mydata.txt` containing "_remote contents_".
+* `mydata (conflicted copy 2025-04-10 093612).txt` containing "_local contents_".
 
-In this situation the file `mydata.txt` has the remote changes (and will continue to be updated with further remote changes when they happen), but your local adjustments have not been sent to the server (unless the server enables conflict uploading, see below).
+In this situation, the `mydata.txt` file has the remote changes and will continue to be updated with further remote changes as they occur. Your local changes have not been sent to the server unless you have enabled xref:force-uploading-conflicted-files[Force Uploading Conflicted Files].
 
-The Desktop App notifies you of this situation via system notifications, the system tray icon and a yellow "unresolved conflicts" badge in the account settings window. Clicking this badge shows a list that includes the unresolved conflicts and clicking one of them opens an explorer window pointing at the relevant file.
+////
+[.yellow]#we need to solve this#
 
-To resolve this conflict, open both files, compare the differences and copy your local changes from the "conflicted copy" file into the base file where applicable. In this example you might change `mydata.txt` to say "local and remote contents" and delete the file with "conflicted copy" in its name. With that, the conflict is resolved.
+note that I currently dont know how to identify a conflict:
 
-== Uploading Conflicts (experimental)
+* for vfs, these icons are generally avaialble (we use onedrive): https://en.wikipedia.org/wiki/List_of_shell_icon_overlay_identifiers but it is unclear which one we use for a conflict
+* systray icons we have control over, but which one are we using for a conflict
+* for non-vfs we have:
+** overlay icons:
+*** windows: we have and use overlay icons as long we are not using vfs, the exclamation mark is used
+*** linux and macos: we currently do not use them due to lack of overlay implementation
+
+any change also impacts vfs.adoc#vfs-states
+
+the following text can be added (to be verified before !!!) when the situation is solved:
+
+The Desktop App notifies you of this situation via system notifications in the system tray. An icon displays a yellow "unresolved conflicts" badge in the Desktop App's Account Settings window. Clicking this badge displays a list of unresolved conflicts. Clicking one of them opens an Explorer window pointing to the file.
+////
+
+To resolve this conflict, open both files, compare the differences, and copy your local changes from the "conflicted copy" file to the base file, if applicable. In this example, you could change `mydata.txt` to say "local and remote contents" and delete the file with "conflicted copy" in its name. This will resolve the conflict.
+
+== Force Uploading Conflicted Files
 
 By default, the conflict file (the file with "conflicted copy" in its name that contains your local conflicting changes) is not uploaded to the server. The idea is that you, the author of the changes, are the best person for resolving the conflict and showing the conflict to other users might create confusion.
 
-However, in some scenarios it makes a lot of sense to upload these conflicting changes such that local work can become visible even if the conflict won't be resolved immediately.
+In some scenarios, however, it makes a lot of sense to upload these conflicting changes so that local work can become visible even if the conflict isn't resolved immediately. This can be achieved by setting the environment variable `OWNCLOUD_UPLOAD_CONFLICT_FILES=1` as a startup parameter when launching the Desktop App, such as, replace the path and filename according your operating system:
 
-In the future there might be a server-wide switch for this behavior. For now, it can already be tested by setting the environment variable: `OWNCLOUD_UPLOAD_CONFLICT_FILES = 1`.
+[source,cmd,subs="attributes+,macros+"]
+----
+OWNCLOUD_UPLOAD_CONFLICT_FILES=1 +'C:\Program Files\+{ini_name}+\+{bin_name}.exe'
+----

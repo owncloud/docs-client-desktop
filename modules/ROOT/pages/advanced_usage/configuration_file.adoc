@@ -1,12 +1,14 @@
 = Configuration File
 :toc: right
-:description: The ownCloud Desktop App uses a configuration file. It has several sections for particular settings. You will find more sections in the configuration file than described here.
+:description: The Desktop App uses a configuration file. It has several sections for particular settings.
 
 :ini-file-format-url: https://en.wikipedia.org/wiki/INI_file
 
+include::partial$conditional_naming.adoc[]
+
 == Introduction
 
-{description} Do not change any of those settings except support advises you to do so. 
+{description} You will find more sections in the configuration file than described here. Do not change any of those settings except support advises you to do so. 
 
 == Location of the Configuration File
  
@@ -17,12 +19,12 @@ The location of the configuration file depends on the operating system used. You
 | System
 | Location
 
-| *Linux* 
-| `$HOME/.config/ownCloud/owncloud.cfg`
 | *Microsoft Windows* 
-| `%APPDATA%\ownCloud\owncloud.cfg`
+a| `%APPDATA%+\+{ini_name}+\+{bin_name}.cfg`
 | *macOS* 
-|`$HOME/Library/Preferences/ownCloud/owncloud.cfg`
+a|`$HOME/Library/Preferences/{ini_name}/{bin_name}.cfg`
+| *Linux* 
+a| `$HOME/.config/{ini_name}/{bin_name}.cfg`
 |===
 
 The configuration file contains settings using the {ini-file-format-url}[Microsoft Windows .ini file format]. You can overwrite changes using the ownCloud configuration dialog.

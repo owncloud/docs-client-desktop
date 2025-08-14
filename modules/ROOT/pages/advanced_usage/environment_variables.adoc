@@ -1,6 +1,6 @@
 = Environment Variables
 :toc: right
-:description: The behavior of the client can be controlled using environment variables.
+:description: The behavior of the Desktop App can be controlled using environment variables.
 
 == Introduction
 
@@ -148,5 +148,5 @@ Set to -1 to never require full local discovery.
 
 | `QT_LOGGING_RULES`
 | unset
-| This value can be used to control the log content, see examples at xref:appendices/troubleshooting.adoc#control-log-content[Control Log Content] and  https://community.kde.org/Guidelines_and_HOWTOs/Debugging/Using_Error_Messages#Controlling_Messages[Controlling Messages].
+| This value can be used to control the log content, see examples at xref:troubleshooting.adoc#control-log-content[Control Log Content] and  https://community.kde.org/Guidelines_and_HOWTOs/Debugging/Using_Error_Messages#Controlling_Messages[Controlling Messages].
 |===
