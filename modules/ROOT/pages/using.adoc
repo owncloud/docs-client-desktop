@@ -223,23 +223,18 @@ endif::[]
 Enter your {ini_name} login on the next screen::
 +
 --
-Note that with modern authentication methods such as 
-ifeval::["{targetbuild}" == "oc"]
-OpenID Connect (OIDC),
-endif::[]
-ifeval::["{targetbuild}" == "kw"]
-Open Authorization (OAuth),
-endif::[]
-you will be redirected to a browser for authentication. Images and authentication methods may vary depending on your corporate setup:
+Note that with modern authentication methods such as Open Authorization (OAuth), you will be redirected to a browser for authentication. Images and authentication methods may vary depending on your corporate setup:
 
 ifeval::["{targetbuild}" == "oc"]
 .Login with OIDC (Follow the web login process)
-image:using/oc-wizard-screen-url.png[Form Entering your login, width=100]
-image:using/oc-wizard-screen-grant-access.png[Form Granting Access, width=80]
+image:using/oc-wizard-open-in-browser.png[Open in Browser, width=100]
+image:using/oc-wizard-browser-opened.png[Browser Opened, width=95]
+image:using/oc-wizard-access-question.png[Grant Access Question, width=100]
+image:using/oc-wizard-all-set.png[All Set, width=100]
 endif::[]
+
 ifeval::["{targetbuild}" == "kw"]
 .Login with OAuth (Follow the web login process)
-image:using/kw-wizard-screen-url.png[Form Entering your login, width=100]
 image:using/kw-wizard-open-in-browser.png[Open in Browser, width=100]
 image:using/kw-wizard-browser-opened.png[Browser Opened, width=95]
 image:using/kw-wizard-all-set.png[All Set, width=100]
@@ -259,7 +254,7 @@ image:using/oc-wizard-all-set-advanced.png[Advanced configuration, width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-
+// kw does not have an extended advanced config, only a minimal one
 image:using/kw-wizard-all-set-advanced.png[Advanced configuration, width=100]
 endif::[]
 --
