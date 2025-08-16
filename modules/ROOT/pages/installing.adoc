@@ -112,6 +112,19 @@ image:installing/kw-windows-startmenu-entry.png[Start Menue,width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "oc"]
+** See the following example images of the installation process:
++
+--
+image:installing/oc-windows-install-setup.png[Install App,width=100]
+image:installing/oc-windows-install-setup-custom.png[Custom Setup,width=100]
+image:installing/oc-windows-install-setup-ready.png[Start Install,width=100]
+// image:installing/oc-windows-installing-uac.png[UAC,width=100]
+image:installing/oc-windows-install-finished.png[Install Finished,width=100]
+image:installing/oc-windows-startmenu-entry.png[Start Menue,width=100]
+--
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
 Once installed and configured, the Desktop App will update itself automatically unless you manually disable it. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
 endif::[]
 
