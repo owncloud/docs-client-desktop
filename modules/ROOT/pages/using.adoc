@@ -1,188 +1,394 @@
 = Using the Desktop App
 :toc: right
-:toclevels: 2
+:toclevels: 3
 :page-aliases: navigating.adoc
-:description: The ownCloud Desktop App remains in the background and is visible as an icon in the system tray (Windows, KDE), menu bar (macOS), or notification area (Linux).
+:description: In everyday work, the Desktop App usually remains in the background and is visible as an icon in the system tray (Windows, KDE, GNOME if extra configured), menu bar (macOS), or notification area (Linux).
 
 :oauth2-app-url: https://marketplace.owncloud.com/apps/oauth2
+:theopengroup-url: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_13_01
+:webfinger_url: https://en.wikipedia.org/wiki/WebFinger
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
-{description}
+{description} Bringing it to the front is usually only needed to set up or maintain sync connections and configurations. This document describes how to configure and use the Desktop App.
 
-== Icons
+== Basic Information and Icons
 
-=== Used App Icons
+Before going into configuration and usage topics, some basic information is provided about systray integration, icons used, and more. This will make it easier to use and understand the information displayed by the Desktop App.
 
-image:using/icon.png[image-syncok]
+=== The Systray
 
-The status indicator uses icons to indicate the current status of your synchronization. The green circle with the white checkmark tells you that your synchronization is current and you are connected to your ownCloud server.
+After the Desktop App has been started, it can not only be fully closed with the Quit image:using/quit-symbol.png[Quit Synbol, width=18] symbol on the top right, but also be closed to the system tray to run continuously in the background.
 
-image:using/icon-syncing.png[image-syncing]
+* A btn:[right-click] on the {ini_name} systray icon opens a menu for quick access to multiple operations. The images shown are for Windows.
++
+--
+ifeval::["{targetbuild}" == "oc"]
+image::using/oc-windows-systray-icon-menu.png[Systray Menu, width=100]
+endif::[]
 
-The blue icon with the white semi-circles means synchronization is in progress.
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-systray-icon.png[Systray Icon, width=100]
+image:using/kw-windows-systray-icon-menu.png[Systray Menu, width=100]
+endif::[]
+--
 
-image:using/icon-paused.png[image-paused]
+* A btn:[left-click] on the {ini_name} systray icon opens the Desktop App to the account settings window.
++
+--
+ifeval::["{targetbuild}" == "oc"]
+image::using/oc-windows-account-settings.png[Account Settings, width=100]
+endif::[]
 
-The yellow icon with the parallel lines tells you your synchronization has been paused. (Most likely by you.)
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-account-settings.png[Account Settings, width=100]
+endif::[]
+--
 
-image:using/icon-offline.png[image-offline]
+==== Systray Icons
 
-The gray icon with three white dots means your Desktop App has lost its connection with your ownCloud server.
+The Desktop App uses the following systray icons. See the table for more information about their meaning.
 
-image:using/icon-information.png[image-information]
+{empty}
 
-When you see a white circle with the letter "i" that is the informational icon, so you should click it to see what it has to tell you.
+[width="100%",cols="^.^10%,.^80%",options="header"]
+|===
+| Icon
+| Description
 
-image:using/icon-error.png[image-error]
+ifeval::["{targetbuild}" == "oc"]
+| image:using/oc-systray-icon-ok.png[image-syncok,width=30]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+| image:using/kw-systray-icon-ok.png[image-syncok,width=30]
+endif::[]
+| The status indicator uses icons to show the current status of your synchronization. The green circle with the white checkmark indicates that your synchronization is running and you are connected to your {ini_name} server.
 
-The red circle with the white "x" indicates a configuration error, such as an incorrect login or server URL.
+ifeval::["{targetbuild}" == "oc"]
+| image:using/oc-systray-icon-syncing.png[image-syncing,width=30]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+| image:using/kw-systray-icon-syncing.png[image-syncing,width=30]
+endif::[]
+| The blue icon with white semicircles means that synchronization is in progress.
 
-=== The Systray Icon
+ifeval::["{targetbuild}" == "oc"]
+| image:using/oc-systray-icon-paused.png[image-paused,width=30]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+| image:using/kw-systray-icon-paused.png[image-paused,width=30]
+endif::[]
+| The yellow icon with parallel lines indicates that your synchronization is paused.
 
-A btn:[right-click] on the systray icon opens a menu for quick access to multiple operations.
+ifeval::["{targetbuild}" == "oc"]
+| image:using/oc-systray-icon-offline.png[image-offline,width=30]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+| image:using/kw-systray-icon-offline.png[image-offline,width=30]
+endif::[]
+| The gray icon with three white dots means that your Desktop App has lost its connection to the {ini_name} server.
 
-image::using/systray-icon-menu.png[systray, width=350,pdfwidth=60%]
+ifeval::["{targetbuild}" == "oc"]
+| image:using/oc-systray-icon-information.png[image-information,width=30]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+| image:using/kw-systray-icon-information.png[image-information,width=30]
+endif::[]
+| The white circle with the letter `i` is the information icon. You should click on it to see what it has to tell you.
 
-This menu provides quick access to options like:
+ifeval::["{targetbuild}" == "oc"]
+| image:using/oc-systray-icon-error.png[image-error,width=30]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+| image:using/kw-systray-icon-error.png[image-error,width=30]
+endif::[]
+| The red circle with the white `x` indicates a configuration error, such as an incorrect login or server URL.
+|===
 
-* Your sync accounts,
-* The sync status,
-* Recent Changes, showing the latest activities.
-* and more...
+=== Overlay and Status Icons
 
-A btn:[left-click] on your systray icon opens the Desktop App to the account settings window.
+ifeval::["{targetbuild}" == "oc"]
+Overlay and Status icons indicate the sync status of your {ini_name} files in the file manager.
 
-image::using/client6.png[image, width=350,pdfwidth=60%]
+[NOTE]
+====
+File Manager Overlay and Status icons are currently only available for:
 
-=== File Manager Overlay Icons
+* The Windows operating system. +
+The term File Manager is therefore equal to the Windows File Explorer.
+* Overlay and status icons shown depend on whether you are using the Virtual File System (VFS) or Selective Sync.
+** When using VFS, +
+status icons are used, see the xref:vfs.adoc[Using the Virtual Filesystem] documentation.
+** When using Selective Sync, +
+custom overlay icons are displayed for files and folders, see the description below.
+====
 
-The ownCloud Desktop App provides overlay icons, if not using the VFS feature, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indicate the sync status of your ownCloud files.
+////
+Internal: currently not available for linux and macos because we first need to resetup our build system for providing these with releases > 6.0. when this is done, we can re-add the text but must also describe hwo to install these FMOI for those OS'es
 
-The overlay icons are similar to the systray icons introduced above. They behave differently on files and directories according to sync status and errors.
+The Desktop App provides overlay icons, if not using the VFS feature, in addition to the normal file type icons, for your system file manager (Explorer on Windows, Finder on Mac and Nautilus on Linux) to indica
+te the sync status of your {ini_name} files.
+////
 
-The overlay icon of an individual file indicates its current sync state. If the file is in sync with the server version, it displays a green checkmark.
+Overlay icons are similar to the xref:systray-icons[Systray Icons]. Their behavior depends on the sync status and errors of files and directories. Unlike status icons, which have their own column named `Status`, overlay icons are added to each file or folder that is part of the synchronization setup and will not be excluded from syncing.
 
-If the file is ignored while syncing, for example because it is on your exclude list or because it is a symbolic link, it displays a warning icon.
+* When the Desktop App is not running or offline, no icons are shown to reflect that the folder is currently out of sync and no changes are synced to the server.
 
-If there is a sync error, or the file is blacklisted, it displays an eye-catching red X. If the file is waiting to be synced, or is currently being synced, the overlay icon displays a blue cycling icon.
+* The icon of a synchronized directory shows the status of the files in the directory. If there are any sync errors, the directory is marked with the error icon.
 
-When the Desktop App is offline, no icons are shown to reflect that the folder is currently out of sync and no changes are synced to the server.
+* If a directory contains ignored files marked with warning icons, this does not change the status of the parent directory.
 
-The overlay icon of a synced directory indicates the status of the files in the directory. If there are any sync errors, the directory is marked with a warning icon.
+* The overlay icon of an individual file indicates its current sync state.
 
-If a directory includes ignored files that are marked with warning icons that does not change the status of the parent directory.
+** image:using/fmoi_ok.png[OK Synbol, width=18] If the file is in sync with the server version, it displays the green checkmark icon.
+
+** image:using/fmoi_sync.png[Sync Synbol, width=18] If the file is waiting to sync or is currently syncing, it displays the blue cycling icon.
+
+** image:using/fmoi_warn.png[Warn Synbol, width=18] If the file is ignored during sync, for example because it is on your exclude list or because it is a symbolic link, it displays the yellow warning icon.
+
+** image:using/fmoi_error.png[Error Synbol, width=18] If there is a sync error or the file is blacklisted, it displays the red X icon.
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+Overlay Icons indicate the sync status of your {ini_name} files in the Windows File Explorer.
+
+File Explorer uses icons provided by Microsoft for the Virtual File System (VFS). For details about VFS and the icons used, see the xref:vfs.adoc[Using the Virtual Filesystem] documentation.
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+=== Location for Sync Connections
+
+NOTE: All sync connections are subject to the same rules described in the limitations section of the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation. This is important information to read _before_ you start a sync connection.
+
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+=== Virtual Filesystem
+
+The Virtual File System allows users to access file trees without downloading them. Users can choose to store files or folders locally instead of using placeholders. Placeholders behave just like real files and are downloaded when accessed. This allows you to synchronize large directories without actually taking a copy of the files.
+
+NOTE: See the limitations section of the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation for more and important information _before_ you start a synchronization connection.
+endif::[]
 
 == Accounts
 
+A sync connection requires an account that specifies the server to connect to, the user, and the user's credentials for that server. Once an account is created, a user can select, manage, or remove individual sync relationships at any time in the Desktop App. Each possible relationship is provided by the server to which it is connected.
+
+If an account has not been set up as it was on the first start after installation, or if the last account was removed, the xref:connection-wizard[Connection Wizard] is automatically displayed to add an account when starting the Desktop App.
+
+If an account exists, you can at any time add another account for a different server or a different user with the btn:[Add Account] image:using/add-account-icon.png[Add Account Icon, width=18] button.
+
 === Connection Wizard
 
-The connection wizard is always shown when the Desktop app has been started and no synchronization connection has been set up so far or when clicking the btn:[Add Account] button. It takes you step-by-step through configuration options and account setup.
+The Connection Wizard requires the following information to complete:
 
-* First you need to enter the URL of your ownCloud instance:
+. The URL of the server to connect to.
+ifeval::["{targetbuild}" == "oc"]
 +
---
-Note that the URL given to you can be a different one than the final URL used by the Desktop app. This can be the case if a company has a generic setup URL that provides the Desktop app information about where to connect you. This mechanism is called https://en.wikipedia.org/wiki/WebFinger[WebFinger] and has the big benefit that one only needs to know the generic setup URL. The Desktop app tries to identify if webfinger is provided via the given URL and acts accordingly based on the server's response. This all runs in the background but is explained here in case you see a different URL being used than entered.
+NOTE: The URL you are given may be different from the final URL used by the Desktop App or displayed in the browser. This may be the case if a company has a generic setup URL that gives the Desktop App information about where to connect you. This mechanism is called {webfinger_url}[WebFinger] and has the great advantage that you only need to know the generic setup URL. The Desktop App tries to determine if WebFinger is available via the given URL and acts accordingly based on the server's response. This all happens in the background, but is explained here in case you see a different URL being used than the one you entered.
+endif::[]
 
-image:using/wizard-screen-url.png[form for entering ownCloud instance URL, width=350,pdfwidth=60%]
---
-
-* Enter your ownCloud login on the next screen. Depending on what the administrator has configured, you may see different login screens. Note that with OAuth 2.0 and with OpenID Connect (OIDC), you will be redirected to a browser for authentication:
+. The user and their credentials.
+. The base location on your local file system to store the data for a sync connection.
 +
---
 [NOTE]
 ====
-To use *Two-Factor Authentication* (2FA) with the ownCloud Server backend, ownCloud Server must have the {oauth2-app-url}[OAuth2 app] installed, configured and enabled. Please contact your ownCloud administrator for more details.
+If you plan to use multiple accounts, consider using a common base location in the file system for all accounts, which makes them easier to identify via a root folder. This means that you do not take the default suggested path, but customize it to your needs when enabling the btn:[Advanced configuration]. Consider reading the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation first to avoid using problematic paths.
+
+// to add tabs to html before '->' without css: +++<tag-name style="white-space:pre">&#9;&#9;-></tag-name>+++
+
+.Example for a common base folder named `sync`
+[source,plaintext,subs="attributes+,+macros"]
+----
+`+C:\Users\user_name\+{ini_name}` +++<tag-name style="white-space:pre">&#9;&#9;-></tag-name>+++ `+C:\Users\user_name\sync\+{ini_name}`
+`+C:\Users\user_name\otherAccount+` +++<tag-name style="white-space:pre">&#9;-></tag-name>+++ `+C:\Users\user_name\sync\otherAccount+`
+----
 ====
 
-[width=100%,cols="^.^50%,^.^50%"]
-|===
-2+h| *Login with ownCloud embedded user database*
-2+a| image::using/wizard-screen-login.png[form for entering your ownCloud login, width=350,pdfwidth=60%]
+{empty}
 
-2+h| *Login with OAuth 2.0 or OIDC* +
-(Follow the web login process)
-
-a| image::using/wizard-screen-login-browser.png[form for entering your ownCloud login, width=350,pdfwidth=60%]
-a| image::using/wizard-screen-grant-access.png[form for entering your ownCloud login, width=320,pdfwidth=60%]
-|===
---
-
-* Advanced Configuration:
+First, enter the URL of your {ini_name} instance::
 +
 --
-When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired. Here you can define the synchronization method like using the xref:vfs.adoc[Virtual Filesystem] or the location for synchronized data.
-
-image:using/wizard-screen-advanced.png[Select which remote folders to sync, and which local folder to store them in, width=350,pdfwidth=60%]
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-wizard-screen-url.png[Form Entering the Instance URL, width=100,]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-wizard-screen-url.png[Form Entering the Instance URL, width=100,]
+endif::[]
 --
 
-* Final step:
+{empty}
+
+Enter your {ini_name} login on the next screen::
 +
 --
-Once you are satisfied with the configuration made, click the btn:[Finish] button at the bottom right. The Desktop app will attempt to connect to your ownCloud server and will start synchronizing your files.
+Note that with modern authentication methods such as Open Authorization (OAuth), you will be redirected to a browser for authentication. Images and authentication methods may vary depending on your corporate setup:
+
+ifeval::["{targetbuild}" == "oc"]
+.Login with OIDC (Follow the web login process)
+Please note that the screens displayed in the browser depend on the configuration of the system you connect to.
+
+image:using/oc-wizard-open-in-browser.png[Open in Browser, width=100]
+image:using/oc-wizard-browser-opened.png[Browser Opened, width=95]
+image:using/oc-wizard-access-question.png[Grant Access Question, width=100]
+image:using/oc-wizard-all-set.png[All Set, width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+.Login with OAuth (Follow the web login process)
+image:using/kw-wizard-open-in-browser.png[Open in Browser, width=100]
+image:using/kw-wizard-browser-opened.png[Browser Opened, width=95]
+image:using/kw-wizard-all-set.png[All Set, width=100]
+endif::[]
 --
 
-=== Adding New Accounts
+{empty}
 
-You may configure multiple ownCloud accounts in your Desktop app. Simply click the menu:Account[Add New] button on the top left and follow the xref:connection-wizard[Connection Wizard]. The new account will appear as a new item in the main window on top.
-
-=== Removing an Account
-
-To remove an account, select the account to be removed and click on the button menu:Account[Remove] to remove it. Note that the account will be removed but no synchronized data deleted.
-
-=== Configuring Common Settings
-
-The settings tab contains common settings available and valid for all accounts configured. Here you can define network settings, bandwidth limitations, a confirmation setting to limit folder synchronization size and more. 
-
-=== Configuring Account Settings
-
-At the top of the window are tabs for each configured synchronization account and two more for Activity and Settings. Selecting one account, you have the following features available:
-
-* Connection status, showing which ownCloud server you are connected to, and your ownCloud username.
-* An *Account* button, which contains a dropdown menu with *Add New*, *Log Out*, and *Remove*.
-* Used and available space on the server.
-* Current synchronization status.
-* *Add Folder Sync Connection* button.
-
-The little button with three dots (the overflow menu) that sits to the right of the sync status bar offers four additional options:
-
-Show in Explorer::
-Opens your local ownCloud sync folder.
-
-Show in web browser::
-Opens your ownCloud via the browser.
-
-Choose What to Sync::
-Select the folders and mounts in the main window to be synced. This appears only when your file tree is collapsed, and expands the file tree.
-
-Force sync now / Restart sync::
-Start the sync process immediately - if none is running, or restart a running sync process.
-
-Pause Sync::
-Pauses sync operations without making any changes to your account. It will continue to update file and folder lists, without downloading or updating files.
-
-Remove Folder Sync Connection::
-Stop all sync activity.
-
-Enable virtual file support::
-Enable the virtual file support for an account:
+Advanced Configuration::
 +
-image:using/client-7.png[The Overflow Menu, width=250,pdfwidth=60%]
+--
+When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired.
+ifeval::["{targetbuild}" == "oc"]
+Here you can specify the synchronization method, such as using the xref:vfs.adoc[Virtual Filesystem] if available on your operating system, what data you want to synchronize, or the location for the synchronized data.
 
-=== Account Reconnecting
+image:using/oc-wizard-all-set-advanced.png[Advanced configuration, width=100]
+endif::[]
 
-Synchronization happens on a regular basis and connects to the server every few minutes. A connection loss can occur when the network cable is unplugged or when switching to a different wireless network. In such a case a manual force reconnect button becomes available in case you want to immediately restart syncing for an account and not wait for an automatic reconnect. This button only becomes available if the Desktop app is in reconnection state.
+ifeval::["{targetbuild}" == "kw"]
+// kw does not have an extended advanced config, only a minimal one
+image:using/kw-wizard-all-set-advanced.png[Advanced configuration, width=100]
+endif::[]
+--
 
-To manually force reconnecting for an account, select the account and click menu:Account[Reconnect]. 
+Final step::
++
+--
+When you are satisfied with the configuration you have made, click the btn:[Finish] button at the bottom right. The Desktop App will attempt to connect to your {ini_name} server.
+--
 
-image::using/account-reconnect.png[Force reconnect, width=350,pdfwidth=60%]
+=== Manage Accounts
 
-=== Force Syncing a Folder
+You can add or remove existing accounts from the Desktop App. The following sections describe how to do this.
 
-If there is data to be synced immediately, like when you are on the road and need to continue working offline, you can force syncing a folder of an account before the network connection goes offline. To do so, select the account and then the folder to force sync and the menu:Three Dots[Force sync now] button. 
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-manage-account.png[Manage Accounts, width=95]
+image:using/kw-windows-manage-account-open.png[Manage Accounts, width=100]
+endif::[]
 
-image::using/account-force-sync-now.png[Force Sync Now, width=350,pdfwidth=60%]
+* With the menu:Manage Account[] menu you can:
 
+** menu:Log out[] +
+Allows you to log out of an account for security reasons without removing the sync connection or data. Note that each sync connection for an account has the ability to pause and resume sync individually without logging out.
+
+** menu:Log in[] +
+Logs in after logging out to resume sync for all connections of this account.
+
+** menu:Reconnect[] +
+Synchronization occurs periodically, connecting to the server every few minutes. You may lose your connection if you unplug your network cable or switch to a different wireless network. In this case, a manual force reconnect button is available if you want to immediately restart sync for an account rather than wait for an automatic reconnect. This button is only available when the Desktop App is in reconnect state.
+
+** menu:Show in web browser[] +
+Allows you to open the browser instead of the File Explorer to view all the data of the connected account.
+
+** menu:Remove[] +
+Lets you remove an account. See the xref:removing-an-account[Removing an Account] section below for details.
+
+==== Add New Accounts
+
+To add accounts to your Desktop App, click on the menu:Add Account[] image:using/add-account-icon.png[Add Account Icon, width=18] button on the top bar and follow the xref:connection-wizard[Connection Wizard]. The added account will appear as a new item in the main window at the top.
+
+==== Remove an Account
+
+To remove an account, select the account you want to remove in the top bar and click the menu:Manage Account[Remove] to remove it. Note that the account will be removed but no synchronized data deleted. Synchronized data needs to be removed manually. A good rule of thumb is to open the sync location with File Explorer before removing the account, which will make it easier to remove the data later.
+
+== Sync Relationships
+
+After you create an account, you can add new sync relationships, manage existing ones, or remove selected ones.
+
+For each action described, first select the account whose sync relationships you want to edit.
+
+ifeval::["{targetbuild}" == "kw"]
+=== Define Available Folders on the Server
+
+To make a folder available for synchronization on {ini_name}, you must first set its properties to do so.
+
+[NOTE]
+====
+Changing the synchronization property is:
+
+* Only availabe on folders located in the {ini_name} root.
+* Not available in subfolders.
+* Not available for individual files.
+====
+
+In the {ini_name} browser UI, click the tree dots to the right of the root folder you want to enable or disable sync. Then select menu:Folder properties[Allow desktop sync] to the state you want to set.
+
+image:using/kw-browser-three-dots.png[Kiteworks UI Click Three Dots Menu, width=100]
+image:using/kw-browser-three-dots-folder-properties.png[Kiteworks UI Three Dots Menu Opened, width=130]
+endif::[]
+
+NOTE: If a sync relationship has been established and you uncheck btn:[Allow desktop sync], the existing sync connection will not be affected. If the sync relationship is removed and you try to reestablish the relationship, the now unchecked folder will not appear in the list of available folders.
+
+=== Add Sync Relationships
+
+It is easy to add more sync relationships if required. Note that the steps to complete adding a sync relationship vary depending on the operating system you are using. The screenshots show the steps when using Windows.
+
+* Click btn:[Add Folder] to open available folders that can be added.
+* Select the folder to add.
+* Define the path for the sync relationship data.
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-add-folder-menu.png[Add Folder, width=100]
+image:using/kw-windows-add-folder-clicked.png[Add Folder List, width=100]
+image:using/kw-windows-add-folder-path.png[Define Where to Store the Sync Relationship, width=100]
+endif::[]
+
+=== Manage Sync Relationships
+
+To manage a sync relationship, click on the btn:[Three Dots] button to open the menu as shown in the screenshot. Note that the list varies depending on the operating system you are using. The screenshots shows the list when using Windows.
+
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-folder-menu.png[Folder Menu, width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-folder-menu.png[Folder Menu, width=100]
+endif::[]
+
+* With the btn:[Three Dots] menu you can:
+
+ifeval::["{targetbuild}" == "kw"]
+** menu:Show in Explorer[] +
+Opens your local {ini_name} sync folder for this sync relationship. +
+(Note that the name `Explorer` is replaced by the name of the file browser of your operating system.)
+
+** menu:Show in web browser[] +
+Opens {ini_name} via the browser.
+
+** menu:Force sync now[] +
+If you need to synchronize data immediately, such as when you are traveling and need to continue working offline, you can force a folder to sync before you go offline.
+
+** menu:Pause sync[] / menu:Restart sync[] +
+Pauses or restarts a paused sync operations.
+
+** menu:Remove folder sync connection[] +
+See the section xref:remove-sync-relationships[Remove Sync Relationships] below for details.
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+** menu:Enable virtual file support[] / menu:Disable virtual file support[] +
+Enable or disable virtual file support for this sync relationship, if supported by the operating system.
+endif::[]
+
+=== Remove Sync Relationships
+
+As part of the xref:manage-sync-relationships[Manage Sync Relationships] as described above, you can remove a folder from any synchronization activity. Note that the folder will be removed but no synchronized data deleted. Synchronized data needs to be removed manually. A good rule of thumb is to open the sync location with File Explorer before removing the account, which will make it easier to remove the data later.
+
+Note that if you create a new sync connection for the previously removed folder, the Desktop App will not use the existing folder, but will create a new one.
+
+ifeval::["{targetbuild}" == "oc"]
 === Spaces
 
 Spaces are only available when connected to an Infinite Scale backend. In most cases, they are similar to folders or external mounts when the backend is ownCloud Server and one might not see differences, though some exist:
@@ -213,23 +419,23 @@ In case selective sync has been chosen, different options are available to add r
 
 ** To add a resource to be synced as folder to the *same base path*, set the check mark. To remove a resource from syncing, deselect it. To finalize the selection, click the btn:[Apply] button on the bottom right.
 +
-image:using/add-resource-server-same-folder.png[Add resource same path, width=300,pdfwidth=60%]
+image:using/add-resource-server-same-folder.png[Add resource same path, width=100]
 
 ** To add a resource to be synced as folder to a *different path* than the account base path, click in the bottom left corner on btn:[Add Folder]. Select the path and the resources to sync and complete the process.
 +
-image:using/add-resource-server-different-folder.png[Add resource different path, width=300,pdfwidth=60%]
+image:using/add-resource-server-different-folder.png[Add resource different path, width=100]
 
 ==== Using an Account That Connects To Infinite Scale:
 
 When an account connects to Infinite Scale, the list of currently synced spaces looks like the image below. It also shows the state of the synchronization process:
 
-image::using/show-resources-ocis.png[Show resources Infinite Scale, width=300,pdfwidth=60%]
+image::using/oc-windows-ocis-resources-show.png[Show resources Infinite Scale, width=100]
 
 When a new space gets added via the Web UI, it will not be automatically listed here as this window only shows spaces that are already synchronized.
 
 To add a new space for synchronization, click the btn:[Add Space] button, select the space and define the path if you do not want to take the default base location. Finalize with btn:[Add Sync Connection]:
  
-image::using/add-resource-ocis.png[Add resource Infinite Scale, width=300,pdfwidth=60%]
+image::using/oc-windows-ocis-resources-add.png[Add resource Infinite Scale, width=100]
 
 == Sharing From Your Desktop
 
@@ -244,15 +450,24 @@ You can share with internal ownCloud users and groups and create links to share 
 
 * If you are not already at the location of the file or folder to share, right-click your systray icon, hover over the account you want to use, and left-click menu:Open folder["folder name"] to quickly enter your local ownCloud folder.
 +
-image:using/systray-menu.png[Systray Menu, width=300,pdfwidth=60%]
+--
+ifeval::["{targetbuild}" == "oc"]
+image::using/oc-windows-systray-icon-menu.png[Systray Menu, width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-systray-icon.png[Systray Icon, width=100]
+image:using/kw-windows-systray-icon-menu.png[Systray Menu, width=100]
+endif::[]
+--
 
 * Go to the file or folder you want to share.
 +
-image:using/explorer-files-view.png[image, width=350,pdfwidth=60%]
+image:using/explorer-files-view.png[image, width=100]
 
 * Right-click the file or folder you want to share to expose the share dialog which opens the context menu, and click menu:ownCloud[Share].
 +
-image:using/owncloud-share.png[Sharing Context Menu, width=350,pdfwidth=70%]
+image:using/owncloud-share.png[Sharing Context Menu, width=100]
 
 * Depending on the backend used, different things can happen:
 
@@ -269,139 +484,201 @@ The share dialog opens which has all the same options as your ownCloud Server We
 |===
 | Sharing with users and groups
 | Public sharing
-a| image::using/share-user.png[Sharing with users and groups, width=350,pdfwidth=60%]
-a| image::using/share-public.png[Public sharing, width=350,pdfwidth=60%]
+a| image::using/share-user.png[Sharing with users and groups, width=100]
+a| image::using/share-public.png[Public sharing, width=100]
 |===
 
 Use menu:ownCloud[Share] from the context menu to see who you have shared with and to modify their permissions or to delete the share.
 --
+endif::[]
 
 == Activity Window
 
-The Activity window contains the log of your recent activities, organized over three tabs:
+The Activity window contains the log of your recent activities, organized in the following tabs:
 
-Server Activities::
-Includes new shares and files downloaded and deleted.
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-activity-pane-server.png[Activity Pane, width=100]
 
-Sync Protocol::
-Displays local activities such as which local folders your files went into.
+* Server Activities: +
+Includes new shares and downloaded and deleted files
 
-Not Synced::
-Shows errors such as files not synced because of being excluded or any other failing status.
-+
-image:using/client-8.png[not_synced, width=350,pdfwidth=60%]
+* Sync Protocol: +
+Shows local activity, such as which local folders your files have gone to.
+endif::[]
 
-In Windows, double-clicking an activity entry pointing to an existing file in tabs *Server Activities* or *Sync Protocol*, will open the folder containing the file and highlight it.
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-activity-pane-local.png[Activity Pane, width=100]
 
-On Linux, you can do the same with menu:mouse[right-click > Show file in browser]
+* Local Activities: +
+Includes files uploaded, downloaded or deleted. +
+Note that menu:mouse[right click] opens a menu for more actions.
+endif::[]
 
-In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL+a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
+* Not Synced: +
+Shows errors such as files not synced because they are excluded or any other error status.
 
+In Windows, double-clicking an activity entry pointing to an existing file will open the folder containing the file and highlight it.
+
+On Linux or macOS, you can do the same with menu:mouse[right-click > Show file in browser]
+
+In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL + a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
+
+ifeval::["{targetbuild}" == "oc"]
 === Server Notifications
 
-The desktop client will display notifications from your ownCloud server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
+For ownCloud Server only, the Desktop App will display notifications from your {ini_name} server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
 
 For example, when a user on a remote ownCloud creates a new Federated share for you, you can accept it from your desktop client. This also displays notifications sent to users by the ownCloud admin via the Announcements app.
 
-image::using/client12.png[server_notifications,width=350,pdfwidth=60%]
+endif::[]
 
 == Settings Window
 
-The Settings Window has configuration options such as:
+The menu:Settings[] pane contains common settings that are available to all configured accounts. Here you can set network settings, define additional names to exclude from synchronization, and more.
+
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-settings-menu.png[Settings Menu,width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-settings-menu.png[Settings Menu,width=100]
+endif::[]
 
 === General Settings
 
-* Launch on System Startup
-* Show Desktop Notifications
-* Use Monochrome Icons
+* Launch on System Startup.
+ifeval::["{targetbuild}" == "oc"]
+* Show Desktop Notifications.
+endif::[]
+* Use Monochrome Icons.
+* Select a non-default language from a menu.
 
 === Advanced
 
-* Show sync folders in Explorer's Navigation Pane
 * Sync hidden files
 +
 NOTE: Hidden files are files starting with a dot like `.filename.txt`, but not files which are hidden by setting a file attribute.
 
-* Show crash reporter and the
-* Buttons for btn:[Edit Ignored Files] (xref:using-the-ignored-files-editor[see below]) and btn:[Log settings]
+* Show crash reporter.
+* Define where to move remotely deleted files.
+* Buttons for:
+** btn:[Edit Ignored Files] (xref:using-the-ignored-files-editor[see below]) and
+** btn:[Log settings].
 
+////
+ifeval::["{targetbuild}" == "oc"]
 === Advanced - Approval Synchronizing Folders
 
 This is only valid if not using the xref:vfs.adoc[VFS] feature.
 
 * Ask confirmation before downloading folders larger than [folder size]
-* Ask for confirmation before synchronizing external storages
-+
-image:using/client-9.png[advanced approval, width=350,pdfwidth=60%]
+* Ask for confirmation before synchronizing external g
 
 TIP: While you can select whether to show or hide the crash reporter, from the Settings Window, you can also configure whether to show or hide it from the xref:advanced_usage/configuration_file.adoc#section-general[general section of the configuration file] as well. Doing so can help with debugging on-startup-crashes.
+endif::[]
+////
 
 === Using the Network Window
 
-The Network settings window enables you to define network proxy settings and defines limits to the download and upload bandwidth.
+The Network Settings section allows you to configure various network related settings.
 
-Proxy Settings::
-* No proxy
-* Use system proxy
-* Specify proxy manually as
-** HTTP(S)
-** SOCKS5
+* Pause synchronization with metered Internet connections. +
+This can be useful when using a cellular connection and roaming. 
 
-Download and Upload Bandwidth::
+* The Proxy settings contain:
+** No proxy
+** Use system proxy
+** Specify proxy manually
 
-The following options are available:
+=== The Ignored Files Editor
 
-* No limit
-* Limit automatically +
-When activated, the client limits the upload or download bandwidth to 25% of the currently available bandwidth for each operation. The available bandwidth is measured on the fly at the beginning of every operation for a very short period of time.
+IMPORTANT: This section is for advanced users only!
 
-* Limit to
-+
-image:using/settings_network.png[Network Settings,width=350,pdfwidth=60%]
+==== Using the Ignored Files Editor
 
-[NOTE]
-====
-Enabling this feature will affect all new transfers (next upload chunk or next download), but not affect already running transfers (current upload chunk or current download). Changing this setting or disabling this feature with take effect immediately.
-====
-
-=== Using the Ignored Files Editor
-
-You might have some local files or directories that you do not want to backup and store on the server. To identify and exclude these files or directories, you can use the menu:Settings[Advanced > Ignored Files Editor].
+You may have some local files or directories that you do not want to backup and store on the server. To identify and exclude these files or directories, you can use the menu:Settings[Advanced > Ignored Files Editor].
 
 [NOTE]
 ====
 Note that rules for ignored files are also applied to folders.
 
-image:using/ignored_files_editor.png[Ingnored Files Editor,width=350,pdfwidth=60%]
+ifeval::["{targetbuild}" == "oc"]
+image:using/oc-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+image:using/kw-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+endif::[]
 ====
 
-For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are contained in a system file. (typically `sync-exclude.lst`) located in the ownCloud Desktop app directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to show the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
+For your convenience, the editor is pre-populated with a default list of typical ignore patterns. These patterns are stored in a system file. (typically `sync-exclude.lst`) located in the {ini_name} Desktop App directory. You cannot modify these pre-populated patterns directly from the editor. However, if necessary, you can hover over any pattern in the list to display the path and filename associated with that pattern, locate the file, and edit the `sync-exclude.lst` file.
 
-NOTE: Modifying the global exclude definition file might render the client unusable or result in undesired behavior.
+NOTE: Changing the global exclude definition file can render the client unusable or cause undesirable behavior.
 
-Each line in the editor contains an ignore pattern string. When creating custom patterns, in addition to being able to use normal characters to define an ignore pattern, you can use wildcards characters for matching values. As an example, you can use an asterisk (`*`) to identify an arbitrary number of characters or a question mark (`?`) to identify a single character.
+* Each line in the editor contains an *ignore pattern string*. The following rules apply:
 
-Patterns that end with a slash character (`/`) are applied to only directory components of the path being checked.
+** Each pattern string in the list is by default disabled for `Allow Deletion` if not otherwise defined. If `Allow Deletion` is enabled, files will be deleted if they prevent a directory from being removed. This is for example useful when files are considered as metadata. When default disabled, you can manually change the behavior after defining the pattern in the menu:Settings[Edit Ignored Files].
 
-NOTE: Custom entries are currently not validated for syntactical correctness by the editor, so you will not see any warnings for bad syntax. If your synchronization does not work as you expected, check your syntax.
+**  If a pattern starts with a closing square bracket `]`, the `Allow Deletion` checkbox is changed to default enabled. Example: `]custom_pattern`.
 
-NOTE: A restart of the client is needed in order for the changes to take effect. 
+** In addition to using normal characters to define an ignore pattern, you can use wildcard characters to match values. Use an asterisk (`\*`) to match any number of characters, or a question mark (`?`) to match a single character. Example: `]custom?pattern*`
 
-Each pattern string in the list is preceded by a checkbox. When the checkbox contains a check mark, in addition to ignoring the file or directory component matched by the pattern, any matched files are also deemed "fleeting metadata" and removed by the client.
+** Patterns that end with a slash (`/`) are applied only to directory parts of the scanned path. Example: `]custom?pattern*/`
 
-In addition to excluding files and directories that use patterns defined in this list:
++
+--
+NOTE: User-defined entries are not currently checked for syntactical correctness by the editor, so you will not see any warnings about bad syntax. If your synchronization does not work as expected, check your syntax.
 
-* The ownCloud Client always excludes files containing characters that cannot be synchronized to other file systems. 
-* Files are removed that cause individual errors three times during a synchronization. However, the client provides the option of retrying a synchronization three additional times on files that produce errors.
+NOTE: A restart of the Desktop App is required in order for the changes to take effect. 
+--
 
-For more detailed information see the xref:architecture.adoc#ignored-files[Ignored Files section].
+* In addition to excluding files and directories that use patterns defined in this list:
 
-== Removing a Sync Connection
+** The Desktop App always excludes files that contain characters that cannot be synchronized with other file systems.
+** Files that cause individual errors three times during a sync will be removed. However, the client provides the option to retry a synchronization three additional times for files that cause errors.
 
-When removing a synchronization connection, all synchronized data will stay locally and not get deleted. To remove a sync relationship, change to the account and select the synchronization relationship that should get removed. When clicking the btn:[...] (three dots) icon, the following window appears:
+==== Default Ignored Files
 
-image::using/remove_sync_connection.png[Removing a Sync Relationship,width=200,pdfwidth=60%]
+The Desktop App supports the ability to exclude or ignore certain files from the sync process. Some system-wide file patterns that are used to exclude or ignore files are included by default. You can also add your own patterns.
 
-Select btn:[Remove folder sync connection] to remove it. If you also want to delete the related data, go to the folder and delete it.
+By default, the Desktop App ignores the following files:
 
-TIP: Before removing the connection, click btn:[Show in Explorer]. This will open the source folder where all the synced data is located. This eases deleting this folder as you do not need to search for it after removing the sync connection.
+* Files matched by one of the patterns defined in the Ignored Files Editor.
+* Files starting with the following pattern are reserved for journaling: +
+`._sync_*.db*`, `.sync_*.db*`, `.csync_journal.db*` and `.owncloudsync.log*`
+* Files with a name longer than 254 characters.
+* The file `Desktop.ini` in the root of a synced folder.
+* Files matching the pattern `_conflict-` unless conflict file uploading is enabled.
+* Files matching the pattern `(conflicted copy` unless conflict file uploading is enabled.
+* Windows only:
+** Files with a trailing space or dot.
+** See the xref:filenames.adoc[Filename Considerations] page to identify characters not allowed in filenames or filenames that contain reserved names that do not work on typical Windows filesystems.
+
+If a pattern selected using a checkbox in the xref:navigating.adoc#using-the-ignored-files-editor[Ignored Files Editor], or if a line in the exclude file starts with the character `]` directly followed by the file pattern, files matching the pattern are considered.
+
+Fleeting meta data::
++
+--
+These files are ignored and _removed_ by the Desktop App if found in the synchronized folder. This is suitable for meta files created by some applications that have no sustainable meaning.
+
+If a pattern ends with the forward slash (`/`) character, only directories are matched. The pattern is only applied for directory components of filenames selected using the checkbox.
+
+To match filenames against the exclude patterns, the UNIX standard C library function `fnmatch` is used.
+This process checks the filename against the specified pattern using standard shell wildcard pattern matching. For more information, please refer to the {theopengroup-url}[pattern matching documentation, windows=_blank].
+
+The path that is checked is the relative path under the sync root directory.
+--
+
+{empty}
+
+Pattern and File Match Examples::
++
+--
+[width="59%",cols="28%,72%",options="header",]
+|===============================
+| Pattern | File Matches
+| `~$*`   | `~$foo`, `~$example.doc`
+| `fl?p`  | `flip`, `flap`
+| `moo/`  | `map/moo/`, `moo/`
+|===============================
+--

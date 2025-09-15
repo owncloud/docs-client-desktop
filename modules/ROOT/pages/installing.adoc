@@ -1,289 +1,156 @@
-= Installing the Desktop App
+= Installing or Deploying
 :toc: right
-:toclevels: 4
-:client-version-win: 5.3.2.15463.x64
-:client-version-appimage: 5.3.2.15463-x86_64
-:description: The Desktop App enables users to access and sync files and folders from their ownCloud, work on remote files right from the desktop as if they were stored on their computer – because they are.
+:toclevels: 3
+:description: This documentation will guide you through the deployment or installation of the Desktop App for various operating systems.
 
 :ms-remove-url: https://docs.microsoft.com/en-us/windows/win32/msi/remove
 :ms-adddefault-url: https://docs.microsoft.com/en-us/windows/win32/msi/adddefault
-:desktop-clients-url: https://owncloud.com/desktop-app/
 :appimage-wikipedia-url: https://en.wikipedia.org/wiki/AppImage
 :gnome-keyring-url: https://wiki.gnome.org/Projects/GnomeKeyring/
 :kwalletmanager-url: https://utils.kde.org/projects/kwalletmanager/
 :ubuntu-lts-url: https://wiki.ubuntu.com/LTS
-:libfuse2-url: https://docs.appimage.org/user-guide/troubleshooting/fuse.html#setting-up-fuse-2-x-alongside-of-fuse-3-x-on-recent-ubuntu-22-04-debian-and-their-derivatives
-:install-appimage-url: https://docs.appimage.org/introduction/quickstart.html#ref-quickstart
 :gnome-extensions-url: https://extensions.gnome.org/extension/615/appindicator-support/
-:appimagelauncher-url: https://docs.appimage.org/introduction/software-overview.html#ref-appimagelauncher
-:install-appimagelauncher-url: https://github.com/TheAssassin/AppImageLauncher/wiki
 :install-shell-integration-url: https://github.com/owncloud/client-desktop-install-shell-integration
 :client-download-url: https://download.owncloud.com/desktop/ownCloud/stable/
 
-// evaluate the url version which is either the
-// * branch name when it is a stable branch or
-// * latest when it is the next branch
- 
-:url-version: {page-component-version}
-ifeval::["{page-component-version}" == "next"]
-:url-version: latest
-endif::[]
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
-{description} Continuous synchronization to and from the ownCloud server provides ease of use combined with comprehensive access control.
+{description}
 
-== System Requirements and Installation
+== System Requirements
 
-You can download the latest version of the ownCloud Desktop App from the {desktop-clients-url}[Desktop App Download] page. There are Desktop Apps for _Linux_, _macOS_, and _Microsoft Windows_ available. When using Linux, you can also use AppImage.
+=== Minimum Supported Operating System Version
 
-=== System Requirements
-
-Depending on the operating system used, some minimum system requirements need to be met. ownCloud provides Linux packages for a variety of Linux distributions, see the list of supported distros below.
+Depending on the operating system used, some minimum system requirements need to be met. See the list of supported versions/distros below.
 
 {empty}
 
-[width="100%",cols="20%,80%",options="header",]
+[width="100%",cols="20%,80%",options="header"]
 |===
 | OS
 | Version
 
-a| *Windows*
+a| *Windows x64*
 a| When using external drives storing the synchronization data, NTFS is required. Also see the xref:vfs.adoc[VFS support] documentation.
 --
 * Windows 11
-* Windows 10 or later (x64) +
+* Windows 10 or later +
 Version 1809+
 --
 
 a| *macOS* +
 x86-64 or ARM64 +
 (Apple Silicon)
-a| * macOS 14 Sonoma
+a|
+--
+* macOS 15 Sequoia
+* macOS 14 Sonoma
 * macOS 13 Ventura
-* macOS 12 Monterey
+--
 
 a| *Linux* +
 (x86-64)
-a| * The **xref:appimage[AppImage]** build of the ownCloud Desktop App is available to support most Linux platforms
+a| The Desktop App for Linux is provided via the following methods and is supported, if technically feasible, for the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].:
+--
+* The AppImage build of the Desktop App supports most Linux platforms.
+ifeval::["{targetbuild}" == "oc"]
+* A Linux native installation for defined Linux platforms
+endif::[]
+--
 |===
 
-NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous Ubuntu {ubuntu-lts-url}[LTS].
+== Download
 
-=== Configuration Files
+ifeval::["{targetbuild}" == "oc"]
+You can download the latest version of the Desktop App from the {client-download-url}[Desktop App Download, window=_blank] page. There are Desktop Apps for _Linux_, _macOS_, and _Microsoft Windows_ available.
+endif::[]
 
-Regardless of the type of physical installation, a configuration file will be created when the app is started for the first time. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
+ifeval::["{targetbuild}" == "kw"]
+To get the latest version of the Desktop App for your operating system, login to your {ini_name} instance and:
 
-* When deleting an existing configuration file, no data synced locally will be deleted, but the app will start the xref:installation-wizard[Installation Wizard] and you have to configure again.
+* As a user, go to the menu:Personal Settings[] page and download, if provided, the appropriate build if it has not already been installed by your company.
+* As admin, log into the admin console, then go to menu:Application Setup[Clients and Plugins > KwDav Desktop Client Sync > Downloads] and download the appropriate build.
+endif::[]
 
-* On Linux, when changing the deployment method like from native to AppImage, you can reuse an existing configuration file without changes.
+== Configuration Files
 
-* If you want to deploy from scratch again, you can safely delete the configuration file if one exists. In such a case, check for existing sync folders which may need to be deleted too.
+Regardless of the physical installation, a configuration file will be created when the app is first started. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
 
-=== Installation on macOS and Windows
+* Deleting an existing configuration file will not delete any locally synchronized data, but it will launch the xref:using.adoc#connection-wizard[connection wizard] which is described in the User Guide and you will need to re-configure.
 
-Installation on macOS and Windows is the same as for any software application: download the installer,  double-click it to launch the installation and follow the installation wizard. After it is installed and configured, the Desktop App will automatically keep itself updated if not manually disabled which you can change when using Windows. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
+ifeval::["{targetbuild}" == "oc"]
+* On Linux, if you change the deployment method, such as from Native to AppImage, you can reuse an existing configuration file without any changes.
+endif::[]
 
-For Windows, see the xref:customizing-the-windows-installation[Customizing the Windows Installation] section describing installer configuration options. 
+* If you are re-deploying from scratch, you can safely delete the configuration file if it exists. In this case, check for existing sync folders that might also need to be deleted.
 
-=== Installation on Linux
+== Install or Deploy on Windows
 
-* No matter whether the Desktop App is installed natively or used as an AppImage, you can add command line parameters when starting up post installation. One parameter to mention is the option `-s`. This option forces the settings page to be shown on startup. While not necessary during general usage, it can be helpful if system tray icons are not available any more within your desktop environment.
+Although installation on Windows is preferred by end users, deployment is intended for centrally driven rollouts on many clients.
 
-* Linux users should also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the Desktop App can log in automatically.
+NOTE: Filenames shown in the following sections are examples only and may need to be replaced with their real names.
 
-* Note, our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
+=== Installation on Windows
 
-* Using GNOME on recent distributions like Ubuntu 22.04, Debian 11 or others, the system tray is typically no longer available. This makes it hard to get back an app that has been minimized to the system tray. You have to install an extension in order to restore the system tray in this case in order to be able to find and restore the minimized application.
+* Installation on Windows is the same as for any software application: download the installer as described in the xref:download[Download] section, double-click it to launch the installation and follow the installation wizard.
 
-** For distributions like Ubuntu 22.04 or Debian 11, use the command below to install the extension:
-+
-[source,bash]
-----
-sudo apt install gnome-shell-extension-appindicator
-----
+* The provided package includes shell integration, which consists of overlay icons and context menus for the file browser.
 
-** On distributions based on Red Hat Enterprise Linux (including AlmaLinux and Rocky Linux), you first need to install another package:
-+
---
-[source,bash]
-----
-sudo dnf install epel-release
-----
-
-Then, proceed with the following command. On Fedora, it is sufficient to just run the following command:
-
-[source,bash]
-----
-sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
-----
---
-
-** For all other distributions, follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
-
-* When the extension is installed, you need to log off and re-login to activate the changes.
-For this particular system tray icon extension, the name shown of the extension may depend and can be like **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray is shown again within the desktop environment.
-+
-image:installing/gnome-shell-extension-appindicator-selector.png[width=350,pdfwidth=60%]
-
-==== Native Installation
-
-Linux users must follow the instructions on the {desktop-clients-url}[download] page to add the appropriate repository for their Linux distribution, install the signing key and use their package managers to install the Desktop App. Linux users will also update their Desktop App via package manager. The Desktop App will display a notification when an update is available. Note to see xref:installing-shell-integration-packages[Installing Shell Integration Packages]. Overlay icons and a special context menu for your file browsers need to be installed manually.
-
-You will also find links to source code archives and older versions on the download page.
-
-On Debian-based systems, it may happen after a while that when running `sudo apt update`, a notice about a signature verification error is returned. This can be solved by refreshing the keys. On Debian invoke the following command to update all signatures:
-
-[source,bash]
-----
-sudo apt-key adv --refresh-keys --keyserver keyring.debian.org
-----
-
-For Ubuntu, use:
-
-[source,bash]
-----
-sudo apt-key adv --refresh-keys --keyserver keyserver.ubuntu.com
-----
-
-==== AppImage
-
-An {appimage-wikipedia-url}[AppImage] build of the ownCloud Desktop App is available to support more Linux platforms. You can download the AppImage at the {desktop-clients-url}[Linux section of the Download Desktop App] page.
-
-AppImage is an alternative way to use Linux applications -- instead of having multiple files in several places making up a package, the entire application is contained in a single file ending with an `.AppImage` suffix, including all necessary dependencies and libraries. ownCloud provides a single AppImage based on CentOS 7, which runs on all modern and most older Linux platforms.
-
-Known limitations for the 4.x AppImages::
-* For Ubuntu 22.04, Debian 11 and other very recent distributions, you need to install `libfuse2` as a prerequisite. For details see
-issue with `libfuse` on Ubuntu >=22.04 or Debian 11 {libfuse2-url}[Setting up FUSE 2.x alongside of FUSE 3.x on recent Ubuntu (>=22.04), Debian and their derivatives].
-
-* Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:file-browser-extension-packages[Installing Shell Integration Packages].
-
-
-Installing _libfuse2_ if required::
---
-* Check if `libfuse2` is already installed:
-+
-[source,bash]
-----
-dpkg -l libfuse2
-----
-
-* Check if there is an installation candidate for `libfuse2`:
-+
-[source,bash]
-----
-sudo apt-cache show libfuse2
-----
-
-* Install `libfuse2`:
-+
-[source,bash]
-----
-sudo apt install libfuse2
-----
---
-
-Install the AppImageLauncher app::
-See the {install-appimagelauncher-url}[Install AppImageLauncher] wiki for details about installing it. AppImageLauncher does not need to be started. It hooks in when you start an AppImage. There are different responses when starting an AppImage:
+ifeval::["{targetbuild}" == "kw"]
+** See the following example images of the installation process:
 +
 --
-How to launch an AppImage::
-When you open an AppImage file via your file browser that you have not opened before then double click on it:
-+
-image:installing/appimagelauncher_open_question.png[AppImage First Time Usage, width=350]
-
-First time usage::
-After opening an AppImage, if AppImageLauncher has been started for the first time, it will ask you to define some basic settings:
-+
-image:installing/appimagelauncher_first_run.png[AppImage First Time Usage,width=350]
-
-AppImage Integration Question::
-Post first time configuration or when you open the AppImage file via your file browser, for example by double clicking on it:
-+
-image:installing/appimagelauncher_integrate_question.png[AppImage Integration Question,width=350]
+image:installing/kw-windows-install-setup.png[Install App,width=100]
+image:installing/kw-windows-install-setup-custom.png[Custom Setup,width=100]
+image:installing/kw-windows-install-setup-ready.png[Start Install,width=100]
+image:installing/kw-windows-installing-uac.png[UAC,width=100]
+image:installing/kw-windows-install-finished.png[Install Finished,width=100]
+image:installing/kw-windows-startmenu-entry.png[Start Menue,width=100]
 --
+endif::[]
 
-Install and run the Desktop App AppImage::
-The example below uses the terminal but you can also use the GUI. For details see {install-appimage-url}[How to run an AppImage].
+ifeval::["{targetbuild}" == "oc"]
+** See the following example images of the installation process:
 +
 --
-* Go to the {desktop-clients-url}[download] page and download the recent AppImage into the Applications folder in your home directory. Replace the URL from the example with the actual URL from the download page. Note the folder name `Applications` can be any name and helps to collect all AppImages you have on one location. The AppImageLauncher, if used, has this name predefined unless you change it.
-+
-[source,bash]
-----
-mkdir -p ~/Applications
-----
-+
-[source,bash]
-----
-cd ~/Applications
-----
-+
-[source,bash,subs="attributes+"]
-----
-wget {client-download-url}{url-version}/linux-appimage/ownCloud-{client-version-appimage}.AppImage
-----
-
-* The following steps are only necessary when the AppImageLauncher is _not_ used:
-** Make the AppImage executable:
-+
-[source,bash,subs="attributes+"]
-----
-sudo chmod +x ownCloud-{client-version-appimage}.AppImage
-----
-
-* Start the AppImage by invoking the following command:
-+
-[source,bash,subs="attributes+"]
-----
-~/Applications/ownCloud-{client-version-appimage}.AppImage
-----
-
-* Note when you start the AppImage after setting it to be executable, AppImageLauncher will open if installed.
+image:installing/oc-windows-install-setup.png[Install App,width=100]
+image:installing/oc-windows-install-setup-custom.png[Custom Setup,width=100]
+image:installing/oc-windows-install-setup-ready.png[Start Install,width=100]
+// image:installing/oc-windows-installing-uac.png[UAC,width=100]
+image:installing/oc-windows-install-finished.png[Install Finished,width=100]
+image:installing/oc-windows-startmenu-entry.png[Start Menue,width=100]
 --
+endif::[]
 
-Automatically updating the AppImage::
-For automatically updating the AppImage see the xref:automatic_updater.adoc#linux[Automatic Updating of the Desktop App - Linux] documentation.
+ifeval::["{targetbuild}" == "oc"]
+Once installed and configured, the Desktop App will update itself automatically unless you manually disable it. For more information about this setting see the xref:disabling-automatic-updates[Disabling Automatic Updates] section.
+endif::[]
 
-==== Installing Shell Integration Packages
+=== Deploying on Windows
 
-ownCloud supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
+The binary provided has additional features relevant to deployment.
+ 
+==== Features of the MSI Installer
 
-[source,bash]
+The MSI installer has several features that can be installed or removed individually. You can also control from the command line if you want to automate the installation. To do so, run the following command:
+
+[source,cmd,subs="attributes+"]
 ----
-curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
-----
-
-If curl is not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
-
-== Customizing the Windows Installation
-
-If you just want to install the ownCloud Desktop App on your local system, you can simply {client-download-url}{url-version}/win/[download,window=_blank] and launch the relevant `.msi` file and configure it in the wizard that pops up. For the examples below, the x64 installer is used.
-
-=== Microsoft GPO (Group Policy Object) Installer
-
-ownCloud provides two versions of the Microsoft Installer:
-
-- `*.x64.msi`: This is the installer for regular users. The installer UI has multiple translations to guide end users through the install procedure.
-- `*.x64.GPO.msi`: The GPO installer works better for automated deployments in managed environments. It is only available in English. The desktop client itself comes with all the usual languages for the user interface.
-
-=== Features
-
-The MSI installer provides several features that can be installed or removed individually, which you can also control via command-line, if you are automating the installation, then run the following command:
-
-[source,console,subs="attributes+"]
-----
-msiexec /passive /i ownCloud-{client-version-win}.msi
+msiexec /passive /i {bin_name}-{client-version}.x64.msi
 ----
 
-The command will install the ownCloud Desktop App into the default location with the default features enabled. If you want to disable, e.g., desktop shortcut icons you can simply change the above command to the following:
+This command installs the Desktop App in the default location with the default features enabled.
 
-[source,console,subs="attributes+"]
+For example, if you want to disable desktop shortcut icons, you can simply change the above command to the following:
+
+[source,cmd,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi REMOVE=DesktopShortcut
+msiexec /passive /i {bin_name}-{client-version}.x64.msi REMOVE=DesktopShortcut
 ----
 
-See the following table for a list of available features:
+See the table below for a list of available features:
 
 [width="100%",cols="20%,20%,27%,33%",options="header",]
 |===
@@ -316,118 +183,120 @@ required
 
 ==== Installation
 
-You can also choose to only install the Desktop App itself by using the following command:
+//note that after a discussion with @deepdiver, the settings shown have not changed from 5.3.x to 6.0.0
 
-[source,console,subs="attributes+"]
+The Desktop App comes with a few binaries that include the Desktop App itself, a command line interface, and a crash reporter. You can choose to install only the Desktop App by running the following command:
+
+[source,cmd,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT=Client
-----
-
-If you for instance want to install everything but the `DesktopShortcut` and the `ShellExtensions` feature, you have two possibilities:
-
-* You explicitly name all the features you actually want to install (whitelist) where `Client` is always installed anyway.
-
-[source,console,subs="attributes+"]
-----
-msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT=StartMenuShortcuts
+msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT=Client
 ----
 
-*  You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties.
+For example, if you want to install everything except the `DesktopShortcut` and the `ShellExtensions` feature, you have two options:
 
-[source,console,subs="attributes+"]
+* You explicitly name all the features you really want to install (whitelist), where `Client` is always installed anyway.
++
+[source,cmd,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi NO_DESKTOP_SHORTCUT="1"
-NO_SHELL_EXTENSIONS="1"
+msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT=StartMenuShortcuts
 ----
 
-NOTE: The ownCloud .msi file remembers these properties, so you don't need to specify them on upgrades.
+* You pass the `NO_DESKTOP_SHORTCUT` and `NO_SHELL_EXTENSIONS` properties.
++
+[source,cmd,subs="attributes+"]
+----
+msiexec /passive /i {bin_name}-{client-version}.x64.msi NO_DESKTOP_SHORTCUT="1" NO_SHELL_EXTENSIONS="1"
+----
 
-NOTE: You cannot use these to change the installed features, if you want to do that, see the next section.
+NOTE: The {ini_name} .msi file remembers these properties, so you don't need to specify them on upgrades.
+
+NOTE: You cannot use them to change the installed features, if you want to do that, see the next section.
 
 ==== Changing Installed Features
 
-You can change the installed features later by using `REMOVE` and `ADDDEFAULT` properties.
+You can change the installed features later by using the `REMOVE` and `ADDDEFAULT` properties.
 
 * If you want to add the desktop shortcut later, run the following command:
-
-[source,console,subs="attributes+"]
++
+[source,cmd,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi ADDDEFAULT="DesktopShortcut"
-----
-
-* If you want to remove it, simply run the following command:
-
-[source,console,subs="attributes+"]
-----
-msiexec /passive /i ownCloud-{client-version-win}.msi REMOVE="DesktopShortcut"
+msiexec /passive /i {bin_name}-{client-version}.x64.msi ADDDEFAULT="DesktopShortcut"
 ----
 
-Windows keeps track of the installed features and using `REMOVE` or `ADDDEFAULT` will only affect the mentioned features.
-
-Compare {ms-remove-url}[REMOVE] and {ms-adddefault-url}[ADDDEFAULT] on the Windows Installer Guide.
-
-NOTE: You cannot specify REMOVE on initial installation as it will disable all features.
-
-=== Installation Folder
-
-You can adjust the installation folder by specifying the `INSTALLDIR` property like this.
-
-[source,console,subs="attributes+"]
+* If you want to remove it, just run the following command:
++
+[source,cmd,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi INSTALLDIR="C:\Program Files\Non Standard ownCloud Client Folder"
+msiexec /passive /i {bin_name}-{client-version}.x64.msi REMOVE="DesktopShortcut"
 ----
 
-Be careful when using PowerShell instead of `cmd.exe`, it can be tricky to get the whitespace escaping right there. Specifying the `INSTALLDIR` like this only works on first installation, you cannot simply re-invoke the .msi with a different path. If you still need to change it, uninstall it first and reinstall it with the new path.
+Windows keeps track of the installed features. Using `REMOVE` or `ADDDEFAULT` will only affect the features mentioned.
 
-=== Disabling Automatic Updates
+Compare {ms-remove-url}[REMOVE, window=_blank] and {ms-adddefault-url}[ADDDEFAULT, window=_blank] at the Microsoft Windows Installer Guide.
+
+NOTE: You cannot specify `REMOVE` during the initial installation because it will disable all features.
+
+==== Installation Folder
+
+You can set the installation folder by specifying the `INSTALLDIR` property like this.
+
+[source,cmd,subs="attributes+"]
+----
+msiexec /passive /i {bin_name}-{client-version}.x64.msi INSTALLDIR="C:\Program Files\Non Standard {ini_name} Client Folder"
+----
+
+Use caution when using PowerShell instead of `cmd.exe`. It can be difficult to escape whitespace correctly. Specifying the `INSTALLDIR` like this only works the first time you install, you cannot simply re-run the .msi with a different path. If you need to change it, uninstall it first and reinstall it with the new path.
+
+ifeval::["{targetbuild}" == "oc"]
+==== Disabling Automatic Updates
 
 To disable automatic updates, you can pass the `SKIPAUTOUPDATE` property.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
-msiexec /passive /i ownCloud-{client-version-win}.msi SKIPAUTOUPDATE="1"
+msiexec /passive /i {bin_name}-{client-version}.x64.msi SKIPAUTOUPDATE="1"
 ----
+endif::[]
 
-=== Launch After Installation
+==== Launch After Installation
 
 To launch the Desktop App automatically after installation, you can pass the `LAUNCH` property.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
-msiexec /i ownCloud-{client-version-win}.msi LAUNCH="1"
+msiexec /i {bin_name}-{client-version}.x64.msi LAUNCH="1"
 ----
 
-This option also removes the checkbox to let users decide if they want to launch the Desktop App for non-passive/quiet mode.
+This option also removes the checkbox that lets users decide whether to launch the Desktop App for non-passive/quiet mode.
 
 NOTE: This option does not have any effect without GUI.
 
-=== No Reboot After Installation
+==== No Reboot After Installation
 
-The ownCloud Desktop App schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded. If you're taking care of the reboot yourself, you can set the `REBOOT` property.
+The {ini_name} Desktop App schedules a reboot after installation to make sure the Explorer extension is correctly (un)loaded. If you're taking care of the reboot yourself, you can set the `REBOOT` property.
 
-[source,console,subs="attributes+"]
+[source,cmd,subs="attributes+"]
 ----
-msiexec /i ownCloud-{client-version-win}.msi REBOOT=ReallySuppress
-----
-
-This will make msiexec exit with error ERROR_SUCCESS_REBOOT_REQUIRED (3010).
-If your deployment tooling interprets this as an actual error and you want to avoid that, you may want to set the `DO_NOT_SCHEDULE_REBOOT` instead.
-
-[source,console,subs="attributes+"]
-----
-msiexec /i ownCloud-{client-version-win}.msi DO_NOT_SCHEDULE_REBOOT="1"
+msiexec /i {bin_name}-{client-version}.x64.msi REBOOT=ReallySuppress
 ----
 
-=== Define Your Own Synchronization Folder Icon
+This will cause msiexec to exit with an ERROR_SUCCESS_REBOOT_REQUIRED (3010) error. If your deployment tool interprets this as a real error and you want to avoid that, you can set `DO_NOT_SCHEDULE_REBOOT` instead.
 
-When setting up a new synchronization, ownCloud automatically assigns its icon to the synchronization folder for ease of identification. Though you can change this icon, it would be reverted back on next reboot to the ownCloud icon. Folder icon details are usually stored in the hidden desktop.ini file which is located _inside_ the folder under scrutiny. To make a manually defined icon persistent, a small change in this `desktop.ini` file is necessary. See the following description to do so:
+[source,cmd,subs="attributes+"]
+----
+msiexec /i {bin_name}-{client-version}.x64.msi DO_NOT_SCHEDULE_REBOOT="1"
+----
 
-* Make the `desktop.ini` visible because it is hidden by default:
+=== Define Your own Synchronization Folder Icon
+
+When setting up a new synchronization, {ini_name} automatically assigns its icon to the synchronization folder for easy identification. Although you can change this icon, it will revert to the {ini_name} icon the next time you restart. Folder icon details are usually stored in the hidden Desktop.ini file, which is located _inside_ the folder in question. To make a manually defined icon persistent, a small modification to this `Desktop.ini` file is required. See the description below:
+
+* Make the `Desktop.ini` visible, it is hidden by default:
 +
 --
 [width="100%",cols="70%,.^100%"]
 |===
-a| image:installing/show_in_explorer.png[Show in Explorer,width=250]
+a| image:installing/show_in_explorer.png[Show in Explorer,width=150]
 | Open the Desktop app, click on the three dots and there on `Show in Explorer`.
 
 
@@ -437,43 +306,237 @@ a| image:installing/explorer_view.png[Explorer View,width=350]
 a| image:installing/explorer_options.png[Explorer Options,width=350]
 | and click on the `Options` icon.
 
-a| image:installing/folder_view.png[Folder Options,width=250]
+a| image:installing/folder_view.png[Folder Options,width=150]
 | In `Folder Options` click on the `View` tab.
 
-a| image:installing/advanced_settings.png[Advanced Settings,width=250]
+a| image:installing/advanced_settings.png[Advanced Settings,width=150]
 | In `Advanced Settings`, change the marked items.
 |===
 --
 
-* Now, as the `desktop.ini` file is visible, add a setting to make an icon change persistent. To do so, open it with an editor.
+* Now, the the `Desktop.ini` file is visible, add a setting to make an icon change persistent. To do this, open it with an editor.
 ** The current content may look like this:
 +
 --
-[source,plaintext]
+[source,plaintext,subs="attributes+,macros+"]
 ----
 [.ShellClassInfo]
-IconResource=C:\Program Files\ownCloud\owncloud.exe,0
-[ViewState]
-Mode=
-Vid=
-FolderType=Generic
++IconResource=C:\Program Files\+{ini_name}+\+{bin_name}.exe
 ----
 --
 
 ** Add the following to the current content at the bottom:
 +
 --
-[source,plaintext]
+[source,plaintext,subs="attributes+"]
 ----
-[ownCloud]
+[{ini_name}]
 UpdateIcon=false
 ----
 --
 
-* Make the `dektop.ini` file hidden again by undoing the `Advanced Settings` changes from the first step. After that, the `desktop.ini` file will be hidden again.
+* Hide the `Desktop.ini` file by undoing the `Advanced Settings` changes from the first step. The `Desktop.ini` file will then be hidden again.
 
-* Finally apply any icon of your choice to the synchronization folder.
+* Finally apply an icon of your choice to the synchronization folder.
+
+== Installation on macOS
+
+* Installation on macOS is the same as for any software application: download the installer, double-click it to launch the installation and follow the installation wizard.
+
+* The provided package includes shell integration, which consists of overlay icons and context menus for the file browser.
+
+ifeval::["{targetbuild}" == "kw"]
+** See the following example images of the installation process:
++
+--
+image:installing/kw-macos-introduction.png[Introduction,width=100]
+image:installing/kw-macos-installation-type.png[Installation Type,width=100]
+image:installing/kw-macos-grant-install.png[Grant Install,width=100]
+image:installing/kw-macos-install-success.png[Install Success,width=100]
+image:installing/kw-macos-installer-move-to-trash.png[Move to Trashbin,width=100]
+--
+endif::[]
+
+== Installation on Linux
+
+=== Shell Integration and Overlay Icons
+
+ifeval::["{targetbuild}" == "oc"]
+* *Linux Native Installation:* +
+Depending on the way how the package is installed, shell integration consisting of overlay icons and context menus for the file browser is included.
+endif::[]
+
+* *AppImage:* +
+Currently, shell integration is not included in AppImages, nor can it be downloaded separately. To use shell integration with an AppImage, additionally install Linux Native with integrated shell integration, and use the AppImage as usual. The documentation will be updated if shell integration is provided independently.
+
+=== Common Preparations
+
+* Note that our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
+
+* You can add command line parameters when launching the Desktop App after installation. One parameter worth mentioning is the `-s` option. This option forces the settings page to be displayed on startup. While not necessary for general use, it can be helpful if system tray icons are no longer available in your desktop environment.
+
+* Linux users should also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the Desktop App can log in automatically.
+
+* When using GNOME on recent distributions such as Ubuntu +22.04, Debian +11, or others, the system tray is typically not available. This makes it difficult to restore an application that has been minimized to the system tray. In this case, you need to install a system tray recovery extension to be able to find and restore the minimized application.
++
+{empty}
++
+To manage installed extensions, you need to use the `Extension Manager/Appindicator`. If it is not available on your system, you need to install it first:
+
+** *Ubuntu / Debian*
++
+--
+[source,bash]
+----
+sudo apt install gnome-shell-extension-manager
+----
+
+See the following steps to install and configure the `gnome-shell-extension-appindicator`:
+
+[source,bash]
+----
+sudo apt install gnome-shell-extension-appindicator
+----
+--
+
+** *Red Hat Enterprise Linux* based distributions +
+(including AlmaLinux and Rocky Linux), you must first install a different package:
++
+--
+[source,bash]
+----
+sudo dnf install epel-release
+----
+
+Then run the following command. On Fedora, it is sufficient to simply run the following command:
+
+[source,bash]
+----
+sudo dnf install gnome-extensions-app gnome-shell-extension-appindicator
+----
+--
+
+** *For all other distributions*, +
+follow the {gnome-extensions-url}[AppIndicator Support] installation documentation.
+
+** Once the extension is installed, you will need to log out and log in again to activate the changes. To manage extensions, open the `Extensions Manager`. For this particular system tray icon extension, the name of the extension displayed may vary and may be such as **Ubuntu AppIndicators** or **AppIndicator and KStatusNotifierItem Support**. Once enabled, the system tray will be displayed again within the desktop environment.
++
+image:installing/gnome-shell-extension-appindicator-selector.png[width=350]
+
+ifeval::["{targetbuild}" == "oc"]
+=== Linux Native Installation
+
+Linux users will need to follow the instructions on the {client-download-url}[download, window=_blank] page to either install the package individually or via a packet manager. The Desktop App will display a notification when an update is available and updates are managed according the installation method selected.
+
+endif::[]
+
+=== AppImage
+
+AppImages require one package to be installed before usage which is `libfuse2t64`. Check the following procedure if it is already present and how to install if not. Note that if there is no installation candiate for `libfuse2t64`, use `libfuse2` instead. Installing libfuse v2 does no harm if libfuse v3 is already installed.
+
+Check the _libfuse2t64_ package and install if required::
+--
+* Check if `libfuse2t64` is already installed:
++
+[source,bash]
+----
+dpkg -l libfuse2t64
+----
+
+* Check if there is an installation candidate for `libfuse2t64`:
++
+[source,bash]
+----
+sudo apt-cache show libfuse2t64
+----
+
+* Install `libfuse2t64`:
++
+[source,bash]
+----
+sudo apt install libfuse2t64
+----
+--
+
+==== Install and run the Linux Desktop App AppImage
+
+An {appimage-wikipedia-url}[AppImage, window=_blank] build of the Desktop App is available to support more Linux platforms.
+You can download the AppImage as described in the xref:download[Download] section of this document.
+
+AppImages are an alternative way to deploy Linux applications -- instead of having multiple files in multiple locations making up a package, the entire application is contained in a single file with an `.AppImage` extension, including all necessary dependencies and libraries. The AppImage will run on all modern and most older Linux platforms.
+
+The example below uses the terminal but you can also use the GUI. Note the folder name `Applications` can be any name and helps to collect all AppImages you have on one location.
+
+* Create a target folder if not exists to store your AppImages:
++
+--
+[source,bash]
+----
+mkdir -p ~/Applications
+----
+
+[source,bash]
+----
+cd ~/Applications
+----
+--
+
+ifeval::["{targetbuild}" == "oc"]
+* Download the binary: +
+Replace the URL from the example with the actual URL from the download page.
++
+[source,bash,subs="attributes+"]
+----
+wget {client-download-url}{url-version}/linux-appimage/{ini_name}-{client-version-appimage}.AppImage
+----
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+* Download the latest version of the Desktop App the xref:download[Download] section of this document and move it to the `Applications` directory: +
+endif::[]
+
+* Make the AppImage executable: +
+Note that the filename is only an example.
++
+[source,bash,subs="attributes+"]
+----
+sudo chmod +x {bin_name}-{client-version-appimage}.AppImage
+----
+
+* Start the AppImage by invoking the following command:
++
+[source,bash,subs="attributes+"]
+----
+~/Applications/{bin_name}-{client-version-appimage}.AppImage
+----
+
+////
+
+=== Shell Integration Packages
+
+Overlay icons and a special shortcut menu for your file browsers, if not part of the package, must be installed manually.
+
+// shell integration is for 6.0 / 2.0 currently not available !!
+
+ifeval::["{targetbuild}" == "oc"]
+Shell integration packages, which means overlay icons and a special context menu for your file browsers, is not included in the AppImage. You need to install them manually, see xref:installing-shell-integration-packages[Installing Shell Integration Packages].
+endif::[]
+
+ifeval::["{targetbuild}" == "oc"]
+==== Installing Shell Integration Packages
+
+{ini_name} supports installing shell integration packages, which allow you to add overlay icons and a special context menu for your file browsers, via a bash script guided installation for Linux based systems. This script covers main systems and file browsers, but by nature not all possible flavours and combinations. Beside an auto mode, you can also manually define parameters from a list. The following quick command installing the extensions requires `curl` to be available on your system:
+
+[source,bash]
+----
+curl -s https://raw.githubusercontent.com/owncloud/client-desktop-install-shell-integration/main/install-extensions.sh | bash -s - --auto
+----
+
+If curl is not available or you are not sure or want to read more, see {install-shell-integration-url}[Install ownCloud Linux Shell Extensions,window=_blank] for more details.
+endif::[]
+
+////
 
 == Connection Wizard
 
-When all is set up and the app has been started for the first time, you will be directed to the xref:using.adoc#connection-wizard[Connection Wizard] to set up a new synchronization connection. The connection wizard will always be shown if no connection has been set up.
+When everything is set up and the application is started for the first time, you will be directed to the xref:using.adoc#connection-wizard[Connection Wizard] to set up a new synchronization connection. The connection wizard is always displayed when no connection has been established.
