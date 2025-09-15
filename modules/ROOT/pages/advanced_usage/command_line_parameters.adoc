@@ -1,25 +1,31 @@
 = Command Line Parameters
 :toc: right
-:description: The ownCloud Client can be executed with various command line parameters. 
-:page-aliases: advanced_usage/command_line_options.adoc
+:description: The Desktop App can be executed with various command line parameters to support special usage. 
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
-{description} These parameters are valid for both the native and the Linux AppImage xref:installing.adoc#system-requirements-and-installation[installation].
+{description}
 
 == Command Description
 
-[source,console]
+Use the appropriate command depending on where you installed it. The following example uses Windows:
+
+[source,cmd,subs="attributes+,macros+"]
 ----
-owncloud [options]
++'C:\Program Files\ownCloud\+{bin_name}.exe' [options] [arguments]
 ----
 
-Command line parameters supported by `owncloud` include the following:
+The following command line parameters are supported by the Desktop App:
 
 [width="100%",cols="35%,65%",options="header"]
 |===
 | Parameter
 | Description
+
+a| *Options*
+|
 
 | `-h, --help`
 | Displays help on commandline options.
@@ -27,8 +33,8 @@ Command line parameters supported by `owncloud` include the following:
 | `-v, --version`
 | Displays version information.
 
-| `-s, --showsettings`
-| Show the settings dialog while starting.
+| `-s, --show`
+| Start the mai window visible, or if is already running, bring it to the front. By default, the client launches in the background.
 
 | `-q, --quit`
 | Quit the running instance.
@@ -42,15 +48,18 @@ Command line parameters supported by `owncloud` include the following:
 | `--logdebug`
 | Output debug-level messages in the log.
 
-| `--language <language>` 
-| Override UI language.
-
-| `--list-languages`
-| List available languages.
-
-| `--confdir <dirname>`
-| Use the given configuration folder.
-
 | `--debug`
 | Enable debug mode.
+
+ifeval::["{targetbuild}" == "oc"]
+| `--cmd`
+| Forward all arguments to the command client. This argument must be the first.
+endif::[]
+
+a| *Arguments*
+|
+
+| `vfs file`
+| Virtual filesystem file to be opened (optional)
+
 |===

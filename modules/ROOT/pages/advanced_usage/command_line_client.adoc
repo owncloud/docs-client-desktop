@@ -1,6 +1,8 @@
-= The Command Line Client
+= Command Line Client
 :toc: right
-:description: The ownCloud Client packages contain a command line client, owncloudcmd, that can be used to synchronize ownCloud files to client machines from the command line.
+:description: The Desktop App packages contain a command line client, that can be used to synchronize files to client machines from the command line.
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
@@ -8,13 +10,13 @@
 
 == Command Description
 
-`owncloudcmd` performs a single _sync run_ and then exits the synchronization process. In this manner, `owncloudcmd` processes the differences between client and server directories and propagates the files to bring both repositories to the same state. Contrary to the GUI-based client, `owncloudcmd` does not repeat synchronizations on its own. It also does not monitor for file system changes.
+`{bin_name}cmd` performs a single _sync run_ and then exits the synchronization process. In this manner, `{bin_name}cmd` processes the differences between client and server directories and propagates the files to bring both repositories to the same state. Contrary to the GUI-based app, `{bin_name}cmd` does not repeat synchronizations on its own. It also does not monitor for file system changes.
 
-To invoke `owncloudcmd`, you must provide the local and the remote repository URL using the following command. Note that for Windows, you must be in the directory where ownCloud is installed while on Linux, you can use the command from anywhere. To show its location in Linux, type `whereis owncloudcmd`.
+To invoke `{bin_name}cmd`, you must provide the local and the remote repository URL using the following command. Note that for Windows, you must be in the directory where {ini_name} is installed while on Linux, you can use the command from anywhere. To show its location in Linux, type `whereis {bin_name}cmd`.
 
-[source,console]
+[source,cmd,subs="attributes+"]
 ----
-owncloudcmd [options] [arguments]
+{bin_name}cmd [options] [arguments]
 ----
 
 Regarding the arguments, all of them must be used in the following order and the placeholders replaced with real data: 
@@ -39,9 +41,9 @@ source_dir server_url remote_folder
 | The remote folder on the server.
 |===
 
-The following options are supported by `owncloudcmd`:
+The following options are supported by `{bin_name}cmd`:
 
-[width="100%",cols="35%,65%",options="header"]
+[width="100%",cols="40%,60%",options="header"]
 |===
 | Option
 | Description
@@ -100,36 +102,39 @@ The following options are supported by `owncloudcmd`:
 
 == Credential Handling
 
-`owncloudcmd` requires the user to specify the username and password using the standard URL pattern. The example is based on Linux and uses ownCloud Server as backend:
+`{bin_name}cmd` requires the user to specify the username and password using the standard URL pattern.
+ifeval::["{targetbuild}" == "oc"]
+The example is based on Linux and uses ownCloud Server as backend:
+endif::[]
 
-[source,bash]
+[source,bash,subs="attributes+,macros+"]
 ----
-owncloudcmd /home/user/my_sync_folder \
-            https://carla:secret@server/owncloud/remote.php/dav/files/carla/ \
+{bin_name}cmd +/home/user/my_sync_folder \+
+            +https://carla:secret@server/+{bin_name}+/remote.php/dav/files/carla/ \+
             /
 ----
 
-To synchronize the ownCloud directory `Music` to the local directory `media/music`, through a proxy listening on port `8080`, and on a gateway machine using IP address `192.168.178.1`, the command line would be:
+To synchronize the {bin_name} directory `Test` to the local directory `media/test`, through a proxy listening on port `8080`, and on a gateway machine using IP address `192.168.178.1`, the command line would be:
 
-[source,console]
+[source,bash,subs="attributes+,macros+"]
 ----
-owncloudcmd --httpproxy http://192.168.178.1:8080 \
-              $HOME/media/music \
-              https://server/owncloud/remote.php/dav/files/carla/ \
-              /Music.
+{bin_name}cmd +--httpproxy http://192.168.178.1:8080 \+
+              +$HOME/media/test \+
+              +https://server/+{bin_name}+/remote.php/dav/files/carla/ \+
+              +/Test+
 ----
 
-`owncloudcmd` will prompt for the username and password, unless they have been specified on the command line or `-n` has been passed.
+`{bin_name}` will prompt for the username and password, unless they have been specified on the command line or `-n` has been passed.
 
 == Exclude List
 
-`owncloudcmd` requires access to an exclude list file. It must either be installed along with `owncloudcmd` and thus be available in a system location, be placed next to the binary as `sync-exclude.lst` or be explicitly specified with the `--exclude` switch.
+`{bin_name}cmd` requires access to an exclude list file. It must either be installed along with `{bin_name}cmd` and thus be available in a system location, be placed next to the binary as `sync-exclude.lst` or be explicitly specified with the `--exclude` switch.
 
 == Command Line Client When Using AppImages
 
-When using an xref:installing.adoc#appimage[AppImage] installation with Linux, there is no `owncloudcmd` command you can start but the name of the AppImage. To use the command line client of the AppImage, just use the name of the AppImage and append the `--cmd` option plus all other parameters as listed in the xref:#command-description[Command Description]. Replace `[...]` with the version you are using or take the name of the AppImage if you have named it otherwise. Example:
+When using an xref:installing.adoc#appimage[AppImage] installation with Linux, there is no `{bin_name}cmd` command you can start but the name of the AppImage. To use the command line client of the AppImage, just use the name of the AppImage and append the `--cmd` option plus all other parameters as listed in the xref:#command-description[Command Description]. Replace `[...]` with the version you are using or take the name of the AppImage if you have named it otherwise. Example:
 
-[source,bash]
+[source,bash,subs="attributes+"]
 ----
-./ownCloud-[...]-x86_64.AppImage --cmd --help
+./{bin_name}-[...].AppImage --cmd --help
 ----

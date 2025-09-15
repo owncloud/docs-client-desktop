@@ -1,10 +1,12 @@
 = Automatic Updating of the Desktop App
 :toc: right
-:description: The Automatic Updater ensures that you always have the latest features and bug fixes for your ownCloud Desktop App.
+:description: The Automatic Updater ensures that you always have the latest features and bug fixes for your Desktop App.
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
-{description} The Automatic Updater updates only on macOS and Windows computers; Linux users only need to use their normal package managers. However, on Linux systems the Updater will check for updates and notify you when a new version is available.
+{description} The Automatic Updater only works on Windows computers. macOS Linux users must use the same process they used to install the Desktop App. However, the updater will check for updates and notify you when a new version is available.
 
 IMPORTANT: When planning to upgrade from a Desktop app release <= 2.5 to a release >=5.0 you must make an intermediary step to release 4.0 before doing the final upgrade.
 
@@ -12,49 +14,43 @@ IMPORTANT: When planning to upgrade from a Desktop app release <= 2.5 to a relea
 
 The following sections describe how to use the Automatic Updater on different operating systems.
 
+On the menu:Settings[About] page, you can define the update channel. Depending on the selected channel, different versions of the {ini_name} Desktop App will be available. Note that you cannot switch channels back and forth. Once a change is made, it cannot be undone.
+
+Depending on the operating system (OS), either a download and installation process begins, or a notification window pops up when a new release is available, prompting you to take further action.
+
 === Windows
 
-The ownCloud Desktop App checks for updates and downloads them when available. You can view the update status under menu:Settings[General > Updates] in the ownCloud Desktop App.
-
-image::automatic_updater/updates-available.png[Update Notification Windows, width=350]
-
-If an update is available and has been successfully downloaded, the ownCloud Desktop app starts a silent update prior to its next launch and then restarts itself. Should the silent update fail, the Desktop app offers a manual download.
+If an update is available and has been downloaded successfully, the {ini_name} Desktop App will start a silent update before its next launch and then restart itself. If the silent update fails, the {ini_name} Desktop App offers a manual download.
 
 NOTE: Administrative privileges are required to perform the update.
 
 === macOS
 
-If a new update is available, the ownCloud Desktop app initializes a *pop-up dialog* to alert you of the update and requests that you update to the latest version. This is the default process for macOS applications.
+If a new update is available, the {ini_name} Desktop App initializes a *pop-up dialog* to alert you of the update and requests that you update to the latest version. This is the default process for macOS applications.
 
 === Linux
 
-* Linux distributions provide their own update tools. +
-The ownCloud Desktop app on a Linux operating system does not perform any updates on its own. The client will inform you (menu:Settings[General > Updates]) when an update is available.
-+
-image:automatic_updater/updates-available.png[Update Notification Windows, width=350]
-
-* AppImages +
-AppImages provide an auto-update feature. The check process takes place when (re)starting the AppImage. If a new AppImage is found, you get the following example screen where you can decide whether to install the new image or not. Updates are in-place and do not produce a new file name.
-+ 
-image:automatic_updater/app-image-update-available.png[Autoupdating an AppImage, width=300,pdfwidth=60%]
-
+If a new update is available, the {ini_name} Desktop App initializes a *pop-up dialog* to alert you of the update and requests that you update to the latest version. Update the {ini_name} Desktop App according to the installation method used.
 
 == Preventing Automatic Updates
 
-In controlled environments, such as companies or universities, you might not want to enable the auto-update mechanism, as it interferes with controlled deployment tools and policies. To address this case, it is possible to disable the auto-updater entirely. The following sections describe how to disable the auto-update mechanism for different operating systems.
+In controlled environments such as companies or universities, you may not want to enable the auto-update mechanism because it interferes with deployment tools and policies. To address this issue, you can disable the auto-updater entirely. The following sections describe how to do so for different operating systems.
 
-=== Preventing Automatic Updates in Windows Environments
+More information about the configuration file can be found in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
 
-Users may disable automatic updates by adding this line to the `[General]` section of their `owncloud.cfg` files:
+=== Windows Environments
 
-`owncloud.cfg` is usually located in `C:\Users\<USERNAME>\AppData\Roaming\ownCloud\owncloud.cfg`.
+Users can disable automatic updates by adding this line to the `[General]` section of their `owncloud.cfg` files:
 
-[source]
+`owncloud.cfg` is usually located in: +
+`%AppData%\ownCloud\owncloud.cfg`
+
+[source,cfg]
 ----
 skipUpdateCheck=true
 ----
 
-Windows administrators have more options for preventing automatic updates in Windows environments by using one of two methods. The first method allows users to override the automatic update check mechanism, whereas the second method prevents any manual overrides.
+Windows administrators have two methods for preventing automatic updates in Windows environments. The first method allows users to override the automatic update check mechanism. The second method, on the other hand, prevents any manual overrides.
 
 To prevent automatic updates, but allow manual overrides:
 
@@ -70,9 +66,9 @@ b. (64-bit-Windows) HKEY_LOCAL_MACHINE\Software\Wow6432Node\ownCloud\ownCloud
 .  Add the key `skipUpdateCheck` (of type DWORD).
 .  Specify a value of `1` to the machine.
 
-To manually override this key, use the same value in `HKEY_CURRENT_USER`. To prevent automatic updates and disallow manual overrides:
+To override this key manually, use the same value in `HKEY_CURRENT_USER`. To prevent automatic updates and disallow manual overrides, do the following:
 
-NOTE: This is the preferred method of controlling the updater behavior using Group Policies.
+NOTE: This is the preferred method for controlling updater behavior through group policies.
 
 .  Edit this Registry key:
 
@@ -85,7 +81,7 @@ HKEY_LOCAL_MACHINE\Software\Policies\ownCloud\ownCloud
 .  Add the key `skipUpdateCheck` (of type DWORD).
 .  Specify a value of `1` to the machine.
 
-NOTE: Enterprise branded Desktop Apps have different key names, which are set during the branding process using the Application Vendor and Application Name fields.
+NOTE: The key names of enterprise-branded Desktop Apps are set during the branding process using the Application Vendor and Application Name fields.
 
 Your key names look like this:
 
@@ -94,15 +90,17 @@ Your key names look like this:
 HKEY_LOCAL_MACHINE\Software\Policies\myCompanyName\myAppName
 ----
 
-=== Preventing Automatic Updates in macOS Environments
+=== macOS Environments
 
-You can disable the automatic update mechanism, in the macOS operating system, by copying the file `owncloud.app/Contents/Resources/deny_autoupdate_com.owncloud.desktopclient.plist` to `/Library/Preferences/com.owncloud.desktopclient.plist`.
+In the macOS operating system, you can disable the automatic update mechanism by copying the file: +
+`owncloud.app/Contents/Resources/deny_autoupdate_com.owncloud.desktopclient.plist` to +
+`/Library/Preferences/com.owncloud.desktopclient.plist`
 
-=== Preventing Automatic Updates in Linux Environments
+=== Linux Environments
 
-Because the Linux Desktop App does not provide automatic updating functionality, there is no need to remove the automatic-update check. However, if you want to disable it, edit your Desktop App configuration file: `$HOME/.config/ownCloud/owncloud.cfg`. Add this line to the [General] section:
+Since the Linux Desktop App does not have automatic update functionality, there is no need to remove the automatic update check. However, if you want to disable automatic updates, edit your Desktop App configuration file: `$HOME/.config/ownCloud/owncloud.cfg`. Add this line to the `[General]` section:
 
-[source,ini]
+[source,cfg]
 ----
 skipUpdateCheck=true
 ----
