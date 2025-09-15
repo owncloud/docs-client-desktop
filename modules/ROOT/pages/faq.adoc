@@ -1,9 +1,11 @@
-= Desktop Frequently Asked Questions (FAQ)
+= Desktop App Frequently Asked Questions (FAQ)
 :toc: right
-:description: Here you can find some of the most frequently asked questions about the ownCloud Desktop app.
+:description: Here you can find some of the most frequently asked questions about the Desktop app.
 
 :wordpress1-url: http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/
-:user_manual_quota: https://doc.owncloud.com/server/next/user_manual/files/webgui/quota.html
+:using-sysctl-url: https://www.cyberciti.biz/faq/reload-sysctl-conf-on-linux-using-sysctl/
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
@@ -12,23 +14,20 @@
 == Clarification of Terms Used
 
 * *Polling* +
-Polling is defined as the task where the Desktop app queries the server for changes - among other things. If the server responds with a change that had happened on the backend, the client will start syncing the changes after polling has finished.
+Polling is defined as the task where the Desktop App polls the server for changes, among other things. If the server responds with a change that has happened on the backend, the client will start synchronizing the changes after polling has finished.
 
-* *Sync* +
-Syncing is defined as the task where any changes will be synchronized, no matter if they occurred in the Desktop app or on the server side. Syncing does not depend on former polling while polling can result in a sync.
+* *Synchronization* +
+Synchronization is defined as the task where all changes are synchronized, regardless of whether they occurred in the Desktop App or on the server side. Synchronization does not depend on previous polling, while polling can result in synchronization.
 
 * *Local Discovery* +
-Local discovery is defined as the task where the Desktop app looks for changes on the local filesystem. A local discovery can internally be enforced to check for changes that have been missed for example when the Desktop app was shut down during ongoing changes on the local filesystem. Any changes identified on the local filesystem trigger a sync after local discovery has finished.
-
-== VFS for Windows Server
-
-Without claim of completeness, actuality or support, Windows Server releases that are based on builds starting with 1709 should come with the native system API that is required to use VFS. Windows Servers 2016 and lower do not have native VFS included and will not be able to use VFS therefore.
+Local discovery is defined as the task where the Desktop App looks for changes on the local file system. A local discovery can be enforced internally to check for changes that were missed, for example, when the Desktop App was shut down while changes were in progress on the local filesystem. Any changes detected on the local file system will trigger a sync after the local discovery is complete.
 
 == Usage
 
+ifeval::["{targetbuild}" == "oc"]
 === How to Interpret Quotas
 
-When a quota has been defined, either as general value in ownCloud Server or in Infinite Scale at the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
+When a quota has been defined, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
 
 [width=100%,cols="^.50%,^.50%",options="header"]
 |===
@@ -80,87 +79,75 @@ a|
 ownCloud Server provides external storages and remote shares as folders. These folders do not count against the quota. To mitigate this situation in the Desktop app, the sizes of these folders are added to the quotas shown by the Desktop app automatically to avoid showing incorrect available space. In total, the quota values level out and no wrong differences are shown, though the absolute quota values may look higher than they are in reality - the absolute difference is correct. This difference shows if files to sync could be uploaded to the server successfully.
 
 Note that with Infinite Scale, each space has its own sync relationship and therefore quota values show as they are defined for each.
+endif::[]
 
-=== Continuous File Upload to the Server Though No Modifications Made
+=== Directory Modification Time
 
-It is possible that another program is changing the modification date of the file. If the file has an `.eml` extension (Windows Mail, Windows Live Mail), the Microsoft Indexer automatically and continually changes the file.
-To solve this issue, you can:
+NOTE: The Desktop App does not keep the mtime (modification time) of directories, although it does update the mtimes of files.
+
+=== Continuously Upload Files to the Server Even When no Changes are Made
+
+It is possible for another program to change the modification date/time (mtime) of a file, either intentionally or unintentionally, even though no content has been changed. This can be done silently without the user noticing. Such an event triggers a file to be resynchronized.
+
+Examples of other programs changing the mtime are backup tools or in rare cases the Windows indexing service. The Desktop App cannot do anything about this.
+
+If you have files with an `.eml` extension (Windows Mail, Windows Live Mail), the Microsoft indexer automatically and continuously changes the mtime of the files. To solve this problem, you can:
 
 * Remove the extension from the indexer (menu:Indexing Options[Advanced > File Types])
 * Uninstall Windows Mail, Windows Live Mail. Note that when reinstalling, the issue reappears again. See {wordpress1-url}[Windows indexer changes modification dates of .eml files] for more information.
-* Remove at your own risk the corresponding key for .eml files in the registry at
-`\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers`
+* Remove at your own risk the corresponding key for .eml files in the registry at: +
+`\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\`
+`CurrentVersion\PropertySystem\PropertyHandlers`
 
-=== Syncing Stops When Attempting to Sync Deeper Than 100 Sub-Directories
+=== Sync Stops When Trying to Sync Deeper Than 100 Subdirectories
 
-The Desktop App has been intentionally limited to sync no deeper than 100 sub-directories. The hard limit exists to guard against bugs with cycles like symbolic link loops. When a deeply nested directory is excluded from synchronization it will be listed with other ignored files and directories in the "Not synced" tab of the "Activity" pane.
+The Desktop App has been intentionally limited to sync no deeper than 100 subdirectories. The hard limit exists to protect against cyclic bugs like symbolic link loops. If a deeply nested directory is excluded from sync, it will be listed with other ignored files and directories in the menu:Activity[Not Synced] pane.
 
+ifeval::["{targetbuild}" == "oc"]
 === My Sync Folder Displays a Different Quota Than the Web Interface
 
-When other users share data with you, it's downloaded to the sync folder and counted as space used by the Desktop App, although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status. For more information, see the {user_manual_quota}[Storage Quotas in the User Manual].
+When other users share data with you, it's downloaded to the sync folder and counted as space used by the Desktop App, although it doesn't affect your quota for storage usage. There are more factors taken into account when calculating the quota status.
+endif::[]
 
 === The Desktop App Shows Different File Sizes Than My Mobile App
 
-The file size values differ depending on the client you are using. Some operating systems like iOS and macOS use the decimal system (power of 10) where 1kB or one kilobyte consists of 1000 bytes, while Linux, Android and Windows use the binary system (power of 2) where 1KB consists of 1024 bytes and is called a kibibyte. So no reason to worry if you see different file sizes in your desktop client than on your mobile devices or the web interface.
+File size values differ depending on the client you are using. Some operating systems like iOS and macOS use the decimal system (power of 10) where 1kB or 1 kilobyte consists of 1000 bytes, while Linux, Android and Windows use the binary system (power of 2) where 1KB consists of 1024 bytes and is called a kibibyte. So no need to worry if you see different file sizes in your desktop client than on your mobile devices or web interface.
 
-=== Sync Delay When Using a Network Drive
+=== Synchronisation Delay When Using a Network Drive
 
-Due to technical limitations, the Desktop app cannot detect local changes when the local sync folder is located on a mounted network volume. Only the full local discovery, which defaults to run every hour if not changed, will detect any changes and trigger the upload. If desired, a smaller local discovery value can be configured to sync local changes more often. For more details see the: xref:advanced_usage/configuration_file.adoc#section-owncloud[Configuration File] documentation.
+Due to technical limitations, the Desktop App cannot detect local changes if the local sync folder is located on a mounted network volume. Only full local discovery, which by default runs every hour if not changed, will detect changes and trigger the upload. If desired, a smaller local discovery value can be configured to sync local changes more frequently. For more details see the xref:advanced_usage/configuration_file.adoc#section-owncloud[Configuration File] documentation.
 
 == Major Configuration Changes
 
-=== I Want to Move My Local Sync Folder
+=== Relocating a Local Sync Folder
 
-The ownCloud Desktop App does not provide a way to change the local sync folder directly. However, it can be done in two ways:
+The Desktop App does not provide a way to change the location of the sync folder directly. However, there is a way to do it without fully resyncing. Do this for each synchronization connection that you want to move to a new local destination:
 
-. Copy the folder and avoid a full re-sync:
+. First, select the synchronization connection and remove it. +
+For details how to do so see xref:using.adoc#remove-sync-relationships[Remove Sync Relationships].
 
-.. Stop the Desktop App and edit the `localPath=` line in the
-xref:advanced_usage/configuration_file.adoc#location-of-the-configuration-file[configuration file]
-according your needs.
-
-.. Copy (or move) all your data from the current to the new location manually and start the Desktop App.
-
-. Create a new sync connection with a new location: 
-
-..  Remove the existing connection which syncs to the old directory.
+. Then, move the folder to the target location. +
+The example moves `My Folder` from `{ini_name}` -> `{ini_name} New`. +
+Note in the screenshot of the original location, that the `Status` field is empty because there is no active synchronization setup which is a mandatory requirement for this process.
 +
-To do so, in the Desktop App UI, which you can see below, click the drop-down menu menu:Account[Remove].
-+
-image:faq/ownCloud-remove_existing_connection.png[image, width=350,pdfwidth=60%]
-+
-This will display a "*Confirm Account Removal*" dialog window. If you're sure, click btn:[Remove connection].
-+
-image:faq/ownCloud-remove_existing_connection_confirmation_dialog.png[image, width=350,pdfwidth=60%]
+--
+ifeval::["{targetbuild}" == "kw"]
+image:faq/kw-windows-sync-folder-location.png[Source Folder,width=100]
+image:multi-location/kw-arrow-right.png[width=50]
+image:faq/kw-windows-sync-folder-location-new.png[Target Folder,width=100]
+endif::[]
+--
 
-..  Add a new connection which syncs to the desired directory.
+. Finally, add a new connection that syncs *the same synchronization connection* to the desired new directory. To select a destination folder, using the example above, you have to take: +
+`{ini_name} New` *and NOT* `{ini_name} New\My Folder`!
 +
-Click the drop-down menu menu:Account[Add new].
-+
-This opens the ownCloud Connection Wizard, which you can see below, _but_ with an extra option. This option provides the ability to either keep the existing data _(synced by the previous connection)_ or to start a clean sync _(erasing the existing data)_.
-+
-[IMPORTANT]
-====
-Be careful before choosing the "Start a clean sync" option. The old sync folder _may_ contain a considerable amount of data, ranging into the gigabytes or terabytes. If it does, after the Desktop App creates the new connection, it will have to download *all* of that information again.
+--
+IMPORTANT: During the process of moving folders, do not change any data locally or on the server. This will cause synchronization conflicts that must be resolved manually.
 
-Instead, first move or copy the old local sync folder, containing a copy of the existing files, to the new location. Then, when creating the new connection choose "_keep existing data_" instead. The ownCloud Desktop App will check the files in the newly-added sync folder and find that they match what is on the server and not need to download anything.
-====
-+
-image:faq/ownCloud-replacement_connection_wizard.png[image, width=350,pdfwidth=60%]
-+
-Make your choice and click btn:[Connect...] This will then lead you through the Connection Wizard, just like when you set up the previous sync connection, but giving you the opportunity to choose a new sync directory.
+For details on how to add a new synchronization relationship, see xref:using.adoc#add-sync-relationships[Add Sync Relationships].
 
-=== I Want to Change My Server URL
-
-Since changing server URLs is a potentially dangerous operation the ownCloud Desktop App does not provide a user interface for this change. Typically, server URL changes should be implemented by serving a permanent redirect to the new location on the old URL. The Desktop App will then permanently update the server URL the next time it queries the old url.
-
-For situations where arranging for a redirect is impossible, url changes can be done by editing the config file. Before doing so make sure that the new url does indeed point to the same server, with the same users and the same data. Then go through these steps:
-
-1. Shut down the ownCloud Desktop App.
-2. Locate the xref:advanced_usage/configuration_file.adoc#location-of-the-configuration-file[configuration file]
-3. Open it with a text editor.
-4. Find your old server URL and adjust it.
-5. Save the file and start the ownCloud Desktop App again.
+When the new sync relationship is added, the first sync will detect the previous sync state and data, preventing a full re-sync. Any upcoming changes will be synchronized as usual.
+--
 
 == Error Messages
 
@@ -168,81 +155,56 @@ For situations where arranging for a redirect is impossible, url changes can be 
 
 Keeping software up to date is crucial for file integrity and security – if software is outdated, there can be unfixed bugs. That’s why you should always upgrade your software when there is a new version.
 
-The ownCloud Desktop App talks to a server, e.g. the ownCloud server, so you do not only have to upgrade your Desktop App when there is a new version for it, also the server has to be kept up-to-date by your sysadmin. Starting with version 2.5.0, the Desktop App will show a warning message if you connect to an outdated or unsupported server:
+If the versions of the Desktop App and the backend are no longer compatible, you may receive a warning message in the Desktop App. Contact your support for assistance or upgrade the Desktop App.
 
-image::faq/oc-unsupported-version-warning-message.png[image, width=350,pdfwidth=60%]
+IMPORTANT: Never download the Desktop App from unknown or uncertified resources.
 
-Only ownCloud 10.0.0 or Higher Is Supported::
-If you encounter such a message, you should ask your administrator to upgrade ownCloud to a secure version because earlier versions are not maintained anymore. An important feature of the ownCloud Desktop App is checksumming – each time you download or upload a file, the Desktop App and the server both check if the file was corrupted during the sync. This way you can be sure that you don’t lose any files.
+=== Multiple Accounts Share the Same Folder
+
+The Desktop App can handle multiple accounts. If you set up a new sync connection for a particular account but try to use a folder that is already configured to sync for another account and contains a sync journal, you will receive an error message and have to select a different folder during setup.
+
+NOTE: You cannot share the same sync folder with multiple accounts.
+
+=== Folder is Used in a Folder Sync Connection
+
+If you setup a new synchronization connection for an account but try to use a folder that is already configured for synchronization for this account and contains a sync journal, you will get an error message that you need to pick another folder. 
+
+NOTE: You cannot share the same sync folder for multiple sync connections.
+
+=== The Folder is Used by a Different Client
+
+The Desktop App detected that the folder you are using to sync is part of a subtree that is managed by another sync app, such as OneDrive. You might also have tried to use a sync root for a new sync connection that is in a subtree of an existing sync connection.
+
+NOTE: The Desktop App must use the configured synchronization folder exclusively.
+
+=== Warning About Changes in Synchronized Folders not Being Tracked Reliably
+
+On Linux or macOS, if the synchronized folder contains a large number of subfolders, the operating system may not allow enough `inotify` watches to monitor changes in all of them.
+
+In this case, the Desktop App will not be able to immediately start the synchronization process when a file in one of the unmonitored folders changes. Instead, the Desktop App will display a warning and manually check the folders for changes at regular intervals of two hours by default.
+
+This problem can be mitigated by setting the `fs.inotify.max_user_watches` to a higher value such as `524288` (2^19^) permanently in the `/etc/sysctl.conf` configuration file. Read the {using-sysctl-url}[How to reload sysctl.conf variables in Linux, window=_blank] guide for more details.
+
+Linux::
 +
-There are servers out there which don’t have checksumming implemented on their side, or which are not tested by ownCloud’s QA team. They can’t ensure file integrity, they have potential security issues, and we can’t guarantee that they are compatible with the ownCloud Desktop App.
-
-We Care About Your Data and Want It to Be Safe::
-That’s why you see this warning message, so you can evaluate your data security. Don’t worry – you can still use the Desktop App with an unsupported server, but do so at your own risk.
-
-=== Multiple Accounts Sharing the Folder
-
-Desktop App discovered multiple sync journals (SQLite database files) in the folder. That indicates that multiple Desktop Apps are using the same folder as a sync root. Under certain conditions it could also mean that there is an old `._sync_#HASH.db` or `.sync_#HASH.db` in the folder.
-
-image::faq/01_multiple-accounts-sharing-folder.png[image, width=350,pdfwidth=60%]
-
-*Resolve:*
-
-Such a file will have an old change date and usually can be removed.
-
-=== Folder Is Used in a Folder Sync Connection
-
-Similar to the above case, the Desktop App discovered one or more `.sync_journal.db` files in the directory. That means the folder is either already used by a different Desktop App for syncing or we again have an old SQLite database file in that folder. This can also happen if a user tries to import an old folder.
-
-{empty} +
-
-[role=center,width=100%,cols="^.50%,^.50%",options="header"]
-|===
-a| Connect, folder already used
-a| Add folder sync connection
-a| image::faq/02_folder-used-in-sync-connection1.png[image, width=350]
-a| image::faq/03_folder-used-in-sync-connection2.png[image, width=350]
-|===
-
-*Resolve:*
-
-Such a file will have an old change date and usually can be removed.
-
-=== Parent Folder Managed by Another Desktop App
-
-This error can only happen with native Windows VFS. The Desktop App discovered that the folder is part of a subtree that is managed by another Desktop App, for example testpilotcloud. The difference to the next error is that we can't be sure it's a different Desktop App or an orphaned sync root.
-
-image::faq/04_folder-used-by-different-client.png[image, width=350,pdfwidth=60%]
-
-Both errors are windows only. In the future we will try to prevent the situation leading to this.
-
-*Resolve:*
-
-Pick another sync folder.
-
-=== Folder Used by Different Desktop App
-
-image::faq/05_folder-managed-by-another-sync-client.png[image, width=350,pdfwidth=60%]
-
-This error can only happen with native Windows VFS. Desktop App discovered that the folder is part of a subtree that is managed by another Desktop App, for example OneDrive.
-
-*Resolve:*
-
-Pick another sync folder.
-
-=== Warning About Changes in Synchronized Folders Not Being Tracked Reliably
-
-On Linux, when the synchronized folder contains a high number of subfolders, the operating system may not allow for enough `inotify` watches to monitor the changes in all of them.
-
-In this case the Desktop App will not be able to immediately start the synchronization process when a file in one of the unmonitored folders changes. Instead, the Desktop App will show the warning and manually scan folders for changes at a regular interval (two hours by default).
-
-This problem can be solved by setting the `fs.inotify.max_user_watches sysctl` to a higher value like `524288` permanently in the config file `/etc/sysctl.conf` or temporarily with the following command:
-
-[source,console]
+--
+[source,bash]
 ----
-echo 524288 > /proc/sys/fs/inotify/max_user_watches.
+sudo sysctl -w fs.inotify.max_user_watches=524288
+sudo sysctl -p
 ----
+--
+
+macOS::
++
+--
+[source,bash]
+----
+sudo sysctl -w kern.maxfiles=524288
+sudo sysctl -p
+----
+--
 
 == Messages in the 'Not Synced' Tab
 
-When the Desktop app synchronizes, it clears the message list in the btn:[Not Synced] tab before each synchronization starts and prints the result of the current synchronization to the tab during processing. After a full sync, incremental syncs are made and only content that is not in sync is processed. Therefore, any listed messages  that got resolved no longer appear.
+When the Desktop App synchronizes, it clears the message list in the menu:Activity[Not Synced] pane before each synchronization starts and prints the result of the current synchronization to the tab during processing. After a full sync, incremental syncs are performed and only content that was not previously synced is processed. Therefore, any listed messages that have been resolved will no longer appear.

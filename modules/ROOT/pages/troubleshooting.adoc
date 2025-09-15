@@ -1,0 +1,338 @@
+= Troubleshooting
+:toc: right
+:toclevels: 3
+:description: When reporting bugs, it is helpful if you first determine what part of the system is causing the issue.
+
+:install_log_url: https://www.advancedinstaller.com/user-guide/qa-log.html
+
+include::partial$conditional_naming.adoc[]
+
+== Introduction
+
+{description}
+
+This documentation focuses on issues that require additional support, not on behaviors. See the xref:faq.adoc[FAQ] for behavior-related issues.
+ 
+The following two general issues can result in failed synchronization:
+
+* The instance setup you synchroinize with is incorrect.
+* The Desktop App contains a bug.
+
+== Identifying Basic Functionality Problems
+
+Performing a login test::
+  The first step in troubleshooting synchronization problems is to verify that you can log on to the {ini_name} web application. To verify connectivity to the {ini_name} instance, try logging in using your web browser. If you cannot access it, or are not prompted for your credentials etc., contact your administration department to verify your credentials or that the instance setup is working correctly.
+
+Ensure the connection is working::
+  If all Desktop App fail to connect to the {ini_name} instance, but access via the web interface works properly, the problem is often a misconfiguration or a change in the URL or proxy being used. Please contact your Admin to verify that the instance connected to is working correctly and that you are using the correct connection URL or proxy.
+
+== CSync Unknown Error
+
+If you see this error, quit your Desktop App, delete the `._sync_xxxxxxx.db' file, and then restart your Desktop App. This is a hidden file, and you must first allow hidden files to be shown in your file browser.
+
+NOTE: Please note that this will also erase some of your settings for which files to download.
+
+== Error Updating Metadata Access Denied
+
+There are very rare cases when using Windows and VFS, where the Desktop app complains about denied access. The log contains the following message, including the source file for reference:
+
+[source,plaintext]
+----
+"WindowsError: ffffffff80070005: Access is denied."
+----
+
+This can happen if the default permissions of the folder containing the synchronized data have been changed for the owning user. To resolve this issue, the owning user needs to have `Full Control`. See the sample images below for what this should look like. You can get there by right clicking on the menu:Folder Name[Properties]:
+
+ifeval::["{targetbuild}" == "oc"]
+[role=center,width=100%,cols="50%,50%"]
+|===
+a| image::troubleshooting/oc-windows-folder-properties.png[Folder Properties,width=150]
+a| image::troubleshooting/oc-windows-advanced-security-settings.png[Advanced Security Settings,width=250]
+|===
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+[role=center,width=100%,cols="50%,50%"]
+|===
+a| image::troubleshooting/kw-windows-folder-properties.png[Folder Properties,width=150]
+a| image::troubleshooting/kw-windows-advanced-security-settings.png[Advanced Security Settings,width=250]
+|===
+endif::[]
+
+If the permission is not set to `Full Control`, you can either correct it or ask your administrator for assistance.
+
+== Low Disk Space
+
+* Downloads that would reduce the free disk space below 250 MB will be skipped or aborted.
+* Synchronization of a folder will stop completely if the remaining disk space falls below 50 MB.
+
+== Isolating Other Issues
+
+Other issues that can affect the synchronization of your files:
+
+* If you find that the synchronization results are unreliable, make sure that the folder you are synchronizing to is not shared with other synchronization applications.
+* Synchronizing the same directory with {ini_name} and other synchronization software such as Unison, rsync, Microsoft Windows Offline Folders, or other cloud services such as Dropbox or Microsoft OneDrive is not supported and should not be attempted. In the worst case, synchronizing folders or files using the Desktop App and other synchronization software or services could result in data loss.
+* If you find that only certain files are not synchronized, the synchronization protocol might be at work. Some files are automatically ignored because they are system files; other files might be ignored because their filenames contain characters that are not supported on certain file systems. For more information, see the xref:using.adoc#ignored-files[Ignored Files] section.
+
+== Log Files
+
+Effective software debugging requires as much relevant information as possible. To assist the {ini_name} support staff, please try to provide as many relevant logs as possible. Logs can help track down problems, and if you are reporting a bug, logs can help resolve a problem more quickly.
+
+The Desktop App log file is often the most helpful log to provide.
+
+=== Obtaining the Desktop App Log File
+
+There are several ways to create log files. The most common way is to enable logging to a temporary directory, which is described first.
+
+[NOTE]
+====
+Desktop App log files contain file and folder names, metadata, server URLs, and other private information. Only upload them if you are comfortable sharing the information. However, logs are often essential for tracking down a problem, so please consider making them available to developers privately.
+====
+
+==== Logging to a Temporary Directory
+
+. Open the Desktop App.
+. Either +
+click menu:Settings[Advanced > Log Settings] or +
+press btn:[F12] (Windows) or btn:[Ctrl-L] (Linux) or btn:[Cmd+L] (macOS) on your keyboard.
++
+The Log Output window opens.
++
+--
+ifeval::["{targetbuild}" == "oc"]
+image:troubleshooting/oc-windows-log-output-window.png[image,width=250]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+image:troubleshooting/kw-windows-log-output-window.png[image,width=250]
+endif::[]
+--
++
+. Enable the btn:[Enable logging to temporary folder] checkbox.
+. Later, to find the log files, click the btn:[Open folder] button.
+. Select the logs for the time frame in which the issue occurred.
+
+NOTE: The choice to enable logging is retained across restarts of the Desktop App restarts.
+
+==== Log HTTP Requests and Responses
+
+When HTTP logging is enabled, log files will contain additional entries such as:
+
+[source,plaintext]
+----
+23-09-01 16:31:14:031 [ info sync.httplogger ]:	"eca37889-6dea-42cf-81a2-c3826efbf146: Request: GET https://cloud.example…
+23-09-01 16:31:14:143 [ info sync.httplogger ]:	"eca37889-6dea-42cf-81a2-c3826efbf146: Response: GET 200 (112ms) https://cloud.example…
+----
+
+{empty} +
+
+[cols="30%,70%",options="header"]
+|===
+| Log Content
+| Description
+
+| `23-09-01 16:31:14:031`
+| Timestamp
+
+| `[ info sync.httplogger ]`
+| Log item category label
+
+| `eca37889-6dea-42cf-81a2-c3826efbf146`
+| `X-REQUEST-ID` to find corresponding requests and responses
+ifeval::["{targetbuild}" == "oc"]
+ and to find related entries in `owncloud.log` or Apache logs
+endif::[]
+
+| `Header: { }`
+| List of all HTTP headers
+
+| `Data: []`
+| HTTP bodies (JSON, XML)
+
+| `(112ms)`
+| Duration of the response (since the request was sent)
+|===
+
+The Desktop App sends the `X-REQUEST-ID` header with every request. You'll find the `X-REQUEST-ID` in the `{bin_name}.log`. Admins can configure the web server to add the `X-REQUEST-ID` to the logs for further debugging.
+
+==== Saving Log Files
+
+The Desktop App allows you to save log files directly to a custom file or directory. This is a useful option for easily reproducible problems, as well as for cases where you want to save logs to a different location. To do this, you can start the Desktop App with startup flags. 
+
+To save log files to a file or a directory:
+
+1. The `--logfile <file>` flag: +
+Forces the Desktop app to save the log to a file, where `<file>` is the filename to which you want to save the file.
+2. The `--logdir <dir>` flag: +
+Forces the Desktop App to save the log into the specified directory, where `<dir>` is an existing directory. Note that each sync run creates a new file.
+3. When adding the `--logdebug` flag to any of the flags above: +
+The verbosity of the generated log files increases.
+4. To limit the number of log files created, use the general setting by:
+* clicking menu:Settings[Advanced > Log Settings > Log files to keep] or
+* press btn:[F12] (Windows) or btn:[Ctrl-L] (Linux) or btn:[Cmd+L] (macOS) on your keyboard.
+
++
+--
+ifeval::["{targetbuild}" == "oc"]
+image:troubleshooting/oc-windows-log-files-to-keep.png[CLog files to keep,width=250]
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+image:troubleshooting/kw-windows-log-files-to-keep.png[CLog files to keep,width=250]
+endif::[]
+--
+
+{empty}
+
+* On Windows you can enable logging directly from the Settings screen, see the image above.
+
+* On macOS, simply open the terminal and run the following command to write logs to a defined directory:
++
+[source,bash,subs="attributes+"]
+----
+open /Applications/{bin_name}.app --args --logdir /tmp/{bin_name}_logs --logdebug
+----
+
+* On Linux, simply open a terminal and run the following command to write logs to a defined directory. Replace the path and filename, which is just an example, as needed:
++
+[source,bash,subs="attributes+"]
+----
+~/Applications/{bin_name}-{client-version-appimage}.AppImage --logdir /tmp/{bin_name}_logs --logdebug
+----
+
+==== Logging in the Console
+
+If the Desktop App fails to start and crashes immediately, the first two options aren't available. Therefore, it may be necessary to start the Desktop App from the command line to see the error message.
+
+* On Windows, open a PowerShell and run the following command:
++
+[source,powershell,subs="attributes+,macros+"]
+----
++& 'C:\Program Files\+{ini_name}+\+{bin_name}+.exe' --logfile - --logflush+
+----
++
+Make sure to copy the whole command and adjust the path to your `{bin_name}` executable, if you have chosen to install the Desktop App in a different path.
+
+* On macOS, simply open the terminal and run:
++
+[source,bash,subs="attributes+"]
+----
+open /Applications/{bin_name}.app --args --logfile - --logflush
+----
+
+* On Linux, simply open a terminal and run the following command. Replace the path and filename, which is just an example, as needed:
++
+[source,bash,subs="attributes+"]
+----
+~/Applications/{bin_name}-{client-version-appimage}.AppImage --logfile - --logflush
+----
+
+To further increase the verbosity of the output you can also combine these commands with the following argument:
+
+[source,plaintext]
+----
+--logdebug
+----
+
+==== Control Log Content
+
+Thanks to the Qt framework, logging can be controlled at run-time through the QT_LOGGING_RULES environment variable.
+
+*Exclude log item categories*
+
+[source,cmd,subs="attributes+,macros+"]
+----
+QT_LOGGING_RULES='gui.socketapi=false;sync.database*=false' \
+  +'C:\Program Files\+{ini_name}+\+{bin_name}.exe' \
+  --logdebug --logfile <file>
+----
+
+*Add HTTP logging entries*
+
+[source,cmd,subs="attributes+,macros+"]
+----
+QT_LOGGING_RULES='sync.httplogger=true' \
+  +'C:\Program Files\+{ini_name}+\+{bin_name}.exe' \
+  --logdebug --logfile <file>
+----
+
+*Only show specific log item categories*
+
+[source,cmd,subs="attributes+,macros+"]
+----
+QT_LOGGING_RULES='*=false;sync.httplogger=true' \
+  +'C:\Program Files\+{ini_name}+\+{bin_name}.exe' \
+  --logdebug --logfile <file>
+----
+
+=== Installer Log Files
+
+==== Installer Logging for Windows
+
+If you experience problems, you can run the installer with logging enabled. Replace the filename, which is just an example, as needed:
+
+[source,cmd,subs="attributes+"]
+----
+msiexec /i {bin_name}-{client-version}.x64.msi /L*V "C:\log\example.log"
+----
+
+See the: {install_log_url}[How do I create an installation log] documentation for more information about the `msiexec.exe` command and logging.
+
+==== Installer Logging for macOS
+
+The macOS installer comes with its own logging console. Just run the +*.PKG+ file as usual. At the first install screen in the menu bar, click menu:Window[Installer Log (Command + L)].
+
+{empty} +
+
+[width=100%,cols="50%,50%"]
+|===
+a| image::troubleshooting/log-install-macos1.png[macOS Installer Enable Logging,width=200]
+a| image::troubleshooting/log-install-macos2.png[macOS Installer Log View,width=200]
+|===
+
+== Crash Reports
+
+It may happen that the Desktop App crashes unexpectedly due to unforeseen or unhandled circumstances. When this happens, a crash report is generated. This report contains valuable information for {ini_name} to debug the root cause. This report is not automatically sent by the Desktop App to {ini_name}, but must be confirmed by the user. If the user agrees to send the crash report, they will receive a reference ID that can be used when communicating with {ini_name} about this issue.
+
+The following table shows a crash report window before and after it is sent.
+
+{empty} +
+
+[role=center,width="100%",cols="50%,50%",options=header]
+|===
+^| Crash Report Created
+^| Crash Report Sent
+
+ifeval::["{targetbuild}" == "oc"]
+| image:troubleshooting/oc-macos-crash-report-created.png[Crash report created,width=250]
+| image:troubleshooting/oc-macos-crash-report-sent.png[Crash report sent,width=250]
+endif::[]
+
+ifeval::["{targetbuild}" == "kw"]
+| image:troubleshooting/kw-macos-crash-report-created.png[Crash report created,width=250]
+| image:troubleshooting/kw-macos-crash-report-sent.png[Crash report sent,width=250]
+endif::[]
+
+|===
+
+== Core Dumps
+
+On macOS and Linux systems, in the unlikely event that the Desktop App software crashes, the Desktop App is capable of writing a core dump file. Obtaining a core dump file can greatly assist {ini_name} customer support in the debugging process.
+
+To enable the writing of core dump files, you must define the `OWNCLOUD_CORE_DUMP` environment variable on the system.
+
+* On macOS, simply open the terminal and run:
++
+[source,bash,subs="attributes+"]
+----
+OWNCLOUD_CORE_DUMP=1 open /Applications/{bin_name}.app
+----
+
+* On Linux, simply open a terminal and run the following command. Replace the path and filename, which is just an example, as needed:
++
+[source,bash,subs="attributes+"]
+----
+OWNCLOUD_CORE_DUMP=1 ~/Applications/{bin_name}-{client-version-appimage}.AppImage
+----
+
+This command starts the Desktop App with core dumping enabled and saves the files into the current working directory.
+
+NOTE: Core dump files can be quite large. Before enabling core dumps on your system, make sure you have sufficient disk space to accommodate these files. Due to their size, we also strongly recommend that you properly compress core dump files before sending them to {ini_name} Customer Support.
