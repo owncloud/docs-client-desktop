@@ -1,6 +1,8 @@
 = Removing the Desktop App
 :toc: right
-:description: This page describes the necessary steps to remove the Desktop App.
+:description: This page outlines the steps necessary for removing the Desktop App, provided that the company permits it.
+
+include::partial$conditional_naming.adoc[]
 
 == Introduction
 
@@ -8,27 +10,28 @@
 
 == Removing the Binary
 
-Follow the procedures of your operating system about how to remove the Desktop App binary.
+* For all opperating systems (OS): +
+Follow your operating system's instructions for removing the Desktop App binary.
 
-When using an AppImage, just delete the AppImage file.
+* In Linux, when using an AppImage: +
+Just delete the AppImage file.
 
 == Removing the Configuration File
 
-When you remove the Desktop App -- the configuration file remains on your system. If you then decide to install the client again, you won't need to re-enter the connection information.
- 
-In case you want a clean removal of the Desktop App, you manually have to delete the configuration file. The location of the configuration file is operating system dependent and can be found in the
-xref:advanced_usage/configuration_file.adoc[Configuration File] description.
+Even if you remove the {ini_name} Desktop App, the configuration file will remain on your system. If you decide to reinstall it, you won't need to enter the connection information again.
+
+To cleanly remove the Desktop App, you must manually delete the configuration file. The location of the file depends on the operating system and is detailed in the xref:advanced_usage/configuration_file.adoc[Configuration File] document.
 
 == Windows Navigation Sidebar
 
-If you have removed the Desktop App but still have the ownCloud shortcut or symbol in the Windows Navigation Side Bar, here is how you to remove it:
+If you have uninstalled the {ini_name} Desktop App but still have the {ini_name} shortcut or icon in your Windows taskbar, follow these steps to remove it:
 
-1. Open `regedit`. (press the Windows Key and type regedit)
-2. Search (CTL+F) for the name of the Desktop App, in this case `owncloud`.
-3. Press `F3` for next search result.
+1. Open `regedit`. (press the Windows Key and type: regedit)
+2. Search ( btn:[CTRL or STRG + F] ) for the name of the Desktop App, in this case `{bin_name}.exe`.
+3. Press btn:[F3] for next search results.
 4. Look for the key `System.IsPinnedToNameSpaceTree`.
 5. Right-click on the key name, change, set to `0` instead of `1`.
 
-You have to do this twice. Once for the `x64` and `x32` system settings.
+You need to do this twice. Once for the `x64` and `x32` system settings.
 
-Once this is done, you don't need a reboot, just open and close your explorer -- the sidebar is clean.
+Once this is done, you don't need to restart, just open and close Explorer -- the sidebar is clean.
