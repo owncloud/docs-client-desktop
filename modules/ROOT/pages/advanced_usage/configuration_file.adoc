@@ -1,12 +1,14 @@
 = Configuration File
 :toc: right
-:description: The ownCloud Desktop App uses a configuration file. It has several sections for particular settings. You will find more sections in the configuration file than described here.
+:description: The Desktop App uses a configuration file. It has several sections for particular settings.
 
 :ini-file-format-url: https://en.wikipedia.org/wiki/INI_file
 
+include::partial$conditional_naming.adoc[]
+
 == Introduction
 
-{description} Do not change any of those settings except support advises you to do so. 
+{description} You will find more sections in the configuration file than described here. Do not change any of those settings except support advises you to do so. 
 
 == Location of the Configuration File
  
@@ -17,15 +19,15 @@ The location of the configuration file depends on the operating system used. You
 | System
 | Location
 
-| *Linux* 
-| `$HOME/.config/ownCloud/owncloud.cfg`
 | *Microsoft Windows* 
-| `%APPDATA%\ownCloud\owncloud.cfg`
+a| `%APPDATA%+\+{ini_name}+\+{bin_name}.cfg`
 | *macOS* 
-|`$HOME/Library/Preferences/ownCloud/owncloud.cfg`
+a|`$HOME/Library/Preferences/{ini_name}/{bin_name}.cfg`
+| *Linux* 
+a| `$HOME/.config/{ini_name}/{bin_name}.cfg`
 |===
 
-The configuration file contains settings using the {ini-file-format-url}[Microsoft Windows .ini file format]. You can overwrite changes using the ownCloud configuration dialog.
+The configuration file contains settings using the {ini-file-format-url}[Microsoft Windows .ini file format]. Some settings can be defined using the {ini_name} Desktop App configuration dialog.
 
 WARNING: Use caution when making changes to the ownCloud Desktop App configuration file. Incorrect settings can produce unintended results.
 
@@ -72,23 +74,6 @@ See the xref:faq.adoc#clarification-of-terms-used[Clarification of Terms Used] f
 | Specifies the initial chunk size of uploaded files in bytes.
 The Desktop App will dynamically adjust this size within the maximum and minimum bounds (see below).
 
-| `maxChunkSize`
-| `100000000` +
-(or 100 MB)
-| Specifies the maximum chunk size of uploaded files in bytes.
-
-| `minChunkSize`
-| `1000000` +
-(or 1 MB)
-| Specifies the minimum chunk size of uploaded files in bytes.
-
-| `targetChunkUploadDuration`
-| `60000` +
-(1 minute)
-| Target duration in milliseconds for chunk uploads.
-The Desktop App adjusts the chunk size until each chunk upload takes approximately this long.
-Set to 0 to disable dynamic chunk sizing.
-
 | `promptDeleteAllFiles` 
 | `true` 
 | If a UI prompt should ask for confirmation if it was detected that all files and folders were deleted.
@@ -105,11 +90,6 @@ Set to 0 to disable dynamic chunk sizing.
 | `false` 
 | If non-locally deleted files should be moved to trash instead of deleting them completely. This option only works on linux 
 
-| `showExperimentalOptions` 
-| `false` 
-| Whether to show experimental options that are still undergoing testing in the user interface. 
-Turning this on does not enable experimental behavior on its own. 
-It does enable user interface options that can be used to opt in to experimental features. 
 |===
 
 == Section `[Proxy]` 
