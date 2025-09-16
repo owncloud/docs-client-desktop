@@ -9,3 +9,14 @@ asciidoc:
   attributes:
     latest-desktop-version: {page-component-version}   # do not change, this is the value of the version key
     previous-desktop-version: {page-component-version} # do not change, this is the value of the version key
+    #
+    # the following is a key that is used for conditional rendering
+    # currently allowed values are: 'oc' and 'kw' 
+    targetbuild: oc
+    #
+    # kw build version
+    kw_version: 2.0
+    #
+    # this is the version string that is used for kw or oc to reference the binary
+    kw_client-version: 2.0.0
+    oc_client-version: 6.0.0
