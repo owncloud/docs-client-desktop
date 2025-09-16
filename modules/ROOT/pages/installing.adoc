@@ -64,7 +64,7 @@ endif::[]
 == Download
 
 ifeval::["{targetbuild}" == "oc"]
-You can download the latest version of the Desktop App from the {client-download-url}[Desktop App Download, window=_blank] page. There are Desktop Apps for _Linux_, _macOS_, and _Microsoft Windows_ available.
+You can download the latest version of the Desktop App from the {client-download-url}[Desktop App Download, window=_blank] page. There are Desktop Apps for __Microsoft Windows, macOS__ and __Linux__ available.
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
