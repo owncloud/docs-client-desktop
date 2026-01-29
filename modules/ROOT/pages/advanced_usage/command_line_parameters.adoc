@@ -51,11 +51,6 @@ a| *Options*
 | `--debug`
 | Enable debug mode.
 
-ifeval::["{targetbuild}" == "oc"]
-| `--cmd`
-| Forward all arguments to the command client. This argument must be the first.
-endif::[]
-
 a| *Arguments*
 |
 

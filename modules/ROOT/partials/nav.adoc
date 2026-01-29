@@ -23,8 +23,6 @@ endif::[]
 ifeval::["{targetbuild}" == "oc"]
 *** xref:advanced_usage/environment_variables.adoc[Environment Variables]
 *** xref:advanced_usage/low_disk_space.adoc[Low Disk Space]
-*** xref:advanced_usage/command_line_client.adoc[Command Line Client]
-endif::[]
 
 * Deployment Guide
 ** xref:installing.adoc[Installing or Deploying]
