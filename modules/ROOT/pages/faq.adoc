@@ -29,7 +29,7 @@ ifeval::["{targetbuild}" == "oc"]
 
 When a quota has been defined, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
 
-[width=100%,cols="100%",options="header"]
+[width=100%,cols="^.100%",options="header"]
 |===
 a| Infinite Scale +
 No quotas shown for the personal space or received shares, but for project spaces
