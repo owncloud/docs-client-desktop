@@ -350,11 +350,11 @@ endif::[]
 To manage a sync relationship, click on the btn:[Three Dots] button to open the menu as shown in the screenshot. Note that the list varies depending on the operating system you are using. The screenshots shows the list when using Windows.
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-folder-menu.png[Folder Menu, width=100]
+image::using/oc-windows-folder-menu.png[Folder Menu, width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-image:using/kw-windows-folder-menu.png[Folder Menu, width=100]
+image::using/kw-windows-folder-menu.png[Folder Menu, width=100]
 endif::[]
 
 * With the btn:[Three Dots] menu you can:
@@ -391,7 +391,7 @@ Note that if you create a new sync connection for the previously removed folder,
 ifeval::["{targetbuild}" == "oc"]
 === Spaces
 
-Spaces are only available when connected to an Infinite Scale backend. In most cases, they are similar to folders or external mounts when the backend is ownCloud Server and one might not see differences, though some exist:
+Spaces in Infinite Scale are similar to folders:
 
 * On initial account setup, all available spaces are auto-selected for the synchronization process.
 ** There are at minimum two spaces added, which are the personal space and the space that contains all received shares. Shares are shown as folders in the local filesystem.
@@ -403,29 +403,13 @@ Spaces are only available when connected to an Infinite Scale backend. In most c
 
 === Managing Resources to Synchronize
 
-When an account gets added the first time, you can select which remote resources you want to synchronize. This includes the syncronization type which defaults to VFS if available on your operating system (OS) or selective sync where you manually select the resoures to be synchronized otherwise. These resources are represented by the Desktop app as local folders using the base path defined during account setup. Depending on the backend connected, resources shown can be the full external mount or a folder inside an external mount when using ownCloud Server, or spaces when using Infinite Scale.
+When an account gets added the first time, you can select which remote resources you want to synchronize. This includes the syncronization type which defaults to VFS if available on your operating system (OS) or selective sync where you manually select the resoures to be synchronized otherwise. These resources are represented by the Desktop app as local folders using the base path defined during account setup.
 
 If VFS is available for your OS but selective sync has been chosen, you can at any time switch to VFS and vice versa. Note to check the available disk space before switching from VFS to selective sync (Disable Virtual File support). 
 
 The base path defined on first sync is not the only path that can be used. Resources can have their individual base path. This is can be beneficial if you want selected resources to be located on different paths than the default.
 
-==== Using an Account That Connects To ownCloud Server:
-
-When VFS has been enabled on initial account setup, all new resources from the server will be added automatically but do not require additional space.
-
-In case selective sync has been chosen, different options are available to add resources.
-
-* You will see a list of available remote resources you can manage as shown in the screenshot below. If a new resource gets added on the server like via the Web UI, it will be listed here.
-
-** To add a resource to be synced as folder to the *same base path*, set the check mark. To remove a resource from syncing, deselect it. To finalize the selection, click the btn:[Apply] button on the bottom right.
-+
-image:using/add-resource-server-same-folder.png[Add resource same path, width=100]
-
-** To add a resource to be synced as folder to a *different path* than the account base path, click in the bottom left corner on btn:[Add Folder]. Select the path and the resources to sync and complete the process.
-+
-image:using/add-resource-server-different-folder.png[Add resource different path, width=100]
-
-==== Using an Account That Connects To Infinite Scale:
+==== Using an Account:
 
 When an account connects to Infinite Scale, the list of currently synced spaces looks like the image below. It also shows the state of the synchronization process:
 
@@ -452,7 +436,7 @@ You can share with internal ownCloud users and groups and create links to share 
 +
 --
 ifeval::["{targetbuild}" == "oc"]
-image::using/oc-windows-systray-icon-menu.png[Systray Menu, width=100]
+image:using/oc-windows-systray-icon-menu.png[Systray Menu, width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
@@ -475,21 +459,6 @@ image:using/owncloud-share.png[Sharing Context Menu, width=100]
 +
 The default browser opens and shows the share dialog of ownCloud Web to take the required settings. If you are not logged in, you will be asked to do so first.
 
-** *ownCloud Server*
-+
---
-The share dialog opens which has all the same options as your ownCloud Server Web interface.
-
-[width=100%,cols="^.50%,^.50%",options="header"]
-|===
-| Sharing with users and groups
-| Public sharing
-a| image::using/share-user.png[Sharing with users and groups, width=100]
-a| image::using/share-public.png[Public sharing, width=100]
-|===
-
-Use menu:ownCloud[Share] from the context menu to see who you have shared with and to modify their permissions or to delete the share.
---
 endif::[]
 
 == Activity Window
@@ -497,7 +466,7 @@ endif::[]
 The Activity window contains the log of your recent activities, organized in the following tabs:
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-activity-pane-server.png[Activity Pane, width=100]
+image::using/oc-windows-activity-pane-server.png[Activity Pane, width=100]
 
 * Server Activities: +
 Includes new shares and downloaded and deleted files
@@ -523,21 +492,12 @@ On Linux or macOS, you can do the same with menu:mouse[right-click > Show file i
 
 In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL + a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
 
-ifeval::["{targetbuild}" == "oc"]
-=== Server Notifications
-
-For ownCloud Server only, the Desktop App will display notifications from your {ini_name} server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
-
-For example, when a user on a remote ownCloud creates a new Federated share for you, you can accept it from your desktop client. This also displays notifications sent to users by the ownCloud admin via the Announcements app.
-
-endif::[]
-
 == Settings Window
 
 The menu:Settings[] pane contains common settings that are available to all configured accounts. Here you can set network settings, define additional names to exclude from synchronization, and more.
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-settings-menu.png[Settings Menu,width=100]
+image::using/oc-windows-settings-menu.png[Settings Menu,width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
@@ -603,11 +563,11 @@ You may have some local files or directories that you do not want to backup and 
 Note that rules for ignored files are also applied to folders.
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+image::using/oc-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-image:using/kw-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+image::using/kw-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
 endif::[]
 ====
 
