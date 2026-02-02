@@ -31,8 +31,7 @@ When a quota has been defined, you can see additional info in your sync relation
 
 [width=100%,cols="^.100%",options="header"]
 |===
-a| Infinite Scale +
-No quotas shown for the personal space or received shares, but for project spaces
+a| With Infinite Scale, quotas are only shown for project spaces, not for personal spaces or received shares. Each space has its own sync relationship, and quota values are shown as defined for each space.
 a| image::faq/sync-quota-spaces.png[Quotas in Infinite Scale,width=350]
 |===
 
@@ -56,8 +55,6 @@ a|
 ----
 |===
 
-.Note to reference (a) in the table
-Note that with Infinite Scale, each space has its own sync relationship and therefore quota values show as they are defined for each.
 endif::[]
 
 === Directory Modification Time
