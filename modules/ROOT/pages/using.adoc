@@ -350,11 +350,11 @@ endif::[]
 To manage a sync relationship, click on the btn:[Three Dots] button to open the menu as shown in the screenshot. Note that the list varies depending on the operating system you are using. The screenshots shows the list when using Windows.
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-folder-menu.png[Folder Menu, width=100]
+image::using/oc-windows-folder-menu.png[Folder Menu, width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-image:using/kw-windows-folder-menu.png[Folder Menu, width=100]
+image::using/kw-windows-folder-menu.png[Folder Menu, width=100]
 endif::[]
 
 * With the btn:[Three Dots] menu you can:
@@ -391,7 +391,7 @@ Note that if you create a new sync connection for the previously removed folder,
 ifeval::["{targetbuild}" == "oc"]
 === Spaces
 
-Spaces are only available when connected to an Infinite Scale backend. In most cases, they are similar to folders or external mounts when the backend is ownCloud Server and one might not see differences, though some exist:
+Spaces in Infinite Scale are similar to folders:
 
 * On initial account setup, all available spaces are auto-selected for the synchronization process.
 ** There are at minimum two spaces added, which are the personal space and the space that contains all received shares. Shares are shown as folders in the local filesystem.
@@ -436,7 +436,7 @@ You can share with internal ownCloud users and groups and create links to share 
 +
 --
 ifeval::["{targetbuild}" == "oc"]
-image::using/oc-windows-systray-icon-menu.png[Systray Menu, width=100]
+image:using/oc-windows-systray-icon-menu.png[Systray Menu, width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
@@ -466,7 +466,7 @@ endif::[]
 The Activity window contains the log of your recent activities, organized in the following tabs:
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-activity-pane-server.png[Activity Pane, width=100]
+image::using/oc-windows-activity-pane-server.png[Activity Pane, width=100]
 
 * Server Activities: +
 Includes new shares and downloaded and deleted files
@@ -497,7 +497,7 @@ In any of the activity tabs you can mark a single line, multiple lines or all li
 The menu:Settings[] pane contains common settings that are available to all configured accounts. Here you can set network settings, define additional names to exclude from synchronization, and more.
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-settings-menu.png[Settings Menu,width=100]
+image::using/oc-windows-settings-menu.png[Settings Menu,width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
@@ -563,11 +563,11 @@ You may have some local files or directories that you do not want to backup and 
 Note that rules for ignored files are also applied to folders.
 
 ifeval::["{targetbuild}" == "oc"]
-image:using/oc-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+image::using/oc-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-image:using/kw-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+image::using/kw-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
 endif::[]
 ====
 
