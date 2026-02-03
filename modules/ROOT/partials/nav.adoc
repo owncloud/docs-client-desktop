@@ -24,3 +24,4 @@ endif::[]
 
 * Deployment Guide
 ** xref:installing.adoc[Installing or Deploying]
+** xref:system_configuration.adoc[System Configuration]

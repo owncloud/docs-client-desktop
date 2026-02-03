@@ -2,6 +2,7 @@ ifeval::["{targetbuild}" == "oc"]
 :client-version: {oc_client-version}
 :bin_name: ownCloud
 :ini_name: ownCloud
+:ini_rev_domain: com.owncloud.desktopclient
 :url-version: {page-component-version}
 :client-version-appimage: {client-version}-x86_64
 endif::[]
@@ -10,6 +11,7 @@ ifeval::["{targetbuild}" == "kw"]
 :client-version: {kw_client-version}
 :bin_name: kiteworks
 :ini_name: Kiteworks
+:ini_rev_domain: com.kiteworks.desktop
 :url-version: {kw_version}
 :client-version-appimage: {client-version}-x86_64
 endif::[]
