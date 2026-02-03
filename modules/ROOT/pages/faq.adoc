@@ -91,7 +91,7 @@ File size values differ depending on the client you are using. Some operating sy
 
 === Synchronisation Delay When Using a Network Drive
 
-Due to technical limitations, the Desktop App cannot detect local changes if the local sync folder is located on a mounted network volume. Only full local discovery, which by default runs every hour if not changed, will detect changes and trigger the upload. If desired, a smaller local discovery value can be configured to sync local changes more frequently. For more details see the xref:advanced_usage/configuration_file.adoc#section-owncloud[Configuration File] documentation.
+Due to technical limitations, the Desktop App cannot detect local changes if the local sync folder is located on a mounted network volume. Only full local discovery, which by default runs every hour if not changed, will detect changes and trigger the upload.
 
 == Major Configuration Changes
 

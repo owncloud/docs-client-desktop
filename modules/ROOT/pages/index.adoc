@@ -2,7 +2,7 @@
 :toc: right
 :toclevels: 2
 :description: This is the description of the Desktop App which allows you to synchronize your files from connected servers to your local computer.
-:page-aliases: advanced_usage/command_line_client.adoc, advanced_usage/command_line_parameters.adoc
+:page-aliases: advanced_usage/command_line_client.adoc, advanced_usage/command_line_parameters.adoc, advanced_usage/configuration_file.adoc
 
 include::partial$conditional_naming.adoc[]
 

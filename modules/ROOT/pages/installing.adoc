@@ -74,18 +74,6 @@ To get the latest version of the Desktop App for your operating system, login to
 * As admin, log into the admin console, then go to menu:Application Setup[Clients and Plugins > KwDav Desktop Client Sync > Downloads] and download the appropriate build.
 endif::[]
 
-== Configuration Files
-
-Regardless of the physical installation, a configuration file will be created when the app is first started. The location of the configuration file is described in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
-
-* Deleting an existing configuration file will not delete any locally synchronized data, but it will launch the xref:using.adoc#connection-wizard[connection wizard] which is described in the User Guide and you will need to re-configure.
-
-ifeval::["{targetbuild}" == "oc"]
-* On Linux, if you change the deployment method, such as from Native to AppImage, you can reuse an existing configuration file without any changes.
-endif::[]
-
-* If you are re-deploying from scratch, you can safely delete the configuration file if it exists. In this case, check for existing sync folders that might also need to be deleted.
-
 == Install or Deploy on Windows
 
 Although installation on Windows is preferred by end users, deployment is intended for centrally driven rollouts on many clients.

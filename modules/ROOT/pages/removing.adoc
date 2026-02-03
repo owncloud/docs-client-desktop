@@ -16,12 +16,6 @@ Follow your operating system's instructions for removing the Desktop App binary.
 * In Linux, when using an AppImage: +
 Just delete the AppImage file.
 
-== Removing the Configuration File
-
-Even if you remove the {ini_name} Desktop App, the configuration file will remain on your system. If you decide to reinstall it, you won't need to enter the connection information again.
-
-To cleanly remove the Desktop App, you must manually delete the configuration file. The location of the file depends on the operating system and is detailed in the xref:advanced_usage/configuration_file.adoc[Configuration File] document.
-
 == Windows Navigation Sidebar
 
 If you have uninstalled the {ini_name} Desktop App but still have the {ini_name} shortcut or icon in your Windows taskbar, follow these steps to remove it:
