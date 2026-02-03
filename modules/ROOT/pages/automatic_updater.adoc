@@ -36,8 +36,6 @@ If a new update is available, the {ini_name} Desktop App initializes a *pop-up d
 
 In controlled environments such as companies or universities, you may not want to enable the auto-update mechanism because it interferes with deployment tools and policies. To address this issue, you can disable the auto-updater entirely. The following sections describe how to do so for different operating systems.
 
-More information about the configuration file can be found in the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation.
-
 === Windows Environments
 
 Users can disable automatic updates by adding this line to the `[General]` section of their `owncloud.cfg` files:

@@ -68,7 +68,7 @@ A virtual file system needs a root folder where all synchronization items will b
 * Symbolic links or junction points
 * Assigned drives
 
-+*+ ... Only a full scan is performed by the desktop application, which happens at regular but long intervals. See the xref:advanced_usage/configuration_file.adoc[Configuration File] documentation for details. Shared locations should not be used due to other possible negative side effects.
++*+ ... Only a full scan is performed by the desktop application, which happens at regular but long intervals. Shared locations should not be used due to other possible negative side effects.
 
 ==== Restrictions
 
