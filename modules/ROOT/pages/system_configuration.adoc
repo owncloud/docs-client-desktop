@@ -1,0 +1,203 @@
+= System Configuration
+:toc: right
+:description: System-wide configuration options for administrators
+:keywords: system configuration, policies, registry, ini, openid, updater
+
+include::partial$conditional_naming.adoc[]
+
+== Introduction
+
+This page documents the *system-wide configuration options* available to administrators. These settings are enforced globally and are not intended to be modified by end users.
+
+System configuration is evaluated at application start-up and takes precedence over user-level settings in most cases.
+
+== Supported Platforms and Locations
+
+The system configuration is read from different locations depending on the operating system.
+
+=== Windows (Registry)
+
+For Windows systems, the configuration is read from the system policy registry:
+
+[source,plaintext,subs="attributes+,+macros"]
+----
++HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}
+----
+
+=== macOS (System Preferences)
+
+On macOS, the configuration is read from the system-wide preferences file:
+
+[source,plaintext,subs="attributes+"]
+----
+/Library/Preferences/{ini_rev_domain}/{ini_name}.ini
+----
+
+This directory and file must be accessible to the application for reading purposes.
+
+=== Linux and Unix-like Systems
+
+On Linux and other Unix-like systems, the configuration file is read from:
+
+[source,plaintext,subs="attributes+"]
+----
+/etc/{bin_name}/{ini_name}.ini
+----
+
+This directory and file must be accessible to the application for reading purposes.
+
+== Configuration File Format
+
+The configuration file uses the `INI` format on macOS, Linux and Unix-like systems.
+
+.Example: `/etc/owncloud/owncloud.ini`
+[source,ini,subs="attributes+"]
+----
+[Setup]
+ServerUrl=<https://cloud.example.com>
+AllowServerUrlChange=false
+MoveToTrash=true
+
+[Updater]
+SkipUpdateCheck=true
+
+[OpenIDConnect]
+ClientId=<your-client-id>
+ClientSecret=<your-client-secret>
+Ports=8080,8443
+Scopes=openid offline_access email profile
+Prompt=select_account consent
+----
+
+== Windows Registry Configuration
+
+These settings can also be applied in Windows via registry policies.
+
+.Example: `owncloud.reg`
+[source,registry,subs="attributes+,+macros"]
+----
+Windows Registry Editor Version 5.00
+
++[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}]
+
++[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}+\Setup+]
+"ServerUrl"="\<https://cloud.example.com>"
+"AllowServerUrlChange"=dword:00000000
+"MoveToTrash"=dword:00000001
+
+ifeval::["{targetbuild}" == "oc"]
++[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}+\Updater+]
+"SkipUpdateCheck"=dword:00000001
+
+endif::[]
++[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}+\OpenIDConnect+]
+"ClientId"="<your-client-id>"
+"ClientSecret"="<your-client-secret>"
+"Ports"="8080,8443"
+"Scopes"="openid offline_access email profile"
+"Prompt"="select_account consent"
+----
+
+Boolean registry values use `DWORD` where:
+
+* `0` = disabled
+* `1` = enabled
+
+== Configuration Sections
+
+=== Setup
+
+These keys control the initial application behaviour and server enforcement.
+
+[cols="1,3,1,1", options="header"]
+|===
+| Key
+| Description
+| Type
+| Default
+
+| `ServerUrl`
+| Enforces a predefined server URL. When set, the account setup wizard will pre-fill the server URL..
+| String
+| empty
+
+| `AllowServerUrlChange`
+| Controls whether users may change the server URL. This option only applies if `ServerUrl` is set.
+| Boolean
+| true
+
+| `MoveToTrash`
+| Determines whether deleted files are moved to the trash instead of being permanently removed.
+| Boolean
+| true
+|===
+
+ifeval::["{targetbuild}" == "oc"]
+=== Updater
+
+These keys control the behaviour of the update at a global level.
+
+[cols="1,3,1,1", options="header"]
+|===
+| Key
+| Description
+| Type
+| Default
+
+| `SkipUpdateCheck`
+| Disables automatic update checks when enabled.
+| Boolean
+| false
+|===
+endif::[]
+
+=== OpenID Connect
+
+These keys define the OpenID Connect (OIDC) authentication parameters.
+If this section is present, the application will use these values for authentication purposes.
+
+For the OpenID Connect configuration to be valid, all keys must be defined.
+
+[cols="1,3,1,1", options="header"]
+|===
+| Key
+| Description
+| Type
+| Default
+
+| `ClientId`
+| OpenID Connect client identifier.
+| String
+| empty
+
+| `ClientSecret`
+| OpenID Connect client secret.
+| String
+| empty
+
+| `Ports`
+| Comma-separated list of local ports used for authentication callbacks.
+| List
+| empty
+
+| `Scopes`
+| Space-separated list of requested OpenID scopes.
+| String
+| empty
+
+| `Prompt`
+| Space-separated list of OpenID prompt parameters (for example `select_account`, `consent`).
+| String
+| empty
+|===
+
+== Operational Notes
+
+* System configuration is read once at application startup.
+* Changes require an application restart to take effect.
+
+== Troubleshooting
+
+* Verify file permissions on Unix systems (`/etc/{ini_name}` must be readable).
+* On Windows, ensure that keys are defined under `HKLM\Software\Policies`.
+* Confirm that branding or theme settings do not mask the expected configuration path.
