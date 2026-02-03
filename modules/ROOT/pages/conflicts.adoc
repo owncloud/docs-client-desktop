@@ -40,13 +40,3 @@ The Desktop App notifies you of this situation via system notifications in the s
 
 To resolve this conflict, open both files, compare the differences, and copy your local changes from the "conflicted copy" file to the base file, if applicable. In this example, you could change `mydata.txt` to say "local and remote contents" and delete the file with "conflicted copy" in its name. This will resolve the conflict.
 
-== Force Uploading Conflicted Files
-
-By default, the conflict file (the file with "conflicted copy" in its name that contains your local conflicting changes) is not uploaded to the server. The idea is that you, the author of the changes, are the best person for resolving the conflict and showing the conflict to other users might create confusion.
-
-In some scenarios, however, it makes a lot of sense to upload these conflicting changes so that local work can become visible even if the conflict isn't resolved immediately. This can be achieved by setting the environment variable `OWNCLOUD_UPLOAD_CONFLICT_FILES=1` as a startup parameter when launching the Desktop App, such as, replace the path and filename according your operating system:
-
-[source,cmd,subs="attributes+,macros+"]
-----
-OWNCLOUD_UPLOAD_CONFLICT_FILES=1 +'C:\Program Files\+{ini_name}+\+{bin_name}.exe'
-----

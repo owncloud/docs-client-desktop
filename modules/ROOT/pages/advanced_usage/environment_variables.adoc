@@ -19,10 +19,6 @@ NOTE: Most environment variables only exist for debugging or testing purposes. T
 | Default
 | Description
 
-| `OWNCLOUD_NO_TUS`
-|
-| Set to any value to disable uploads using the tus protocol
-
 | `OWNCLOUD_TIMEOUT`
 | 300 
 | The timeout for network connections in seconds.
@@ -75,10 +71,6 @@ Note that HTTP2 use also depends on whether the server supports it.
 | SHA1
 | Select the file checksumming algorithm.
 "Adler32", "MD5", "SHA1", "SHA256", "SHA3-256" are valid, but not all have server support.
-
-| `OWNCLOUD_UPLOAD_CONFLICT_FILES`
-| unset
-| Set to "1" to enable uploading conflict files to the server.
 
 | `OWNCLOUD_OVERRIDE_SERVER_URL`
 | unset
