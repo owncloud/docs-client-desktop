@@ -10,6 +10,10 @@ include::partial$conditional_naming.adoc[]
 
 {description} The app is available for *Windows*, *macOS*, and various *Linux* distributions.
 
+== Compatiblility
+
+NOTE: Starting with {ini_name} version 7.0, the Desktop App will no longer support ownCloud Server, only ownCloud Infinite Scale. To use the Desktop App with ownCloud Server, use version 6.x instead.
+
 == Key Benefits
 
 The Desktop App enables you to:
