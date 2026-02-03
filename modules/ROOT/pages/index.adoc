@@ -12,7 +12,7 @@ include::partial$conditional_naming.adoc[]
 
 == Compatiblility
 
-NOTE: Starting with {ini_name} version 7.0, the Desktop App no longer supports ownCloud server but only ownCloud Intinite Scale. To use the Desktop App with ownCloud server, please use version 6.0 or higher.
+NOTE: Starting with {ini_name} version 7.0, the Desktop App will no longer support ownCloud Server, only ownCloud Infinite Scale. To use the Desktop App with ownCloud Server, use version 6.x instead.
 
 == Key Benefits
 
