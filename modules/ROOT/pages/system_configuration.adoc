@@ -159,7 +159,7 @@ For the OpenID Connect configuration to be valid, all keys must be defined.
 | Default
 
 | `ClientId`
-| OpenID Connect client identifier. If not set no other OpenID Connectsettings will be considered.
+| OpenID Connect client identifier. If not set, no other OpenID Connectsettings will be considered.
 | String
 | empty
 
@@ -169,7 +169,7 @@ For the OpenID Connect configuration to be valid, all keys must be defined.
 | empty
 
 | `Ports`
-| Comma-separated list of local ports used for authentication callbacks. Default value is `0` and means that the application will select an available port automatically.
+| Comma-separated list of local ports used for authentication callbacks. The default value of `0` means that the application will automatically select an available port.
 | List
 | 0
 
