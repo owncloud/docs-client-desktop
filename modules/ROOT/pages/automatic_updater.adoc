@@ -8,13 +8,9 @@ include::partial$conditional_naming.adoc[]
 
 {description} The Automatic Updater only works on Windows computers. macOS Linux users must use the same process they used to install the Desktop App. However, the updater will check for updates and notify you when a new version is available.
 
-IMPORTANT: When planning to upgrade from a Desktop app release <= 2.5 to a release >=5.0 you must make an intermediary step to release 4.0 before doing the final upgrade.
-
 == Basic Workflow
 
 The following sections describe how to use the Automatic Updater on different operating systems.
-
-On the menu:Settings[About] page, you can define the update channel. Depending on the selected channel, different versions of the {ini_name} Desktop App will be available. Note that you cannot switch channels back and forth. Once a change is made, it cannot be undone.
 
 Depending on the operating system (OS), either a download and installation process begins, or a notification window pops up when a new release is available, prompting you to take further action.
 
