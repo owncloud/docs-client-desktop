@@ -9,7 +9,7 @@ include::partial$conditional_naming.adoc[]
 
 This page documents the *system-wide configuration options* available to administrators. These settings are enforced globally and are not intended to be modified by end users.
 
-System configuration is evaluated at application start-up and takes precedence over user-level settings in most cases.
+System configuration is evaluated at application start-up. Whether and how system configuration overrides user-level settings depends on the specific setting and the application's implementation.
 
 == Supported Platforms and Locations
 
@@ -56,7 +56,6 @@ The configuration file uses the `INI` format on macOS, Linux and Unix-like syste
 [Setup]
 ServerUrl=<https://cloud.example.com>
 AllowServerUrlChange=false
-MoveToTrash=true
 
 [Updater]
 SkipUpdateCheck=true
@@ -83,7 +82,6 @@ Windows Registry Editor Version 5.00
 +[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}+\Setup+]
 "ServerUrl"="\<https://cloud.example.com>"
 "AllowServerUrlChange"=dword:00000000
-"MoveToTrash"=dword:00000001
 
 ifeval::["{targetbuild}" == "oc"]
 +[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}+\Updater+]
@@ -117,17 +115,12 @@ These keys control the initial application behaviour and server enforcement.
 | Default
 
 | `ServerUrl`
-| Enforces a predefined server URL. When set, the account setup wizard will pre-fill the server URL..
+| Enforces a predefined server URL. When set, the account setup wizard will pre-fill the server URL.
 | String
 | empty
 
 | `AllowServerUrlChange`
 | Controls whether users may change the server URL. This option only applies if `ServerUrl` is set.
-| Boolean
-| true
-
-| `MoveToTrash`
-| Determines whether deleted files are moved to the trash instead of being permanently removed.
 | Boolean
 | true
 |===
@@ -145,7 +138,7 @@ These keys control the behaviour of the update at a global level.
 | Default
 
 | `SkipUpdateCheck`
-| Disables automatic update checks when enabled.
+| Disables automatic update checks when enabled. Users will not be notified of new versions. When set to `true`, no other settings will be considered.
 | Boolean
 | false
 |===
@@ -166,7 +159,7 @@ For the OpenID Connect configuration to be valid, all keys must be defined.
 | Default
 
 | `ClientId`
-| OpenID Connect client identifier.
+| OpenID Connect client identifier. If not set no other OpenID Connectsettings will be considered.
 | String
 | empty
 
@@ -176,9 +169,9 @@ For the OpenID Connect configuration to be valid, all keys must be defined.
 | empty
 
 | `Ports`
-| Comma-separated list of local ports used for authentication callbacks.
+| Comma-separated list of local ports used for authentication callbacks. Default value is `0` and means that the application will select an available port automatically.
 | List
-| empty
+| 0
 
 | `Scopes`
 | Space-separated list of requested OpenID scopes.
