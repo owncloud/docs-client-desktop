@@ -132,33 +132,6 @@ endif::[]
 
 {empty}
 
-== Using attrib.exe to Manage States
-
-Experienced users can also manage xref:vfs-states[VFS states] from the Windows command line using `attrib`. This is especially useful if you want to change the state of an entire folder/subfolder. Open a `PowerShell` command line window as from the start menu and change to the directory of the {ini_name} sync folder/subfolder that contains the data you want to change in bulk.
-
-From the syncnchronization folder, run the following commands to make bulk changes to synchronization settings:
-
-* Use the following command for help and to customize the switches.
-+
-[source,powershell]
-----
-attrib /?
-----
-
-* Keep a set of files or folders, including subfolders, always available:
-+
-[source,powershell]
-----
-attrib -U +P .\* /D /S
-----
-
-* Make a set of files or folders available online only, including subfolders:
-+
-[source,powershell]
-----
-attrib +U -P .\* /D /S
-----
-
 == Manage Drive Space With Storage Sense
 
 Microsoft provides a mechanism called {storage-sense-url}[Storage Sense, window=_blank] that can automatically free up disk space for applications that use VFS. This is done by converting files that were set to be xref:vfs-states[locally available] back to cloud-based content that is xref:vfs-states[placeholder files] on the local drive, which takes up no space.
