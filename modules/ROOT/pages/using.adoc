@@ -20,7 +20,9 @@ Before going into configuration and usage topics, some basic information is prov
 
 === The Systray
 
-After the Desktop App has been started, it can not only be fully closed with the Quit image:using/quit-symbol.png[Quit Synbol, width=18] symbol on the top right, but also be closed to the system tray to run continuously in the background.
+After the Desktop App has been started, it can not only be fully closed with the Quit image:using/quit-symbol.png[Quit Symbol, width=18] symbol on the top right, but also be closed to the system tray to run continuously in the background.
+
+==== Windows
 
 * A btn:[right-click] on the {ini_name} systray icon opens a menu for quick access to multiple operations. The images shown are for Windows.
 +
@@ -46,6 +48,17 @@ ifeval::["{targetbuild}" == "kw"]
 image:using/kw-windows-account-settings.png[Account Settings, width=100]
 endif::[]
 --
+
+==== macOS
+
+* A click on the {ini_name} menu bar icon opens the application menu.
+* To show the application window, select *Show {ini_name}* from the menu.
+
+==== Linux Desktop
+
+* A btn:[left-click] or btn:[right-click] on the {ini_name} tray icon opens the application menu.
+* A double-click opens the application window.
+
 
 ==== Systray Icons
 
