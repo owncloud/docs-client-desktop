@@ -1,5 +1,9 @@
 # Desktop App Documentation
 
+**IMPORTANT**
+
+Scince April 2026, this repository requires [Commit Signing](https://docs.github.com/articles/about-gpg) and uses [Conventional Commits](https://www.conventionalcommits.org) for commits and the Pull Request title.
+
 **Table of Contents**
 
 * [Building the Desktop Docs](#building-the-desktop-docs)
