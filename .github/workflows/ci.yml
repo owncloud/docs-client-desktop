@@ -10,7 +10,7 @@ on:
       - '**'
   pull_request:
     branches:
-      - master
+      - 6.0
 
 jobs:
   docs-build:
