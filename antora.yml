@@ -20,4 +20,4 @@ asciidoc:
     #
     # this is the version string that is used for kw or oc to reference the binary
     kw_client-version: 2.0.0
-    oc_client-version: 6.0.0
+    oc_client-version: 7.1.0
