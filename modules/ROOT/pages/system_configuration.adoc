@@ -5,11 +5,21 @@
 
 include::partial$conditional_naming.adoc[]
 
+// Lowercase application name used for the macOS/Linux configuration file names.
+// The client derives these paths from Theme::appName(), which is lowercase, whereas the
+// Windows registry path uses the camel-case vendor/application name ({bin_name}/{ini_name}).
+ifeval::["{targetbuild}" == "oc"]
+:app_name_lc: owncloud
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
+:app_name_lc: kiteworks
+endif::[]
+
 == Introduction
 
 This page documents the *system-wide configuration options* available to administrators. These settings are enforced globally and are not intended to be modified by end users.
 
-System configuration is evaluated at application start-up. Whether and how system configuration overrides user-level settings depends on the specific setting and the application's implementation.
+System configuration is evaluated at application start-up and always takes precedence over the application's built-in defaults. The OpenID Connect settings are the one exception: they are applied only when, taken together, they form a valid configuration (see <<OpenID Connect>>). When they do, they replace the built-in OpenID Connect configuration entirely.
 
 == Supported Platforms and Locations
 
@@ -30,7 +40,7 @@ On macOS, the configuration is read from the system-wide preferences file:
 
 [source,plaintext,subs="attributes+"]
 ----
-/Library/Preferences/{ini_rev_domain}/{ini_name}.ini
+/Library/Preferences/{ini_rev_domain}/{app_name_lc}.ini
 ----
 
 This directory and file must be accessible to the application for reading purposes.
@@ -41,20 +51,26 @@ On Linux and other Unix-like systems, the configuration file is read from:
 
 [source,plaintext,subs="attributes+"]
 ----
-/etc/{bin_name}/{ini_name}.ini
+/etc/{app_name_lc}/{app_name_lc}.ini
 ----
 
 This directory and file must be accessible to the application for reading purposes.
 
 == Configuration File Format
 
-The configuration file uses the `INI` format on macOS, Linux and Unix-like systems.
+The configuration file uses the `INI` format on macOS, Linux and Unix-like systems. The file name is derived from the platform-specific locations described above. The resolved paths are:
 
-.Example: `/etc/owncloud/owncloud.ini`
+[subs="attributes+"]
+* macOS: `/Library/Preferences/{ini_rev_domain}/{app_name_lc}.ini`
+* Linux and Unix-like systems: `/etc/{app_name_lc}/{app_name_lc}.ini`
+
+The following example shows the file contents in either location:
+
+.Example INI configuration
 [source,ini,subs="attributes+"]
 ----
 [Setup]
-ServerUrl=<https://cloud.example.com>
+ServerUrl=https://cloud.example.com
 AllowServerUrlChange=false
 
 [Updater]
@@ -80,7 +96,7 @@ Windows Registry Editor Version 5.00
 +[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}]
 
 +[HKEY_LOCAL_MACHINE\Software\Policies\+{bin_name}+\+{ini_name}+\Setup+]
-"ServerUrl"="\<https://cloud.example.com>"
+"ServerUrl"="https://cloud.example.com"
 "AllowServerUrlChange"=dword:00000000
 
 ifeval::["{targetbuild}" == "oc"]
@@ -147,9 +163,10 @@ endif::[]
 === OpenID Connect
 
 These keys define the OpenID Connect (OIDC) authentication parameters.
-If this section is present, the application will use these values for authentication purposes.
 
-For the OpenID Connect configuration to be valid, all keys must be defined.
+Keys may be left empty or omitted; in that case the default value is used. What matters is that the keys, taken together, form a valid configuration. At a minimum, `ClientId` must be set to a non-empty string. `Ports` may be omitted or empty (the application then selects any available port) or set to a comma-separated list of port numbers.
+
+When a valid configuration is found, the application uses these values for authentication and ignores its entire built-in OpenID Connect configuration (see the note below).
 
 [cols="1,3,1,1", options="header"]
 |===
@@ -159,7 +176,7 @@ For the OpenID Connect configuration to be valid, all keys must be defined.
 | Default
 
 | `ClientId`
-| OpenID Connect client identifier. If not set, no other OpenID Connectsettings will be considered.
+| OpenID Connect client identifier. If not set, no other OpenID Connect settings will be considered.
 | String
 | empty
 
@@ -184,6 +201,13 @@ For the OpenID Connect configuration to be valid, all keys must be defined.
 | empty
 |===
 
+[NOTE]
+====
+When a valid OpenID Connect configuration is found, it replaces the application's built-in configuration *in its entirety*. The values are not merged. Any key that is not specified is used with its empty or default value, not the built-in value.
+
+For example, if only `ClientId` and `Ports` are set, the `Prompt` is empty and no prompt is sent to the server, even if the built-in configuration defines one.
+====
+
 == Operational Notes
 
 * System configuration is read once at application startup.
@@ -191,6 +215,6 @@ For the OpenID Connect configuration to be valid, all keys must be defined.
 
 == Troubleshooting
 
-* Verify file permissions on Unix systems (`/etc/{ini_name}` must be readable).
+* Verify file permissions on Unix systems (`/etc/{app_name_lc}/{app_name_lc}.ini` must be readable).
 * On Windows, ensure that keys are defined under `HKLM\Software\Policies`.
 * Confirm that branding or theme settings do not mask the expected configuration path.
