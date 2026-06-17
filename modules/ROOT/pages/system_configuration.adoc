@@ -43,7 +43,7 @@ On macOS, the configuration is read from the system-wide preferences file:
 /Library/Preferences/{ini_rev_domain}/{app_name_lc}.ini
 ----
 
-This directory and file must be accessible to the application for reading purposes.
+The directory `{ini_rev_domain}` is the application's reverse-domain identifier. This directory and file must be accessible to the application for reading purposes.
 
 === Linux and Unix-like Systems
 
