@@ -1,7 +1,6 @@
 name: desktop
 title: Desktop App
-version: 'next'
-prerelease: true
+version: '7.1'
 start_page: ROOT:index.adoc
 nav:
 - modules/ROOT/partials/nav.adoc
