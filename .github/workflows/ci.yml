@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - '7.1'
       - '6.0'
       - '5.3'
     tags:
