@@ -67,7 +67,7 @@ It is possible for another program to change the modification date/time (mtime) 
 
 Examples of other programs changing the mtime are backup tools or in rare cases the Windows indexing service. The Desktop App cannot do anything about this.
 
-If you have files with an `.eml` extension (Windows Mail, Windows Live Mail), the Microsoft indexer automatically and continuously changes the mtime of the files. To solve this problem, you can:
+If you have files with an `.eml` extension (Windows Mail, Windows Live Mail), the Microsoft indexer automatically and continuously changes their modification times. To solve this problem, you can:
 
 * Remove the extension from the indexer (menu:Indexing Options[Advanced > File Types])
 * Uninstall Windows Mail, Windows Live Mail. Note that when reinstalling, the issue reappears again. See {wordpress1-url}[Windows indexer changes modification dates of .eml files] for more information.

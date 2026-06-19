@@ -49,9 +49,9 @@ The file is implicitly _hydrated_ and could be _dehydrated_ by the system if spa
 An empty representation of the file and is only available if the sync service is available.
 
 * *Syncing file:* +
-The file is planned for or currently in the process of synchrinozation..
+The file is planned for or currently in the process of synchronization.
 
-The following picture shows how the file statuses: _full pinned_, _full_, _placeholder_ and _syncing_ are displayed in File Explorer:
+The following picture shows how the file statuses (_full pinned_, _full_, _placeholder_, and _syncing_) are displayed in File Explorer:
 
 image:vfs/vfs-ms-cloud-file-states-file-explorer.png[File States]
 --
@@ -76,7 +76,7 @@ Similar to OneDrive, since it also uses Microsoft's virtual file system, there a
 
 == Desktop App's VFS Implementation
 
-Note that when using Windows and VFS, the Desktop App *must* have full control over the sync folder and its subfolders where the data is stored. If this is not the case, you will most likely get access denied errors when syncing VFS data. For more details, see the xref:troubleshooting.adoc#error-updating-metadata-access-denied[Troubleshooting] guide for more details.
+Note that when using Windows and VFS, the Desktop App *must* have full control over the sync folder and its subfolders where the data is stored. If this is not the case, you will most likely get access denied errors when syncing VFS data. For more details, see the xref:troubleshooting.adoc#error-updating-metadata-access-denied[Troubleshooting] guide.
 
 === Manage VFS from Windows Explorer
 
@@ -86,7 +86,7 @@ You can manage *individual* files or *entire folders* in the Explorer window by 
 
 To save space on the local file system, synchronized files are placeholders until you open them or manually select them to have a local copy. To create a local copy of a placeholder file manually, see the following procedure:
  
-. Select the folder containing the file that is a _Placehholder_ of which you want to have a local copy.
+. Select the folder containing the file that is a _Placeholder_ of which you want to have a local copy.
 . Select the context menu for the file by doing a btn:[right click].
 . To create a _Full Pinned_ file (have a local copy of it), use the action btn:[Always keep on this device].
 . The state of the file will change to synchronizing, the icon in the btn:[Status] column changes to _Synchronizing_.
@@ -115,8 +115,8 @@ This is the opposite of creating a local copy. The file exists as a full copy in
 
 . Select the folder containing the file that is a local copy of which you want to have a _placeholder_.
 . Select the context menu for the file by doing a btn:[right click].
-. To create a _Placehholder_ file, use the action btn:[Free up space].
-. When the placeholder has been created, the icon in the btn:[Status] column changes to _Placehholder_.
+. To create a _Placeholder_ file, use the action btn:[Free up space].
+. When the placeholder has been created, the icon in the btn:[Status] column changes to _Placeholder_.
 
 +
 ifeval::["{targetbuild}" == "oc"]
