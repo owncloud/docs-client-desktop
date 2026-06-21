@@ -75,10 +75,6 @@ If you have files with an `.eml` extension (Windows Mail, Windows Live Mail), th
 `\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\`
 `CurrentVersion\PropertySystem\PropertyHandlers`
 
-=== Sync Stops When Trying to Sync Deeper Than 100 Subdirectories
-
-The Desktop App has been intentionally limited to sync no deeper than 100 subdirectories. The hard limit exists to protect against cyclic bugs like symbolic link loops. If a deeply nested directory is excluded from sync, it will be listed with other ignored files and directories in the menu:Activity[Not Synced] pane.
-
 ifeval::["{targetbuild}" == "oc"]
 === My Sync Folder Displays a Different Quota Than the Web Interface
 
