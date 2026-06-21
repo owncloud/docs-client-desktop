@@ -306,7 +306,7 @@ Synchronization occurs periodically, connecting to the server every few minutes.
 Allows you to open the browser instead of the File Explorer to view all the data of the connected account.
 
 ** menu:Remove[] +
-Lets you remove an account. See the xref:removing-an-account[Removing an Account] section below for details.
+Lets you remove an account. See the xref:remove-an-account[Removing an Account] section below for details.
 
 ==== Add New Accounts
 
