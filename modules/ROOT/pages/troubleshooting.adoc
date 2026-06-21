@@ -15,7 +15,7 @@ This documentation focuses on issues that require additional support, not on beh
  
 The following two general issues can result in failed synchronization:
 
-* The instance setup you synchroinize with is incorrect.
+* The instance setup you synchronize with is incorrect.
 * The Desktop App contains a bug.
 
 == Identifying Basic Functionality Problems
@@ -111,7 +111,7 @@ endif::[]
 . Later, to find the log files, click the btn:[Open folder] button.
 . Select the logs for the time frame in which the issue occurred.
 
-NOTE: The choice to enable logging is retained across restarts of the Desktop App restarts.
+NOTE: The choice to enable logging is retained across restarts of the Desktop App.
 
 ==== Log HTTP Requests and Responses
 
@@ -173,10 +173,10 @@ The verbosity of the generated log files increases.
 +
 --
 ifeval::["{targetbuild}" == "oc"]
-image:troubleshooting/oc-windows-log-files-to-keep.png[CLog files to keep,width=250]
+image:troubleshooting/oc-windows-log-files-to-keep.png[Log files to keep,width=250]
 endif::[]
 ifeval::["{targetbuild}" == "kw"]
-image:troubleshooting/kw-windows-log-files-to-keep.png[CLog files to keep,width=250]
+image:troubleshooting/kw-windows-log-files-to-keep.png[Log files to keep,width=250]
 endif::[]
 --
 

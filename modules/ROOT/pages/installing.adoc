@@ -95,7 +95,7 @@ image:installing/kw-windows-install-setup-custom.png[Custom Setup,width=100]
 image:installing/kw-windows-install-setup-ready.png[Start Install,width=100]
 image:installing/kw-windows-installing-uac.png[UAC,width=100]
 image:installing/kw-windows-install-finished.png[Install Finished,width=100]
-image:installing/kw-windows-startmenu-entry.png[Start Menue,width=100]
+image:installing/kw-windows-startmenu-entry.png[Start Menu,width=100]
 --
 endif::[]
 
@@ -108,7 +108,7 @@ image:installing/oc-windows-install-setup-custom.png[Custom Setup,width=100]
 image:installing/oc-windows-install-setup-ready.png[Start Install,width=100]
 // image:installing/oc-windows-installing-uac.png[UAC,width=100]
 image:installing/oc-windows-install-finished.png[Install Finished,width=100]
-image:installing/oc-windows-startmenu-entry.png[Start Menue,width=100]
+image:installing/oc-windows-startmenu-entry.png[Start Menu,width=100]
 --
 endif::[]
 
@@ -302,7 +302,7 @@ a| image:installing/advanced_settings.png[Advanced Settings,width=150]
 |===
 --
 
-* Now, the the `Desktop.ini` file is visible, add a setting to make an icon change persistent. To do this, open it with an editor.
+* Now, the `Desktop.ini` file is visible, add a setting to make an icon change persistent. To do this, open it with an editor.
 ** The current content may look like this:
 +
 --

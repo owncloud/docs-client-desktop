@@ -155,13 +155,13 @@ Overlay icons are similar to the xref:systray-icons[Systray Icons]. Their behavi
 
 * The overlay icon of an individual file indicates its current sync state.
 
-** image:using/fmoi_ok.png[OK Synbol, width=18] If the file is in sync with the server version, it displays the green checkmark icon.
+** image:using/fmoi_ok.png[OK Symbol, width=18] If the file is in sync with the server version, it displays the green checkmark icon.
 
-** image:using/fmoi_sync.png[Sync Synbol, width=18] If the file is waiting to sync or is currently syncing, it displays the blue cycling icon.
+** image:using/fmoi_sync.png[Sync Symbol, width=18] If the file is waiting to sync or is currently syncing, it displays the blue cycling icon.
 
-** image:using/fmoi_warn.png[Warn Synbol, width=18] If the file is ignored during sync, for example because it is on your exclude list or because it is a symbolic link, it displays the yellow warning icon.
+** image:using/fmoi_warn.png[Warn Symbol, width=18] If the file is ignored during sync, for example because it is on your exclude list or because it is a symbolic link, it displays the yellow warning icon.
 
-** image:using/fmoi_error.png[Error Synbol, width=18] If there is a sync error or the file is blacklisted, it displays the red X icon.
+** image:using/fmoi_error.png[Error Symbol, width=18] If there is a sync error or the file is blacklisted, it displays the red X icon.
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
@@ -331,7 +331,7 @@ To make a folder available for synchronization on {ini_name}, you must first set
 ====
 Changing the synchronization property is:
 
-* Only availabe on folders located in the {ini_name} root.
+* Only available on folders located in the {ini_name} root.
 * Not available in subfolders.
 * Not available for individual files.
 ====
@@ -384,7 +384,7 @@ Opens {ini_name} via the browser.
 If you need to synchronize data immediately, such as when you are traveling and need to continue working offline, you can force a folder to sync before you go offline.
 
 ** menu:Pause sync[] / menu:Restart sync[] +
-Pauses or restarts a paused sync operations.
+Pauses or restarts a paused sync operation.
 
 ** menu:Remove folder sync connection[] +
 See the section xref:remove-sync-relationships[Remove Sync Relationships] below for details.
@@ -416,7 +416,7 @@ Spaces in Infinite Scale are similar to folders:
 
 === Managing Resources to Synchronize
 
-When an account gets added the first time, you can select which remote resources you want to synchronize. This includes the syncronization type which defaults to VFS if available on your operating system (OS) or selective sync where you manually select the resoures to be synchronized otherwise. These resources are represented by the Desktop app as local folders using the base path defined during account setup.
+When an account gets added the first time, you can select which remote resources you want to synchronize. This includes the synchronization type which defaults to VFS if available on your operating system (OS) or selective sync where you manually select the resources to be synchronized otherwise. These resources are represented by the Desktop app as local folders using the base path defined during account setup.
 
 If VFS is available for your OS but selective sync has been chosen, you can at any time switch to VFS and vice versa. Note to check the available disk space before switching from VFS to selective sync (Disable Virtual File support). 
 
@@ -576,11 +576,11 @@ You may have some local files or directories that you do not want to backup and 
 Note that rules for ignored files are also applied to folders.
 
 ifeval::["{targetbuild}" == "oc"]
-image::using/oc-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+image::using/oc-windows-ignored-files-editor.png[Ignored Files Editor,width=100]
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
-image::using/kw-windows-ignored-files-editor.png[Ingnored Files Editor,width=100]
+image::using/kw-windows-ignored-files-editor.png[Ignored Files Editor,width=100]
 endif::[]
 ====
 

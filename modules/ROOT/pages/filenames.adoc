@@ -10,7 +10,7 @@ include::partial$conditional_naming.adoc[]
 
 == Introduction
 
-{description} Creating files and folders with allowed names or maximum lengths on one OS, may have issues or even can´t be synced because of different rules in another OS. This page gives you a brief overview of limitations regarding file and folder names on different operating systems.
+{description} Creating files and folders with allowed names or maximum lengths on one OS, may have issues or even can't be synced because of different rules in another OS. This page gives you a brief overview of limitations regarding file and folder names on different operating systems.
 
 [NOTE]
 ====
@@ -33,7 +33,7 @@ endif::[]
 
 == Examples and Pitfalls
 
-The following examples are put on top of this document to highlight file naming issues that can be avoided easily. 
+The following examples illustrate file naming issues that can be easily avoided.
 
 ifeval::["{targetbuild}" == "oc"]
 . If you create a file in Linux or macOS like `my-filename.` (see the dot at the end) or `my-filename.LPT1` (see the reserved name LPT1), you can sync the file with your Desktop App if the mount target is on Linux. If a Windows user tries to synchronize these files, Windows will reject the file. Comparing the file list in both environments shows that one side has more files than the other. There will be *no notification* as this is an OS dependency. 
@@ -56,7 +56,7 @@ Example source file names on macOS that will fail to sync to Windows:
 --
 endif::[]
 
-. If you rename an existing file in Linux or macOS by just changing the case like `{bin_name}` -> `{ini_name}`, it is very likely to get problems on the Windows side because the file looks (and is) the same for Windows.
+. If you rename an existing file in Linux or macOS by just changing the case like `{bin_name}` -> `{ini_name}`, it is very likely to cause problems on the Windows side because the file looks (and is) the same for Windows.
 
 == Maximum Path Length Limitation
 
@@ -111,4 +111,4 @@ Windows::
 Filenames must not end with a space or a dot.
 
 Linux or macOS::
-When the Desktop App is on Linux or macOS and the server you sync to is on Windows, you cannot have the same file or folder name but with different casings. A cross icon will appear, indicating that indicates that the file can't be synced. Files on Linux or macOS must match with the Windows rules for a successful sync.
+When the Desktop App is on Linux or macOS and the server you sync to is on Windows, you cannot have the same file or folder name but with different casings. A cross icon will appear, indicating that the file can't be synced. Files on Linux or macOS must match with the Windows rules for a successful sync.
