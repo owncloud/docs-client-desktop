@@ -10,7 +10,7 @@ include::partial$conditional_naming.adoc[]
 
 == Removing the Binary
 
-* For all opperating systems (OS): +
+* For all operating systems (OS): +
 Follow your operating system's instructions for removing the Desktop App binary.
 
 * In Linux, when using an AppImage: +
