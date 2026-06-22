@@ -37,7 +37,7 @@
   "dependencies": {
     "antora": "^3.1.15",
     "asciidoctor-kroki": "^0.18.1",
-    "js-yaml": "^4.2.0"
+    "js-yaml": "^5.1.0"
   },
   "devDependencies": {
     "broken-link-checker": "^0.7.8",
