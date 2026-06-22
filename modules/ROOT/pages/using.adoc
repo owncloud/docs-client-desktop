@@ -408,7 +408,7 @@ Spaces in Infinite Scale are similar to folders:
 
 * On initial account setup, all available spaces are auto-selected for the synchronization process.
 ** There are at minimum two spaces added, which are the personal space and the space that contains all received shares. Shares are shown as folders in the local filesystem.
-* Post initial account setup, new spaces can be added via xref:using-an-account-that-connects-to-infinite-scale[Managing Resources to Synchronize].
+* Post initial account setup, new spaces can be added via xref:managing-resources-to-synchronize[Managing Resources to Synchronize].
 * When a space is renamed in the Web UI, it also gets renamed in the sync window view, but the local folder name where it is stored does not change.
 * Spaces can be customized with images in the Web UI. The image selected is also shown in the Desktop app.
 * When a space gets disabled or deleted via the Web UI, no data is deleted locally.
