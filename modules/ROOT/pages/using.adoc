@@ -391,7 +391,7 @@ Note that if you create a new sync connection for the previously removed folder,
 ifeval::["{targetbuild}" == "oc"]
 === Spaces
 
-Spaces are only available when connected to an Infinite Scale backend. In most cases, they are similar to folders or external mounts when the backend is ownCloud Server and one might not see differences, though some exist:
+Spaces are only available when connected to an Infinite Scale backend. In most cases, they are similar to folders or external mounts when the backend is ownCloud Classic and one might not see differences, though some exist:
 
 * On initial account setup, all available spaces are auto-selected for the synchronization process.
 ** There are at minimum two spaces added, which are the personal space and the space that contains all received shares. Shares are shown as folders in the local filesystem.
@@ -403,13 +403,13 @@ Spaces are only available when connected to an Infinite Scale backend. In most c
 
 === Managing Resources to Synchronize
 
-When an account gets added the first time, you can select which remote resources you want to synchronize. This includes the syncronization type which defaults to VFS if available on your operating system (OS) or selective sync where you manually select the resoures to be synchronized otherwise. These resources are represented by the Desktop app as local folders using the base path defined during account setup. Depending on the backend connected, resources shown can be the full external mount or a folder inside an external mount when using ownCloud Server, or spaces when using Infinite Scale.
+When an account gets added the first time, you can select which remote resources you want to synchronize. This includes the syncronization type which defaults to VFS if available on your operating system (OS) or selective sync where you manually select the resoures to be synchronized otherwise. These resources are represented by the Desktop app as local folders using the base path defined during account setup. Depending on the backend connected, resources shown can be the full external mount or a folder inside an external mount when using ownCloud Classic, or spaces when using Infinite Scale.
 
 If VFS is available for your OS but selective sync has been chosen, you can at any time switch to VFS and vice versa. Note to check the available disk space before switching from VFS to selective sync (Disable Virtual File support). 
 
 The base path defined on first sync is not the only path that can be used. Resources can have their individual base path. This is can be beneficial if you want selected resources to be located on different paths than the default.
 
-==== Using an Account That Connects To ownCloud Server:
+==== Using an Account That Connects To ownCloud Classic:
 
 When VFS has been enabled on initial account setup, all new resources from the server will be added automatically but do not require additional space.
 
@@ -475,10 +475,10 @@ image:using/owncloud-share.png[Sharing Context Menu, width=100]
 +
 The default browser opens and shows the share dialog of ownCloud Web to take the required settings. If you are not logged in, you will be asked to do so first.
 
-** *ownCloud Server*
+** *ownCloud Classic*
 +
 --
-The share dialog opens which has all the same options as your ownCloud Server Web interface.
+The share dialog opens which has all the same options as your ownCloud Classic Web interface.
 
 [width=100%,cols="^.50%,^.50%",options="header"]
 |===
@@ -526,7 +526,7 @@ In any of the activity tabs you can mark a single line, multiple lines or all li
 ifeval::["{targetbuild}" == "oc"]
 === Server Notifications
 
-For ownCloud Server only, the Desktop App will display notifications from your {ini_name} server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
+For ownCloud Classic only, the Desktop App will display notifications from your {ini_name} server that require manual interaction. It automatically checks for available notifications automatically on a regular basis. Notifications are displayed in the Server Activity tab. If you have enabled menu:Settings[General Settings > Show Desktop Notifications] you'll also see a systray notification.
 
 For example, when a user on a remote ownCloud creates a new Federated share for you, you can accept it from your desktop client. This also displays notifications sent to users by the ownCloud admin via the Announcements app.
 
