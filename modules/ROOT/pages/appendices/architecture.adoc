@@ -59,7 +59,7 @@ The following table outlines the different synchronization methods used, dependi
 |4.5 or later |1.1 or later |File ID, Time Stamp
 |==================================================
 
-We strongly recommend using ownCloud Server release 4.5 or later when using ownCloud Desktop App 1.1 or later. Using an incompatible time stamp-based synchronization mechanism can lead to data loss in rare cases, especially when multiple Desktop Apps are involved and one utilizes a non-synchronized NTP time.
+We strongly recommend using ownCloud Classic release 4.5 or later when using ownCloud Desktop App 1.1 or later. Using an incompatible time stamp-based synchronization mechanism can lead to data loss in rare cases, especially when multiple Desktop Apps are involved and one utilizes a non-synchronized NTP time.
 
 == Comparison and Conflict Cases
 
@@ -77,7 +77,7 @@ Conflict files are always created on the Desktop App and never on the server.
 
 == Checksum Algorithm Negotiation
 
-In ownCloud 10.0 we implemented a checksum feature which checks the file integrity on upload and download by computing a checksum after the file transfer finishes. The Desktop App queries the server capabilities after login to decide which checksum algorithm to use. Currently, SHA1 is hard-coded in the official server release and can't be changed by the end-user. Note that the server additionally also supports *MD5* and *Adler-32*, but the Desktop App will always use the checksum algorithm announced in the capabilities:
+In ownCloud Classic 10.0 we implemented a checksum feature which checks the file integrity on upload and download by computing a checksum after the file transfer finishes. The Desktop App queries the server capabilities after login to decide which checksum algorithm to use. Currently, SHA1 is hard-coded in the official server release and can't be changed by the end-user. Note that the server additionally also supports *MD5* and *Adler-32*, but the Desktop App will always use the checksum algorithm announced in the capabilities:
 
 [source]
 ----
