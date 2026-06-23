@@ -104,7 +104,7 @@ The following options are supported by `{bin_name}cmd`:
 
 `{bin_name}cmd` requires the user to specify the username and password using the standard URL pattern.
 ifeval::["{targetbuild}" == "oc"]
-The example is based on Linux and uses ownCloud Server as backend:
+The example is based on Linux and uses ownCloud Classic as backend:
 endif::[]
 
 [source,bash,subs="attributes+,macros+"]
