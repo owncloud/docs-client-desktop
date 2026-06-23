@@ -28,15 +28,15 @@ Without claim of completeness, actuality or support, Windows Server releases tha
 
 === How to Interpret Quotas
 
-When a quota has been defined, either as general value in ownCloud Server or in Infinite Scale at the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
+When a quota has been defined, either as general value in ownCloud Classic or in Infinite Scale at the personal space or on a project space, you can see additional info in your sync relationship about the quota values. If no quota has been set, these values are not shown for the particular sync relationship:
 
 [width=100%,cols="^.50%,^.50%",options="header"]
 |===
-a| ownCloud Server +
+a| ownCloud Classic +
 Quotas shown for the sync relationship
 a| Infinite Scale +
 No quotas shown for the personal space or received shares, but for project spaces
-a| image::faq/sync-quota-oc10.png[Quotas in ownCloud Server,width=350]
+a| image::faq/sync-quota-oc10.png[Quotas in ownCloud Classic,width=350]
 a| image::faq/sync-quota-spaces.png[Quotas in Infinite Scale,width=350]
 |===
 
@@ -53,10 +53,10 @@ a|
   *Data used in my quota*
 
 + data used in external storages (a)
-  (ownCloud Server only)
+  (ownCloud Classic only)
 
 + data used in other users' shares (a)
-  (ownCloud Server only)
+  (ownCloud Classic only)
 
 = *Total used in my quota*
 ----
@@ -67,17 +67,17 @@ a|
   *Available quota*
 
 + data used in external storages (a)
-  (ownCloud Server only)
+  (ownCloud Classic only)
 
 + data used in other users' shares (a)
-  (ownCloud Server only)
+  (ownCloud Classic only)
 
 = *Total available in my quota*
 ----
 |===
 
 .Note to reference (a) in the table
-ownCloud Server provides external storages and remote shares as folders. These folders do not count against the quota. To mitigate this situation in the Desktop app, the sizes of these folders are added to the quotas shown by the Desktop app automatically to avoid showing incorrect available space. In total, the quota values level out and no wrong differences are shown, though the absolute quota values may look higher than they are in reality - the absolute difference is correct. This difference shows if files to sync could be uploaded to the server successfully.
+ownCloud Classic provides external storages and remote shares as folders. These folders do not count against the quota. To mitigate this situation in the Desktop app, the sizes of these folders are added to the quotas shown by the Desktop app automatically to avoid showing incorrect available space. In total, the quota values level out and no wrong differences are shown, though the absolute quota values may look higher than they are in reality - the absolute difference is correct. This difference shows if files to sync could be uploaded to the server successfully.
 
 Note that with Infinite Scale, each space has its own sync relationship and therefore quota values show as they are defined for each.
 
@@ -172,7 +172,7 @@ The ownCloud Desktop App talks to a server, e.g. the ownCloud server, so you do 
 
 image::faq/oc-unsupported-version-warning-message.png[image, width=350,pdfwidth=60%]
 
-Only ownCloud 10.0.0 or Higher Is Supported::
+Only ownCloud Classic 10.0.0 or Higher Is Supported::
 If you encounter such a message, you should ask your administrator to upgrade ownCloud to a secure version because earlier versions are not maintained anymore. An important feature of the ownCloud Desktop App is checksumming – each time you download or upload a file, the Desktop App and the server both check if the file was corrupted during the sync. This way you can be sure that you don’t lose any files.
 +
 There are servers out there which don’t have checksumming implemented on their side, or which are not tested by ownCloud’s QA team. They can’t ensure file integrity, they have potential security issues, and we can’t guarantee that they are compatible with the ownCloud Desktop App.

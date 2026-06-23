@@ -100,7 +100,7 @@ The following options are supported by `owncloudcmd`:
 
 == Credential Handling
 
-`owncloudcmd` requires the user to specify the username and password using the standard URL pattern. The example is based on Linux and uses ownCloud Server as backend:
+`owncloudcmd` requires the user to specify the username and password using the standard URL pattern. The example is based on Linux and uses ownCloud Classic as backend:
 
 [source,bash]
 ----
