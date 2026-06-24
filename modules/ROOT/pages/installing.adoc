@@ -361,7 +361,7 @@ Currently, shell integration is not included in AppImages, nor can it be downloa
 
 * Note that our description focuses on the GNOME desktop. Adapt the procedures for other desktop environments accordingly.
 
-* You can add command line parameters when launching the Desktop App after installation. One parameter worth mentioning is the `-s` option. This option forces the settings page to be displayed on startup. While not necessary for general use, it can be helpful if system tray icons are no longer available in your desktop environment.
+* You can add command line parameters when launching the Desktop App after installation. One parameter worth mentioning is the `-s` (or `--show`) option. This option starts the Desktop App with the main window visible, or, if it is already running, brings it to the front. By default the Desktop App launches in the background. While not necessary for general use, it can be helpful if system tray icons are no longer available in your desktop environment.
 
 * Linux users should also have a password manager enabled, such as {gnome-keyring-url}[GNOME Keyring] or {kwalletmanager-url}[KWallet], so that the Desktop App can log in automatically.
 
