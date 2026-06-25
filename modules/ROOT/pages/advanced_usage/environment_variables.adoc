@@ -47,8 +47,8 @@ More information available under the "Low Disk Space" section.
 | Maximum timeout, in seconds, for blacklisted files.
 
 | `OWNCLOUD_HTTP2_ENABLED`
-| depends on Qt version
-| Force-enable ("1") or force-disable ("0") HTTP2 support.
+| 0 (disabled)
+| HTTP2 is disabled by default and must be force-enabled by setting this variable to "1"; any other value leaves it disabled.
 Note that HTTP2 use also depends on whether the server supports it.
 
 | `OWNCLOUD_SQLITE_JOURNAL_MODE`
