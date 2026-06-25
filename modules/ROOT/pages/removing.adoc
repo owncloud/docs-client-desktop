@@ -21,7 +21,12 @@ Just delete the AppImage file.
 If you have uninstalled the {ini_name} Desktop App but still have the {ini_name} shortcut or icon in your Windows taskbar, follow these steps to remove it:
 
 1. Open `regedit`. (press the Windows Key and type: regedit)
+ifeval::["{targetbuild}" == "oc"]
+2. Search ( btn:[CTRL or STRG + F] ) for the name of the Desktop App, in this case `owncloud.exe`.
+endif::[]
+ifeval::["{targetbuild}" == "kw"]
 2. Search ( btn:[CTRL or STRG + F] ) for the name of the Desktop App, in this case `{bin_name}.exe`.
+endif::[]
 3. Press btn:[F3] for next search results.
 4. Look for the key `System.IsPinnedToNameSpaceTree`.
 5. Right-click on the key name, change, set to `0` instead of `1`.
