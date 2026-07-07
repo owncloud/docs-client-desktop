@@ -6,7 +6,7 @@ include::partial$conditional_naming.adoc[]
 
 == Introduction
 
-{description} The Automatic Updater only works on Windows computers. macOS and Linux users must use the same process they used to install the Desktop App. However, the updater will check for updates and notify you when a new version is available.
+{description} The Automatic Updater can download and install updates on Windows (MSI installer), macOS, and Linux when running an AppImage build. On Linux installations from a distribution package (for example `.deb` or `.rpm`), the updater only checks for updates and notifies you when a new version is available; you then update using the same package manager you used to install the Desktop App.
 
 == Basic Workflow
 
@@ -16,15 +16,17 @@ Depending on the operating system (OS), either a download and installation proce
 
 === Windows
 
-If an update is available and has been downloaded successfully, the {ini_name} Desktop App will start a silent update before its next launch and then restart itself. If the silent update fails, the {ini_name} Desktop App offers a manual download.
+If an update is available, the {ini_name} Desktop App downloads it silently in the background. Once the download succeeds, a *Restart required* dialog asks you to confirm; when you accept, the update is installed and the application restarts. If the download fails, the {ini_name} Desktop App offers a manual download instead.
 
 NOTE: Administrative privileges are required to perform the update.
 
 === macOS
 
-If a new update is available, the {ini_name} Desktop App initializes a *pop-up dialog* to alert you of the update and requests that you update to the latest version. This is the default process for macOS applications.
+If a new update is available, the {ini_name} Desktop App initializes a *pop-up dialog* to alert you of the update and requests that you update to the latest version. The update is then downloaded and installed from within the application. This is the default process for macOS applications.
 
 === Linux
 
-If a new update is available, the {ini_name} Desktop App initializes a *pop-up dialog* to alert you of the update and requests that you update to the latest version. Update the {ini_name} Desktop App according to the installation method used.
+If you are running an AppImage build and a new update is available, the {ini_name} Desktop App initializes a *pop-up dialog* to alert you of the update. When you confirm, the new AppImage is downloaded and installed automatically, and you are prompted to restart the application.
+
+If you installed the {ini_name} Desktop App from a distribution package (for example `.deb` or `.rpm`), the updater only notifies you that a new version is available. Update the {ini_name} Desktop App according to the installation method used (typically your distribution's package manager).
 
