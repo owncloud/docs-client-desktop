@@ -391,8 +391,26 @@ See the section xref:remove-sync-relationships[Remove Sync Relationships] below 
 endif::[]
 
 ifeval::["{targetbuild}" == "oc"]
-** menu:Enable virtual file support[] / menu:Disable virtual file support[] +
-Enable or disable virtual file support for this sync relationship, if supported by the operating system.
+** menu:Show in Explorer[] +
+Opens your local {ini_name} sync folder for this sync relationship. +
+(Note that the name `Explorer` is replaced by the name of the file browser of your operating system.)
+
+** menu:Show in web browser[] +
+Opens {ini_name} via the browser. +
+(This entry is only available if the server supports private links.)
+
+** menu:Sync now[] / menu:Restart sync[] +
+Synchronizes this sync relationship immediately. While a sync is running, the entry is labeled menu:Restart sync[].
+
+** menu:Pause sync[] / menu:Resume sync[] +
+Pauses or resumes synchronization for this sync relationship.
+
+** menu:Activate virtual files[] / menu:Deactivate virtual files[] +
+Activates or deactivates virtual file support for this sync relationship, if supported by the operating system. +
+(When virtual files are not enabled, this entry is replaced by menu:Manage subfolder sync[], which lets you choose which subfolders to synchronize.)
+
+** menu:Remove folder sync[] +
+Removes this sync relationship. For a Space, the entry is labeled menu:Remove Space sync[]. See the section xref:remove-sync-relationships[Remove Sync Relationships] below for details.
 endif::[]
 
 === Remove Sync Relationships
