@@ -208,7 +208,7 @@ endif::[]
 +
 [NOTE]
 ====
-If you plan to use multiple accounts, consider using a common base location in the file system for all accounts, which makes them easier to identify via a root folder. This means that you do not take the default suggested path, but customize it to your needs when enabling the btn:[Advanced configuration]. Consider reading the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation first to avoid using problematic paths.
+If you plan to use multiple accounts, consider using a common base location in the file system for all accounts, which makes them easier to identify via a root folder. This means that you do not take the default suggested path, but customize it to your needs when enabling the btn:[Advanced]. Consider reading the xref:vfs.adoc#limitations[Using the Virtual Filesystem] documentation first to avoid using problematic paths.
 
 // to add tabs to html before '->' without css: +++<tag-name style="white-space:pre">&#9;&#9;-></tag-name>+++
 
@@ -263,7 +263,7 @@ endif::[]
 Advanced Configuration::
 +
 --
-When enabling btn:[Advanced configuration], you can refine your synchronization configuration if desired.
+When enabling btn:[Advanced], you can refine your synchronization configuration if desired.
 ifeval::["{targetbuild}" == "oc"]
 Here you can specify the synchronization method, such as using the xref:vfs.adoc[Virtual Filesystem] if available on your operating system, what data you want to synchronize, or the location for the synchronized data.
 
@@ -501,9 +501,9 @@ Shows errors such as files not synced because they are excluded or any other err
 
 In Windows, double-clicking an activity entry pointing to an existing file will open the folder containing the file and highlight it.
 
-On Linux or macOS, you can do the same with menu:mouse[right-click > Show file in browser]
+On Linux or macOS, you can do the same with menu:mouse[right-click > Show in Finder] (the entry is labeled with the name of your operating system's file browser, for example menu:Show in Explorer[] or menu:Show in Finder[]).
 
-In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL + a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy to clipboard].
+In any of the activity tabs you can mark a single line, multiple lines or all lines with kbd:[CTRL + a] and copy the selected lines to the clipboard with menu:mouse[right-click > Copy].
 
 == Settings Window
 
@@ -519,7 +519,7 @@ endif::[]
 
 === General Settings
 
-* Launch on System Startup.
+* Start on Login.
 ifeval::["{targetbuild}" == "oc"]
 * Show Desktop Notifications.
 endif::[]
