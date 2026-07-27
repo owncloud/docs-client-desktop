@@ -481,11 +481,9 @@ The Activity window contains the log of your recent activities, organized in the
 ifeval::["{targetbuild}" == "oc"]
 image::using/oc-windows-activity-pane-server.png[Activity Pane, width=100]
 
-* Server Activities: +
-Includes new shares and downloaded and deleted files
-
-* Sync Protocol: +
-Shows local activity, such as which local folders your files have gone to.
+* Local Activity: +
+Includes files uploaded, downloaded or deleted. +
+Note that menu:mouse[right click] opens a menu for more actions.
 endif::[]
 
 ifeval::["{targetbuild}" == "kw"]
