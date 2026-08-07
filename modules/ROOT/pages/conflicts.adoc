@@ -17,7 +17,7 @@ When you try to upload your local changes, the Desktop App will notice that the 
 * `mydata.txt` containing "_remote contents_".
 * `mydata (conflicted copy 2025-04-10 093612).txt` containing "_local contents_".
 
-In this situation, the `mydata.txt` file has the remote changes and will continue to be updated with further remote changes as they occur. Your local changes have not been sent to the server unless you have enabled xref:force-uploading-conflicted-files[Force Uploading Conflicted Files].
+In this situation, the `mydata.txt` file has the remote changes and will continue to be updated with further remote changes as they occur. Your local changes have not been sent to the server.
 
 ////
 [.yellow]#we need to solve this#
