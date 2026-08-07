@@ -92,9 +92,7 @@ Desktop App log files contain file and folder names, metadata, server URLs, and 
 ==== Logging to a Temporary Directory
 
 . Open the Desktop App.
-. Either +
-click menu:Settings[Advanced > Log Settings] or +
-press btn:[F12] (Windows) or btn:[Ctrl-L] (Linux) or btn:[Cmd+L] (macOS) on your keyboard.
+. Click menu:Settings[Advanced > Log Settings].
 +
 The Log Output window opens.
 +
